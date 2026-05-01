@@ -24,12 +24,7 @@ VITE_APP_NAME=Talent Acquisition System
 ```
 
 ### Backend (.env)
-```
-MONGO_URI=mongodb+srv://9898:9898@rp.c1wmqkj.mongodb.net/?retryWrites=true&w=majority
-JWT_SECRET=your_jwt_secret_key_change_this_in_production
-NODE_ENV=development
-PORT=3001
-```
+
 
 ## API Services Layer
 
