@@ -126,7 +126,6 @@ Final Hiring Decision
 
 * React.js
 * Tailwind CSS
-* Framer Motion
 * Recharts
 
 ### Backend
@@ -191,8 +190,7 @@ Final Hiring Decision
 ### 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd YOUR_REPO_NAME
+git clone https://github.com/GehanFonseka/R26-IT-082.git
 ```
 
 ---
