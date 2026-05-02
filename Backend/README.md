@@ -1,6 +1,11 @@
-# AI-Powered Intelligent Talent Acquisition System - Backend
+# 🔧 Backend API - Talent Acquisition System
 
-A comprehensive Node.js/Express backend for an AI talent acquisition platform with MongoDB, JWT authentication, resume parsing, AI-powered matching, risk prediction, and interview management.
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-4.18-blue)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-7.0-green)](https://www.mongodb.com/)
+[![JWT](https://img.shields.io/badge/Auth-JWT-blue)](https://jwt.io/)
+
+REST API backend for the Talent Acquisition System built with Node.js and Express.js.
 
 ## Tech Stack
 
