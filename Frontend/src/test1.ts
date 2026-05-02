@@ -1,5 +1,5 @@
 export function greetUser(name: string) {
-  console.log("Hello " + name);
+  console.log("Helloo " + name);
 }
 
 greetUser("User1");
