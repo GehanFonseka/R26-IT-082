@@ -1,5 +1,5 @@
 /**
- * Sample recruiter view: table of interviews + schedule modal pattern.
+ * Recruiter view: interview table and schedule modal pattern.
  * Mirrors: Frontend/src/pages/recruiter/Interviews.tsx (structure).
  */
 import React, { useState } from 'react';
@@ -12,7 +12,7 @@ type TableRow = {
   status: string;
 };
 
-const SAMPLE_TABLE: TableRow[] = [
+const MOCK_TABLE: TableRow[] = [
   {
     id: '1',
     jobTitle: 'Software Engineer',
@@ -29,7 +29,7 @@ const SAMPLE_TABLE: TableRow[] = [
   },
 ];
 
-export const RecruiterInterviewsSample: React.FC = () => {
+export const RecruiterInterviews: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [form, setForm] = useState({
     candidateName: '',
@@ -62,7 +62,7 @@ export const RecruiterInterviewsSample: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {SAMPLE_TABLE.map(row => (
+            {MOCK_TABLE.map(row => (
               <tr key={row.id} className="border-t border-gray-100">
                 <td className="px-4 py-2">{row.jobTitle}</td>
                 <td className="px-4 py-2">{row.candidateId}</td>
@@ -144,4 +144,4 @@ export const RecruiterInterviewsSample: React.FC = () => {
   );
 };
 
-export default RecruiterInterviewsSample;
+export default RecruiterInterviews;

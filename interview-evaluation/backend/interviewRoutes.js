@@ -1,5 +1,5 @@
 /**
- * Sample Express routes for interview start, schedule, submit, results, list.
+ * Express routes: interview start, schedule, submit, results, list.
  * Mirrors: Backend/routes/interviewRoutes.js
  */
 import express from 'express';
@@ -9,7 +9,7 @@ import {
   getInterviewResults,
   scheduleInterview,
   getInterviews,
-} from './interviewController.sample.js';
+} from './interviewController.js';
 
 const router = express.Router();
 

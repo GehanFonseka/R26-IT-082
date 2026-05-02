@@ -1,5 +1,5 @@
 /**
- * Sample candidate view: list interviews, show evaluation scores when completed.
+ * Candidate view: list interviews and evaluation scores when completed.
  * Mirrors: Frontend/src/pages/candidate/Interviews.tsx (structure / data shape).
  */
 import React from 'react';
@@ -13,7 +13,7 @@ type Row = {
   scores?: { technical: number; communication: number; confidence: number };
 };
 
-const SAMPLE_ROWS: Row[] = [
+const MOCK_ROWS: Row[] = [
   {
     id: '1',
     jobTitle: 'Software Engineer',
@@ -31,11 +31,11 @@ const SAMPLE_ROWS: Row[] = [
   },
 ];
 
-export const CandidateInterviewsSample: React.FC = () => (
+export const CandidateInterviews: React.FC = () => (
   <div className="space-y-6">
     <h1 className="text-2xl font-bold">Interviews</h1>
     <div className="space-y-4">
-      {SAMPLE_ROWS.map(row => (
+      {MOCK_ROWS.map(row => (
         <article
           key={row.id}
           className="rounded-lg border border-gray-200 p-4 shadow-sm"
@@ -80,4 +80,4 @@ export const CandidateInterviewsSample: React.FC = () => (
   </div>
 );
 
-export default CandidateInterviewsSample;
+export default CandidateInterviews;

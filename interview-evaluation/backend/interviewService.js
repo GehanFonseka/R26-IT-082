@@ -1,5 +1,5 @@
 /**
- * Interview answer scoring + feedback text (sample).
+ * Interview answer scoring and generated feedback text.
  * Mirrors: Backend/services/interviewService.js
  */
 

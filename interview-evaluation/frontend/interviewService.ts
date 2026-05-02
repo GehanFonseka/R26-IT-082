@@ -1,5 +1,5 @@
 /**
- * Sample API client for interview evaluation flows.
+ * API client for interview evaluation flows.
  * Mirrors: Frontend/src/services/interviewService.ts
  */
 
@@ -42,7 +42,7 @@ async function get<T>(url: string): Promise<T> {
   return r.json() as Promise<T>;
 }
 
-export const interviewServiceSample = {
+export const interviewClient = {
   startInterview: (applicationId: string, jobId: string, questions: unknown[] = []) =>
     post<{ interview: Interview }>(`${base}/start`, { applicationId, jobId, questions }),
 
@@ -81,4 +81,4 @@ export const interviewServiceSample = {
   },
 };
 
-export default interviewServiceSample;
+export default interviewClient;

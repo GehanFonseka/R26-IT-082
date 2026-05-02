@@ -1,5 +1,5 @@
 /**
- * Sample snippet aligned with Interview evaluation feature (MongoDB / Mongoose).
+ * Interview evaluation schema (MongoDB / Mongoose).
  * Mirrors: Backend/models/Interview.js
  */
 import mongoose from 'mongoose';

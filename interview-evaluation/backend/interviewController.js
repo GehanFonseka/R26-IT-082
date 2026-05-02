@@ -1,8 +1,8 @@
 /**
- * Sample controller: start interview, submit answers (triggers evaluation), results, schedule, list.
- * Mirrors: Backend/controllers/interviewController.js (structure only — no auth in sample).
+ * Interview HTTP handlers: start, submit (runs evaluation), results, schedule, list.
+ * In-memory store for standalone use; align with Backend/controllers/interviewController.js.
  */
-import { evaluateAnswers, generateFeedback } from './interviewService.sample.js';
+import { evaluateAnswers, generateFeedback } from './interviewService.js';
 
 const interviews = new Map();
 
