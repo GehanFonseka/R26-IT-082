@@ -50,3 +50,5 @@ Backend/uploads/*
 .turbo
 .cache
 .eslintcache
+docker-compose.override.yml
+docker-compose.yml
