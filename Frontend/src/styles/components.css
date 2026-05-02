@@ -1,0 +1,187 @@
+/* ============= COMPONENT STYLING ============= */
+
+/* ============= HEADER SECTION ============= */
+.page-header {
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.page-header h1 {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.page-header p {
+  color: var(--gray-600);
+  margin: 0;
+}
+
+.page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+/* ============= STAT CARD ============= */
+.stat-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gray-300);
+  transform: translateY(-4px);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.stat-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+  font-size: 1.5rem;
+}
+
+.stat-card-icon.primary {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.stat-card-icon.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+
+.stat-card-icon.warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+.stat-card-icon.info {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--info);
+}
+
+.stat-card-label {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+.stat-card-value {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-sm);
+}
+
+.stat-card-trend {
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-card-trend.positive {
+  color: var(--success);
+}
+
+.stat-card-trend.negative {
+  color: var(--error);
+}
+
+/* ============= TABLE ============= */
+.table-container {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.table thead {
+  background: var(--gray-50);
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.table th {
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-align: left;
+  font-weight: 600;
+  color: var(--gray-700);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+}
+
+.table td {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-900);
+}
+
+.table tbody tr:hover {
+  background: var(--gray-50);
+  transition: background-color var(--transition-fast);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============= MODAL ============= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+  padding: var(--spacing-md);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal {
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  max-width: 500px;
+  width: 100%;\n  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease-out;
+}
+
+.modal-header {\n  padding: var(--spacing-lg);\n  border-bottom: 1px solid var(--gray-200);\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.modal-header h2 {\n  margin: 0;\n}\n\n.modal-close {\n  background: none;\n  border: none;\n  cursor: pointer;\n  color: var(--gray-500);\n  hover: color var(--gray-700);\n}\n\n.modal-body {\n  padding: var(--spacing-lg);\n}\n\n.modal-footer {\n  padding: var(--spacing-lg);\n  border-top: 1px solid var(--gray-200);\n  display: flex;\n  gap: var(--spacing-md);\n  justify-content: flex-end;\n}\n\n/* ============= PAGINATION ============= */\n.pagination {\n  display: flex;\n  align-items: center;\n  gap: var(--spacing-sm);\n  justify-content: center;\n  padding: var(--spacing-lg) 0;\n}\n\n.pagination-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 40px;\n  height: 40px;\n  border-radius: var(--radius-lg);\n  border: 1px solid var(--gray-300);\n  background: white;\n  color: var(--gray-700);\n  font-weight: 600;\n  cursor: pointer;\n  transition: all var(--transition-fast);\n}\n\n.pagination-btn:hover:not(:disabled) {\n  border-color: var(--primary);\n  color: var(--primary);\n  background: var(--primary-light);\n}\n\n.pagination-btn.active {\n  background: var(--primary);\n  color: white;\n  border-color: var(--primary);\n}\n\n.pagination-btn:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n/* ============= TIMELINE ============= */\n.timeline {\n  position: relative;\n  padding: var(--spacing-lg) 0;\n}\n\n.timeline-item {\n  display: flex;\n  gap: var(--spacing-lg);\n  margin-bottom: var(--spacing-xl);\n  position: relative;\n}\n\n.timeline-item:not(:last-child)::before {\n  content: '';\n  position: absolute;\n  left: 15px;\n  top: 40px;\n  width: 2px;\n  height: calc(100% + var(--spacing-xl));\n  background: var(--gray-200);\n}\n\n.timeline-marker {\n  width: 32px;\n  height: 32px;\n  border-radius: 50%;\n  background: white;\n  border: 2px solid var(--primary);\n  position: relative;\n  z-index: 1;\n  flex-shrink: 0;\n}\n\n.timeline-content {\n  flex: 1;\n}\n\n.timeline-content h4 {\n  margin: 0 0 var(--spacing-sm) 0;\n  color: var(--gray-900);\n}\n\n.timeline-content p {\n  margin: 0;\n  color: var(--gray-600);\n  font-size: 0.875rem;\n}\n\n/* ============= TABS ============= */\n.tabs {\n  border-bottom: 2px solid var(--gray-200);\n  display: flex;\n  overflow-x: auto;\n  gap: var(--spacing-md);\n}\n\n.tab-button {\n  padding: var(--spacing-md) var(--spacing-lg);\n  border: none;\n  background: transparent;\n  color: var(--gray-600);\n  font-weight: 600;\n  cursor: pointer;\n  position: relative;\n  font-size: 0.875rem;\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n  transition: color var(--transition-fast);\n  white-space: nowrap;\n}\n\n.tab-button:hover {\n  color: var(--primary);\n}\n\n.tab-button.active {\n  color: var(--primary);\n}\n\n.tab-button.active::after {\n  content: '';\n  position: absolute;\n  bottom: -2px;\n  left: 0;\n  right: 0;\n  height: 2px;\n  background: var(--primary);\n}\n\n.tab-content {\n  display: none;\n  padding: var(--spacing-lg) 0;\n}\n\n.tab-content.active {\n  display: block;\n  animation: slideUp 0.3s ease-out;\n}\n\n/* ============= PROGRESS BAR ============= */\n.progress-bar {\n  height: 8px;\n  background: var(--gray-200);\n  border-radius: 4px;\n  overflow: hidden;\n}\n\n.progress-bar-fill {\n  height: 100%;\n  background: linear-gradient(90deg, var(--primary), var(--secondary));\n  transition: width 0.3s ease-out;\n  border-radius: 4px;\n}\n\n/* ============= SEARCH BAR ============= */\n.search-bar {\n  display: flex;\n  align-items: center;\n  gap: var(--spacing-sm);\n  background: white;\n  border: 1px solid var(--gray-300);\n  border-radius: var(--radius-lg);\n  padding: var(--spacing-sm) var(--spacing-md);\n  width: 100%;\n  max-width: 400px;\n}\n\n.search-bar input {\n  flex: 1;\n  border: none;\n  outline: none;\n  font-size: 1rem;\n  background: transparent;\n}\n\n.search-bar-icon {\n  color: var(--gray-400);\n  flex-shrink: 0;\n}\n\n/* ============= FILTERS ============= */\n.filters {\n  display: flex;\n  gap: var(--spacing-md);\n  flex-wrap: wrap;\n  padding: var(--spacing-lg) 0;\n}\n\n.filter-chip {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--spacing-sm);\n  padding: var(--spacing-sm) var(--spacing-md);\n  background: var(--gray-100);\n  border: 1px solid var(--gray-200);\n  border-radius: 9999px;\n  font-size: 0.875rem;\n  cursor: pointer;\n  transition: all var(--transition-fast);\n}\n\n.filter-chip:hover {\n  background: var(--gray-200);\n}\n\n.filter-chip.active {\n  background: var(--primary);\n  color: white;\n  border-color: var(--primary);\n}\n\n/* ============= STATUS BADGE ============= */\n.status-badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.375rem 0.875rem;\n  border-radius: 9999px;\n  font-size: 0.75rem;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n}\n\n.status-submitted {\n  background: rgba(59, 130, 246, 0.1);\n  color: #1e40af;\n}\n\n.status-shortlisted {\n  background: rgba(16, 185, 129, 0.1);\n  color: #047857;\n}\n\n.status-interviewed {\n  background: rgba(245, 158, 11, 0.1);\n  color: #92400e;\n}\n\n.status-selected {\n  background: rgba(34, 197, 94, 0.1);\n  color: #15803d;\n}\n\n.status-rejected {\n  background: rgba(239, 68, 68, 0.1);\n  color: #991b1b;\n}\n\n.status-cancelled {\n  background: rgba(107, 114, 128, 0.1);\n  color: #374151;\n}\n\n/* ============= RESPONSIVE ADJUSTMENTS ============= */\n@media (max-width: 768px) {\n  .stat-card {\n    padding: var(--spacing-md);\n  }\n  \n  .table {\n    font-size: 0.75rem;\n  }\n  \n  .table th,\n  .table td {\n    padding: var(--spacing-sm) var(--spacing-md);\n  }\n  \n  .modal {\n    margin: var(--spacing-md);\n    max-width: 100%;\n  }\n  \n  .search-bar {\n    max-width: 100%;\n  }\n  \n  .page-header-actions {\n    flex-direction: column;\n    align-items: stretch;\n  }\n  \n  .page-header-actions .btn {\n    width: 100%;\n  }\n}\n

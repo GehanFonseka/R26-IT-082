@@ -77,7 +77,7 @@ const navItems: NavItem[] = [
   { label: 'Settings', path: '/admin/settings', icon: <Settings size={20} />, roles: ['admin'] },
 ];
 
-export const Sidebar: React.FC<{ isOpen?: boolean }> = ({ isOpen = true }) => {
+export const Sidebar: React.FC<{ isOpen?: boolean; onClose?: () => void }> = ({ isOpen = true, onClose }) => {
   const { user } = useAuth();
   const location = useLocation();
 
@@ -85,32 +85,63 @@ export const Sidebar: React.FC<{ isOpen?: boolean }> = ({ isOpen = true }) => {
 
   const userNavItems = navItems.filter(item => item.roles.includes(user.role));
 
+  const handleNavClick = () => {
+    if (onClose) onClose();
+  };
+
   return (
     <aside
-      className={`${
-        isOpen ? 'translate-x-0' : '-translate-x-full'
-      } lg:translate-x-0 transition-transform duration-300 fixed lg:static left-0 top-16 lg:top-0 w-64 h-[calc(100vh-64px)] lg:h-screen bg-gradient-to-b from-gray-50 to-white border-r border-gray-200 overflow-y-auto z-30`}
+      className={`
+        layout-sidebar
+        ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        lg:translate-x-0 transition-transform duration-300
+        fixed lg:static left-0 top-16 lg:top-0
+        w-64 h-[calc(100vh-64px)] lg:h-screen
+        lg:z-auto z-50 lg:border-r
+      `}
     >
-      <div className="p-6">
-        <nav className="space-y-2">
-          {userNavItems.map(item => {
-            const isActive = location.pathname === item.path;
-            return (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${
-                  isActive
-                    ? 'bg-gradient-primary text-white shadow-lg'
-                    : 'text-gray-700 hover:bg-gray-100'
-                }`}
-              >
+      {/* Sidebar Header */}
+      <div className="px-4 py-6 border-b border-gray-200">
+        <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">Navigation</p>
+      </div>
+
+      {/* Navigation Items */}
+      <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+        {userNavItems.map(item => {
+          const isActive = location.pathname === item.path;
+          return (
+            <Link
+              key={item.path}
+              to={item.path}
+              onClick={handleNavClick}
+              className={`
+                flex items-center gap-3 px-4 py-2.5 rounded-lg
+                transition-all duration-200
+                group relative
+                ${isActive
+                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md'
+                  : 'text-gray-700 hover:bg-gray-100'
+                }
+              `}
+            >
+              <span className={`flex-shrink-0 ${isActive ? 'text-white' : 'text-gray-600 group-hover:text-gray-900'}`}>
                 {item.icon}
-                <span className="font-medium">{item.label}</span>
-              </Link>
-            );
-          })}
-        </nav>
+              </span>
+              <span className="font-medium text-sm truncate">{item.label}</span>
+              {isActive && (
+                <span className="absolute right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-white rounded-full"></span>
+              )}
+            </Link>
+          );
+        })}
+      </nav>
+
+      {/* Sidebar Footer */}
+      <div className="border-t border-gray-200 p-4">
+        <div className="text-xs text-gray-500 text-center py-2">
+          <p className="font-semibold capitalize mb-1">{user.name}</p>
+          <p className="text-gray-400 capitalize">{user.role}</p>
+        </div>
       </div>
     </aside>
   );
