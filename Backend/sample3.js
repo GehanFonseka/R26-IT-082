@@ -1,2 +1,4 @@
 const name = "Backend User";
-console.log("Hello " + name);
+const time = new Date().toLocaleTimeString();
+
+console.log("Hello " + name + " | Time: " + time);
