@@ -2,7 +2,7 @@
  * Interview HTTP handlers: start, submit (runs evaluation), results, schedule, list.
  * In-memory store for standalone use; align with Backend/controllers/interviewController.js.
  */
-import { evaluateAnswers, generateFeedback } from './interviewService.js';
+import { evaluateAnswers, generateFeedback } from '../services/interviewService.js';
 
 const interviews = new Map();
 
