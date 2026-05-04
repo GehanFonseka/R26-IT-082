@@ -9,7 +9,7 @@ import {
   getInterviewResults,
   scheduleInterview,
   getInterviews,
-} from './interviewController.js';
+} from '../controllers/interviewController.js';
 
 const router = express.Router();
 
