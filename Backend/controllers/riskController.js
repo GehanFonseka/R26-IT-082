@@ -3,6 +3,7 @@ import { predictRisk } from '../services/riskService.js';
 import Application from '../models/Application.js';
 import CandidateProfile from '../models/CandidateProfile.js';
 import Vacancy from '../models/Vacancy.js';
+import { predictHiringRisk } from '../ai-modules/riskPredictionAI.js';
 
 export const predictCandidateRisk = async (req, res) => {
   try {
@@ -20,18 +21,24 @@ export const predictCandidateRisk = async (req, res) => {
       return res.status(404).json({ message: 'Candidate or Job not found' });
     }
 
-    // Predict risk
-    const riskPrediction = await predictRisk(candidate, job);
+    // Predict risk using AI Module 4
+    const riskPrediction = await predictHiringRisk(candidate, job, {});
 
     const risk = new RiskPrediction({
       candidateId,
       jobId,
       applicationId: applicationId || null,
-      riskLevel: riskPrediction.riskLevel,
-      probability: riskPrediction.probability,
-      factors: riskPrediction.factors,
-      prediction: riskPrediction.prediction,
-      explanation: riskPrediction.explanation,
+      riskLevel: riskPrediction.risk_level,
+      riskScore: riskPrediction.overall_risk_score,
+      probability: riskPrediction.attrition_probability,
+      predictedTenure: riskPrediction.predicted_tenure_months,
+      riskFactors: riskPrediction.top_risk_factors,
+      mitigationStrategies: riskPrediction.mitigation_strategies,
+      recommendation: riskPrediction.recommendation,
+      detailedAnalysis: {
+        dimensions: riskPrediction.risk_factors,
+        confidenceScore: riskPrediction.confidence_score,
+      },
     });
 
     await risk.save();
@@ -39,13 +46,26 @@ export const predictCandidateRisk = async (req, res) => {
     // Update application with risk score
     if (applicationId) {
       await Application.findByIdAndUpdate(applicationId, {
-        riskScore: riskPrediction.probability * 100,
-        riskLevel: riskPrediction.riskLevel,
+        riskScore: riskPrediction.overall_risk_score,
+        riskLevel: riskPrediction.risk_level,
+        attritionProbability: riskPrediction.attrition_probability,
+        predictedTenureMonths: riskPrediction.predicted_tenure_months,
       });
     }
 
-    res.status(201).json({ message: 'Risk prediction completed', risk });
+    res.status(201).json({ 
+      message: 'Risk prediction completed using advanced AI analysis', 
+      risk,
+      summary: {
+        riskLevel: riskPrediction.risk_level,
+        riskScore: riskPrediction.overall_risk_score,
+        attritionProbability: riskPrediction.attrition_probability,
+        predictedTenureMonths: riskPrediction.predicted_tenure_months,
+        recommendation: riskPrediction.recommendation,
+      },
+    });
   } catch (error) {
+    console.error('Predict candidate risk error:', error);
     res.status(500).json({ message: error.message });
   }
 };

@@ -7,6 +7,7 @@ const generateToken = (id) => {
   });
 };
 
+// ================= REGISTER =================
 export const register = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -38,6 +39,7 @@ export const register = async (req, res) => {
   }
 };
 
+// ================= LOGIN =================
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -47,13 +49,30 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: 'Please provide email and password' });
     }
 
-    // Check user exists
+    // ✅ TEMPORARY ADMIN LOGIN (hardcoded)
+    if (email === 'admin@gmail.com' && password === '123') {
+      const fakeAdmin = {
+        _id: 'temp-admin-id',
+        name: 'Admin',
+        email: 'admin',
+        role: 'admin'
+      };
+
+      const token = generateToken(fakeAdmin._id);
+
+      return res.status(200).json({
+        message: 'Admin login successful (temporary)',
+        token,
+        user: fakeAdmin,
+      });
+    }
+
+    // 🔽 NORMAL LOGIN FLOW (UNCHANGED)
     const user = await User.findOne({ email }).select('+password');
     if (!user) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    // Check password
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
       return res.status(401).json({ message: 'Invalid credentials' });
@@ -75,6 +94,7 @@ export const login = async (req, res) => {
   }
 };
 
+// ================= GET PROFILE =================
 export const getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.userId);
@@ -84,15 +104,21 @@ export const getProfile = async (req, res) => {
   }
 };
 
+// ================= UPDATE PROFILE =================
 export const updateProfile = async (req, res) => {
   try {
     const { name, email } = req.body;
+
     const user = await User.findByIdAndUpdate(
       req.userId,
       { name, email },
       { new: true, runValidators: true }
     );
-    res.status(200).json({ message: 'Profile updated', user });
+
+    res.status(200).json({
+      message: 'Profile updated',
+      user
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

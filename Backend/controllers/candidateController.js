@@ -1,5 +1,6 @@
 import CandidateProfile from '../models/CandidateProfile.js';
 import { parseResume } from '../services/resumeParserService.js';
+import { parseResumeFile, calculateSkillScore, getSkillRecommendations } from '../ai-modules/resumeParsingAI.js';
 
 export const createOrUpdateProfile = async (req, res) => {
   try {
@@ -21,29 +22,93 @@ export const createOrUpdateProfile = async (req, res) => {
     if (github) profile.github = github;
     if (portfolio) profile.portfolio = portfolio;
 
-    // Handle file upload
+    // Handle file upload - Use AI Module 1 for intelligent parsing
     if (req.file) {
       profile.resumeFileName = req.file.filename;
       profile.resumeUrl = `/uploads/${req.file.filename}`;
 
-      // Parse resume
+      // Parse resume using AI Module 1 with advanced NLP
       try {
-        const parsedData = await parseResume(req.file.path);
-        profile.parsedResume = parsedData;
+        const parsedResult = await parseResumeFile(req.file.path);
         
-        // Auto-extract skills if not provided
-        if (parsedData.extractedSkills && parsedData.extractedSkills.length > 0 && !skills) {
-          profile.skills = [...new Set([...profile.skills, ...parsedData.extractedSkills])];
+        if (parsedResult.success) {
+          const structuredData = parsedResult.structuredData;
+          
+          // Extract and store structured resume data
+          profile.parsedResume = {
+            text: parsedResult.rawText,
+            extractedSkills: structuredData.skills.map(s => s.skill),
+            extractedExperience: structuredData.experience.description,
+            extractedEducation: structuredData.education.map(e => e.level).join(', '),
+            certifications: structuredData.certifications,
+            projects: structuredData.projects,
+            contactInfo: structuredData.contactInfo,
+            summary: structuredData.summary,
+          };
+          
+          // Auto-extract and enrich skills with proficiency levels
+          const extractedSkills = structuredData.skills;
+          if (extractedSkills && extractedSkills.length > 0 && !skills) {
+            profile.skills = [...new Set([
+              ...profile.skills, 
+              ...extractedSkills.map(s => s.skill)
+            ])];
+          }
+          
+          // Auto-extract experience if not provided
+          if (structuredData.experience.years > 0 && !experience) {
+            profile.experience = structuredData.experience.years;
+          }
+          
+          // Auto-extract education if not provided
+          if (structuredData.education.length > 0 && !education) {
+            profile.education = structuredData.education[0].level;
+          }
+          
+          // Calculate skill score (0-100)
+          profile.skillScore = calculateSkillScore(extractedSkills);
+          
+          // Get skill recommendations
+          profile.skillRecommendations = getSkillRecommendations(extractedSkills);
+          
+          // Store detailed skill analysis
+          profile.skillAnalysis = {
+            totalSkills: extractedSkills.length,
+            advancedSkills: extractedSkills.filter(s => s.proficiency === 'advanced').length,
+            intermediateSkills: extractedSkills.filter(s => s.proficiency === 'intermediate').length,
+            beginnerSkills: extractedSkills.filter(s => s.proficiency === 'beginner').length,
+            skillsByCategory: extractedSkills.reduce((acc, skill) => {
+              if (!acc[skill.category]) acc[skill.category] = [];
+              acc[skill.category].push(skill);
+              return acc;
+            }, {}),
+          };
+        } else {
+          console.error('Resume parsing failed:', parsedResult.error);
         }
       } catch (parseError) {
         console.error('Resume parsing error:', parseError);
-        // Continue without parsed data
       }
     }
 
     await profile.save();
-    res.status(200).json({ message: 'Profile updated', profile });
+    
+    // Prepare response with enriched profile data
+    const response = {
+      message: 'Profile updated with AI-powered analysis',
+      profile: {
+        ...profile.toObject(),
+        insights: profile.skillScore ? {
+          skillScore: profile.skillScore,
+          skillRecommendations: profile.skillRecommendations,
+          experienceLevel: profile.experience < 2 ? 'Junior' : profile.experience < 5 ? 'Mid-level' : 'Senior',
+        } : null,
+      },
+    };
+    
+    res.status(200).json(response);
   } catch (error) {
+    console.error('Create/update profile error:', error);
     res.status(500).json({ message: error.message });
   }
 };

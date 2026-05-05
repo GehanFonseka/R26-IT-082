@@ -1,105 +1,228 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { StatCard, ChartCard } from '../../components/dashboard/StatCard';
-import { Card, Badge } from '../../components/common/Components';
-import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Users, Briefcase, CheckCircle, TrendingUp } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import { Users, Briefcase, CheckCircle, AlertCircle, Loader, TrendingUp } from 'lucide-react';
+import dashboardService from '../../services/dashboardService';
 
 export const RecruiterDashboard: React.FC = () => {
-  const stats = [
-    { title: 'Total Applicants', value: 148, trend: 12, icon: <Users /> },
-    { title: 'Shortlisted', value: 32, trend: 8, icon: <CheckCircle /> },
-    { title: 'Open Positions', value: 5, trend: -2, icon: <Briefcase /> },
-    { title: 'Hired This Month', value: 3, trend: 50, icon: <TrendingUp /> },
-  ];
+  const navigate = useNavigate();
+  const { user } = useAuth();
 
-  const applicationsData = [
-    { month: 'Jan', applications: 45 },
-    { month: 'Feb', applications: 52 },
-    { month: 'Mar', applications: 38 },
-    { month: 'Apr', applications: 65 },
-  ];
+  const [stats, setStats] = useState({
+    openPositions: 0,
+    totalApplications: 0,
+    shortlisted: 0,
+    hired: 0,
+  });
+  const [recentApplications, setRecentApplications] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  const funnel = [
-    { name: 'Applied', value: 150, fill: '#00D4FF' },
-    { name: 'Shortlisted', value: 45, fill: '#0172B2' },
-    { name: 'Interview', value: 20, fill: '#001645' },
-    { name: 'Offered', value: 5, fill: '#10B981' },
+  useEffect(() => {
+    if (user?.role !== 'recruiter') {
+      navigate('/login');
+      return;
+    }
+
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const dashboard = await dashboardService.getRecruiterDashboard();
+        setStats({
+          openPositions: dashboard.openPositions || 0,
+          totalApplications: dashboard.totalApplications || 0,
+          shortlisted: dashboard.shortlisted || 0,
+          hired: dashboard.hired || 0,
+        });
+        setRecentApplications(dashboard.recentApplications || []);
+      } catch (err: any) {
+        setError(err.message || 'Failed to load dashboard');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [user, navigate]);
+
+  if (!user) return null;
+
+  const statCards = [
+    {
+      icon: Briefcase,
+      label: 'Open Positions',
+      value: stats.openPositions,
+      color: 'blue',
+      action: () => navigate('/recruiter/vacancies'),
+    },
+    {
+      icon: Users,
+      label: 'Applications',
+      value: stats.totalApplications,
+      color: 'purple',
+      action: () => navigate('/recruiter/applications'),
+    },
+    {
+      icon: CheckCircle,
+      label: 'Shortlisted',
+      value: stats.shortlisted,
+      color: 'green',
+      action: () => navigate('/recruiter/candidates'),
+    },
+    {
+      icon: TrendingUp,
+      label: 'Hired',
+      value: stats.hired,
+      color: 'orange',
+      action: null,
+    },
   ];
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-4xl font-bold text-gray-900">Recruiter Dashboard</h1>
+    <div className="space-y-8 pb-12">
+      {/* Header */}
+      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
+        <h1 className="text-4xl font-bold text-gray-900">Welcome, {user?.name}!</h1>
+        <p className="text-gray-600 mt-2">AI-powered recruitment dashboard</p>
+      </motion.div>
 
-      {/* Stats */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map((stat, idx) => (
+      {/* Error */}
+      {error && (
+        <motion.div className="p-4 bg-red-50 border border-red-200 rounded-lg flex gap-3">
+          <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
+          <p className="text-red-700">{error}</p>
+        </motion.div>
+      )}
+
+      {loading ? (
+        <motion.div className="flex justify-center">
+          <Loader className="w-8 h-8 text-blue-600 animate-spin" />
+        </motion.div>
+      ) : (
+        <>
+          {/* Stats Grid */}
           <motion.div
-            key={idx}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: idx * 0.1 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            <StatCard {...stat} color={['blue', 'green', 'purple', 'orange'][idx] as any} />
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Charts */}
-      <div className="grid lg:grid-cols-2 gap-6">
-        <ChartCard title="Applications Over Time">
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={applicationsData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Line
-                type="monotone"
-                dataKey="applications"
-                stroke="#0172B2"
-                strokeWidth={2}
-                dot={{ r: 4 }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </ChartCard>
-
-        <ChartCard title="Hiring Funnel">
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={funnel}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="value" fill="#0172B2" />
-            </BarChart>
-          </ResponsiveContainer>
-        </ChartCard>
-      </div>
-
-      {/* Recent Activity */}
-      <Card>
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">Recent Activity</h2>
-        <div className="space-y-4">
-          {[
-            { action: 'New application from John Doe', role: 'Senior React Developer', time: '2 hours ago' },
-            { action: 'Interview scheduled with Sarah Smith', role: 'Product Manager', time: '5 hours ago' },
-            { action: 'Offer extended to Mike Chen', role: 'Data Scientist', time: '1 day ago' },
-          ].map((activity, idx) => (
-            <div key={idx} className="flex items-start gap-4 pb-4 border-b border-gray-100 last:border-0">
-              <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-              <div className="flex-1">
-                <p className="font-medium text-gray-800">{activity.action}</p>
-                <div className="flex items-center gap-2 mt-1">
-                  <Badge variant="info">{activity.role}</Badge>
-                  <span className="text-xs text-gray-400">{activity.time}</span>
+            {statCards.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -4 }}
+                onClick={stat.action}
+                className={`card bg-gradient-to-br from-${stat.color}-50 to-${stat.color}-100 border-l-4 border-${stat.color}-600 cursor-pointer transition`}
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-semibold text-gray-600">{stat.label}</p>
+                    <p className="text-4xl font-bold text-gray-900 mt-2">{stat.value}</p>
+                  </div>
+                  <stat.icon className={`w-12 h-12 text-${stat.color}-600 opacity-20`} />
                 </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Action Cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="card p-6 cursor-pointer"
+              onClick={() => navigate('/recruiter/candidates')}
+            >
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-bold text-gray-900">View Candidates</h3>
+                <Users className="w-6 h-6 text-blue-600" />
               </div>
-            </div>
-          ))}
-        </div>
-      </Card>
+              <p className="text-gray-600 mb-4">
+                Ranked candidates with AI-powered match scores
+              </p>
+              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                Browse Candidates
+              </button>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -4 }}
+              className="card p-6 cursor-pointer"
+              onClick={() => navigate('/recruiter/vacancies')}
+            >
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-bold text-gray-900">Manage Vacancies</h3>
+                <Briefcase className="w-6 h-6 text-purple-600" />
+              </div>
+              <p className="text-gray-600 mb-4">Create and manage job openings</p>
+              <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                Go to Vacancies
+              </button>
+            </motion.div>
+          </motion.div>
+
+          {/* Recent Applications */}
+          {recentApplications.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="card"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-gray-900">Recent Applications</h2>
+                <button
+                  onClick={() => navigate('/recruiter/applications')}
+                  className="text-blue-600 hover:text-blue-700 font-semibold"
+                >
+                  View All
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                {recentApplications.slice(0, 5).map((app) => (
+                  <motion.div
+                    key={app._id}
+                    whileHover={{ x: 4 }}
+                    className="p-4 border border-gray-200 rounded-lg cursor-pointer hover:shadow-md transition"
+                    onClick={() => navigate(`/recruiter/applications/${app._id}`)}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-gray-900">{app.candidateName}</h4>
+                        <p className="text-sm text-gray-600">{app.jobTitle}</p>
+                      </div>
+                      <div className="flex items-center gap-4">
+                        {app.matchScore && (
+                          <div className="text-center">
+                            <p className="text-xs font-semibold text-gray-600">MATCH</p>
+                            <p className="text-2xl font-bold text-blue-600">{app.matchScore}%</p>
+                          </div>
+                        )}
+                        <span
+                          className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                            app.status === 'shortlisted'
+                              ? 'bg-green-100 text-green-700'
+                              : app.status === 'rejected'
+                                ? 'bg-red-100 text-red-700'
+                                : 'bg-gray-100 text-gray-700'
+                          }`}
+                        >
+                          {app.status?.charAt(0).toUpperCase() + app.status?.slice(1)}
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </>
+      )}
     </div>
   );
 };
+
+export default RecruiterDashboard;
