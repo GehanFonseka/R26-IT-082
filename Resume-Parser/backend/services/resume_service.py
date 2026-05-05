@@ -2,6 +2,7 @@ import pdfplumber
 import spacy
 import re
 from database.mongodb import candidate_collection
+from sklearn.tree import DecisionTreeClassifier
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -12,6 +13,22 @@ SKILL_KEYWORDS = [
     "flask", "django", "git", "github", "docker", "figma",
     "firebase", "spring boot", "php", "laravel"
 ]
+
+# ML training data: [skill_frequency, experience_months, project_context]
+X_train = [
+    [1, 0, 0],
+    [2, 0, 1],
+    [3, 6, 1],
+    [4, 12, 1],
+    [5, 24, 1],
+    [6, 36, 1],
+]
+
+# 0 = Beginner, 1 = Intermediate, 2 = Advanced
+y_train = [0, 0, 1, 1, 2, 2]
+
+skill_model = DecisionTreeClassifier(random_state=42)
+skill_model.fit(X_train, y_train)
 
 
 def extract_skills(text):
@@ -68,41 +85,66 @@ def calculate_total_experience_months(experience):
     return total_months
 
 
+def calculate_skill_score(prediction, frequency, total_months, project_context):
+    base_scores = {
+        0: 35,
+        1: 65,
+        2: 85
+    }
+
+    score = base_scores[int(prediction)]
+
+    score += min(frequency * 2, 10)
+
+    if project_context:
+        score += 5
+
+    if total_months >= 12:
+        score += 5
+
+    return min(score, 100)
+
+
 def calculate_skill_proficiency(skills, experience, text):
     skill_profiles = []
     text_lower = text.lower()
     total_months = calculate_total_experience_months(experience)
 
+    label_map = {
+        0: "Beginner",
+        1: "Intermediate",
+        2: "Advanced"
+    }
+
     for skill in skills:
         frequency = text_lower.count(skill.lower())
-        score = 30
 
-        if frequency >= 2:
-            score += 15
+        project_context = (
+            1 if "project" in text_lower and skill.lower() in text_lower else 0
+        )
 
-        if "project" in text_lower and skill.lower() in text_lower:
-            score += 20
+        features = [[frequency, total_months, project_context]]
 
-        if total_months >= 6:
-            score += 15
+        prediction = skill_model.predict(features)[0]
+        level = label_map[int(prediction)]
 
-        if total_months >= 24:
-            score += 25
-
-        score = min(score, 100)
-
-        if score < 50:
-            level = "Beginner"
-        elif score < 75:
-            level = "Intermediate"
-        else:
-            level = "Advanced"
+        score = calculate_skill_score(
+            prediction,
+            frequency,
+            total_months,
+            project_context
+        )
 
         skill_profiles.append({
             "skill": skill,
             "level": level,
             "score": score,
-            "evidence": f"Frequency: {frequency}, Experience: {total_months} months, Project context detected"
+            "features": {
+                "frequency": frequency,
+                "experience_months": total_months,
+                "project_context": bool(project_context)
+            },
+            "model": "DecisionTreeClassifier"
         })
 
     return skill_profiles

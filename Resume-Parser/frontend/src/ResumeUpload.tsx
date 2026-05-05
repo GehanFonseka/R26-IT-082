@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import SkillProficiencyDashboard from "./SkillProficiencyDashboard";
 
 export default function ResumeUpload() {
   const [file, setFile] = useState<File | null>(null);
@@ -11,15 +12,12 @@ export default function ResumeUpload() {
     const formData = new FormData();
     formData.append("file", file);
 
-    try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/upload",
-        formData
-      );
-      setResult(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+    const res = await axios.post(
+      "http://127.0.0.1:8000/api/upload",
+      formData
+    );
+
+    setResult(res.data);
   };
 
   return (
@@ -34,7 +32,12 @@ export default function ResumeUpload() {
       <button onClick={handleUpload}>Upload</button>
 
       {result && (
-        <pre>{JSON.stringify(result, null, 2)}</pre>
+        <>
+          <h3>Skills</h3>
+          <p>{result.skills.join(", ")}</p>
+
+          <SkillProficiencyDashboard skills={result.skill_profile} />
+        </>
       )}
     </div>
   );
