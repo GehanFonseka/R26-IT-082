@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
+    "dev": "npm run cleanup-port && nodemon server.js",
+    "cleanup-port": "node scripts/cleanup-port.js",
     "seed": "node scripts/seed.js"
   },
   "keywords": [

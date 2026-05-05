@@ -1,5 +1,7 @@
 import Interview from '../models/Interview.js';
+import Application from '../models/Application.js';
 import { evaluateAnswers } from '../services/interviewService.js';
+import { evaluateInterviewResponse } from '../ai-modules/interviewEvaluationAI.js';
 
 export const startInterview = async (req, res) => {
   try {
@@ -42,13 +44,62 @@ export const submitAnswers = async (req, res) => {
     interview.completedAt = new Date();
     interview.status = 'completed';
 
-    // Evaluate answers
-    const scores = await evaluateAnswers(answers, interview.questions);
-    interview.scores = scores;
+    // Evaluate each answer using AI Module 3 (Interview Evaluation)
+    const evaluations = await Promise.all(
+      answers.map(async (answer, index) => {
+        const interviewData = {
+          type: answer.type || 'text', // 'text', 'mcq', 'video'
+          question: interview.questions[index]?.question || '',
+          response: answer.response || '',
+          selectedAnswer: answer.selectedAnswer,
+          correctAnswer: answer.correctAnswer,
+          videoMetadata: answer.videoMetadata,
+        };
+        const evaluation = await evaluateInterviewResponse(interviewData);
+        return {
+          questionIndex: index,
+          ...evaluation,
+        };
+      })
+    );
+
+    // Calculate overall interview score
+    const overallScore = Math.round(
+      evaluations.reduce((sum, evaluation) => sum + evaluation.overall_score, 0) / evaluations.length
+    );
+
+    interview.evaluations = evaluations;
+    interview.overallScore = overallScore;
+    interview.result = overallScore >= 60 ? 'pass' : 'fail';
+    interview.scores = {
+      overall: overallScore,
+      communication: Math.round(evaluations.reduce((sum, evaluation) => sum + evaluation.communication_score, 0) / evaluations.length),
+      confidence: Math.round(evaluations.reduce((sum, evaluation) => sum + evaluation.confidence_score, 0) / evaluations.length),
+      clarity: Math.round(evaluations.reduce((sum, evaluation) => sum + evaluation.clarity_score, 0) / evaluations.length),
+    };
+
+    // Update related application status
+    if (interview.applicationId) {
+      await Application.findByIdAndUpdate(
+        interview.applicationId,
+        { 
+          interviewScore: overallScore,
+          interviewResult: interview.result,
+          status: interview.result === 'pass' ? 'interview-passed' : 'interview-failed',
+        }
+      );
+    }
 
     await interview.save();
-    res.status(200).json({ message: 'Answers submitted', interview });
+    res.status(200).json({ 
+      message: 'Answers submitted and evaluated', 
+      interview,
+      overallScore,
+      result: interview.result,
+      evaluations,
+    });
   } catch (error) {
+    console.error('Submit answers error:', error);
     res.status(500).json({ message: error.message });
   }
 };

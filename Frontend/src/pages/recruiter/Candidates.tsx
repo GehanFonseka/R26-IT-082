@@ -1,163 +1,187 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Card, Button, Input, Badge, Modal } from '../../components/common/Components';
-import { mockCandidates } from '../../data/mockData';
-import { Eye, AlertCircle, CheckCircle } from 'lucide-react';
-import { getRiskColor } from '../../utils/helpers';
+import { useParams, useNavigate } from 'react-router-dom';
+import { MatchScoreCard } from '../../components/ai';
+import { Filter, Loader, AlertCircle, TrendingUp } from 'lucide-react';
+import aiService from '../../services/aiService';
 
 export const RecruiterCandidates: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCandidate, setSelectedCandidate] = useState<(typeof mockCandidates)[0] | null>(null);
+  const { jobId } = useParams<{ jobId: string }>();
+  const navigate = useNavigate();
 
-  const filteredCandidates = mockCandidates.filter(
-    c =>
-      c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      c.email.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const [candidates, setCandidates] = useState<any[]>([]);
+  const [filteredCandidates, setFilteredCandidates] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [filter, setFilter] = useState('all');
+  const [selectedCandidate, setSelectedCandidate] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchCandidates = async () => {
+      try {
+        setLoading(true);
+        const data = await aiService.getRankedCandidates(jobId!);
+        setCandidates(data.candidates || data);
+        setFilteredCandidates(data.candidates || data);
+      } catch (err: any) {
+        setError(err.message || 'Failed to load candidates');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (jobId) {
+      fetchCandidates();
+    }
+  }, [jobId]);
+
+  useEffect(() => {
+    if (filter === 'all') {
+      setFilteredCandidates(candidates);
+    } else {
+      setFilteredCandidates(
+        candidates.filter((c) => c.matchScore?.match_level === filter)
+      );
+    }
+  }, [filter, candidates]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <motion.div animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity }}>
+          <Loader className="w-12 h-12 text-blue-600" />
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
-      <h1 className="text-4xl font-bold text-gray-900">Candidates</h1>
+    <div className="space-y-6 pb-12">
+      {/* Header */}
+      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
+        <h1 className="text-4xl font-bold text-gray-900">Ranked Candidates</h1>
+        <p className="text-gray-600 mt-2">AI-powered ranking by best fit</p>
+      </motion.div>
 
-      <Card>
-        <Input placeholder="Search by name or email..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
-      </Card>
+      {/* Error */}
+      {error && (
+        <motion.div className="p-4 bg-red-50 border border-red-200 rounded-lg flex gap-3">
+          <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
+          <p className="text-red-700">{error}</p>
+        </motion.div>
+      )}
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Filters */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="card flex items-center gap-4"
+      >
+        <Filter className="w-5 h-5 text-gray-600" />
+        <div className="flex gap-2 flex-wrap">
+          {['all', 'excellent', 'strong', 'moderate'].map((level) => (
+            <button
+              key={level}
+              onClick={() => setFilter(level)}
+              className={`px-4 py-2 rounded-lg font-semibold transition ${
+                filter === level
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              {level.charAt(0).toUpperCase() + level.slice(1)}
+            </button>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Candidate List */}
+      <div className="space-y-6">
         {filteredCandidates.map((candidate, idx) => (
           <motion.div
-            key={candidate.id}
+            key={candidate.candidateId || idx}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.1 }}
+            className="grid grid-cols-1 lg:grid-cols-3 gap-6"
           >
-            <Card className="hover:shadow-lg cursor-pointer relative h-full">
+            {/* Candidate Info */}
+            <motion.div
+              whileHover={{ y: -2 }}
+              className="lg:col-span-1 card p-6 cursor-pointer"
+              onClick={() => setSelectedCandidate(candidate)}
+            >
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h3 className="text-lg font-bold text-gray-800">{candidate.name}</h3>
-                  <p className="text-sm text-gray-600">{candidate.email}</p>
+                  <h3 className="text-lg font-bold text-gray-900">
+                    {candidate.candidateName || candidate.name}
+                  </h3>
+                  <p className="text-sm text-gray-600">Rank #{idx + 1}</p>
                 </div>
-                {candidate.riskLevel && (
-                  <div className={`p-2 rounded ${getRiskColor(candidate.riskLevel)}`}>
-                    {candidate.riskLevel === 'low' ? (
-                      <CheckCircle size={20} />
-                    ) : (
-                      <AlertCircle size={20} />
-                    )}
-                  </div>
-                )}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                >
+                  <TrendingUp className="w-6 h-6 text-green-600" />
+                </motion.div>
               </div>
 
               <div className="space-y-3">
-                <div>
-                  <p className="text-xs text-gray-500 mb-1">Skills</p>
-                  <div className="flex flex-wrap gap-2">
-                    {candidate.skills.slice(0, 3).map(skill => (
-                      <Badge key={skill} variant="success">
-                        {skill}
-                      </Badge>
-                    ))}
-                    {candidate.skills.length > 3 && (
-                      <Badge variant="info">+{candidate.skills.length - 3}</Badge>
-                    )}
-                  </div>
+                <div className="p-3 bg-blue-50 rounded-lg">
+                  <p className="text-xs font-semibold text-blue-600">MATCH SCORE</p>
+                  <p className="text-2xl font-bold text-blue-700">
+                    {candidate.matchScore?.overall_score || 0}%
+                  </p>
                 </div>
 
-                {candidate.matchScore && (
-                  <div>
-                    <p className="text-xs text-gray-500 mb-1">Match Score</p>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div
-                        className="bg-primary h-2 rounded-full"
-                        style={{ width: `${candidate.matchScore}%` }}
-                      />
-                    </div>
-                    <p className="text-sm font-bold text-gray-800 mt-1">{candidate.matchScore}%</p>
+                {candidate.interviewScore && (
+                  <div className="p-3 bg-purple-50 rounded-lg">
+                    <p className="text-xs font-semibold text-purple-600">INTERVIEW</p>
+                    <p className="text-2xl font-bold text-purple-700">
+                      {candidate.interviewScore}%
+                    </p>
                   </div>
                 )}
 
-                <Button
-                  variant="primary"
-                  className="w-full flex items-center justify-center gap-2"
-                  onClick={() => setSelectedCandidate(candidate)}
-                >
-                  <Eye size={18} />
-                  View Profile
-                </Button>
+                <div className="p-3 bg-amber-50 rounded-lg">
+                  <p className="text-xs font-semibold text-amber-600">RISK LEVEL</p>
+                  <p className="text-lg font-bold text-amber-700 capitalize">
+                    {candidate.riskLevel || 'N/A'}
+                  </p>
+                </div>
               </div>
-            </Card>
+
+              <button
+                onClick={() => navigate(`/recruiter/applications/${candidate.applicationId}`)}
+                className="mt-4 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              >
+                View Details
+              </button>
+            </motion.div>
+
+            {/* Match Score Card */}
+            {selectedCandidate?.candidateId === candidate.candidateId && candidate.matchScore && (
+              <motion.div className="lg:col-span-2">
+                <MatchScoreCard
+                  data={candidate.matchScore}
+                  candidateName={candidate.candidateName || candidate.name}
+                />
+              </motion.div>
+            )}
           </motion.div>
         ))}
       </div>
 
-      {/* Candidate Detail Modal */}
-      <Modal isOpen={!!selectedCandidate} onClose={() => setSelectedCandidate(null)} title="Candidate Profile">
-        {selectedCandidate && (
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">{selectedCandidate.name}</h3>
-
-              <div className="grid md:grid-cols-2 gap-4 mb-6">
-                <div>
-                  <p className="text-sm text-gray-600">Email</p>
-                  <p className="font-semibold text-gray-800">{selectedCandidate.email}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600">Phone</p>
-                  <p className="font-semibold text-gray-800">{selectedCandidate.phone}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600">Location</p>
-                  <p className="font-semibold text-gray-800">{selectedCandidate.location}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600">Experience</p>
-                  <p className="font-semibold text-gray-800">{selectedCandidate.experience} years</p>
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <p className="text-sm text-gray-600 mb-2">Skills</p>
-                <div className="flex flex-wrap gap-2">
-                  {selectedCandidate.skills.map(skill => (
-                    <Badge key={skill} variant="success">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-
-              {selectedCandidate.matchScore && (
-                <div className="p-4 bg-blue-50 rounded-lg border border-blue-200 mb-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-semibold text-gray-800">Overall Match</span>
-                    <span className="text-2xl font-bold text-primary">{selectedCandidate.matchScore}%</span>
-                  </div>
-                  <div className="w-full bg-gray-300 rounded-full h-2">
-                    <div
-                      className="bg-primary h-2 rounded-full"
-                      style={{ width: `${selectedCandidate.matchScore}%` }}
-                    />
-                  </div>
-                </div>
-              )}
-
-              {selectedCandidate.riskLevel && (
-                <div className={`p-4 rounded-lg border mb-6 ${getRiskColor(selectedCandidate.riskLevel).replace('text-', 'border-').replace('bg-', 'bg-')}`}>
-                  <p className="font-semibold">Risk Level: <span className="uppercase">{selectedCandidate.riskLevel}</span></p>
-                </div>
-              )}
-
-              <div className="flex gap-4">
-                <Button onClick={() => setSelectedCandidate(null)} variant="secondary">
-                  Close
-                </Button>
-                <Button variant="primary">Schedule Interview</Button>
-              </div>
-            </div>
-          </div>
-        )}
-      </Modal>
-    </motion.div>
+      {filteredCandidates.length === 0 && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="card text-center py-12"
+        >
+          <p className="text-gray-600">No candidates found for this filter</p>
+        </motion.div>
+    </div>
   );
 };
+
+export default RecruiterCandidates;
