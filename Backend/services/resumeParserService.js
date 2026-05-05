@@ -1,125 +1,41 @@
 import fs from 'fs';
-import pdfParse from 'pdf-parse';
-import mammoth from 'mammoth';
+import path from 'path';
+import { parseResume as parseResumeUtil } from '../utils/helpers.js';
+import CandidateProfile from '../models/CandidateProfile.js';
 
-export const parseResume = async (filePath) => {
+/**
+ * Parses a resume file and extracts candidate details.
+ * @param {Buffer} fileBuffer - The uploaded resume file buffer.
+ * @param {string} fileType - The type of the uploaded file (e.g., PDF, DOCX).
+ * @returns {Promise<Object>} - Parsed candidate details.
+ */
+async function parseResumeFile(fileBuffer, fileType) {
   try {
-    const fileBuffer = fs.readFileSync(filePath);
-    let text = '';
-
-    // Check file type
-    if (filePath.endsWith('.pdf')) {
-      const pdfData = await pdfParse(fileBuffer);
-      text = pdfData.text;
-    } else if (filePath.endsWith('.docx')) {
-      const result = await mammoth.extractRawText({ buffer: fileBuffer });
-      text = result.value;
-    } else {
-      throw new Error('Unsupported file format');
-    }
-
-    // Parse skills
-    const extractedSkills = parseSkills(text);
-    const extractedExperience = parseExperience(text);
-    const extractedEducation = parseEducation(text);
-
-    return {
-      text,
-      extractedSkills,
-      extractedExperience,
-      extractedEducation,
-    };
+    const parsedData = await parseResumeUtil(fileBuffer, fileType);
+    return parsedData;
   } catch (error) {
-    console.error('Resume parsing error:', error);
-    throw error;
+    throw new Error('Error parsing resume: ' + error.message);
   }
-};
+}
 
-const parseSkills = (text) => {
-  const commonSkills = [
-    'javascript',
-    'typescript',
-    'python',
-    'java',
-    'cpp',
-    'csharp',
-    'php',
-    'ruby',
-    'go',
-    'rust',
-    'swift',
-    'kotlin',
-    'react',
-    'angular',
-    'vue',
-    'nodejs',
-    'express',
-    'django',
-    'flask',
-    'spring',
-    'fastapi',
-    'mongodb',
-    'mysql',
-    'postgresql',
-    'redis',
-    'elasticsearch',
-    'aws',
-    'azure',
-    'gcp',
-    'docker',
-    'kubernetes',
-    'git',
-    'ci/cd',
-    'rest',
-    'graphql',
-    'websockets',
-    'html',
-    'css',
-    'sass',
-    'tailwind',
-    'bootstrap',
-    'webpack',
-    'babel',
-    'jest',
-    'testing',
-  ];
-
-  const lowerText = text.toLowerCase();
-  const foundSkills = commonSkills.filter(skill => lowerText.includes(skill));
-
-  return [...new Set(foundSkills)];
-};
-
-const parseExperience = (text) => {
-  // Look for common experience patterns
-  const patterns = [
-    /(\d+)\+?\s*(?:years?|yrs?)\s+(?:of\s+)?(?:professional\s+)?experience/i,
-    /experience:\s*(\d+)\+?\s*(?:years?|yrs?)/i,
-  ];
-
-  for (const pattern of patterns) {
-    const match = text.match(pattern);
-    if (match) {
-      return match[1] + ' years';
-    }
+/**
+ * Saves parsed resume data to the database.
+ * @param {Object} parsedData - The parsed candidate details.
+ * @returns {Promise<Object>} - The saved candidate profile.
+ */
+async function saveParsedDataToDB(parsedData) {
+  try {
+    const candidateProfile = new CandidateProfile(parsedData);
+    await candidateProfile.save();
+    return candidateProfile;
+  } catch (error) {
+    throw new Error('Error saving parsed data to database: ' + error.message);
   }
+}
 
-  return 'Not specified';
-};
-
-const parseEducation = (text) => {
-  const educationPatterns = [
-    /(?:bachelor|bsc|b\.s\.|b\.a\.|b\.e\.|btech|b\.tech)/i,
-    /(?:master|msc|m\.s\.|m\.a\.|m\.e\.|mtech|m\.tech)/i,
-    /(?:phd|doctorate|doctoral)/i,
-    /(?:diploma|associate)/i,
-  ];
-
-  for (const pattern of educationPatterns) {
-    if (pattern.test(text)) {
-      return text.match(pattern)[0];
-    }
-  }
-
-  return 'Not specified';
+// Re-export parseResume for backward compatibility
+export const parseResume = parseResumeUtil;
+export {
+  parseResumeFile,
+  saveParsedDataToDB,
 };

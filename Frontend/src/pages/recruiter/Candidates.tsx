@@ -180,6 +180,7 @@ export const RecruiterCandidates: React.FC = () => {
         >
           <p className="text-gray-600">No candidates found for this filter</p>
         </motion.div>
+      )}
     </div>
   );
 };

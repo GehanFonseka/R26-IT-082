@@ -161,3 +161,41 @@ export const uploadResume = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const getSkills = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const profile = await CandidateProfile.findOne({ userId });
+    
+    if (!profile) {
+      return res.status(404).json({ message: 'Profile not found' });
+    }
+
+    // Return skill analysis data with a default structure if not available
+    const skillInsights = {
+      skillScore: profile.skillScore || 0,
+      experienceLevel: profile.experience < 2 ? 'entry' : profile.experience < 5 ? 'junior' : profile.experience < 10 ? 'mid' : profile.experience < 15 ? 'senior' : 'lead',
+      skills: profile.skills?.map((skill) => ({
+        skill,
+        proficiencyLevel: 'intermediate',
+        yearsOfExperience: profile.experience,
+      })) || [],
+      skillRecommendations: profile.skillRecommendations || [],
+      skillAnalysis: profile.skillAnalysis || {
+        programming_languages: [],
+        frontend_frameworks: [],
+        backend_frameworks: [],
+        databases: [],
+        cloud_platforms: [],
+        devops: [],
+        tools_and_technologies: [],
+        testing: [],
+      },
+    };
+
+    res.status(200).json(skillInsights);
+  } catch (error) {
+    console.error('Get skills error:', error);
+    res.status(500).json({ message: error.message });
+  }
+};
