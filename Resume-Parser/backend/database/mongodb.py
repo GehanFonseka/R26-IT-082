@@ -7,6 +7,8 @@ load_dotenv()
 MONGO_URI = os.getenv("MONGO_URI")
 DATABASE_NAME = os.getenv("DATABASE_NAME")
 
+print("DEBUG URI:", MONGO_URI)
+
 client = MongoClient(MONGO_URI)
 db = client[DATABASE_NAME]
 
