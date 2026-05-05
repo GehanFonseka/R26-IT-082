@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { SkillAnalysisCard } from '../../components/ai';
+import { StatCard } from '../../components/dashboard/StatCard';
 import { Briefcase, CheckCircle, Calendar, Award, AlertCircle, Loader, Brain } from 'lucide-react';
 import dashboardService from '../../services/dashboardService';
 import candidateService from '../../services/candidateService';
