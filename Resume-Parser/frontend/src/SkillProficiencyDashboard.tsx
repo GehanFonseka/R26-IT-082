@@ -7,37 +7,33 @@ type Skill = {
 };
 
 export default function SkillProficiencyDashboard({
-  skills,
+  skills = [],
 }: {
-  skills: Skill[];
+  skills?: Skill[];
 }) {
+  if (!skills.length) {
+    return <p>No skill proficiency data available.</p>;
+  }
+
   return (
-    <div>
+    <div className="card">
       <h2>Skill Proficiency</h2>
 
       {skills.map((s, index) => (
-        <div key={index} style={{ marginBottom: "10px" }}>
-          <strong>{s.skill.toUpperCase()}</strong> ({s.level})
-
-          <div
-            style={{
-              background: "#eee",
-              height: "10px",
-              borderRadius: "5px",
-              marginTop: "5px",
-            }}
-          >
-            <div
-              style={{
-                width: `${s.score}%`,
-                height: "10px",
-                background: "#4CAF50",
-                borderRadius: "5px",
-              }}
-            ></div>
+        <div key={index} className="skill-row">
+          <div className="skill-header">
+            <strong>{s.skill.toUpperCase()}</strong>
+            <span>
+              {s.level} - {s.score}%
+            </span>
           </div>
 
-          <span>{s.score}%</span>
+          <div className="progress-bar">
+            <div
+              className="progress-fill"
+              style={{ width: `${s.score}%` }}
+            ></div>
+          </div>
         </div>
       ))}
     </div>
