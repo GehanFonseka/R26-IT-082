@@ -51,28 +51,24 @@ app.use(errorHandler);
 const startServer = async () => {
   try {
     await connectDB();
-    console.log('✓ Database connected');
+    console.log('Database connected successfully');
 
     const server = app.listen(PORT, () => {
-      console.log(`✓ Server running on http://localhost:${PORT}`);
-      console.log(`✓ API endpoint: http://localhost:${PORT}/api`);
-      console.log(`✓ Health check: http://localhost:${PORT}/api/health`);
+      console.log(`Server running on http://localhost:${PORT}`);
+      console.log(`API endpoint: http://localhost:${PORT}/api`);
+      console.log(`Health check: http://localhost:${PORT}/api/health`);
     });
 
-    // Handle EADDRINUSE error (port already in use)
+    // Handle server errors
     server.on('error', (err) => {
       if (err.code === 'EADDRINUSE') {
-        console.error(`✗ Port ${PORT} is already in use`);
-        console.log('💡 Fix: Kill the process using this port and restart');
-        console.log(`   Command: netstat -ano | findstr :${PORT}`);
-        console.log(`   Then: taskkill /PID <PID> /F`);
+        console.error(`Port ${PORT} is already in use`);
         process.exit(1);
-      } else {
-        throw err;
       }
+      throw err;
     });
   } catch (error) {
-    console.error('✗ Failed to start server:', error.message);
+    console.error('Failed to start server:', error.message);
     process.exit(1);
   }
 };

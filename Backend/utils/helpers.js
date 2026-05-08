@@ -1,14 +1,29 @@
 import jwt from 'jsonwebtoken';
 
+/**
+ * Validate email format
+ * @param {string} email - Email address to validate
+ * @returns {boolean} True if valid email format
+ */
 export const validateEmail = (email) => {
   const emailRegex = /^\S+@\S+\.\S+$/;
   return emailRegex.test(email);
 };
 
+/**
+ * Validate password strength
+ * @param {string} password - Password to validate
+ * @returns {boolean} True if password meets minimum requirements
+ */
 export const validatePassword = (password) => {
   return password && password.length >= 6;
 };
 
+/**
+ * Parse JWT token and extract payload
+ * @param {string} token - JWT token
+ * @returns {Object|null} Decoded token payload or null if invalid
+ */
 export const parseJwt = (token) => {
   try {
     return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
@@ -17,6 +32,11 @@ export const parseJwt = (token) => {
   }
 };
 
+/**
+ * Format date to locale string
+ * @param {Date|string} date - Date to format
+ * @returns {string} Formatted date string
+ */
 export const formatDate = (date) => {
   return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
@@ -25,6 +45,11 @@ export const formatDate = (date) => {
   });
 };
 
+/**
+ * Format time to locale string
+ * @param {Date|string} date - Date to format
+ * @returns {string} Formatted time string
+ */
 export const formatTime = (date) => {
   return new Date(date).toLocaleTimeString('en-US', {
     hour: '2-digit',
@@ -32,17 +57,22 @@ export const formatTime = (date) => {
   });
 };
 
+/**
+ * Async error handling middleware wrapper
+ * @param {Function} fn - Express route handler
+ * @returns {Function} Wrapped handler
+ */
 export const asyncHandler = (fn) => (req, res, next) => {
   Promise.resolve(fn(req, res, next)).catch(next);
 };
 
 /**
- * Parses resume file and extracts candidate details.
- * This is a mock implementation that simulates resume parsing.
- * In production, use libraries like pdf-parse, docx, or tesseract for real parsing.
- * @param {Buffer} fileBuffer - The uploaded resume file buffer.
- * @param {string} fileType - The type of the uploaded file (e.g., application/pdf, application/vnd.openxmlformats-officedocument.wordprocessingml.document).
- * @returns {Promise<Object>} - Parsed candidate details.
+ * Parse resume file and extract candidate details
+ * Note: This is a mock implementation. In production, use libraries like pdf-parse or docx
+ * @param {Buffer} fileBuffer - Uploaded resume file buffer
+ * @param {string} fileType - MIME type of uploaded file
+ * @returns {Promise<Object>} Parsed candidate details
+ * @throws {Error} If parsing fails
  */
 export const parseResume = async (fileBuffer, fileType) => {
   try {

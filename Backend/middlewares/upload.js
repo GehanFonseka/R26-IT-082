@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Configure storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(__dirname, '../uploads'));
@@ -15,9 +16,19 @@ const storage = multer.diskStorage({
   },
 });
 
+/**
+ * File filter to validate uploaded files
+ * @param {Object} req - Express request object
+ * @param {Object} file - Uploaded file
+ * @param {Function} cb - Callback function
+ */
 const fileFilter = (req, file, cb) => {
-  const allowedMimes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'];
-  
+  const allowedMimes = [
+    'application/pdf',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/msword',
+  ];
+
   if (allowedMimes.includes(file.mimetype)) {
     cb(null, true);
   } else {
@@ -25,8 +36,13 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
+/**
+ * Multer upload middleware configuration
+ * - Max file size: 5MB
+ * - Allowed types: PDF, DOCX
+ */
 export const upload = multer({
   storage,
   fileFilter,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
+  limits: { fileSize: 5 * 1024 * 1024 },
 });
