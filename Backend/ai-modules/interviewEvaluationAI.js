@@ -105,9 +105,7 @@ const evaluateMCQResponse = (interview) => {
   };
 };
 
-/**
- * Evaluate text response
- */
+
 const evaluateTextResponse = (interview) => {
   const response = interview.response || '';
   const question = interview.question || '';

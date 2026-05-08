@@ -1,13 +1,22 @@
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
 
+/**
+ * Generate JWT token for user
+ * @param {string} id - User ID
+ * @returns {string} JWT token
+ */
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: '7d',
+    expiresIn: process.env.JWT_EXPIRE || '7d',
   });
 };
 
-// ================= REGISTER =================
+/**
+ * Register a new user
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
 export const register = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -39,35 +48,19 @@ export const register = async (req, res) => {
   }
 };
 
-// ================= LOGIN =================
+/**
+ * Login user
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Validate input
     if (!email || !password) {
       return res.status(400).json({ message: 'Please provide email and password' });
     }
 
-    // ✅ TEMPORARY ADMIN LOGIN (hardcoded)
-    if (email === 'admin@gmail.com' && password === '123') {
-      const fakeAdmin = {
-        _id: 'temp-admin-id',
-        name: 'Admin',
-        email: 'admin',
-        role: 'admin'
-      };
-
-      const token = generateToken(fakeAdmin._id);
-
-      return res.status(200).json({
-        message: 'Admin login successful (temporary)',
-        token,
-        user: fakeAdmin,
-      });
-    }
-
-    // 🔽 NORMAL LOGIN FLOW (UNCHANGED)
     const user = await User.findOne({ email }).select('+password');
     if (!user) {
       return res.status(401).json({ message: 'Invalid credentials' });
@@ -94,7 +87,11 @@ export const login = async (req, res) => {
   }
 };
 
-// ================= GET PROFILE =================
+/**
+ * Get user profile
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
 export const getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.userId);
@@ -104,7 +101,11 @@ export const getProfile = async (req, res) => {
   }
 };
 
-// ================= UPDATE PROFILE =================
+/**
+ * Update user profile
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ */
 export const updateProfile = async (req, res) => {
   try {
     const { name, email } = req.body;
