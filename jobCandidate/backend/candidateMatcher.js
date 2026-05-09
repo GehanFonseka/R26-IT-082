@@ -1,4 +1,5 @@
 // Candidate Matching Engine
+// Improved matching calculation logic
 
 export function calculateSkillMatch(candidateSkills, jobSkills) {
     let matchCount = 0;
