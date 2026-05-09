@@ -1,4 +1,5 @@
 // Explainable AI Engine
+// Added explanation confidence level
 
 export function generateExplanation(result) {
     const { skillScore, expScore, finalScore } = result;
