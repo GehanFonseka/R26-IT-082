@@ -1,0 +1,12 @@
+{
+  "model_name": "talent_acquisition_attrition_xgb",
+  "version": "2026-03-04_04-23-43",
+  "threshold": 0.4201183021068573,
+  "risk_score_formula": "risk_score_0_100 = attrition_probability * 100",
+  "outputs": [
+    "attrition_probability",
+    "retention_probability",
+    "attrition_risk_score_0_100",
+    "predicted_attrition"
+  ]
+}

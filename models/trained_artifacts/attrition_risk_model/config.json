@@ -1,0 +1,7 @@
+{
+  "model_name": "talent_acquisition_attrition_xgb_retrained",
+  "threshold": 0.42,
+  "metrics": {
+    "note": "Accuracy evaluation omitted. See training logs."
+  }
+}

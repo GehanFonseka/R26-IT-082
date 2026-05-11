@@ -1,0 +1,330 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R 13 0 R 15 0 R] /Count 5 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+6 0 obj
+<< /Length 3605 >>
+stream
+BT /F2 20.00 Tf 45.00 792.89 Td (AI Talent Acquisition System - Final Project) Tj ET
+BT /F2 20.00 Tf 45.00 767.89 Td (Structure) Tj ET
+BT /F1 9.50 Tf 45.00 732.89 Td (This project is organized as four member-owned model components that are combined through shared) Tj ET
+BT /F1 9.50 Tf 45.00 719.89 Td (backend and frontend integration layers.) Tj ET
+BT /F2 14.00 Tf 45.00 694.89 Td (Run The Project) Tj ET
+BT /F1 9.50 Tf 45.00 670.89 Td (Backend:) Tj ET
+BT /F3 8.20 Tf 55.00 650.89 Td (cd backend) Tj ET
+BT /F3 8.20 Tf 55.00 639.89 Td (source .venv/bin/activate) Tj ET
+BT /F3 8.20 Tf 55.00 628.89 Td (uvicorn app.main:app --reload) Tj ET
+BT /F1 9.50 Tf 45.00 610.89 Td (Frontend:) Tj ET
+BT /F3 8.20 Tf 55.00 590.89 Td (cd ta) Tj ET
+BT /F3 8.20 Tf 55.00 579.89 Td (npm install) Tj ET
+BT /F3 8.20 Tf 55.00 568.89 Td (npm run dev) Tj ET
+BT /F1 9.50 Tf 45.00 550.89 Td (URLs:) Tj ET
+BT /F1 9.30 Tf 53.00 532.89 Td (? Backend: http://127.0.0.1:8000) Tj ET
+BT /F1 9.30 Tf 53.00 520.39 Td (? Frontend: http://localhost:5173) Tj ET
+BT /F1 9.30 Tf 53.00 507.89 Td (? Swagger API docs: http://127.0.0.1:8000/docs) Tj ET
+BT /F1 9.50 Tf 45.00 493.39 Td (Demo logins:) Tj ET
+BT /F1 9.30 Tf 53.00 475.39 Td (? Admin: admin@talentai.local / Admin123!) Tj ET
+BT /F1 9.30 Tf 53.00 462.89 Td (? HR: hr@talentai.local / Recruiter123!) Tj ET
+BT /F1 9.30 Tf 53.00 450.39 Td (? Candidate: candidate@talentai.local / Candidate123!) Tj ET
+BT /F2 14.00 Tf 45.00 428.89 Td (Top-Level Folders) Tj ET
+BT /F1 9.30 Tf 53.00 404.89 Td (? backend/ - FastAPI backend, model APIs, shared ATS integration, data store, and model artifacts.) Tj ET
+BT /F1 9.30 Tf 53.00 392.39 Td (? ta/ - React + Vite frontend.) Tj ET
+BT /F1 9.30 Tf 53.00 379.89 Td (? models/ - four model training notebooks used as the reference for member ownership.) Tj ET
+BT /F1 9.30 Tf 53.00 367.39 Td (? RUN_GUIDE.md - short run instructions.) Tj ET
+BT /F1 9.30 Tf 53.00 354.89 Td (? MODULE_DIVISION.md - compact four-member ownership map.) Tj ET
+BT /F2 14.00 Tf 45.00 333.39 Td (Four Model Notebooks) Tj ET
+BT /F1 9.30 Tf 53.00 309.39 Td (? models/01_attrition_risk_model_training.ipynb - Member 1, Attrition Risk.) Tj ET
+BT /F1 9.30 Tf 53.00 296.89 Td (? models/02_resume_parser_model_training.ipynb - Member 2, Resume Parser.) Tj ET
+BT /F1 9.30 Tf 53.00 284.39 Td (? models/03_job_matching_model_training.ipynb - Member 3, Job Matching.) Tj ET
+BT /F1 9.30 Tf 53.00 271.89 Td (? models/04_interview_evaluation_model_training.ipynb - Member 4, Interview Evaluation.) Tj ET
+BT /F2 14.00 Tf 45.00 250.39 Td (Backend Structure) Tj ET
+BT /F1 9.50 Tf 45.00 226.39 Td (Backend entrypoint:) Tj ET
+BT /F1 9.30 Tf 53.00 208.39 Td (? backend/app/main.py) Tj ET
+BT /F1 9.30 Tf 53.00 195.89 Td (? Creates the FastAPI app.) Tj ET
+BT /F1 9.30 Tf 53.00 183.39 Td (? Registers CORS.) Tj ET
+BT /F1 9.30 Tf 53.00 170.89 Td (? Loads startup model bundles.) Tj ET
+BT /F1 9.30 Tf 53.00 158.39 Td (? Registers the four member routers.) Tj ET
+BT /F1 9.30 Tf 53.00 145.89 Td (? Registers the shared hiring-cycle router.) Tj ET
+BT /F1 9.30 Tf 53.00 133.39 Td (? Provides /health.) Tj ET
+BT /F1 9.50 Tf 45.00 118.89 Td (Shared backend layer:) Tj ET
+BT /F1 9.30 Tf 53.00 100.89 Td (? backend/app/shared/ats_store.py - JSON ATS datastore, seeded users, companies, vacancies,) Tj ET
+BT /F1 9.30 Tf 65.00 88.39 Td (applications, interviews, and audit trail.) Tj ET
+BT /F1 9.30 Tf 53.00 75.89 Td (? backend/app/shared/cv_cache.py - temporary CV cache used by resume and attrition flows.) Tj ET
+BT /F1 9.30 Tf 53.00 63.39 Td (? backend/app/shared/errors.py - shared friendly API error helper.) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 4976 >>
+stream
+BT /F1 9.30 Tf 53.00 796.89 Td (? backend/app/shared/hiring_cycle.py - combined ATS workflow: auth, jobs, applications, recruiter) Tj ET
+BT /F1 9.30 Tf 65.00 784.39 Td (review, interviews, decisions, dashboards.) Tj ET
+BT /F1 9.30 Tf 53.00 771.89 Td (? backend/app/shared/hiring_cycle_schemas.py - request/response schemas for ATS workflow.) Tj ET
+BT /F1 9.30 Tf 53.00 759.39 Td (? backend/app/shared/model_loader.py - attrition model artifact loader.) Tj ET
+BT /F1 9.30 Tf 53.00 746.89 Td (? backend/app/shared/schemas.py - schemas for standalone model APIs.) Tj ET
+BT /F1 9.30 Tf 53.00 734.39 Td (? backend/app/shared/utils.py - shared parsing, file, upload, and feature helpers.) Tj ET
+BT /F1 9.50 Tf 45.00 719.89 Td (Backend data and scripts:) Tj ET
+BT /F1 9.30 Tf 53.00 701.89 Td (? backend/data/ats_store.json - persistent demo ATS datastore.) Tj ET
+BT /F1 9.30 Tf 53.00 689.39 Td (? backend/uploads/.gitkeep - upload folder placeholder.) Tj ET
+BT /F1 9.30 Tf 53.00 676.89 Td (? backend/scripts/train_resume_explainer_model.py - trains Member 2 resume explainer artifact.) Tj ET
+BT /F1 9.30 Tf 53.00 664.39 Td (? backend/scripts/train_interview_model.py - trains Member 4 interview scorer artifact.) Tj ET
+BT /F1 9.30 Tf 53.00 651.89 Td (? backend/requirements.txt - Python dependencies.) Tj ET
+BT /F2 14.00 Tf 45.00 630.39 Td (Member 1 - Attrition Risk) Tj ET
+BT /F1 9.50 Tf 45.00 606.39 Td (Purpose:) Tj ET
+BT /F1 9.30 Tf 53.00 588.39 Td (? Predict early attrition risk.) Tj ET
+BT /F1 9.30 Tf 53.00 575.89 Td (? Return attrition probability, retention probability, risk band, and top factors.) Tj ET
+BT /F1 9.50 Tf 45.00 561.39 Td (Backend:) Tj ET
+BT /F1 9.30 Tf 53.00 543.39 Td (? backend/app/member_1_attrition_risk/routes.py - attrition API endpoints.) Tj ET
+BT /F1 9.30 Tf 53.00 530.89 Td (? backend/app/member_1_attrition_risk/predictor.py - feature preparation and XGBoost prediction.) Tj ET
+BT /F1 9.30 Tf 53.00 518.39 Td (? backend/app/member_1_attrition_risk/model_artifacts/attrition_xgb.json - XGBoost model.) Tj ET
+BT /F1 9.30 Tf 53.00 505.89 Td (? backend/app/member_1_attrition_risk/model_artifacts/preprocess.joblib - preprocessing pipeline.) Tj ET
+BT /F1 9.30 Tf 53.00 493.39 Td (? backend/app/member_1_attrition_risk/model_artifacts/schema.json - expected feature schema.) Tj ET
+BT /F1 9.30 Tf 53.00 480.89 Td (? backend/app/member_1_attrition_risk/model_artifacts/config.json - model config and threshold.) Tj ET
+BT /F1 9.50 Tf 45.00 466.39 Td (Frontend:) Tj ET
+BT /F1 9.30 Tf 53.00 448.39 Td (? ta/src/members/member_1_attrition_risk/RecruitmentAnalyticsPage.jsx - standalone risk scoring UI.) Tj ET
+BT /F1 9.30 Tf 53.00 435.89 Td (? ta/src/members/member_1_attrition_risk/HrCandidateReviewPage.jsx - HR candidate review and risk) Tj ET
+BT /F1 9.30 Tf 65.00 423.39 Td (panel.) Tj ET
+BT /F1 9.30 Tf 53.00 410.89 Td (? ta/src/members/member_1_attrition_risk/README.md - member frontend notes.) Tj ET
+BT /F1 9.50 Tf 45.00 396.39 Td (APIs:) Tj ET
+BT /F1 9.30 Tf 53.00 378.39 Td (? GET /api/v1/attrition/schema) Tj ET
+BT /F1 9.30 Tf 53.00 365.89 Td (? POST /api/v1/attrition/score) Tj ET
+BT /F1 9.30 Tf 53.00 353.39 Td (? POST /api/v1/attrition/score-from-cv) Tj ET
+BT /F2 14.00 Tf 45.00 331.89 Td (Member 2 - Resume Parser) Tj ET
+BT /F1 9.50 Tf 45.00 307.89 Td (Purpose:) Tj ET
+BT /F1 9.30 Tf 53.00 289.89 Td (? Extract CV text from PDF/DOCX/TXT.) Tj ET
+BT /F1 9.30 Tf 53.00 277.39 Td (? Parse candidate profile details.) Tj ET
+BT /F1 9.30 Tf 53.00 264.89 Td (? Validate credentials.) Tj ET
+BT /F1 9.30 Tf 53.00 252.39 Td (? Produce resume explainability signals.) Tj ET
+BT /F1 9.50 Tf 45.00 237.89 Td (Backend:) Tj ET
+BT /F1 9.30 Tf 53.00 219.89 Td (? backend/app/member_2_resume_parser/routes.py - CV cache and text extraction API endpoints.) Tj ET
+BT /F1 9.30 Tf 53.00 207.39 Td (? backend/app/member_2_resume_parser/cv_parser.py - CV text extraction and feature inference.) Tj ET
+BT /F1 9.30 Tf 53.00 194.89 Td (? backend/app/member_2_resume_parser/resume_explainer_model.py - trained resume label/explainability) Tj ET
+BT /F1 9.30 Tf 65.00 182.39 Td (model wrapper.) Tj ET
+BT /F1 9.30 Tf 53.00 169.89 Td (? backend/app/member_2_resume_parser/credential_validator.py - credential validation logic.) Tj ET
+BT /F1 9.30 Tf 53.00 157.39 Td (? backend/app/member_2_resume_parser/model_artifacts/resume_explainer.joblib - resume explainer) Tj ET
+BT /F1 9.30 Tf 65.00 144.89 Td (artifact.) Tj ET
+BT /F1 9.30 Tf 53.00 132.39 Td (? backend/app/member_2_resume_parser/model_artifacts/resume_explainer_config.json - resume explainer) Tj ET
+BT /F1 9.30 Tf 65.00 119.89 Td (config.) Tj ET
+BT /F1 9.50 Tf 45.00 105.39 Td (Frontend:) Tj ET
+BT /F1 9.30 Tf 53.00 87.39 Td (? ta/src/members/member_2_resume_parser/CandidateWorkspacePage.jsx - candidate portal, jobs, CV) Tj ET
+BT /F1 9.30 Tf 65.00 74.89 Td (upload, applications.) Tj ET
+BT /F1 9.30 Tf 53.00 62.39 Td (? ta/src/members/member_2_resume_parser/ResumeParserPage.jsx - standalone resume parsing UI.) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 4057 >>
+stream
+BT /F1 9.30 Tf 53.00 796.89 Td (? ta/src/members/member_2_resume_parser/README.md - member frontend notes.) Tj ET
+BT /F1 9.50 Tf 45.00 782.39 Td (APIs:) Tj ET
+BT /F1 9.30 Tf 53.00 764.39 Td (? POST /api/v1/cv-cache/upload) Tj ET
+BT /F1 9.30 Tf 53.00 751.89 Td (? GET /api/v1/cv-cache/{cv_cache_id}/text) Tj ET
+BT /F2 14.00 Tf 45.00 730.39 Td (Member 3 - Job Matching) Tj ET
+BT /F1 9.50 Tf 45.00 706.39 Td (Purpose:) Tj ET
+BT /F1 9.30 Tf 53.00 688.39 Td (? Rank jobs for a CV.) Tj ET
+BT /F1 9.30 Tf 53.00 675.89 Td (? Rank candidates for a job.) Tj ET
+BT /F1 9.30 Tf 53.00 663.39 Td (? Show fit scores, matched terms, missing terms, and recommendations.) Tj ET
+BT /F1 9.50 Tf 45.00 648.89 Td (Backend:) Tj ET
+BT /F1 9.30 Tf 53.00 630.89 Td (? backend/app/member_3_job_matching/routes.py - standalone matching API endpoint.) Tj ET
+BT /F1 9.30 Tf 53.00 618.39 Td (? backend/app/member_3_job_matching/matching_engine.py - explainable matching/ranking engine.) Tj ET
+BT /F1 9.50 Tf 45.00 603.89 Td (Frontend:) Tj ET
+BT /F1 9.30 Tf 53.00 585.89 Td (? ta/src/members/member_3_job_matching/HrWorkspacePage.jsx - main recruiter workspace.) Tj ET
+BT /F1 9.30 Tf 53.00 573.39 Td (? ta/src/members/member_3_job_matching/CandidateMatchingPage.jsx - standalone matching UI.) Tj ET
+BT /F1 9.30 Tf 53.00 560.89 Td (? ta/src/members/member_3_job_matching/HrDashboardPage.jsx - HR dashboard.) Tj ET
+BT /F1 9.30 Tf 53.00 548.39 Td (? ta/src/members/member_3_job_matching/HrCandidatesPage.jsx - HR candidate list.) Tj ET
+BT /F1 9.30 Tf 53.00 535.89 Td (? ta/src/members/member_3_job_matching/HrPostJobsPage.jsx - job posting page.) Tj ET
+BT /F1 9.30 Tf 53.00 523.39 Td (? ta/src/members/member_3_job_matching/FullHiringCyclePage.jsx - full workflow demo page.) Tj ET
+BT /F1 9.30 Tf 53.00 510.89 Td (? ta/src/members/member_3_job_matching/README.md - member frontend notes.) Tj ET
+BT /F1 9.50 Tf 45.00 496.39 Td (APIs:) Tj ET
+BT /F1 9.30 Tf 53.00 478.39 Td (? POST /api/v1/matching/recommend) Tj ET
+BT /F2 14.00 Tf 45.00 456.89 Td (Member 4 - Interview Evaluation) Tj ET
+BT /F1 9.50 Tf 45.00 432.89 Td (Purpose:) Tj ET
+BT /F1 9.30 Tf 53.00 414.89 Td (? Score interview answers.) Tj ET
+BT /F1 9.30 Tf 53.00 402.39 Td (? Return communication/clarity/confidence style breakdowns.) Tj ET
+BT /F1 9.30 Tf 53.00 389.89 Td (? Produce a final band and recommendation summary.) Tj ET
+BT /F1 9.50 Tf 45.00 375.39 Td (Backend:) Tj ET
+BT /F1 9.30 Tf 53.00 357.39 Td (? backend/app/member_4_interview_evaluation/routes.py - interview evaluation API endpoint.) Tj ET
+BT /F1 9.30 Tf 53.00 344.89 Td (? backend/app/member_4_interview_evaluation/interview_scorer.py - model/rubric interview scoring) Tj ET
+BT /F1 9.30 Tf 65.00 332.39 Td (logic.) Tj ET
+BT /F1 9.30 Tf 53.00 319.89 Td (? backend/app/member_4_interview_evaluation/model_artifacts/interview_scorer.joblib - interview) Tj ET
+BT /F1 9.30 Tf 65.00 307.39 Td (scoring artifact.) Tj ET
+BT /F1 9.30 Tf 53.00 294.89 Td (? backend/app/member_4_interview_evaluation/model_artifacts/config.json - interview model config.) Tj ET
+BT /F1 9.50 Tf 45.00 280.39 Td (Frontend:) Tj ET
+BT /F1 9.30 Tf 53.00 262.39 Td (? ta/src/members/member_4_interview_evaluation/InterviewSoftSkillPage.jsx - standalone interview) Tj ET
+BT /F1 9.30 Tf 65.00 249.89 Td (evaluation UI.) Tj ET
+BT /F1 9.30 Tf 53.00 237.39 Td (? ta/src/members/member_4_interview_evaluation/README.md - member frontend notes.) Tj ET
+BT /F1 9.50 Tf 45.00 222.89 Td (APIs:) Tj ET
+BT /F1 9.30 Tf 53.00 204.89 Td (? POST /api/v1/interview/evaluate) Tj ET
+BT /F2 14.00 Tf 45.00 183.39 Td (Shared Backend APIs) Tj ET
+BT /F1 9.50 Tf 45.00 159.39 Td (All routes below are registered under /api/v1 from backend/app/shared/hiring_cycle.py.) Tj ET
+BT /F1 9.50 Tf 45.00 141.39 Td (Auth:) Tj ET
+BT /F1 9.30 Tf 53.00 123.39 Td (? POST /api/v1/auth/register) Tj ET
+BT /F1 9.30 Tf 53.00 110.89 Td (? POST /api/v1/auth/login) Tj ET
+BT /F1 9.30 Tf 53.00 98.39 Td (? GET /api/v1/auth/me) Tj ET
+BT /F1 9.50 Tf 45.00 83.89 Td (Admin:) Tj ET
+BT /F1 9.30 Tf 53.00 65.89 Td (? POST /api/v1/admin/companies) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 4472 >>
+stream
+BT /F1 9.30 Tf 53.00 796.89 Td (? GET /api/v1/admin/companies) Tj ET
+BT /F1 9.30 Tf 53.00 784.39 Td (? GET /api/v1/admin/users) Tj ET
+BT /F1 9.30 Tf 53.00 771.89 Td (? GET /api/v1/admin/reports) Tj ET
+BT /F1 9.30 Tf 53.00 759.39 Td (? PATCH /api/v1/admin/users/{user_id}/access) Tj ET
+BT /F1 9.30 Tf 53.00 746.89 Td (? GET /api/v1/admin/ai-modules) Tj ET
+BT /F1 9.50 Tf 45.00 732.39 Td (Vacancies and public jobs:) Tj ET
+BT /F1 9.30 Tf 53.00 714.39 Td (? POST /api/v1/vacancies) Tj ET
+BT /F1 9.30 Tf 53.00 701.89 Td (? GET /api/v1/vacancies) Tj ET
+BT /F1 9.30 Tf 53.00 689.39 Td (? GET /api/v1/vacancies/{vacancy_id}) Tj ET
+BT /F1 9.30 Tf 53.00 676.89 Td (? PATCH /api/v1/vacancies/{vacancy_id}) Tj ET
+BT /F1 9.30 Tf 53.00 664.39 Td (? GET /api/v1/public/jobs) Tj ET
+BT /F1 9.30 Tf 53.00 651.89 Td (? POST /api/v1/public/jobs) Tj ET
+BT /F1 9.30 Tf 53.00 639.39 Td (? POST /api/v1/public/jobs/{vacancy_id}/evaluate-cv) Tj ET
+BT /F1 9.30 Tf 53.00 626.89 Td (? GET /api/v1/recruiter/vacancies) Tj ET
+BT /F1 9.50 Tf 45.00 612.39 Td (Candidate applications:) Tj ET
+BT /F1 9.30 Tf 53.00 594.39 Td (? POST /api/v1/vacancies/{vacancy_id}/apply) Tj ET
+BT /F1 9.30 Tf 53.00 581.89 Td (? GET /api/v1/candidates/applications) Tj ET
+BT /F1 9.50 Tf 45.00 567.39 Td (Recruiter workflow:) Tj ET
+BT /F1 9.30 Tf 53.00 549.39 Td (? GET /api/v1/recruiter/applications) Tj ET
+BT /F1 9.30 Tf 53.00 536.89 Td (? GET /api/v1/recruiter/candidates/compare) Tj ET
+BT /F1 9.30 Tf 53.00 524.39 Td (? POST /api/v1/recruiter/applications/{application_id}/recheck) Tj ET
+BT /F1 9.30 Tf 53.00 511.89 Td (? PATCH /api/v1/applications/{application_id}/status) Tj ET
+BT /F1 9.30 Tf 53.00 499.39 Td (? POST /api/v1/applications/{application_id}/decision) Tj ET
+BT /F1 9.30 Tf 53.00 486.89 Td (? GET /api/v1/recruiter/dashboard) Tj ET
+BT /F1 9.50 Tf 45.00 472.39 Td (Interview workflow:) Tj ET
+BT /F1 9.30 Tf 53.00 454.39 Td (? POST /api/v1/applications/{application_id}/interviews) Tj ET
+BT /F1 9.30 Tf 53.00 441.89 Td (? GET /api/v1/applications/{application_id}/interviews) Tj ET
+BT /F1 9.30 Tf 53.00 429.39 Td (? POST /api/v1/interviews/{interview_id}/submit) Tj ET
+BT /F1 9.50 Tf 45.00 414.89 Td (Other:) Tj ET
+BT /F1 9.30 Tf 53.00 396.89 Td (? GET /api/v1/status-catalog) Tj ET
+BT /F1 9.30 Tf 53.00 384.39 Td (? POST /api/v1/seed/info) Tj ET
+BT /F1 9.30 Tf 53.00 371.89 Td (? GET /health) Tj ET
+BT /F2 14.00 Tf 45.00 350.39 Td (Frontend Structure) Tj ET
+BT /F1 9.50 Tf 45.00 326.39 Td (Frontend entrypoints:) Tj ET
+BT /F1 9.30 Tf 53.00 308.39 Td (? ta/src/main.jsx - React root, providers, and router setup.) Tj ET
+BT /F1 9.30 Tf 53.00 295.89 Td (? ta/src/App.jsx - route definitions and protected candidate/HR routing.) Tj ET
+BT /F1 9.30 Tf 53.00 283.39 Td (? ta/src/index.css - global styles.) Tj ET
+BT /F1 9.30 Tf 53.00 270.89 Td (? ta/src/App.css - app-level styles.) Tj ET
+BT /F1 9.50 Tf 45.00 256.39 Td (Shared frontend layer:) Tj ET
+BT /F1 9.30 Tf 53.00 238.39 Td (? ta/src/shared/components/ - shared UI components.) Tj ET
+BT /F1 9.30 Tf 53.00 225.89 Td (? ta/src/shared/components/portal/WorkspaceShell.jsx - shared candidate/HR workspace shell.) Tj ET
+BT /F1 9.30 Tf 53.00 213.39 Td (? ta/src/shared/context/AuthSessionContext.jsx - login/session context.) Tj ET
+BT /F1 9.30 Tf 53.00 200.89 Td (? ta/src/shared/context/SharedCvContext.jsx - shared CV upload/cache state.) Tj ET
+BT /F1 9.30 Tf 53.00 188.39 Td (? ta/src/shared/context/ThemeContext.jsx - light/dark theme context.) Tj ET
+BT /F1 9.30 Tf 53.00 175.89 Td (? ta/src/shared/context/UserModeContext.jsx - candidate/HR mode context.) Tj ET
+BT /F1 9.30 Tf 53.00 163.39 Td (? ta/src/shared/data/landingContent.js - landing content data.) Tj ET
+BT /F1 9.30 Tf 53.00 150.89 Td (? ta/src/shared/pages/PortalLoginPage.jsx - candidate/HR login page.) Tj ET
+BT /F1 9.30 Tf 53.00 138.39 Td (? ta/src/shared/pages/NotFoundPage.jsx - fallback route.) Tj ET
+BT /F1 9.30 Tf 53.00 125.89 Td (? ta/src/shared/pages/LandingPage.jsx - legacy/shared landing page.) Tj ET
+BT /F1 9.30 Tf 53.00 113.39 Td (? ta/src/shared/pages/ModulePlaceholderPage.jsx - placeholder page.) Tj ET
+BT /F1 9.30 Tf 53.00 100.89 Td (? ta/src/shared/utils/portalApi.js - auth/API helper.) Tj ET
+BT /F1 9.30 Tf 53.00 88.39 Td (? ta/src/shared/utils/hrWorkspaceApi.js - HR API helper.) Tj ET
+BT /F1 9.30 Tf 53.00 75.89 Td (? ta/src/shared/utils/modelUtils.js - JSON/export helpers.) Tj ET
+BT /F1 9.30 Tf 53.00 63.39 Td (? ta/src/shared/utils/motion.js - animation variants.) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 3540 >>
+stream
+BT /F1 9.50 Tf 45.00 796.89 Td (Frontend routes:) Tj ET
+BT /F1 9.30 Tf 53.00 778.89 Td (? / - redirects to /candidate) Tj ET
+BT /F1 9.30 Tf 53.00 766.39 Td (? /candidate - candidate login) Tj ET
+BT /F1 9.30 Tf 53.00 753.89 Td (? /candidate/dashboard - candidate dashboard section) Tj ET
+BT /F1 9.30 Tf 53.00 741.39 Td (? /candidate/jobs - candidate jobs section) Tj ET
+BT /F1 9.30 Tf 53.00 728.89 Td (? /candidate/jobs/:jobId - candidate job detail/apply flow) Tj ET
+BT /F1 9.30 Tf 53.00 716.39 Td (? /candidate/applications - candidate applications section) Tj ET
+BT /F1 9.30 Tf 53.00 703.89 Td (? /hr - HR login) Tj ET
+BT /F1 9.30 Tf 53.00 691.39 Td (? /hr/dashboard - HR dashboard section) Tj ET
+BT /F1 9.30 Tf 53.00 678.89 Td (? /hr/jobs - HR job posting/listing section) Tj ET
+BT /F1 9.30 Tf 53.00 666.39 Td (? /hr/candidates - HR candidate list section) Tj ET
+BT /F1 9.30 Tf 53.00 653.89 Td (? /hr/candidates/:applicationId - HR candidate review page) Tj ET
+BT /F1 9.30 Tf 53.00 641.39 Td (? /hr/interviews - HR interview evaluation section) Tj ET
+BT /F1 9.30 Tf 53.00 628.89 Td (? /hr/analytics - HR analytics section) Tj ET
+BT /F1 9.30 Tf 53.00 616.39 Td (? * - not found page) Tj ET
+BT /F2 14.00 Tf 45.00 594.89 Td (Shared Components) Tj ET
+BT /F1 9.50 Tf 45.00 570.89 Td (Key shared UI files:) Tj ET
+BT /F1 9.30 Tf 53.00 552.89 Td (? AboutProject.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 540.39 Td (? ContactSection.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 527.89 Td (? FeatureCard.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 515.39 Td (? FeatureCards.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 502.89 Td (? Footer.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 490.39 Td (? Header.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 477.89 Td (? Hero.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 465.39 Td (? HowItWorks.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 452.89 Td (? MinimalInputCard.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 440.39 Td (? MinimalOutputCard.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 427.89 Td (? ModulePageLayout.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 415.39 Td (? ModulesGrid.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 402.89 Td (? Overview.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 390.39 Td (? SectionTitle.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 377.89 Td (? TechStack.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 365.39 Td (? ThemeToggleButton.jsx) Tj ET
+BT /F1 9.30 Tf 53.00 352.89 Td (? portal/WorkspaceShell.jsx) Tj ET
+BT /F2 14.00 Tf 45.00 331.39 Td (Build And Verification) Tj ET
+BT /F1 9.50 Tf 45.00 307.39 Td (Backend syntax/import check:) Tj ET
+BT /F3 8.20 Tf 55.00 287.39 Td (cd backend) Tj ET
+BT /F3 8.20 Tf 55.00 276.39 Td (source .venv/bin/activate) Tj ET
+BT /F3 8.20 Tf 55.00 265.39 Td (python -m compileall app) Tj ET
+BT /F3 8.20 Tf 55.00 254.39 Td (python -c "from app.main import app; print\(app.title\); print\(len\(app.routes\)\)") Tj ET
+BT /F1 9.50 Tf 45.00 236.39 Td (Frontend build:) Tj ET
+BT /F3 8.20 Tf 55.00 216.39 Td (cd ta) Tj ET
+BT /F3 8.20 Tf 55.00 205.39 Td (npm run build) Tj ET
+BT /F2 14.00 Tf 45.00 180.39 Td (Ownership Summary) Tj ET
+BT /F1 9.30 Tf 53.00 156.39 Td (? Member 1 owns attrition risk backend and frontend.) Tj ET
+BT /F1 9.30 Tf 53.00 143.89 Td (? Member 2 owns resume parsing backend and frontend.) Tj ET
+BT /F1 9.30 Tf 53.00 131.39 Td (? Member 3 owns job matching backend and recruiter workflow frontend.) Tj ET
+BT /F1 9.30 Tf 53.00 118.89 Td (? Member 4 owns interview evaluation backend and frontend.) Tj ET
+BT /F1 9.30 Tf 53.00 106.39 Td (? Shared backend/frontend folders contain integration code needed to combine all four member) Tj ET
+BT /F1 9.30 Tf 65.00 93.89 Td (components into one working application.) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 14 0 R >>
+endobj
+xref
+0 16
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000148 00000 n 
+0000000218 00000 n 
+0000000293 00000 n 
+0000000361 00000 n 
+0000004018 00000 n 
+0000004170 00000 n 
+0000009198 00000 n 
+0000009350 00000 n 
+0000013460 00000 n 
+0000013614 00000 n 
+0000018139 00000 n 
+0000018293 00000 n 
+0000021886 00000 n 
+trailer
+<< /Size 16 /Root 1 0 R >>
+startxref
+22040
+%%EOF

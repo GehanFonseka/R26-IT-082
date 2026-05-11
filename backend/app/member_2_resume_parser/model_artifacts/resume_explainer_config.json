@@ -1,0 +1,11 @@
+{
+  "model_name": "tfidf_logistic_resume_explainer_v1",
+  "model_source": "local_synthetic_resume_section_training+weak_labeled_dataset:sl_resumes.json",
+  "metrics": {
+    "train_examples": 4989,
+    "synthetic_examples": 29,
+    "dataset_examples": 4960,
+    "label_count": 17,
+    "training_exact_match_rate": 0.5522
+  }
+}
