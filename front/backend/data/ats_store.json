@@ -1,0 +1,3206 @@
+{
+  "meta": {
+    "version": 1,
+    "created_at": "2026-05-03T07:49:37.586844+00:00",
+    "updated_at": "2026-05-10T17:56:29.354362+00:00"
+  },
+  "counters": {
+    "company": 1,
+    "user": 3,
+    "vacancy": 13,
+    "application": 8,
+    "interview": 0,
+    "audit": 108
+  },
+  "companies": [
+    {
+      "company_id": "CMP-00001",
+      "name": "Default Research Labs",
+      "industry": "Technology",
+      "location": "Colombo",
+      "created_at": "2026-05-03T07:49:37.586869+00:00",
+      "created_by": "system"
+    }
+  ],
+  "users": [
+    {
+      "user_id": "USR-00001",
+      "name": "System Admin",
+      "email": "admin@talentai.local",
+      "role": "admin",
+      "company_id": "CMP-00001",
+      "password_hash": "3eb3fe66b31e3b4d10fa70b5cad49c7112294af6ae4e476a1c405155d45aa121",
+      "active": true,
+      "created_at": "2026-05-03T07:49:37.586915+00:00"
+    },
+    {
+      "user_id": "USR-00002",
+      "name": "Lead Recruiter",
+      "email": "hr@talentai.local",
+      "role": "recruiter",
+      "company_id": "CMP-00001",
+      "password_hash": "42652cd1f7d4a2b0a7a66bc3743052be9fe1139b9aadc9d711df2b4a84b542b7",
+      "active": true,
+      "created_at": "2026-05-03T07:49:37.586923+00:00"
+    },
+    {
+      "user_id": "USR-00003",
+      "name": "Default Candidate",
+      "email": "candidate@talentai.local",
+      "role": "candidate",
+      "company_id": null,
+      "password_hash": "d0bc70e8c07da4d77da10e7b41603a955168d88014baf421ec16fbf07bb08f45",
+      "active": true,
+      "created_at": "2026-05-03T07:49:37.586928+00:00"
+    }
+  ],
+  "sessions": {
+    "c75babee99d044ab8db0513bb8570e63": {
+      "user_id": "USR-00003",
+      "expires_at": "2026-05-03T22:04:52.978008+00:00"
+    },
+    "10becd2b462840b7bd9611c1febe11d5": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-05-07T05:28:38.132773+00:00"
+    },
+    "4d64092b35ab41609d6bdaeb66b9cc92": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-05-07T05:28:38.720484+00:00"
+    },
+    "9a9b87292e6c421d99cd61230967253d": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-05-07T05:28:38.856051+00:00"
+    },
+    "8c824f45894f4bb19bd76bc629bf80ab": {
+      "user_id": "USR-00003",
+      "expires_at": "2026-05-07T05:48:31.007284+00:00"
+    },
+    "bd354d6c47804c439d4a90e70b3642c1": {
+      "user_id": "USR-00003",
+      "expires_at": "2026-05-07T17:57:41.073870+00:00"
+    },
+    "5fa044750dec41e8b8322269155c3aaf": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-05-07T17:59:11.981630+00:00"
+    },
+    "f2f56577e165472498a4f04284207a87": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-05-08T04:19:56.451373+00:00"
+    },
+    "c6bd6d977809499bb2f50f9e3b4cac1a": {
+      "user_id": "USR-00003",
+      "expires_at": "2026-05-08T04:48:29.626826+00:00"
+    },
+    "2d70b084711b42e6bde1a8a14662dfb9": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-05-08T05:21:36.421402+00:00"
+    },
+    "a4bd82302331456894880e9c72fc2252": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-05-09T17:57:43.433959+00:00"
+    },
+    "35f319be823543548be65c5a13c76752": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-05-09T17:57:52.720761+00:00"
+    },
+    "0c0a8964b5384ed687cace52f6472252": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-05-09T17:57:52.725401+00:00"
+    },
+    "530ed23dfd1b4cf492e8bd935e1f4b10": {
+      "user_id": "USR-00003",
+      "expires_at": "2026-05-09T18:53:58.915711+00:00"
+    },
+    "835ead8820d74c1589a33d1fec91c1d2": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-05-10T01:40:05.074821+00:00"
+    },
+    "d028d9293300455d949818112997b8ab": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-05-10T02:27:46.212363+00:00"
+    },
+    "187f4394adf94d2b8582110658101d7f": {
+      "user_id": "USR-00003",
+      "expires_at": "2026-05-10T02:27:55.115662+00:00"
+    },
+    "e58d7dfdfa15407796b9c9b90276c93a": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-05-10T04:42:17.380465+00:00"
+    },
+    "ac3cc188d4ed45afa817c1edc895b78c": {
+      "user_id": "USR-00003",
+      "expires_at": "2026-05-10T22:55:23.056291+00:00"
+    },
+    "839c767bb3c440c8b2f4f8076d10906a": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-05-10T22:55:25.856850+00:00"
+    }
+  },
+  "vacancies": [
+    {
+      "vacancy_id": "VAC-00001",
+      "title": "Software Engineer",
+      "department": "Engineering",
+      "salary_min": 180000,
+      "salary_max": 320000,
+      "required_skills": [
+        "Python",
+        "FastAPI",
+        "SQL"
+      ],
+      "experience_level": "2+ years",
+      "responsibilities": "Build and maintain backend services.",
+      "deadline": null,
+      "work_type": "hybrid",
+      "location": "Colombo",
+      "status": "open",
+      "company_id": "CMP-00001",
+      "recruiter_id": "USR-00002",
+      "created_at": "2026-05-03T09:55:06.969166+00:00",
+      "updated_at": "2026-05-09T06:51:32.995966+00:00",
+      "image_url": "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=900"
+    },
+    {
+      "vacancy_id": "VAC-00002",
+      "title": "Backend Developer",
+      "department": "Engineering",
+      "salary_min": 200000,
+      "salary_max": 350000,
+      "required_skills": [
+        "Java",
+        "Spring Boot",
+        "MySQL"
+      ],
+      "experience_level": "2+ years",
+      "responsibilities": "Develop scalable APIs and integrations.",
+      "deadline": null,
+      "work_type": "onsite",
+      "location": "Colombo",
+      "status": "open",
+      "company_id": "CMP-00001",
+      "recruiter_id": "USR-00002",
+      "created_at": "2026-05-03T09:55:06.969177+00:00",
+      "updated_at": "2026-05-09T06:51:32.995970+00:00",
+      "image_url": "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=900"
+    },
+    {
+      "vacancy_id": "VAC-00003",
+      "title": "Frontend Developer",
+      "department": "Engineering",
+      "salary_min": 160000,
+      "salary_max": 280000,
+      "required_skills": [
+        "React",
+        "TypeScript",
+        "CSS"
+      ],
+      "experience_level": "1+ years",
+      "responsibilities": "Build responsive user interfaces.",
+      "deadline": null,
+      "work_type": "remote",
+      "location": "Sri Lanka",
+      "status": "open",
+      "company_id": "CMP-00001",
+      "recruiter_id": "USR-00002",
+      "created_at": "2026-05-03T09:55:06.969183+00:00",
+      "updated_at": "2026-05-09T06:51:32.995973+00:00",
+      "image_url": "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=900"
+    },
+    {
+      "vacancy_id": "VAC-00004",
+      "title": "Full Stack Developer",
+      "department": "Engineering",
+      "salary_min": 250000,
+      "salary_max": 450000,
+      "required_skills": [
+        "Node.js",
+        "React",
+        "PostgreSQL"
+      ],
+      "experience_level": "3+ years",
+      "responsibilities": "Deliver end-to-end web features.",
+      "deadline": null,
+      "work_type": "hybrid",
+      "location": "Colombo",
+      "status": "open",
+      "company_id": "CMP-00001",
+      "recruiter_id": "USR-00002",
+      "created_at": "2026-05-03T09:55:06.969188+00:00",
+      "updated_at": "2026-05-09T06:51:32.995976+00:00",
+      "image_url": "https://images.pexels.com/photos/6803533/pexels-photo-6803533.jpeg?auto=compress&cs=tinysrgb&w=900"
+    },
+    {
+      "vacancy_id": "VAC-00005",
+      "title": "DevOps Engineer",
+      "department": "Platform",
+      "salary_min": 260000,
+      "salary_max": 480000,
+      "required_skills": [
+        "Docker",
+        "Kubernetes",
+        "AWS"
+      ],
+      "experience_level": "3+ years",
+      "responsibilities": "Maintain CI/CD and cloud infrastructure.",
+      "deadline": null,
+      "work_type": "hybrid",
+      "location": "Colombo",
+      "status": "open",
+      "company_id": "CMP-00001",
+      "recruiter_id": "USR-00002",
+      "created_at": "2026-05-03T09:55:06.969196+00:00",
+      "updated_at": "2026-05-09T06:51:32.995979+00:00",
+      "image_url": "https://images.pexels.com/photos/1181316/pexels-photo-1181316.jpeg?auto=compress&cs=tinysrgb&w=900"
+    },
+    {
+      "vacancy_id": "VAC-00006",
+      "title": "Data Analyst",
+      "department": "Data",
+      "salary_min": 140000,
+      "salary_max": 260000,
+      "required_skills": [
+        "SQL",
+        "Power BI",
+        "Python"
+      ],
+      "experience_level": "1+ years",
+      "responsibilities": "Analyze hiring data and create reports.",
+      "deadline": null,
+      "work_type": "onsite",
+      "location": "Colombo",
+      "status": "open",
+      "company_id": "CMP-00001",
+      "recruiter_id": "USR-00002",
+      "created_at": "2026-05-03T09:55:06.969201+00:00",
+      "updated_at": "2026-05-09T06:51:32.995982+00:00",
+      "image_url": "https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=900"
+    },
+    {
+      "vacancy_id": "VAC-00007",
+      "title": "Machine Learning Engineer",
+      "department": "AI",
+      "salary_min": 280000,
+      "salary_max": 520000,
+      "required_skills": [
+        "Python",
+        "TensorFlow",
+        "NLP"
+      ],
+      "experience_level": "2+ years",
+      "responsibilities": "Build and maintain AI model pipelines.",
+      "deadline": null,
+      "work_type": "hybrid",
+      "location": "Colombo",
+      "status": "open",
+      "company_id": "CMP-00001",
+      "recruiter_id": "USR-00002",
+      "created_at": "2026-05-03T09:55:06.969206+00:00",
+      "updated_at": "2026-05-09T06:51:32.995985+00:00",
+      "image_url": "https://images.pexels.com/photos/3862599/pexels-photo-3862599.jpeg?auto=compress&cs=tinysrgb&w=900"
+    },
+    {
+      "vacancy_id": "VAC-00008",
+      "title": "QA Automation Engineer",
+      "department": "Quality",
+      "salary_min": 150000,
+      "salary_max": 280000,
+      "required_skills": [
+        "Selenium",
+        "Python",
+        "API Testing"
+      ],
+      "experience_level": "2+ years",
+      "responsibilities": "Automate regression and API test suites.",
+      "deadline": null,
+      "work_type": "onsite",
+      "location": "Colombo",
+      "status": "open",
+      "company_id": "CMP-00001",
+      "recruiter_id": "USR-00002",
+      "created_at": "2026-05-03T09:55:06.969211+00:00",
+      "updated_at": "2026-05-09T06:51:32.995988+00:00",
+      "image_url": "https://images.pexels.com/photos/6805152/pexels-photo-6805152.jpeg?auto=compress&cs=tinysrgb&w=900"
+    },
+    {
+      "vacancy_id": "VAC-00009",
+      "title": "Cloud Engineer",
+      "department": "Platform",
+      "salary_min": 240000,
+      "salary_max": 430000,
+      "required_skills": [
+        "AWS",
+        "Terraform",
+        "Linux"
+      ],
+      "experience_level": "2+ years",
+      "responsibilities": "Manage secure cloud environments.",
+      "deadline": null,
+      "work_type": "remote",
+      "location": "Sri Lanka",
+      "status": "open",
+      "company_id": "CMP-00001",
+      "recruiter_id": "USR-00002",
+      "created_at": "2026-05-03T09:55:06.969216+00:00",
+      "updated_at": "2026-05-09T06:51:32.995991+00:00",
+      "image_url": "https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=900"
+    },
+    {
+      "vacancy_id": "VAC-00010",
+      "title": "Cybersecurity Analyst",
+      "department": "Security",
+      "salary_min": 220000,
+      "salary_max": 420000,
+      "required_skills": [
+        "SIEM",
+        "Network Security",
+        "Incident Response"
+      ],
+      "experience_level": "2+ years",
+      "responsibilities": "Monitor and respond to security incidents.",
+      "deadline": null,
+      "work_type": "onsite",
+      "location": "Colombo",
+      "status": "open",
+      "company_id": "CMP-00001",
+      "recruiter_id": "USR-00002",
+      "created_at": "2026-05-03T09:55:06.969221+00:00",
+      "updated_at": "2026-05-09T06:51:32.995993+00:00",
+      "image_url": "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=900"
+    },
+    {
+      "vacancy_id": "VAC-00011",
+      "title": "Software engineer",
+      "department": "General",
+      "salary_min": 180000,
+      "salary_max": 320000,
+      "required_skills": [
+        "Python"
+      ],
+      "experience_level": "Not specified",
+      "responsibilities": "Candidates should have: Python",
+      "deadline": null,
+      "work_type": "onsite",
+      "location": "Colombo",
+      "status": "open",
+      "company_id": "CMP-00001",
+      "recruiter_id": "USR-00002",
+      "created_at": "2026-05-03T10:04:30.408680+00:00",
+      "updated_at": "2026-05-09T06:51:32.995997+00:00",
+      "image_url": "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=900"
+    },
+    {
+      "vacancy_id": "VAC-00012",
+      "title": "Product Design Manager",
+      "department": "Design & Product",
+      "salary_min": 220000,
+      "salary_max": 420000,
+      "required_skills": [
+        "Product Design",
+        "Business Management",
+        "Design Leadership",
+        "User Research",
+        "Product Strategy",
+        "Stakeholder Communication"
+      ],
+      "experience_level": "Manager level | Business/design background preferred",
+      "responsibilities": "Lead product design initiatives, coordinate design decisions with product and business teams, manage design priorities, review customer needs, and translate business goals into practical product experiences.",
+      "deadline": null,
+      "work_type": "hybrid",
+      "location": "Any City",
+      "image_url": "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "status": "open",
+      "company_id": "CMP-00001",
+      "recruiter_id": "USR-00002",
+      "created_at": "2026-05-09T14:27:11.820129+00:00",
+      "updated_at": "2026-05-09T14:27:11.820131+00:00"
+    },
+    {
+      "vacancy_id": "VAC-00013",
+      "title": "Front end developer",
+      "department": "General",
+      "salary_min": null,
+      "salary_max": null,
+      "required_skills": [
+        "React",
+        "python"
+      ],
+      "experience_level": "3 years",
+      "responsibilities": "good SE job",
+      "deadline": null,
+      "work_type": "remote",
+      "location": "Colombo",
+      "image_url": "",
+      "status": "open",
+      "company_id": "CMP-00001",
+      "recruiter_id": "USR-00002",
+      "created_at": "2026-05-09T16:47:41.971608+00:00",
+      "updated_at": "2026-05-09T16:47:41.971635+00:00"
+    }
+  ],
+  "applications": [
+    {
+      "application_id": "APP-00001",
+      "vacancy_id": "VAC-00004",
+      "candidate_id": "USR-00003",
+      "candidate_name": "Default Candidate",
+      "candidate_email": "candidate@talentai.local",
+      "resume": {
+        "source": "upload",
+        "file_name": "Minimalist_CV_Resume.pdf",
+        "text_char_count": 1959,
+        "skills": [],
+        "preview": "Contact\n123-456-7890\nPhone\nhello@reallygreatsite.com\nEmail\n123 Anywhere St., Any City\nAddress\nExperience\nEducation\nAwards\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem ne",
+        "skills_detected": [],
+        "explainable_ai": {
+          "extraction_stats": {
+            "text_char_count": 700,
+            "word_count": 99,
+            "line_count": 26,
+            "skill_count": 0,
+            "inferred_field_count": 4,
+            "detected_section_count": 2,
+            "skill_density_per_100_words": 0.0,
+            "required_skill_coverage_0_100": 0.0,
+            "contact_signal_count": 2,
+            "assumption_count": 4,
+            "completeness_score_0_100": 83.33
+          },
+          "completeness": {
+            "name": true,
+            "email": true,
+            "phone": true,
+            "skills": false,
+            "experience_signal": true,
+            "education_signal": true
+          },
+          "section_signals": {
+            "experience": 1,
+            "education": 1,
+            "skills": 0,
+            "certifications": 0
+          },
+          "skill_evidence": [],
+          "matched_required_skills": [],
+          "trained_model": {
+            "model_name": "tfidf_logistic_resume_explainer_v1",
+            "model_source": "local_synthetic_resume_section_training+weak_labeled_dataset:sl_resumes.json",
+            "label_scores": [
+              {
+                "label": "education_credentials",
+                "description": "Education and credential evidence",
+                "confidence_0_100": 67.24,
+                "evidence_terms": [
+                  "bachelor",
+                  "business",
+                  "bachelor of",
+                  "education",
+                  "sem",
+                  "management"
+                ]
+              },
+              {
+                "label": "experience_depth",
+                "description": "Professional experience depth",
+                "confidence_0_100": 62.33,
+                "evidence_terms": [
+                  "experience",
+                  "business",
+                  "sit",
+                  "city",
+                  "experience education",
+                  "sit amet"
+                ]
+              },
+              {
+                "label": "frontend_engineering",
+                "description": "Frontend engineering profile",
+                "confidence_0_100": 55.53,
+                "evidence_terms": [
+                  "design",
+                  "sit amet",
+                  "amet",
+                  "manager",
+                  "adipiscing",
+                  "adipiscing elit"
+                ]
+              },
+              {
+                "label": "leadership_management",
+                "description": "Leadership and management evidence",
+                "confidence_0_100": 28.8,
+                "evidence_terms": [
+                  "manager",
+                  "business",
+                  "management",
+                  "of business",
+                  "product",
+                  "city"
+                ]
+              },
+              {
+                "label": "marketing_sales",
+                "description": "Marketing and sales signal",
+                "confidence_0_100": 28.09,
+                "evidence_terms": [
+                  "business",
+                  "product",
+                  "manager",
+                  "of business",
+                  "management",
+                  "business management"
+                ]
+              },
+              {
+                "label": "backend_engineering",
+                "description": "Backend engineering profile",
+                "confidence_0_100": 25.89,
+                "evidence_terms": [
+                  "sem",
+                  "business management",
+                  "design",
+                  "business",
+                  "of business",
+                  "management"
+                ]
+              },
+              {
+                "label": "entry_level",
+                "description": "Entry-level profile signal",
+                "confidence_0_100": 22.38,
+                "evidence_terms": [
+                  "business",
+                  "design",
+                  "ut",
+                  "product",
+                  "bachelor of",
+                  "bachelor"
+                ]
+              },
+              {
+                "label": "human_resources",
+                "description": "Human resources signal",
+                "confidence_0_100": 22.29,
+                "evidence_terms": [
+                  "ut",
+                  "bachelor",
+                  "product",
+                  "business",
+                  "awards",
+                  "any"
+                ]
+              }
+            ]
+          },
+          "explanation": "Resume parser detected profile fields with regex, section signals, skill dictionary matches, HR feature inference rules, and a trained TF-IDF logistic explainer model."
+        },
+        "feature_inference": {
+          "inferred_fields": [
+            "Education",
+            "EducationField",
+            "JobRole",
+            "Department"
+          ],
+          "assumptions_used": [
+            "Education inferred from CV text (bachelor level studies).",
+            "EducationField inferred as Technical Degree from CV keywords.",
+            "JobRole inferred from CV title/keyword matches.",
+            "Department inferred from detected job role."
+          ],
+          "raw_features": {
+            "Education": 3,
+            "EducationField": "Technical Degree",
+            "JobRole": "Manager",
+            "Department": "Research & Development"
+          }
+        }
+      },
+      "ai_scores": {
+        "matching": {
+          "target_id": "VAC-00004",
+          "target_title": "Full Stack Developer",
+          "score_0_100": 17.84,
+          "match_band": "LOW",
+          "explanation": "Strong alignment on js, node, javascript. Missing emphasis on react, end, sql.",
+          "matched_keywords": [
+            "js",
+            "node",
+            "javascript",
+            "user",
+            "node js",
+            "javascript javascript"
+          ],
+          "missing_keywords": [
+            "react",
+            "end",
+            "sql",
+            "js",
+            "component",
+            "frontend"
+          ],
+          "breakdown": {
+            "semantic_similarity": 4.31,
+            "keyword_overlap": 15.38,
+            "skill_overlap": 50.0,
+            "title_alignment": 0.0,
+            "experience_alignment": 15.0
+          },
+          "rank": 1
+        },
+        "matching_summary": "Best matching role is 'Full Stack Developer' with score 17.84.",
+        "risk": {
+          "attrition_probability": 0.0634,
+          "retention_probability": 0.9366,
+          "attrition_risk_score_0_100": 6.34,
+          "predicted_attrition": 0,
+          "risk_band": "LOW",
+          "risk_band_rule": "LOW < 35, MEDIUM 35-65, HIGH > 65",
+          "top_factors": [
+            {
+              "name": "TotalWorkingYears",
+              "effect": "lower risk",
+              "note": "strong experience history; default used"
+            },
+            {
+              "name": "OverTime",
+              "effect": "lower risk",
+              "note": "overtime not indicated; default used"
+            },
+            {
+              "name": "WorkLifeBalance",
+              "effect": "lower risk",
+              "note": "balanced work profile; default used"
+            }
+          ]
+        },
+        "fit_score_0_100": 44.38,
+        "fit_band": "LOW",
+        "interview": {
+          "model": "tfidf_ridge_interview_scorer_v1",
+          "model_source": "huggingface_dataset:Ankshi/hr-interview-dataset",
+          "overall_score_0_100": 73.0,
+          "hire_recommendation_score_0_10": 7.3,
+          "band": "HIGH",
+          "predicted_label": "1",
+          "confidence": 57.99,
+          "answer_word_count": 48,
+          "summary": "Strong interview answer quality. Candidate communication is hire-ready.",
+          "soft_skill_breakdown": {
+            "communication_clarity": 59.71,
+            "confidence_professionalism": 82.79,
+            "collaboration_team_orientation": 82.65,
+            "problem_solving_structure": 84.82,
+            "relevance_to_question": 68.0
+          },
+          "strengths": [
+            "Confident delivery with ownership language.",
+            "Shows collaborative and team-oriented mindset.",
+            "Answer follows a structured problem-solving flow."
+          ],
+          "concerns": [],
+          "suggestions": [
+            "Add one quantified achievement to strengthen interview impact."
+          ]
+        },
+        "ai_recommendation": "Not Recommended",
+        "ai_recommendation_reason": "Combined fit, interview, and retention indicators are currently below threshold.",
+        "credentials": {
+          "model": "credential_validation_rule_model_v1",
+          "credential_trust_score_0_100": 50.0,
+          "credential_trust_band": "MEDIUM",
+          "degrees": [
+            {
+              "name": "Bachelor's Degree",
+              "level": 3,
+              "field": "Business / Management",
+              "year": null,
+              "issuer_hint": null,
+              "evidence": "ence\nEducation\nAwards\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nP"
+            }
+          ],
+          "certifications": [],
+          "role_alignment_hits": 0,
+          "flags": [
+            "Degree detected, but institution/issuer was not clearly identified."
+          ],
+          "summary": "Credential evidence is present but should be verified by HR.",
+          "verification_note": "This validates evidence in CV text only. HR should verify certificates with issuing institutions before final hiring decisions."
+        }
+      },
+      "status": "Applied",
+      "status_history": [
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T10:04:55.368561+00:00",
+          "note": "Application submitted",
+          "actor_user_id": "USR-00003"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T12:49:21.707286+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T12:49:23.987462+00:00",
+          "note": "Manual recheck models: matching",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T12:49:31.262177+00:00",
+          "note": "Manual recheck models: risk",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T12:55:54.456355+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T12:56:07.277511+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T12:56:07.965345+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T12:58:44.589382+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T06:32:53.081795+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T06:32:59.580806+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T06:36:51.291783+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T06:37:13.314694+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T06:38:16.018487+00:00",
+          "note": "Manual recheck models: matching",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T13:46:35.921400+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T13:47:05.211773+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T13:47:46.478350+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T14:02:17.209302+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T14:02:34.860020+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T16:39:23.728844+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T16:43:56.181649+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T16:45:40.728999+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T16:49:39.758150+00:00",
+          "note": "Manual recheck models: risk",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T17:18:29.178173+00:00",
+          "note": "Manual recheck models: credentials",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T17:22:12.038713+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T18:57:54.334323+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T18:58:40.388879+00:00",
+          "note": "Manual recheck models: credentials",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T18:58:50.966287+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T18:58:57.433006+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:02:26.260695+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:07:25.804452+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:12:04.429265+00:00",
+          "note": "Manual recheck models: credentials",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-10T11:35:27.063713+00:00",
+          "note": "Manual recheck models: credentials",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-10T12:44:45.287557+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-10T12:44:47.619585+00:00",
+          "note": "Manual recheck models: matching",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-10T12:44:50.312169+00:00",
+          "note": "Manual recheck models: risk",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-10T12:45:20.252317+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-10T12:45:46.242232+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-10T17:53:24.401012+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-10T17:56:29.354331+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        }
+      ],
+      "final_decision": null,
+      "created_at": "2026-05-03T10:04:55.368572+00:00",
+      "updated_at": "2026-05-10T17:56:29.354328+00:00"
+    },
+    {
+      "application_id": "APP-00002",
+      "vacancy_id": "VAC-00002",
+      "candidate_id": "USR-00003",
+      "candidate_name": "Default Candidate",
+      "candidate_email": "candidate@talentai.local",
+      "resume": {
+        "source": "upload",
+        "file_name": "Minimalist_CV_Resume.pdf",
+        "text_char_count": 1959,
+        "skills": [],
+        "preview": "Contact\n123-456-7890\nPhone\nhello@reallygreatsite.com\nEmail\n123 Anywhere St., Any City\nAddress\nExperience\nEducation\nAwards\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem ne",
+        "skills_detected": [],
+        "explainable_ai": {
+          "extraction_stats": {
+            "text_char_count": 700,
+            "word_count": 99,
+            "line_count": 26,
+            "skill_count": 0,
+            "inferred_field_count": 4,
+            "detected_section_count": 2,
+            "skill_density_per_100_words": 0.0,
+            "required_skill_coverage_0_100": 0.0,
+            "contact_signal_count": 2,
+            "assumption_count": 4,
+            "completeness_score_0_100": 83.33
+          },
+          "completeness": {
+            "name": true,
+            "email": true,
+            "phone": true,
+            "skills": false,
+            "experience_signal": true,
+            "education_signal": true
+          },
+          "section_signals": {
+            "experience": 1,
+            "education": 1,
+            "skills": 0,
+            "certifications": 0
+          },
+          "skill_evidence": [],
+          "matched_required_skills": [],
+          "explanation": "Resume parser detected profile fields with regex, section signals, skill dictionary matches, and HR feature inference rules."
+        },
+        "feature_inference": {
+          "inferred_fields": [
+            "Education",
+            "EducationField",
+            "JobRole",
+            "Department"
+          ],
+          "assumptions_used": [
+            "Education inferred from CV text (bachelor level studies).",
+            "EducationField inferred as Technical Degree from CV keywords.",
+            "JobRole inferred from CV title/keyword matches.",
+            "Department inferred from detected job role."
+          ],
+          "raw_features": {
+            "Education": 3,
+            "EducationField": "Technical Degree",
+            "JobRole": "Manager",
+            "Department": "Research & Development"
+          }
+        }
+      },
+      "ai_scores": {
+        "matching": {
+          "target_id": "VAC-00002",
+          "target_title": "Backend Developer",
+          "score_0_100": 13.25,
+          "match_band": "LOW",
+          "explanation": "Low direct keyword alignment. Missing emphasis on java, spring, sql.",
+          "matched_keywords": [],
+          "missing_keywords": [
+            "java",
+            "spring",
+            "sql",
+            "backend",
+            "boot",
+            "database"
+          ],
+          "breakdown": {
+            "semantic_similarity": 0.0,
+            "keyword_overlap": 0.0,
+            "skill_overlap": 50.0,
+            "title_alignment": 0.0,
+            "experience_alignment": 15.0
+          },
+          "rank": 1
+        },
+        "matching_summary": "Best matching role is 'Backend Developer' with score 13.25.",
+        "fit_score_0_100": 41.39,
+        "fit_band": "LOW",
+        "risk": {
+          "attrition_probability": 0.0634,
+          "retention_probability": 0.9366,
+          "attrition_risk_score_0_100": 6.34,
+          "predicted_attrition": 0,
+          "risk_band": "LOW",
+          "risk_band_rule": "LOW < 35, MEDIUM 35-65, HIGH > 65",
+          "top_factors": [
+            {
+              "name": "TotalWorkingYears",
+              "effect": "lower risk",
+              "note": "strong experience history; default used"
+            },
+            {
+              "name": "OverTime",
+              "effect": "lower risk",
+              "note": "overtime not indicated; default used"
+            },
+            {
+              "name": "WorkLifeBalance",
+              "effect": "lower risk",
+              "note": "balanced work profile; default used"
+            }
+          ]
+        },
+        "ai_recommendation": "Not Recommended",
+        "ai_recommendation_reason": "Combined fit, interview, and retention indicators are currently below threshold."
+      },
+      "status": "Applied",
+      "status_history": [
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T10:28:45.660275+00:00",
+          "note": "Application submitted",
+          "actor_user_id": "USR-00003"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T06:45:37.974138+00:00",
+          "note": "Manual recheck models: risk",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T17:02:21.249483+00:00",
+          "note": "Manual recheck models: matching",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:02:33.336832+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        }
+      ],
+      "final_decision": null,
+      "created_at": "2026-05-03T10:28:45.660278+00:00",
+      "updated_at": "2026-05-09T19:02:33.336829+00:00"
+    },
+    {
+      "application_id": "APP-00003",
+      "vacancy_id": "VAC-00001",
+      "candidate_id": "USR-00003",
+      "candidate_name": "Default Candidate",
+      "candidate_email": "candidate@talentai.local",
+      "resume": {
+        "source": "upload",
+        "file_name": "Minimalist_CV_Resume.pdf",
+        "text_char_count": 1959,
+        "skills": [
+          "leadership"
+        ],
+        "preview": "Contact\n123-456-7890\nPhone\nhello@reallygreatsite.com\nEmail\n123 Anywhere St., Any City\nAddress\nExperience\nEducation\nAwards\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem ne"
+      },
+      "ai_scores": {
+        "matching": {
+          "target_id": "VAC-00001",
+          "target_title": "Software Engineer",
+          "score_0_100": 0.75,
+          "match_band": "LOW",
+          "explanation": "Low direct keyword alignment. Missing emphasis on backend, backend services, build.",
+          "matched_keywords": [],
+          "missing_keywords": [
+            "backend",
+            "backend services",
+            "build",
+            "build maintain",
+            "colombo",
+            "colombo hybrid"
+          ],
+          "breakdown": {
+            "semantic_similarity": 0.0,
+            "keyword_overlap": 0.0,
+            "skill_overlap": 0.0,
+            "experience_alignment": 15.0
+          },
+          "rank": 1
+        },
+        "matching_summary": "Best matching role is 'Software Engineer' with score 0.75.",
+        "fit_score_0_100": 31.68,
+        "fit_band": "LOW",
+        "ai_recommendation": "Not Recommended",
+        "ai_recommendation_reason": "Combined fit, interview, and retention indicators are currently below threshold.",
+        "risk": {
+          "attrition_probability": 0.0634,
+          "retention_probability": 0.9366,
+          "attrition_risk_score_0_100": 6.34,
+          "predicted_attrition": 0,
+          "risk_band": "LOW",
+          "risk_band_rule": "LOW < 35, MEDIUM 35-65, HIGH > 65",
+          "top_factors": [
+            {
+              "name": "TotalWorkingYears",
+              "effect": "lower risk",
+              "note": "strong experience history; default used"
+            },
+            {
+              "name": "OverTime",
+              "effect": "lower risk",
+              "note": "overtime not indicated; default used"
+            },
+            {
+              "name": "WorkLifeBalance",
+              "effect": "lower risk",
+              "note": "balanced work profile; default used"
+            }
+          ]
+        },
+        "interview": {
+          "model": "heuristic_soft_skill_v1",
+          "model_source": "heuristic_fallback",
+          "overall_score_0_100": 44.45,
+          "hire_recommendation_score_0_10": 4.4,
+          "band": "MEDIUM",
+          "predicted_label": "0",
+          "confidence": 55.0,
+          "answer_word_count": 64,
+          "summary": "Moderate interview answer quality. Probe deeper with follow-up questions.",
+          "soft_skill_breakdown": {
+            "communication_clarity": 18.29,
+            "confidence_professionalism": 70.0,
+            "collaboration_team_orientation": 47.25,
+            "problem_solving_structure": 48.75,
+            "relevance_to_question": 66.67
+          },
+          "strengths": [
+            "Confident delivery with ownership language."
+          ],
+          "concerns": [
+            "Answer clarity is low or too fragmented."
+          ],
+          "suggestions": [
+            "Use shorter, direct sentences and remove filler phrases."
+          ]
+        }
+      },
+      "status": "Applied",
+      "status_history": [
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T12:35:26.308607+00:00",
+          "note": "Application submitted",
+          "actor_user_id": "USR-00003"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T13:48:59.326192+00:00",
+          "note": "Manual recheck models: risk",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T13:49:27.483039+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T13:50:18.252400+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        }
+      ],
+      "final_decision": null,
+      "created_at": "2026-05-03T12:35:26.308609+00:00",
+      "updated_at": "2026-05-09T13:50:18.252398+00:00"
+    },
+    {
+      "application_id": "APP-00004",
+      "vacancy_id": "VAC-00005",
+      "candidate_id": "USR-00003",
+      "candidate_name": "Default Candidate",
+      "candidate_email": "candidate@talentai.local",
+      "resume": {
+        "source": "upload",
+        "file_name": "Minimalist_CV_Resume.pdf",
+        "text_char_count": 1959,
+        "skills": [
+          "leadership"
+        ],
+        "preview": "Contact\n123-456-7890\nPhone\nhello@reallygreatsite.com\nEmail\n123 Anywhere St., Any City\nAddress\nExperience\nEducation\nAwards\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem ne"
+      },
+      "ai_scores": {
+        "matching": {
+          "target_id": "VAC-00005",
+          "target_title": "DevOps Engineer",
+          "score_0_100": 7.0,
+          "match_band": "LOW",
+          "explanation": "Low direct keyword alignment. Missing emphasis on aws, docker, kubernetes.",
+          "matched_keywords": [],
+          "missing_keywords": [
+            "aws",
+            "docker",
+            "kubernetes",
+            "cd",
+            "ci",
+            "ci cd"
+          ],
+          "breakdown": {
+            "semantic_similarity": 0.0,
+            "keyword_overlap": 0.0,
+            "skill_overlap": 25.0,
+            "title_alignment": 0.0,
+            "experience_alignment": 15.0
+          },
+          "rank": 1
+        },
+        "matching_summary": "Best matching role is 'DevOps Engineer' with score 7.0.",
+        "fit_score_0_100": 37.33,
+        "fit_band": "LOW",
+        "ai_recommendation": "Not Recommended",
+        "ai_recommendation_reason": "Combined fit, interview, and retention indicators are currently below threshold.",
+        "risk": {
+          "attrition_probability": 0.1088,
+          "retention_probability": 0.8912,
+          "attrition_risk_score_0_100": 10.88,
+          "predicted_attrition": 0,
+          "risk_band": "LOW",
+          "risk_band_rule": "LOW < 35, MEDIUM 35-65, HIGH > 65",
+          "top_factors": [
+            {
+              "name": "TotalWorkingYears",
+              "effect": "higher risk",
+              "note": "estimated low experience"
+            }
+          ]
+        }
+      },
+      "status": "Shortlisted",
+      "status_history": [
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T12:40:46.628952+00:00",
+          "note": "Application submitted",
+          "actor_user_id": "USR-00003"
+        },
+        {
+          "status": "Shortlisted",
+          "timestamp": "2026-05-09T06:46:24.354046+00:00",
+          "note": "Manual HR status update: Shortlisted",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Shortlisted",
+          "timestamp": "2026-05-09T14:34:01.308824+00:00",
+          "note": "Manual recheck models: matching",
+          "actor_user_id": "USR-00002"
+        }
+      ],
+      "final_decision": null,
+      "created_at": "2026-05-03T12:40:46.628955+00:00",
+      "updated_at": "2026-05-09T14:34:01.308820+00:00"
+    },
+    {
+      "application_id": "APP-00005",
+      "vacancy_id": "VAC-00007",
+      "candidate_id": "USR-00003",
+      "candidate_name": "Default Candidate",
+      "candidate_email": "candidate@talentai.local",
+      "resume": {
+        "source": "upload",
+        "file_name": "Minimalist_CV_Resume.pdf",
+        "text_char_count": 1959,
+        "skills": [
+          "leadership"
+        ],
+        "preview": "Contact\n123-456-7890\nPhone\nhello@reallygreatsite.com\nEmail\n123 Anywhere St., Any City\nAddress\nExperience\nEducation\nAwards\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem ne"
+      },
+      "ai_scores": {
+        "matching": {
+          "target_id": "VAC-00007",
+          "target_title": "Machine Learning Engineer",
+          "score_0_100": 0.75,
+          "match_band": "LOW",
+          "explanation": "Low direct keyword alignment. Missing emphasis on ai, ai model, ai years.",
+          "matched_keywords": [],
+          "missing_keywords": [
+            "ai",
+            "ai model",
+            "ai years",
+            "build",
+            "build maintain",
+            "colombo"
+          ],
+          "breakdown": {
+            "semantic_similarity": 0.0,
+            "keyword_overlap": 0.0,
+            "skill_overlap": 0.0,
+            "experience_alignment": 15.0
+          },
+          "rank": 1
+        },
+        "matching_summary": "Best matching role is 'Machine Learning Engineer' with score 0.75.",
+        "fit_score_0_100": 33.27,
+        "fit_band": "LOW",
+        "ai_recommendation": "Not Recommended",
+        "ai_recommendation_reason": "Combined fit, interview, and retention indicators are currently below threshold.",
+        "risk": {
+          "attrition_probability": 0.1088,
+          "retention_probability": 0.8912,
+          "attrition_risk_score_0_100": 10.88,
+          "predicted_attrition": 0,
+          "risk_band": "LOW",
+          "risk_band_rule": "LOW < 35, MEDIUM 35-65, HIGH > 65",
+          "top_factors": [
+            {
+              "name": "TotalWorkingYears",
+              "effect": "higher risk",
+              "note": "estimated low experience"
+            }
+          ]
+        },
+        "interview": {
+          "model": "heuristic_soft_skill_v1",
+          "model_source": "heuristic_fallback",
+          "overall_score_0_100": 55.51,
+          "hire_recommendation_score_0_10": 5.6,
+          "band": "MEDIUM",
+          "predicted_label": "0",
+          "confidence": 55.0,
+          "answer_word_count": 44,
+          "summary": "Moderate interview answer quality. Probe deeper with follow-up questions.",
+          "soft_skill_breakdown": {
+            "communication_clarity": 58.2,
+            "confidence_professionalism": 52.0,
+            "collaboration_team_orientation": 50.0,
+            "problem_solving_structure": 57.0,
+            "relevance_to_question": 66.67
+          },
+          "strengths": [
+            "Response has enough content for baseline evaluation."
+          ],
+          "concerns": [],
+          "suggestions": [
+            "Add one quantified achievement to strengthen interview impact."
+          ]
+        }
+      },
+      "status": "Interviewed",
+      "status_history": [
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T12:41:12.276371+00:00",
+          "note": "Application submitted",
+          "actor_user_id": "USR-00003"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T13:01:54.655175+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T13:01:56.664275+00:00",
+          "note": "Manual recheck models: matching",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-03T13:02:39.537893+00:00",
+          "note": "Manual recheck models: interview",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Interviewed",
+          "timestamp": "2026-05-03T13:02:49.638001+00:00",
+          "note": "Manual HR status update: Interviewed",
+          "actor_user_id": "USR-00002"
+        }
+      ],
+      "final_decision": null,
+      "created_at": "2026-05-03T12:41:12.276374+00:00",
+      "updated_at": "2026-05-03T13:02:49.637999+00:00"
+    },
+    {
+      "application_id": "APP-00006",
+      "vacancy_id": "VAC-00011",
+      "candidate_id": "USR-00003",
+      "candidate_name": "Default Candidate",
+      "candidate_email": "candidate@talentai.local",
+      "resume": {
+        "source": "upload",
+        "file_name": "Minimalist_CV_Resume.pdf",
+        "text_char_count": 1959,
+        "skills": [
+          "leadership"
+        ],
+        "preview": "Contact\n123-456-7890\nPhone\nhello@reallygreatsite.com\nEmail\n123 Anywhere St., Any City\nAddress\nExperience\nEducation\nAwards\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem ne"
+      },
+      "ai_scores": {
+        "matching": {
+          "target_id": "VAC-00011",
+          "target_title": "Software engineer",
+          "score_0_100": 2.5,
+          "match_band": "LOW",
+          "explanation": "Low direct keyword alignment. Missing emphasis on python, candidates, candidates python.",
+          "matched_keywords": [],
+          "missing_keywords": [
+            "python",
+            "candidates",
+            "candidates python",
+            "colombo",
+            "colombo onsite",
+            "engineer"
+          ],
+          "breakdown": {
+            "semantic_similarity": 0.0,
+            "keyword_overlap": 0.0,
+            "skill_overlap": 0.0,
+            "experience_alignment": 50.0
+          },
+          "rank": 1
+        },
+        "matching_summary": "Best matching role is 'Software engineer' with score 2.5.",
+        "fit_score_0_100": 31.94,
+        "fit_band": "LOW",
+        "ai_recommendation": "Not Recommended",
+        "ai_recommendation_reason": "Combined fit, interview, and retention indicators are currently below threshold.",
+        "risk": {
+          "attrition_probability": 0.1338,
+          "retention_probability": 0.8662,
+          "attrition_risk_score_0_100": 13.38,
+          "predicted_attrition": 0,
+          "risk_band": "LOW",
+          "risk_band_rule": "LOW < 35, MEDIUM 35-65, HIGH > 65",
+          "top_factors": [
+            {
+              "name": "TotalWorkingYears",
+              "effect": "lower risk",
+              "note": "strong experience history"
+            },
+            {
+              "name": "OverTime",
+              "effect": "lower risk",
+              "note": "overtime not indicated; default used"
+            },
+            {
+              "name": "WorkLifeBalance",
+              "effect": "lower risk",
+              "note": "balanced work profile; default used"
+            }
+          ]
+        },
+        "interview": {
+          "model": "heuristic_soft_skill_v1",
+          "model_source": "heuristic_fallback",
+          "overall_score_0_100": 40.8,
+          "hire_recommendation_score_0_10": 4.1,
+          "band": "LOW",
+          "predicted_label": "0",
+          "confidence": 55.0,
+          "answer_word_count": 4,
+          "summary": "Low interview answer quality. Candidate needs stronger communication examples.",
+          "soft_skill_breakdown": {
+            "communication_clarity": 40.65,
+            "confidence_professionalism": 52.0,
+            "collaboration_team_orientation": 38.0,
+            "problem_solving_structure": 40.0,
+            "relevance_to_question": 16.67
+          },
+          "strengths": [
+            "Response has enough content for baseline evaluation."
+          ],
+          "concerns": [
+            "Answer clarity is low or too fragmented.",
+            "Limited collaboration/teamwork evidence.",
+            "Weak structure in explaining approach or impact.",
+            "Answer appears weakly aligned with the question."
+          ],
+          "suggestions": [
+            "Use shorter, direct sentences and remove filler phrases.",
+            "Include examples involving teamwork and stakeholder coordination.",
+            "Answer with Situation -> Action -> Result structure.",
+            "Reference key terms from the question and address them directly."
+          ]
+        }
+      },
+      "status": "Interviewed",
+      "status_history": [
+        {
+          "status": "Interviewed",
+          "timestamp": "2026-05-09T13:38:48.071654+00:00",
+          "note": "Application submitted",
+          "actor_user_id": "USR-00003"
+        }
+      ],
+      "final_decision": null,
+      "created_at": "2026-05-09T13:38:48.071656+00:00",
+      "updated_at": "2026-05-09T13:38:48.071658+00:00"
+    },
+    {
+      "application_id": "APP-00007",
+      "vacancy_id": "VAC-00012",
+      "candidate_id": "USR-00003",
+      "candidate_name": "Default Candidate",
+      "candidate_email": "candidate@talentai.local",
+      "resume": {
+        "source": "upload",
+        "file_name": "Minimalist_CV_Resume.pdf",
+        "text_char_count": 1959,
+        "skills": [],
+        "preview": "Contact\n123-456-7890\nPhone\nhello@reallygreatsite.com\nEmail\n123 Anywhere St., Any City\nAddress\nExperience\nEducation\nAwards\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem ne",
+        "skills_detected": [],
+        "explainable_ai": {
+          "extraction_stats": {
+            "text_char_count": 700,
+            "word_count": 99,
+            "line_count": 26,
+            "skill_count": 0,
+            "inferred_field_count": 4,
+            "detected_section_count": 2,
+            "skill_density_per_100_words": 0.0,
+            "required_skill_coverage_0_100": 0.0,
+            "contact_signal_count": 2,
+            "assumption_count": 4,
+            "completeness_score_0_100": 83.33
+          },
+          "completeness": {
+            "name": true,
+            "email": true,
+            "phone": true,
+            "skills": false,
+            "experience_signal": true,
+            "education_signal": true
+          },
+          "section_signals": {
+            "experience": 1,
+            "education": 1,
+            "skills": 0,
+            "certifications": 0
+          },
+          "skill_evidence": [],
+          "matched_required_skills": [],
+          "trained_model": {
+            "model_name": "tfidf_logistic_resume_explainer_v1",
+            "model_source": "local_synthetic_resume_section_training",
+            "label_scores": [
+              {
+                "label": "education_credentials",
+                "description": "Education and credential evidence",
+                "confidence_0_100": 51.85,
+                "evidence_terms": [
+                  "of",
+                  "business",
+                  "of business",
+                  "bachelor",
+                  "bachelor of",
+                  "management"
+                ]
+              },
+              {
+                "label": "leadership_management",
+                "description": "Leadership and management evidence",
+                "confidence_0_100": 50.46,
+                "evidence_terms": [
+                  "manager",
+                  "business",
+                  "of business",
+                  "product",
+                  "of",
+                  "management"
+                ]
+              },
+              {
+                "label": "technical_skills",
+                "description": "Technical skill evidence",
+                "confidence_0_100": 41.09,
+                "evidence_terms": [
+                  "design"
+                ]
+              },
+              {
+                "label": "project_management",
+                "description": "Project management evidence",
+                "confidence_0_100": 38.01,
+                "evidence_terms": [
+                  "manager",
+                  "product",
+                  "management"
+                ]
+              },
+              {
+                "label": "experience_depth",
+                "description": "Professional experience depth",
+                "confidence_0_100": 35.84,
+                "evidence_terms": [
+                  "experience"
+                ]
+              },
+              {
+                "label": "backend_engineering",
+                "description": "Backend engineering profile",
+                "confidence_0_100": 35.2,
+                "evidence_terms": [
+                  "experience"
+                ]
+              },
+              {
+                "label": "communication",
+                "description": "Communication evidence",
+                "confidence_0_100": 34.76,
+                "evidence_terms": [
+                  "product"
+                ]
+              },
+              {
+                "label": "product_management",
+                "description": "Product management evidence",
+                "confidence_0_100": 33.09,
+                "evidence_terms": [
+                  "product",
+                  "manager"
+                ]
+              }
+            ]
+          },
+          "explanation": "Resume parser detected profile fields with regex, section signals, skill dictionary matches, HR feature inference rules, and a trained TF-IDF logistic explainer model."
+        },
+        "feature_inference": {
+          "inferred_fields": [
+            "Education",
+            "EducationField",
+            "JobRole",
+            "Department"
+          ],
+          "assumptions_used": [
+            "Education inferred from CV text (bachelor level studies).",
+            "EducationField inferred as Technical Degree from CV keywords.",
+            "JobRole inferred from CV title/keyword matches.",
+            "Department inferred from detected job role."
+          ],
+          "raw_features": {
+            "Education": 3,
+            "EducationField": "Technical Degree",
+            "JobRole": "Manager",
+            "Department": "Research & Development"
+          }
+        }
+      },
+      "ai_scores": {
+        "matching": {
+          "target_id": "VAC-00012",
+          "target_title": "Product Design Manager",
+          "score_0_100": 71.67,
+          "match_band": "MEDIUM",
+          "explanation": "Strong alignment on product, design, business. Missing emphasis on design, product, communication.",
+          "matched_keywords": [
+            "product",
+            "design",
+            "business",
+            "manager",
+            "product design",
+            "management"
+          ],
+          "missing_keywords": [
+            "design",
+            "product",
+            "communication",
+            "user",
+            "leadership",
+            "customer"
+          ],
+          "breakdown": {
+            "semantic_similarity": 56.77,
+            "keyword_overlap": 46.51,
+            "skill_overlap": 100.0,
+            "title_alignment": 100.0,
+            "experience_alignment": 50.0
+          },
+          "rank": 1
+        },
+        "matching_summary": "Best matching role is 'Product Design Manager' with score 71.67.",
+        "fit_score_0_100": 79.37,
+        "fit_band": "HIGH",
+        "ai_recommendation": "Final Panel Review",
+        "ai_recommendation_reason": "Borderline profile. Collect additional interview signals before final decision.",
+        "risk": {
+          "attrition_probability": 0.1338,
+          "retention_probability": 0.8662,
+          "attrition_risk_score_0_100": 13.38,
+          "predicted_attrition": 0,
+          "risk_band": "LOW",
+          "risk_band_rule": "LOW < 35, MEDIUM 35-65, HIGH > 65",
+          "top_factors": [
+            {
+              "name": "TotalWorkingYears",
+              "effect": "lower risk",
+              "note": "strong experience history"
+            },
+            {
+              "name": "OverTime",
+              "effect": "lower risk",
+              "note": "overtime not indicated; default used"
+            },
+            {
+              "name": "WorkLifeBalance",
+              "effect": "lower risk",
+              "note": "balanced work profile; default used"
+            }
+          ]
+        }
+      },
+      "status": "Shortlisted",
+      "status_history": [
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T14:28:21.376322+00:00",
+          "note": "Application submitted",
+          "actor_user_id": "USR-00003"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T14:28:51.869550+00:00",
+          "note": "Manual recheck models: matching",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T14:28:54.629861+00:00",
+          "note": "Manual recheck models: matching",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T14:28:55.238277+00:00",
+          "note": "Manual recheck models: matching",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T14:33:23.603963+00:00",
+          "note": "Manual recheck models: matching",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Shortlisted",
+          "timestamp": "2026-05-09T14:33:41.245046+00:00",
+          "note": "Manual HR status update: Shortlisted",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Shortlisted",
+          "timestamp": "2026-05-09T19:02:44.579292+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Shortlisted",
+          "timestamp": "2026-05-09T19:07:52.534085+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Shortlisted",
+          "timestamp": "2026-05-09T19:11:55.754684+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        }
+      ],
+      "final_decision": null,
+      "created_at": "2026-05-09T14:28:21.376324+00:00",
+      "updated_at": "2026-05-09T19:11:55.754681+00:00"
+    },
+    {
+      "application_id": "APP-00008",
+      "vacancy_id": "VAC-00008",
+      "candidate_id": "USR-00003",
+      "candidate_name": "Default Candidate",
+      "candidate_email": "candidate@talentai.local",
+      "resume": {
+        "source": "upload",
+        "file_name": "Minimalist_CV_Resume.pdf",
+        "text_char_count": 1959,
+        "skills": [],
+        "skills_detected": [],
+        "explainable_ai": {
+          "extraction_stats": {
+            "text_char_count": 700,
+            "word_count": 99,
+            "line_count": 26,
+            "skill_count": 0,
+            "inferred_field_count": 4,
+            "detected_section_count": 2,
+            "skill_density_per_100_words": 0.0,
+            "required_skill_coverage_0_100": 0.0,
+            "contact_signal_count": 2,
+            "assumption_count": 4,
+            "completeness_score_0_100": 83.33
+          },
+          "completeness": {
+            "name": true,
+            "email": true,
+            "phone": true,
+            "skills": false,
+            "experience_signal": true,
+            "education_signal": true
+          },
+          "section_signals": {
+            "experience": 1,
+            "education": 1,
+            "skills": 0,
+            "certifications": 0
+          },
+          "skill_evidence": [],
+          "matched_required_skills": [],
+          "explanation": "Resume parser detected profile fields with regex, section signals, skill dictionary matches, and HR feature inference rules."
+        },
+        "feature_inference": {
+          "inferred_fields": [
+            "Education",
+            "EducationField",
+            "JobRole",
+            "Department"
+          ],
+          "assumptions_used": [
+            "Education inferred from CV text (bachelor level studies).",
+            "EducationField inferred as Technical Degree from CV keywords.",
+            "JobRole inferred from CV title/keyword matches.",
+            "Department inferred from detected job role."
+          ],
+          "raw_features": {
+            "Education": 3,
+            "EducationField": "Technical Degree",
+            "JobRole": "Manager",
+            "Department": "Research & Development"
+          }
+        },
+        "preview": "Contact\n123-456-7890\nPhone\nhello@reallygreatsite.com\nEmail\n123 Anywhere St., Any City\nAddress\nExperience\nEducation\nAwards\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem nec risus egestas accumsan.\nIn enim nunc, tincidunt ut quam eget, luctus\nsollicitudin neque.\nLorem ipsum dolor sit amet, consectetur adipiscing\nelit. Nunc sit amet sem ne"
+      },
+      "ai_scores": {
+        "matching": {
+          "target_id": "VAC-00008",
+          "target_title": "QA Automation Engineer",
+          "score_0_100": 19.19,
+          "match_band": "LOW",
+          "explanation": "Strong alignment on user, numpy, pandas. Missing emphasis on testing, api, automation.",
+          "matched_keywords": [
+            "user",
+            "numpy",
+            "pandas",
+            "pandas numpy"
+          ],
+          "missing_keywords": [
+            "testing",
+            "api",
+            "automation",
+            "python",
+            "qa",
+            "quality"
+          ],
+          "breakdown": {
+            "semantic_similarity": 0.44,
+            "keyword_overlap": 8.11,
+            "skill_overlap": 66.67,
+            "title_alignment": 0.0,
+            "experience_alignment": 15.0
+          },
+          "rank": 1
+        },
+        "matching_summary": "Best matching role is 'QA Automation Engineer' with score 19.19.",
+        "fit_score_0_100": 42.79,
+        "fit_band": "LOW",
+        "ai_recommendation": "Not Recommended",
+        "ai_recommendation_reason": "Combined fit, interview, and retention indicators are currently below threshold.",
+        "credentials": {
+          "model": "credential_validation_rule_model_v1",
+          "credential_trust_score_0_100": 50.0,
+          "credential_trust_band": "MEDIUM",
+          "degrees": [
+            {
+              "name": "Bachelor's Degree",
+              "level": 3,
+              "field": "Business / Management",
+              "year": null,
+              "issuer_hint": null,
+              "evidence": "ence\nEducation\nAwards\nProduct Design Manager\nBachelor of Business Management\nProduct Design Manager\nBachelor of Business Management\nP"
+            }
+          ],
+          "certifications": [],
+          "role_alignment_hits": 0,
+          "flags": [
+            "Degree detected, but institution/issuer was not clearly identified."
+          ],
+          "summary": "Credential evidence is present but should be verified by HR.",
+          "verification_note": "This validates evidence in CV text only. HR should verify certificates with issuing institutions before final hiring decisions."
+        },
+        "risk": {
+          "attrition_probability": 0.1338,
+          "retention_probability": 0.8662,
+          "attrition_risk_score_0_100": 13.38,
+          "predicted_attrition": 0,
+          "risk_band": "LOW",
+          "risk_band_rule": "LOW < 35, MEDIUM 35-65, HIGH > 65",
+          "top_factors": [
+            {
+              "name": "TotalWorkingYears",
+              "effect": "lower risk",
+              "note": "strong experience history"
+            },
+            {
+              "name": "OverTime",
+              "effect": "lower risk",
+              "note": "overtime not indicated; default used"
+            },
+            {
+              "name": "WorkLifeBalance",
+              "effect": "lower risk",
+              "note": "balanced work profile; default used"
+            }
+          ]
+        }
+      },
+      "status": "Applied",
+      "status_history": [
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:03:25.807994+00:00",
+          "note": "Application submitted",
+          "actor_user_id": "USR-00003"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:03:38.579574+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:03:40.079762+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:03:40.663890+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:03:41.131004+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:03:41.347248+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:03:41.533311+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:03:41.699687+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:03:41.879761+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:03:42.012161+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:03:54.866206+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-05-09T19:07:43.017176+00:00",
+          "note": "Manual recheck models: resume",
+          "actor_user_id": "USR-00002"
+        }
+      ],
+      "final_decision": null,
+      "created_at": "2026-05-09T19:03:25.807997+00:00",
+      "updated_at": "2026-05-09T19:07:43.017171+00:00"
+    }
+  ],
+  "interviews": [],
+  "audit_logs": [
+    {
+      "audit_id": "ADT-00001",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "142f8e40",
+      "details": {},
+      "created_at": "2026-05-03T10:04:16.876646+00:00"
+    },
+    {
+      "audit_id": "ADT-00002",
+      "actor_user_id": "USR-00002",
+      "action": "vacancy_created",
+      "target_type": "vacancy",
+      "target_id": "VAC-00011",
+      "details": {},
+      "created_at": "2026-05-03T10:04:30.408688+00:00"
+    },
+    {
+      "audit_id": "ADT-00003",
+      "actor_user_id": "USR-00003",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "c75babee",
+      "details": {},
+      "created_at": "2026-05-03T10:04:52.978051+00:00"
+    },
+    {
+      "audit_id": "ADT-00004",
+      "actor_user_id": "USR-00003",
+      "action": "application_created",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "vacancy_id": "VAC-00004"
+      },
+      "created_at": "2026-05-03T10:04:55.368579+00:00"
+    },
+    {
+      "audit_id": "ADT-00005",
+      "actor_user_id": "USR-00003",
+      "action": "application_created",
+      "target_type": "application",
+      "target_id": "APP-00002",
+      "details": {
+        "vacancy_id": "VAC-00002"
+      },
+      "created_at": "2026-05-03T10:28:45.660284+00:00"
+    },
+    {
+      "audit_id": "ADT-00006",
+      "actor_user_id": "USR-00003",
+      "action": "application_created",
+      "target_type": "application",
+      "target_id": "APP-00003",
+      "details": {
+        "vacancy_id": "VAC-00001"
+      },
+      "created_at": "2026-05-03T12:35:26.308618+00:00"
+    },
+    {
+      "audit_id": "ADT-00007",
+      "actor_user_id": "USR-00003",
+      "action": "application_created",
+      "target_type": "application",
+      "target_id": "APP-00004",
+      "details": {
+        "vacancy_id": "VAC-00005"
+      },
+      "created_at": "2026-05-03T12:40:46.628966+00:00"
+    },
+    {
+      "audit_id": "ADT-00008",
+      "actor_user_id": "USR-00003",
+      "action": "application_created",
+      "target_type": "application",
+      "target_id": "APP-00005",
+      "details": {
+        "vacancy_id": "VAC-00007"
+      },
+      "created_at": "2026-05-03T12:41:12.276380+00:00"
+    },
+    {
+      "audit_id": "ADT-00009",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-03T12:49:21.707299+00:00"
+    },
+    {
+      "audit_id": "ADT-00010",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: matching"
+      },
+      "created_at": "2026-05-03T12:49:23.987471+00:00"
+    },
+    {
+      "audit_id": "ADT-00011",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: risk"
+      },
+      "created_at": "2026-05-03T12:49:31.262189+00:00"
+    },
+    {
+      "audit_id": "ADT-00012",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-03T12:55:54.456374+00:00"
+    },
+    {
+      "audit_id": "ADT-00013",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-03T12:56:07.277520+00:00"
+    },
+    {
+      "audit_id": "ADT-00014",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-03T12:56:07.965362+00:00"
+    },
+    {
+      "audit_id": "ADT-00015",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-03T12:58:44.589401+00:00"
+    },
+    {
+      "audit_id": "ADT-00016",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00005",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-03T13:01:54.655190+00:00"
+    },
+    {
+      "audit_id": "ADT-00017",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00005",
+      "details": {
+        "note": "Manual recheck models: matching"
+      },
+      "created_at": "2026-05-03T13:01:56.664284+00:00"
+    },
+    {
+      "audit_id": "ADT-00018",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00005",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-03T13:02:39.537918+00:00"
+    },
+    {
+      "audit_id": "ADT-00019",
+      "actor_user_id": "USR-00002",
+      "action": "application_status_updated",
+      "target_type": "application",
+      "target_id": "APP-00005",
+      "details": {
+        "status": "Interviewed"
+      },
+      "created_at": "2026-05-03T13:02:49.638010+00:00"
+    },
+    {
+      "audit_id": "ADT-00020",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "10becd2b",
+      "details": {},
+      "created_at": "2026-05-06T17:28:38.132802+00:00"
+    },
+    {
+      "audit_id": "ADT-00021",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "4d64092b",
+      "details": {},
+      "created_at": "2026-05-06T17:28:38.720501+00:00"
+    },
+    {
+      "audit_id": "ADT-00022",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "aad9f8ae",
+      "details": {},
+      "created_at": "2026-05-06T17:28:38.758763+00:00"
+    },
+    {
+      "audit_id": "ADT-00023",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "9a9b8729",
+      "details": {},
+      "created_at": "2026-05-06T17:28:38.856068+00:00"
+    },
+    {
+      "audit_id": "ADT-00024",
+      "actor_user_id": "USR-00003",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "8c824f45",
+      "details": {},
+      "created_at": "2026-05-06T17:48:31.007500+00:00"
+    },
+    {
+      "audit_id": "ADT-00025",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "44742b45",
+      "details": {},
+      "created_at": "2026-05-06T17:48:56.321279+00:00"
+    },
+    {
+      "audit_id": "ADT-00026",
+      "actor_user_id": "USR-00003",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "bd354d6c",
+      "details": {},
+      "created_at": "2026-05-07T05:57:41.073885+00:00"
+    },
+    {
+      "audit_id": "ADT-00027",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "5fa04475",
+      "details": {},
+      "created_at": "2026-05-07T05:59:11.981668+00:00"
+    },
+    {
+      "audit_id": "ADT-00028",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "cc9cdf66",
+      "details": {},
+      "created_at": "2026-05-07T06:09:43.312526+00:00"
+    },
+    {
+      "audit_id": "ADT-00029",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "f2f56577",
+      "details": {},
+      "created_at": "2026-05-07T16:19:56.451396+00:00"
+    },
+    {
+      "audit_id": "ADT-00030",
+      "actor_user_id": "USR-00003",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "c6bd6d97",
+      "details": {},
+      "created_at": "2026-05-07T16:48:29.626864+00:00"
+    },
+    {
+      "audit_id": "ADT-00031",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "f356d71c",
+      "details": {},
+      "created_at": "2026-05-07T16:49:22.918201+00:00"
+    },
+    {
+      "audit_id": "ADT-00032",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "2d70b084",
+      "details": {},
+      "created_at": "2026-05-07T17:21:36.421439+00:00"
+    },
+    {
+      "audit_id": "ADT-00033",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "34ea6932",
+      "details": {},
+      "created_at": "2026-05-07T17:21:36.478489+00:00"
+    },
+    {
+      "audit_id": "ADT-00034",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "a4bd8230",
+      "details": {},
+      "created_at": "2026-05-09T05:57:43.434011+00:00"
+    },
+    {
+      "audit_id": "ADT-00035",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "35f319be",
+      "details": {},
+      "created_at": "2026-05-09T05:57:52.720785+00:00"
+    },
+    {
+      "audit_id": "ADT-00036",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "0c0a8964",
+      "details": {},
+      "created_at": "2026-05-09T05:57:52.725417+00:00"
+    },
+    {
+      "audit_id": "ADT-00037",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T06:32:53.081806+00:00"
+    },
+    {
+      "audit_id": "ADT-00038",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T06:32:59.580824+00:00"
+    },
+    {
+      "audit_id": "ADT-00039",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T06:36:51.291813+00:00"
+    },
+    {
+      "audit_id": "ADT-00040",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T06:37:13.314728+00:00"
+    },
+    {
+      "audit_id": "ADT-00041",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: matching"
+      },
+      "created_at": "2026-05-09T06:38:16.018499+00:00"
+    },
+    {
+      "audit_id": "ADT-00042",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00002",
+      "details": {
+        "note": "Manual recheck models: risk"
+      },
+      "created_at": "2026-05-09T06:45:37.974161+00:00"
+    },
+    {
+      "audit_id": "ADT-00043",
+      "actor_user_id": "USR-00002",
+      "action": "application_status_updated",
+      "target_type": "application",
+      "target_id": "APP-00004",
+      "details": {
+        "status": "Shortlisted"
+      },
+      "created_at": "2026-05-09T06:46:24.354058+00:00"
+    },
+    {
+      "audit_id": "ADT-00044",
+      "actor_user_id": "USR-00003",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "530ed23d",
+      "details": {},
+      "created_at": "2026-05-09T06:53:58.915755+00:00"
+    },
+    {
+      "audit_id": "ADT-00045",
+      "actor_user_id": "USR-00003",
+      "action": "application_created",
+      "target_type": "application",
+      "target_id": "APP-00006",
+      "details": {
+        "vacancy_id": "VAC-00011"
+      },
+      "created_at": "2026-05-09T13:38:48.071663+00:00"
+    },
+    {
+      "audit_id": "ADT-00046",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "835ead88",
+      "details": {},
+      "created_at": "2026-05-09T13:40:05.074881+00:00"
+    },
+    {
+      "audit_id": "ADT-00047",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T13:46:35.921412+00:00"
+    },
+    {
+      "audit_id": "ADT-00048",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T13:47:05.211790+00:00"
+    },
+    {
+      "audit_id": "ADT-00049",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T13:47:46.478365+00:00"
+    },
+    {
+      "audit_id": "ADT-00050",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00003",
+      "details": {
+        "note": "Manual recheck models: risk"
+      },
+      "created_at": "2026-05-09T13:48:59.326202+00:00"
+    },
+    {
+      "audit_id": "ADT-00051",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00003",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T13:49:27.483054+00:00"
+    },
+    {
+      "audit_id": "ADT-00052",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00003",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T13:50:18.252411+00:00"
+    },
+    {
+      "audit_id": "ADT-00053",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T14:02:17.209312+00:00"
+    },
+    {
+      "audit_id": "ADT-00054",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T14:02:34.860028+00:00"
+    },
+    {
+      "audit_id": "ADT-00055",
+      "actor_user_id": "USR-00002",
+      "action": "vacancy_created",
+      "target_type": "vacancy",
+      "target_id": "VAC-00012",
+      "details": {},
+      "created_at": "2026-05-09T14:27:11.820137+00:00"
+    },
+    {
+      "audit_id": "ADT-00056",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "d028d929",
+      "details": {},
+      "created_at": "2026-05-09T14:27:46.212415+00:00"
+    },
+    {
+      "audit_id": "ADT-00057",
+      "actor_user_id": "USR-00003",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "187f4394",
+      "details": {},
+      "created_at": "2026-05-09T14:27:55.115689+00:00"
+    },
+    {
+      "audit_id": "ADT-00058",
+      "actor_user_id": "USR-00003",
+      "action": "application_created",
+      "target_type": "application",
+      "target_id": "APP-00007",
+      "details": {
+        "vacancy_id": "VAC-00012"
+      },
+      "created_at": "2026-05-09T14:28:21.376331+00:00"
+    },
+    {
+      "audit_id": "ADT-00059",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00007",
+      "details": {
+        "note": "Manual recheck models: matching"
+      },
+      "created_at": "2026-05-09T14:28:51.869568+00:00"
+    },
+    {
+      "audit_id": "ADT-00060",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00007",
+      "details": {
+        "note": "Manual recheck models: matching"
+      },
+      "created_at": "2026-05-09T14:28:54.629868+00:00"
+    },
+    {
+      "audit_id": "ADT-00061",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00007",
+      "details": {
+        "note": "Manual recheck models: matching"
+      },
+      "created_at": "2026-05-09T14:28:55.238288+00:00"
+    },
+    {
+      "audit_id": "ADT-00062",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00007",
+      "details": {
+        "note": "Manual recheck models: matching"
+      },
+      "created_at": "2026-05-09T14:33:23.603972+00:00"
+    },
+    {
+      "audit_id": "ADT-00063",
+      "actor_user_id": "USR-00002",
+      "action": "application_status_updated",
+      "target_type": "application",
+      "target_id": "APP-00007",
+      "details": {
+        "status": "Shortlisted"
+      },
+      "created_at": "2026-05-09T14:33:41.245061+00:00"
+    },
+    {
+      "audit_id": "ADT-00064",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00004",
+      "details": {
+        "note": "Manual recheck models: matching"
+      },
+      "created_at": "2026-05-09T14:34:01.308835+00:00"
+    },
+    {
+      "audit_id": "ADT-00065",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "3db6aa53",
+      "details": {},
+      "created_at": "2026-05-09T16:37:30.950220+00:00"
+    },
+    {
+      "audit_id": "ADT-00066",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T16:39:23.728869+00:00"
+    },
+    {
+      "audit_id": "ADT-00067",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "e58d7dfd",
+      "details": {},
+      "created_at": "2026-05-09T16:42:17.380564+00:00"
+    },
+    {
+      "audit_id": "ADT-00068",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T16:43:56.181668+00:00"
+    },
+    {
+      "audit_id": "ADT-00069",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T16:45:40.729019+00:00"
+    },
+    {
+      "audit_id": "ADT-00070",
+      "actor_user_id": "USR-00002",
+      "action": "vacancy_created",
+      "target_type": "vacancy",
+      "target_id": "VAC-00013",
+      "details": {},
+      "created_at": "2026-05-09T16:47:41.971664+00:00"
+    },
+    {
+      "audit_id": "ADT-00071",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: risk"
+      },
+      "created_at": "2026-05-09T16:49:39.758168+00:00"
+    },
+    {
+      "audit_id": "ADT-00072",
+      "actor_user_id": "USR-00003",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "dcf04a6e",
+      "details": {},
+      "created_at": "2026-05-09T16:52:13.876679+00:00"
+    },
+    {
+      "audit_id": "ADT-00073",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00002",
+      "details": {
+        "note": "Manual recheck models: matching"
+      },
+      "created_at": "2026-05-09T17:02:21.249500+00:00"
+    },
+    {
+      "audit_id": "ADT-00074",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: credentials"
+      },
+      "created_at": "2026-05-09T17:18:29.178188+00:00"
+    },
+    {
+      "audit_id": "ADT-00075",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-09T17:22:12.038722+00:00"
+    },
+    {
+      "audit_id": "ADT-00076",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T18:57:54.334331+00:00"
+    },
+    {
+      "audit_id": "ADT-00077",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: credentials"
+      },
+      "created_at": "2026-05-09T18:58:40.388889+00:00"
+    },
+    {
+      "audit_id": "ADT-00078",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T18:58:50.966303+00:00"
+    },
+    {
+      "audit_id": "ADT-00079",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T18:58:57.433026+00:00"
+    },
+    {
+      "audit_id": "ADT-00080",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:02:26.260717+00:00"
+    },
+    {
+      "audit_id": "ADT-00081",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00002",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:02:33.336841+00:00"
+    },
+    {
+      "audit_id": "ADT-00082",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00007",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:02:44.579307+00:00"
+    },
+    {
+      "audit_id": "ADT-00083",
+      "actor_user_id": "USR-00003",
+      "action": "application_created",
+      "target_type": "application",
+      "target_id": "APP-00008",
+      "details": {
+        "vacancy_id": "VAC-00008"
+      },
+      "created_at": "2026-05-09T19:03:25.808003+00:00"
+    },
+    {
+      "audit_id": "ADT-00084",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00008",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:03:38.579586+00:00"
+    },
+    {
+      "audit_id": "ADT-00085",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00008",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:03:40.079771+00:00"
+    },
+    {
+      "audit_id": "ADT-00086",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00008",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:03:40.663905+00:00"
+    },
+    {
+      "audit_id": "ADT-00087",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00008",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:03:41.131015+00:00"
+    },
+    {
+      "audit_id": "ADT-00088",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00008",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:03:41.347259+00:00"
+    },
+    {
+      "audit_id": "ADT-00089",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00008",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:03:41.533322+00:00"
+    },
+    {
+      "audit_id": "ADT-00090",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00008",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:03:41.699704+00:00"
+    },
+    {
+      "audit_id": "ADT-00091",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00008",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:03:41.879779+00:00"
+    },
+    {
+      "audit_id": "ADT-00092",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00008",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:03:42.012188+00:00"
+    },
+    {
+      "audit_id": "ADT-00093",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00008",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:03:54.866218+00:00"
+    },
+    {
+      "audit_id": "ADT-00094",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:07:25.804468+00:00"
+    },
+    {
+      "audit_id": "ADT-00095",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00008",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:07:43.017186+00:00"
+    },
+    {
+      "audit_id": "ADT-00096",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00007",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:07:52.534094+00:00"
+    },
+    {
+      "audit_id": "ADT-00097",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00007",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-09T19:11:55.754692+00:00"
+    },
+    {
+      "audit_id": "ADT-00098",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: credentials"
+      },
+      "created_at": "2026-05-09T19:12:04.429274+00:00"
+    },
+    {
+      "audit_id": "ADT-00099",
+      "actor_user_id": "USR-00003",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "ac3cc188",
+      "details": {},
+      "created_at": "2026-05-10T10:55:23.056323+00:00"
+    },
+    {
+      "audit_id": "ADT-00100",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "839c767b",
+      "details": {},
+      "created_at": "2026-05-10T10:55:25.856882+00:00"
+    },
+    {
+      "audit_id": "ADT-00101",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: credentials"
+      },
+      "created_at": "2026-05-10T11:35:27.063722+00:00"
+    },
+    {
+      "audit_id": "ADT-00102",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-10T12:44:45.287566+00:00"
+    },
+    {
+      "audit_id": "ADT-00103",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: matching"
+      },
+      "created_at": "2026-05-10T12:44:47.619593+00:00"
+    },
+    {
+      "audit_id": "ADT-00104",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: risk"
+      },
+      "created_at": "2026-05-10T12:44:50.312176+00:00"
+    },
+    {
+      "audit_id": "ADT-00105",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-10T12:45:20.252332+00:00"
+    },
+    {
+      "audit_id": "ADT-00106",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: interview"
+      },
+      "created_at": "2026-05-10T12:45:46.242240+00:00"
+    },
+    {
+      "audit_id": "ADT-00107",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-10T17:53:24.401021+00:00"
+    },
+    {
+      "audit_id": "ADT-00108",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00001",
+      "details": {
+        "note": "Manual recheck models: resume"
+      },
+      "created_at": "2026-05-10T17:56:29.354353+00:00"
+    }
+  ]
+}
