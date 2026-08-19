@@ -2,15 +2,15 @@
   "meta": {
     "version": 1,
     "created_at": "2026-05-03T07:49:37.586844+00:00",
-    "updated_at": "2026-05-10T17:56:29.354362+00:00"
+    "updated_at": "2026-06-12T06:37:59.402071+00:00"
   },
   "counters": {
     "company": 1,
     "user": 3,
     "vacancy": 13,
-    "application": 8,
+    "application": 10,
     "interview": 0,
-    "audit": 108
+    "audit": 115
   },
   "companies": [
     {
@@ -134,6 +134,14 @@
     "839c767bb3c440c8b2f4f8076d10906a": {
       "user_id": "USR-00002",
       "expires_at": "2026-05-10T22:55:25.856850+00:00"
+    },
+    "fa5d671570934d33babbc6d24a2dc218": {
+      "user_id": "USR-00003",
+      "expires_at": "2026-06-12T18:35:33.392295+00:00"
+    },
+    "2a5c639281b64f0abd75e3bd668753e6": {
+      "user_id": "USR-00002",
+      "expires_at": "2026-06-12T18:36:00.150358+00:00"
     }
   },
   "vacancies": [
@@ -1887,7 +1895,117 @@
           },
           "skill_evidence": [],
           "matched_required_skills": [],
-          "explanation": "Resume parser detected profile fields with regex, section signals, skill dictionary matches, and HR feature inference rules."
+          "trained_model": {
+            "model_name": "tfidf_logistic_resume_explainer_v1",
+            "model_source": "local_synthetic_resume_section_training+weak_labeled_dataset:sl_resumes.json",
+            "label_scores": [
+              {
+                "label": "education_credentials",
+                "description": "Education and credential evidence",
+                "confidence_0_100": 67.24,
+                "evidence_terms": [
+                  "bachelor",
+                  "business",
+                  "bachelor of",
+                  "education",
+                  "sem",
+                  "management"
+                ]
+              },
+              {
+                "label": "experience_depth",
+                "description": "Professional experience depth",
+                "confidence_0_100": 62.33,
+                "evidence_terms": [
+                  "experience",
+                  "business",
+                  "sit",
+                  "city",
+                  "experience education",
+                  "sit amet"
+                ]
+              },
+              {
+                "label": "frontend_engineering",
+                "description": "Frontend engineering profile",
+                "confidence_0_100": 55.53,
+                "evidence_terms": [
+                  "design",
+                  "sit amet",
+                  "amet",
+                  "manager",
+                  "adipiscing",
+                  "adipiscing elit"
+                ]
+              },
+              {
+                "label": "leadership_management",
+                "description": "Leadership and management evidence",
+                "confidence_0_100": 28.8,
+                "evidence_terms": [
+                  "manager",
+                  "business",
+                  "management",
+                  "of business",
+                  "product",
+                  "city"
+                ]
+              },
+              {
+                "label": "marketing_sales",
+                "description": "Marketing and sales signal",
+                "confidence_0_100": 28.09,
+                "evidence_terms": [
+                  "business",
+                  "product",
+                  "manager",
+                  "of business",
+                  "management",
+                  "business management"
+                ]
+              },
+              {
+                "label": "backend_engineering",
+                "description": "Backend engineering profile",
+                "confidence_0_100": 25.89,
+                "evidence_terms": [
+                  "sem",
+                  "business management",
+                  "design",
+                  "business",
+                  "of business",
+                  "management"
+                ]
+              },
+              {
+                "label": "entry_level",
+                "description": "Entry-level profile signal",
+                "confidence_0_100": 22.38,
+                "evidence_terms": [
+                  "business",
+                  "design",
+                  "ut",
+                  "product",
+                  "bachelor of",
+                  "bachelor"
+                ]
+              },
+              {
+                "label": "human_resources",
+                "description": "Human resources signal",
+                "confidence_0_100": 22.29,
+                "evidence_terms": [
+                  "ut",
+                  "bachelor",
+                  "product",
+                  "business",
+                  "awards",
+                  "any"
+                ]
+              }
+            ]
+          },
+          "explanation": "Resume parser detected profile fields with regex, section signals, skill dictionary matches, HR feature inference rules, and a trained TF-IDF logistic explainer model."
         },
         "feature_inference": {
           "inferred_fields": [
@@ -1969,9 +2087,9 @@
           "verification_note": "This validates evidence in CV text only. HR should verify certificates with issuing institutions before final hiring decisions."
         },
         "risk": {
-          "attrition_probability": 0.1338,
-          "retention_probability": 0.8662,
-          "attrition_risk_score_0_100": 13.38,
+          "attrition_probability": 0.0634,
+          "retention_probability": 0.9366,
+          "attrition_risk_score_0_100": 6.34,
           "predicted_attrition": 0,
           "risk_band": "LOW",
           "risk_band_rule": "LOW < 35, MEDIUM 35-65, HIGH > 65",
@@ -1979,7 +2097,7 @@
             {
               "name": "TotalWorkingYears",
               "effect": "lower risk",
-              "note": "strong experience history"
+              "note": "strong experience history; default used"
             },
             {
               "name": "OverTime",
@@ -2067,11 +2185,557 @@
           "timestamp": "2026-05-09T19:07:43.017176+00:00",
           "note": "Manual recheck models: resume",
           "actor_user_id": "USR-00002"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-06-12T06:37:59.402032+00:00",
+          "note": "Manual recheck models: risk",
+          "actor_user_id": "USR-00002"
         }
       ],
       "final_decision": null,
       "created_at": "2026-05-09T19:03:25.807997+00:00",
-      "updated_at": "2026-05-09T19:07:43.017171+00:00"
+      "updated_at": "2026-06-12T06:37:59.402016+00:00"
+    },
+    {
+      "application_id": "APP-00009",
+      "vacancy_id": "VAC-00003",
+      "candidate_id": "USR-00003",
+      "candidate_name": "Default Candidate",
+      "candidate_email": "candidate@talentai.local",
+      "resume": {
+        "source": "upload",
+        "file_name": "super_ultra_high_attrition_risk_cv.pdf",
+        "text_char_count": 3120,
+        "skills": [],
+        "skills_detected": [],
+        "explainable_ai": {
+          "extraction_stats": {
+            "text_char_count": 700,
+            "word_count": 77,
+            "line_count": 15,
+            "skill_count": 0,
+            "inferred_field_count": 4,
+            "detected_section_count": 2,
+            "skill_density_per_100_words": 0.0,
+            "required_skill_coverage_0_100": 0.0,
+            "contact_signal_count": 2,
+            "assumption_count": 4,
+            "completeness_score_0_100": 66.67
+          },
+          "completeness": {
+            "name": true,
+            "email": true,
+            "phone": true,
+            "skills": false,
+            "experience_signal": true,
+            "education_signal": false
+          },
+          "section_signals": {
+            "experience": 3,
+            "education": 0,
+            "skills": 1,
+            "certifications": 0
+          },
+          "skill_evidence": [],
+          "matched_required_skills": [],
+          "trained_model": {
+            "model_name": "tfidf_logistic_resume_explainer_v1",
+            "model_source": "local_synthetic_resume_section_training+weak_labeled_dataset:sl_resumes.json",
+            "label_scores": [
+              {
+                "label": "experience_depth",
+                "description": "Professional experience depth",
+                "confidence_0_100": 79.02,
+                "evidence_terms": [
+                  "experience",
+                  "experience in",
+                  "worked",
+                  "employment",
+                  "apr",
+                  "engineer"
+                ]
+              },
+              {
+                "label": "education_credentials",
+                "description": "Education and credential evidence",
+                "confidence_0_100": 65.48,
+                "evidence_terms": [
+                  "history",
+                  "projects",
+                  "high",
+                  "worked",
+                  "higher",
+                  "software"
+                ]
+              },
+              {
+                "label": "technical_skills",
+                "description": "Technical skill evidence",
+                "confidence_0_100": 61.19,
+                "evidence_terms": [
+                  "software",
+                  "engineer",
+                  "projects",
+                  "technologies",
+                  "under",
+                  "support"
+                ]
+              },
+              {
+                "label": "frontend_engineering",
+                "description": "Frontend engineering profile",
+                "confidence_0_100": 43.13,
+                "evidence_terms": [
+                  "client",
+                  "engineer",
+                  "projects",
+                  "technologies",
+                  "salary",
+                  "location"
+                ]
+              },
+              {
+                "label": "data_analytics",
+                "description": "Data analytics profile",
+                "confidence_0_100": 40.82,
+                "evidence_terms": [
+                  "location",
+                  "risk",
+                  "deadlines",
+                  "multiple",
+                  "driven",
+                  "experience in"
+                ]
+              },
+              {
+                "label": "backend_engineering",
+                "description": "Backend engineering profile",
+                "confidence_0_100": 39.62,
+                "evidence_terms": [
+                  "software",
+                  "technologies",
+                  "software engineer",
+                  "location",
+                  "driven",
+                  "rapid"
+                ]
+              },
+              {
+                "label": "human_resources",
+                "description": "Human resources signal",
+                "confidence_0_100": 39.16,
+                "evidence_terms": [
+                  "life",
+                  "sri",
+                  "flexibility",
+                  "environments",
+                  "salary",
+                  "location"
+                ]
+              },
+              {
+                "label": "communication",
+                "description": "Communication evidence",
+                "confidence_0_100": 36.54,
+                "evidence_terms": [
+                  "support",
+                  "software",
+                  "support and",
+                  "high",
+                  "highly",
+                  "opportunities"
+                ]
+              }
+            ]
+          },
+          "explanation": "Resume parser detected profile fields with regex, section signals, skill dictionary matches, HR feature inference rules, and a trained TF-IDF logistic explainer model."
+        },
+        "feature_inference": {
+          "inferred_fields": [
+            "EducationField",
+            "JobRole",
+            "Department",
+            "OverTime"
+          ],
+          "assumptions_used": [
+            "EducationField inferred as Technical Degree from CV keywords.",
+            "JobRole inferred from CV title/keyword matches.",
+            "Department inferred from detected job role.",
+            "OverTime inferred as Yes from overtime/night-shift mention."
+          ],
+          "raw_features": {
+            "EducationField": "Technical Degree",
+            "JobRole": "Research Scientist",
+            "Department": "Research & Development",
+            "OverTime": "Yes"
+          }
+        },
+        "preview": "Super Ultra High Attrition Risk CV\nPersonal Information\nName: Ashen Rodrigo\nEmail: ashen.rodrigo.dev@gmail.com\nPhone: +94 77 991 4482\nLocation: Colombo, Sri Lanka\nMarital Status: Single\nProfessional Summary\nHighly career-driven Software Engineer with experience in multiple high-pressure organizations, startup\nenvironments, and short-term contracts. Frequently worked overtime, night shifts, weekend support, and\ntravel-intensive client projects under stressful deadlines. Looking for significantly higher salary growth, rapid\npromotions, overseas opportunities, remote flexibility, and improved work-life balance.\nEmployment History\nSoftware Engineer \u2013 VelocityStack Technologies\nFeb 2026 \u2013 Apr 202"
+      },
+      "ai_scores": {
+        "matching": {
+          "target_id": "VAC-00003",
+          "target_title": "Frontend Developer",
+          "score_0_100": 62.71,
+          "match_band": "MEDIUM",
+          "explanation": "Strong alignment on js, react, frontend. Missing emphasis on react, frontend, js.",
+          "matched_keywords": [
+            "js",
+            "react",
+            "frontend",
+            "node",
+            "user",
+            "component"
+          ],
+          "missing_keywords": [
+            "react",
+            "frontend",
+            "js",
+            "responsive",
+            "typescript",
+            "component"
+          ],
+          "breakdown": {
+            "semantic_similarity": 14.38,
+            "keyword_overlap": 84.62,
+            "skill_overlap": 100.0,
+            "title_alignment": 100.0,
+            "experience_alignment": 15.0
+          },
+          "rank": 1
+        },
+        "matching_summary": "Best matching role is 'Frontend Developer' with score 62.71.",
+        "fit_score_0_100": 72.25,
+        "fit_band": "MEDIUM",
+        "ai_recommendation": "Final Panel Review",
+        "ai_recommendation_reason": "Borderline profile. Collect additional interview signals before final decision.",
+        "credentials": {
+          "model": "credential_validation_rule_model_v1",
+          "credential_trust_score_0_100": 55.0,
+          "credential_trust_band": "MEDIUM",
+          "degrees": [
+            {
+              "name": "Bachelor's Degree",
+              "level": 3,
+              "field": "Business / Management",
+              "year": "2025",
+              "issuer_hint": null,
+              "evidence": "Better compensation opportunity.\n\nEducation\nBSc (Hons) in Software Engineering\nSLIIT University \u2013 Graduated 2025\nTechnical Skil"
+            }
+          ],
+          "certifications": [],
+          "role_alignment_hits": 0,
+          "flags": [
+            "Degree detected, but institution/issuer was not clearly identified."
+          ],
+          "summary": "Credential evidence is present but should be verified by HR.",
+          "verification_note": "This validates evidence in CV text only. HR should verify certificates with issuing institutions before final hiring decisions."
+        },
+        "risk": {
+          "attrition_probability": 0.0265,
+          "retention_probability": 0.9735,
+          "attrition_risk_score_0_100": 2.65,
+          "predicted_attrition": 0,
+          "risk_band": "LOW",
+          "risk_band_rule": "LOW < 35, MEDIUM 35-65, HIGH > 65",
+          "top_factors": [
+            {
+              "name": "OverTime",
+              "effect": "higher risk",
+              "note": "overtime expectation can increase churn"
+            }
+          ]
+        }
+      },
+      "status": "Applied",
+      "status_history": [
+        {
+          "status": "Applied",
+          "timestamp": "2026-06-12T06:36:50.690978+00:00",
+          "note": "Application submitted",
+          "actor_user_id": "USR-00003"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-06-12T06:37:49.900400+00:00",
+          "note": "Manual recheck models: risk",
+          "actor_user_id": "USR-00002"
+        }
+      ],
+      "final_decision": null,
+      "created_at": "2026-06-12T06:36:50.690985+00:00",
+      "updated_at": "2026-06-12T06:37:49.900379+00:00"
+    },
+    {
+      "application_id": "APP-00010",
+      "vacancy_id": "VAC-00009",
+      "candidate_id": "USR-00003",
+      "candidate_name": "Default Candidate",
+      "candidate_email": "candidate@talentai.local",
+      "resume": {
+        "source": "upload",
+        "file_name": "super_ultra_high_attrition_risk_cv.pdf",
+        "text_char_count": 3120,
+        "skills": [],
+        "skills_detected": [],
+        "explainable_ai": {
+          "extraction_stats": {
+            "text_char_count": 700,
+            "word_count": 77,
+            "line_count": 15,
+            "skill_count": 0,
+            "inferred_field_count": 4,
+            "detected_section_count": 2,
+            "skill_density_per_100_words": 0.0,
+            "required_skill_coverage_0_100": 0.0,
+            "contact_signal_count": 2,
+            "assumption_count": 4,
+            "completeness_score_0_100": 66.67
+          },
+          "completeness": {
+            "name": true,
+            "email": true,
+            "phone": true,
+            "skills": false,
+            "experience_signal": true,
+            "education_signal": false
+          },
+          "section_signals": {
+            "experience": 3,
+            "education": 0,
+            "skills": 1,
+            "certifications": 0
+          },
+          "skill_evidence": [],
+          "matched_required_skills": [],
+          "trained_model": {
+            "model_name": "tfidf_logistic_resume_explainer_v1",
+            "model_source": "local_synthetic_resume_section_training+weak_labeled_dataset:sl_resumes.json",
+            "label_scores": [
+              {
+                "label": "experience_depth",
+                "description": "Professional experience depth",
+                "confidence_0_100": 79.02,
+                "evidence_terms": [
+                  "experience",
+                  "experience in",
+                  "worked",
+                  "employment",
+                  "apr",
+                  "engineer"
+                ]
+              },
+              {
+                "label": "education_credentials",
+                "description": "Education and credential evidence",
+                "confidence_0_100": 65.48,
+                "evidence_terms": [
+                  "history",
+                  "projects",
+                  "high",
+                  "worked",
+                  "higher",
+                  "software"
+                ]
+              },
+              {
+                "label": "technical_skills",
+                "description": "Technical skill evidence",
+                "confidence_0_100": 61.19,
+                "evidence_terms": [
+                  "software",
+                  "engineer",
+                  "projects",
+                  "technologies",
+                  "under",
+                  "support"
+                ]
+              },
+              {
+                "label": "frontend_engineering",
+                "description": "Frontend engineering profile",
+                "confidence_0_100": 43.13,
+                "evidence_terms": [
+                  "client",
+                  "engineer",
+                  "projects",
+                  "technologies",
+                  "salary",
+                  "location"
+                ]
+              },
+              {
+                "label": "data_analytics",
+                "description": "Data analytics profile",
+                "confidence_0_100": 40.82,
+                "evidence_terms": [
+                  "location",
+                  "risk",
+                  "deadlines",
+                  "multiple",
+                  "driven",
+                  "experience in"
+                ]
+              },
+              {
+                "label": "backend_engineering",
+                "description": "Backend engineering profile",
+                "confidence_0_100": 39.62,
+                "evidence_terms": [
+                  "software",
+                  "technologies",
+                  "software engineer",
+                  "location",
+                  "driven",
+                  "rapid"
+                ]
+              },
+              {
+                "label": "human_resources",
+                "description": "Human resources signal",
+                "confidence_0_100": 39.16,
+                "evidence_terms": [
+                  "life",
+                  "sri",
+                  "flexibility",
+                  "environments",
+                  "salary",
+                  "location"
+                ]
+              },
+              {
+                "label": "communication",
+                "description": "Communication evidence",
+                "confidence_0_100": 36.54,
+                "evidence_terms": [
+                  "support",
+                  "software",
+                  "support and",
+                  "high",
+                  "highly",
+                  "opportunities"
+                ]
+              }
+            ]
+          },
+          "explanation": "Resume parser detected profile fields with regex, section signals, skill dictionary matches, HR feature inference rules, and a trained TF-IDF logistic explainer model."
+        },
+        "feature_inference": {
+          "inferred_fields": [
+            "EducationField",
+            "JobRole",
+            "Department",
+            "OverTime"
+          ],
+          "assumptions_used": [
+            "EducationField inferred as Technical Degree from CV keywords.",
+            "JobRole inferred from CV title/keyword matches.",
+            "Department inferred from detected job role.",
+            "OverTime inferred as Yes from overtime/night-shift mention."
+          ],
+          "raw_features": {
+            "EducationField": "Technical Degree",
+            "JobRole": "Research Scientist",
+            "Department": "Research & Development",
+            "OverTime": "Yes"
+          }
+        },
+        "preview": "Super Ultra High Attrition Risk CV\nPersonal Information\nName: Ashen Rodrigo\nEmail: ashen.rodrigo.dev@gmail.com\nPhone: +94 77 991 4482\nLocation: Colombo, Sri Lanka\nMarital Status: Single\nProfessional Summary\nHighly career-driven Software Engineer with experience in multiple high-pressure organizations, startup\nenvironments, and short-term contracts. Frequently worked overtime, night shifts, weekend support, and\ntravel-intensive client projects under stressful deadlines. Looking for significantly higher salary growth, rapid\npromotions, overseas opportunities, remote flexibility, and improved work-life balance.\nEmployment History\nSoftware Engineer \u2013 VelocityStack Technologies\nFeb 2026 \u2013 Apr 202"
+      },
+      "ai_scores": {
+        "matching": {
+          "target_id": "VAC-00009",
+          "target_title": "Cloud Engineer",
+          "score_0_100": 61.07,
+          "match_band": "MEDIUM",
+          "explanation": "Strong alignment on product, aws, js. Missing emphasis on design, aws, design leadership.",
+          "matched_keywords": [
+            "product",
+            "aws",
+            "js",
+            "design",
+            "node",
+            "user"
+          ],
+          "missing_keywords": [
+            "design",
+            "aws",
+            "design leadership",
+            "design manager",
+            "experience design",
+            "user experience"
+          ],
+          "breakdown": {
+            "semantic_similarity": 12.33,
+            "keyword_overlap": 80.0,
+            "skill_overlap": 100.0,
+            "title_alignment": 100.0,
+            "experience_alignment": 15.0
+          },
+          "rank": 1
+        },
+        "matching_summary": "Best matching role is 'Cloud Engineer' with score 61.07.",
+        "fit_score_0_100": 71.19,
+        "fit_band": "MEDIUM",
+        "ai_recommendation": "Final Panel Review",
+        "ai_recommendation_reason": "Borderline profile. Collect additional interview signals before final decision.",
+        "credentials": {
+          "model": "credential_validation_rule_model_v1",
+          "credential_trust_score_0_100": 55.0,
+          "credential_trust_band": "MEDIUM",
+          "degrees": [
+            {
+              "name": "Bachelor's Degree",
+              "level": 3,
+              "field": "Business / Management",
+              "year": "2025",
+              "issuer_hint": null,
+              "evidence": "Better compensation opportunity.\n\nEducation\nBSc (Hons) in Software Engineering\nSLIIT University \u2013 Graduated 2025\nTechnical Skil"
+            }
+          ],
+          "certifications": [],
+          "role_alignment_hits": 0,
+          "flags": [
+            "Degree detected, but institution/issuer was not clearly identified."
+          ],
+          "summary": "Credential evidence is present but should be verified by HR.",
+          "verification_note": "This validates evidence in CV text only. HR should verify certificates with issuing institutions before final hiring decisions."
+        },
+        "risk": {
+          "attrition_probability": 0.0265,
+          "retention_probability": 0.9735,
+          "attrition_risk_score_0_100": 2.65,
+          "predicted_attrition": 0,
+          "risk_band": "LOW",
+          "risk_band_rule": "LOW < 35, MEDIUM 35-65, HIGH > 65",
+          "top_factors": [
+            {
+              "name": "OverTime",
+              "effect": "higher risk",
+              "note": "overtime expectation can increase churn"
+            }
+          ]
+        }
+      },
+      "status": "Applied",
+      "status_history": [
+        {
+          "status": "Applied",
+          "timestamp": "2026-06-12T06:37:23.905179+00:00",
+          "note": "Application submitted",
+          "actor_user_id": "USR-00003"
+        },
+        {
+          "status": "Applied",
+          "timestamp": "2026-06-12T06:37:41.216121+00:00",
+          "note": "Manual recheck models: risk",
+          "actor_user_id": "USR-00002"
+        }
+      ],
+      "final_decision": null,
+      "created_at": "2026-06-12T06:37:23.905185+00:00",
+      "updated_at": "2026-06-12T06:37:41.216107+00:00"
     }
   ],
   "interviews": [],
@@ -3201,6 +3865,79 @@
         "note": "Manual recheck models: resume"
       },
       "created_at": "2026-05-10T17:56:29.354353+00:00"
+    },
+    {
+      "audit_id": "ADT-00109",
+      "actor_user_id": "USR-00003",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "fa5d6715",
+      "details": {},
+      "created_at": "2026-06-12T06:35:33.392354+00:00"
+    },
+    {
+      "audit_id": "ADT-00110",
+      "actor_user_id": "USR-00002",
+      "action": "login",
+      "target_type": "session",
+      "target_id": "2a5c6392",
+      "details": {},
+      "created_at": "2026-06-12T06:36:00.150420+00:00"
+    },
+    {
+      "audit_id": "ADT-00111",
+      "actor_user_id": "USR-00003",
+      "action": "application_created",
+      "target_type": "application",
+      "target_id": "APP-00009",
+      "details": {
+        "vacancy_id": "VAC-00003"
+      },
+      "created_at": "2026-06-12T06:36:50.691000+00:00"
+    },
+    {
+      "audit_id": "ADT-00112",
+      "actor_user_id": "USR-00003",
+      "action": "application_created",
+      "target_type": "application",
+      "target_id": "APP-00010",
+      "details": {
+        "vacancy_id": "VAC-00009"
+      },
+      "created_at": "2026-06-12T06:37:23.905199+00:00"
+    },
+    {
+      "audit_id": "ADT-00113",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00010",
+      "details": {
+        "note": "Manual recheck models: risk"
+      },
+      "created_at": "2026-06-12T06:37:41.216136+00:00"
+    },
+    {
+      "audit_id": "ADT-00114",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00009",
+      "details": {
+        "note": "Manual recheck models: risk"
+      },
+      "created_at": "2026-06-12T06:37:49.900414+00:00"
+    },
+    {
+      "audit_id": "ADT-00115",
+      "actor_user_id": "USR-00002",
+      "action": "application_ai_scores_updated",
+      "target_type": "application",
+      "target_id": "APP-00008",
+      "details": {
+        "note": "Manual recheck models: risk"
+      },
+      "created_at": "2026-06-12T06:37:59.402059+00:00"
     }
   ]
 }
