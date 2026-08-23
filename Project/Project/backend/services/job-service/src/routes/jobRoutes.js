@@ -1,0 +1,28 @@
+import { Router } from "express";
+import { appendInterviewTranscript, createApplication, createInterview, createJob, getInterviewAnalysisContext, getInterviewMediaRequest, getInterviewRoom, getInterviewVideoFrame, getJob, listApplications, listInterviews, listInterviewTranscript, listJobs, listMyApplications, listMyInterviews, requestInterviewMedia, saveInterviewAnswer, saveInterviewOffer, saveInterviewVideoFrame, updateApplication, updateApplicationScore, updateInterview, updateJob } from "../controllers/jobController.js";
+
+const router = Router();
+router.get("/jobs", listJobs);
+router.get("/jobs/:jobId", getJob);
+router.post("/jobs", createJob);
+router.patch("/jobs/:jobId", updateJob);
+router.post("/jobs/:jobId/applications", createApplication);
+router.get("/applications", listApplications);
+router.get("/applications/me", listMyApplications);
+router.patch("/applications/:applicationId", updateApplication);
+router.patch("/applications/:applicationId/score", updateApplicationScore);
+router.get("/interviews", listInterviews);
+router.get("/interviews/me", listMyInterviews);
+router.post("/interviews", createInterview);
+router.patch("/interviews/:interviewId", updateInterview);
+router.get("/interviews/:interviewId/room", getInterviewRoom);
+router.post("/interviews/:interviewId/room/offer", saveInterviewOffer);
+router.post("/interviews/:interviewId/room/answer", saveInterviewAnswer);
+router.get("/interviews/:interviewId/room/video-frame", getInterviewVideoFrame);
+router.post("/interviews/:interviewId/room/video-frame", saveInterviewVideoFrame);
+router.get("/interviews/:interviewId/room/media-request", getInterviewMediaRequest);
+router.post("/interviews/:interviewId/room/media-request", requestInterviewMedia);
+router.get("/interviews/:interviewId/transcript", listInterviewTranscript);
+router.post("/interviews/:interviewId/transcript", appendInterviewTranscript);
+router.get("/interviews/:interviewId/analysis-context", getInterviewAnalysisContext);
+export default router;

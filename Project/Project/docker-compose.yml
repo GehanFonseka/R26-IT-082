@@ -1,0 +1,137 @@
+services:
+  frontend:
+    build: ./frontend
+    ports: ["5173:80"]
+    depends_on: [api-gateway]
+
+  api-gateway:
+    build: ./backend/api-gateway
+    ports: ["8080:8080"]
+    environment:
+      PORT: 8080
+      NODE_ENV: production
+      CORS_ORIGIN: http://localhost:5173
+      CV_EXTRACTION_SERVICE_URL: http://cv-extraction-service:4001
+      CV_MATCHING_SERVICE_URL: http://cv-matching-service:4002
+      ATTRITION_SERVICE_URL: http://attrition-service:4003
+      AUTH_SERVICE_URL: http://auth-service:3001
+      CANDIDATE_SERVICE_URL: http://candidate-service:3002
+      JOB_SERVICE_URL: http://job-service:4004
+      SPEECH_TO_TEXT_SERVICE_URL: http://speech-to-text-service:4005
+      INTERVIEW_ANALYSIS_SERVICE_URL: http://interview-analysis-service:4006
+      INTERVIEW_ANSWER_MODEL_SERVICE_URL: http://interview-answer-model-service:4010
+      CV_PROFILE_ANALYSIS_SERVICE_URL: http://cv-profile-analysis-service:4007
+      RESUME_STRENGTH_MODEL_SERVICE_URL: http://resume-strength-model-service:4009
+      JWT_SECRET: ${JWT_SECRET:-change-this-local-secret}
+    depends_on: [cv-extraction-service, cv-matching-service, attrition-service, attrition-model-service, resume-strength-model-service, interview-answer-model-service, speech-to-text-service, auth-service, candidate-service, job-service, interview-analysis-service, cv-profile-analysis-service]
+
+  cv-extraction-service:
+    build: ./backend/services/cv-extraction-service
+    environment: { PORT: 4001, NODE_ENV: production }
+
+  cv-matching-service:
+    build: ./backend/services/cv-matching-service
+    environment:
+      PORT: 4002
+      NODE_ENV: production
+      HF_MODEL_ID: Gehan77/cv-match-browser
+      MATCHING_THRESHOLD: 0.4399277865886688
+
+  attrition-service:
+    build: ./backend/services/attrition-service
+    environment:
+      PORT: 4003
+      NODE_ENV: production
+      ATTRITION_MODEL_SERVICE_URL: http://attrition-model-service:4008
+
+  attrition-model-service:
+    build: ./backend/services/attrition-model-service
+    environment:
+      PORT: 4008
+      MODEL_FILE: /app/attrition_risk_catboost_v7_optuna.joblib
+      MODEL_DATASET_FILE: /app/Sri_Lankan_Hiring_Attrition_Dataset.csv
+      MODEL_ID: attrition-risk-catboost-v7
+      MODEL_THRESHOLD: 0.33
+    ports: ["4008:4008"]
+
+  resume-strength-model-service:
+    build: ./backend/services/resume-strength-model-service
+    environment:
+      PORT: 4009
+      MODEL_DIR: /app/model
+      MODEL_DEVICE: ${RESUME_STRENGTH_MODEL_DEVICE:-cpu}
+      MODEL_MAX_LENGTH: ${RESUME_STRENGTH_MODEL_MAX_LENGTH:-256}
+    ports: ["4009:4009"]
+
+  interview-answer-model-service:
+    build: ./backend/services/interview-answer-model-service
+    environment:
+      PORT: 4010
+      MODEL_DIR: /app/model
+      MODEL_DEVICE: ${INTERVIEW_ANSWER_MODEL_DEVICE:-cpu}
+      MODEL_MAX_LENGTH: ${INTERVIEW_ANSWER_MODEL_MAX_LENGTH:-384}
+      MODEL_ID: Final_Interview_Answer_Scoring_Model_V2
+    ports: ["4010:4010"]
+
+  speech-to-text-service:
+    build: ./backend/services/speech-to-text-service
+    environment:
+      PORT: 4005
+      NODE_ENV: production
+      WHISPER_MODEL_SIZE: ${WHISPER_MODEL_SIZE:-tiny}
+      WHISPER_DEVICE: ${WHISPER_DEVICE:-cpu}
+      WHISPER_COMPUTE_TYPE: ${WHISPER_COMPUTE_TYPE:-int8}
+      WHISPER_BEAM_SIZE: ${WHISPER_BEAM_SIZE:-1}
+    ports: ["4005:4005"]
+    volumes:
+      - whisper-model-cache:/root/.cache/huggingface
+
+  auth-service:
+    build: ./backend/services/auth-service
+    environment:
+      PORT: 3001
+      NODE_ENV: production
+      JWT_SECRET: ${JWT_SECRET:-change-this-local-secret}
+      MONGODB_URI: ${MONGODB_URI}
+      MONGODB_DB_NAME: ${MONGODB_DB_NAME:-lanka_talent}
+      ADMIN_INVITE_CODE: ${ADMIN_INVITE_CODE:-change-me-admin-code}
+
+  candidate-service:
+    build: ./backend/services/candidate-service
+    environment:
+      PORT: 3002
+      NODE_ENV: production
+      MONGODB_URI: ${MONGODB_URI}
+      MONGODB_DB_NAME: ${MONGODB_DB_NAME:-lanka_talent}
+
+  job-service:
+    build: ./backend/services/job-service
+    environment:
+      PORT: 4004
+      NODE_ENV: production
+      MONGODB_URI: ${MONGODB_URI}
+      MONGODB_DB_NAME: ${MONGODB_DB_NAME:-lanka_talent}
+
+  interview-analysis-service:
+    build: ./backend/services/interview-analysis-service
+    environment:
+      PORT: 4006
+      NODE_ENV: production
+      JOB_SERVICE_URL: http://job-service:4004
+      MONGODB_URI: ${MONGODB_URI}
+      INTERVIEW_ANALYSIS_DB_NAME: ${INTERVIEW_ANALYSIS_DB_NAME:-lanka_talent_analysis}
+      INTERVIEW_NLI_MODEL_ID: ${INTERVIEW_NLI_MODEL_ID:-Xenova/nli-deberta-v3-xsmall}
+      INTERVIEW_ANSWER_MODEL_SERVICE_URL: http://interview-answer-model-service:4010
+
+  cv-profile-analysis-service:
+    build: ./backend/services/cv-profile-analysis-service
+    environment:
+      PORT: 4007
+      NODE_ENV: production
+      MONGODB_URI: ${MONGODB_URI}
+      CV_ANALYSIS_DB_NAME: ${CV_ANALYSIS_DB_NAME:-lanka_talent_analysis}
+      RESUME_STRENGTH_MODEL_SERVICE_URL: http://resume-strength-model-service:4009
+      REQUEST_TIMEOUT_MS: ${CV_ANALYSIS_REQUEST_TIMEOUT_MS:-120000}
+
+volumes:
+  whisper-model-cache:

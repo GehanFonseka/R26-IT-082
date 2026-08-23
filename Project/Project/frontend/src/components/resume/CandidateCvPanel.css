@@ -1,0 +1,70 @@
+.candidate-cv-panel__dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 142px;
+  margin-top: 5px !important;
+  padding: 20px;
+  flex-direction: column;
+  color: #dae0ff !important;
+  text-align: center;
+  background: rgba(124, 140, 255, 0.07);
+  border: 1px dashed rgba(124, 140, 255, 0.65);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.candidate-cv-panel__dropzone:hover,
+.candidate-cv-panel__dropzone--selected {
+  background: rgba(124, 140, 255, 0.14);
+  border-color: rgba(94, 234, 212, 0.7);
+  transform: translateY(-1px);
+}
+
+.candidate-cv-panel__dropzone input {
+  display: none;
+}
+
+.candidate-cv-panel__dropzone strong {
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 0.85rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.candidate-cv-panel__dropzone small {
+  margin-top: 6px;
+  color: var(--cv-muted);
+  font-weight: 500;
+}
+
+.candidate-cv-panel__upload-icon {
+  display: grid;
+  width: 37px;
+  height: 37px;
+  margin-bottom: 8px;
+  place-items: center;
+  color: #0b1220;
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: var(--cv-accent);
+  border-radius: 50%;
+}
+
+.candidate-cv-panel__status {
+  min-height: 23px;
+  margin-top: 11px;
+  color: var(--cv-muted);
+  font-size: 0.79rem;
+  line-height: 1.45;
+}
+
+.candidate-cv-panel__status--success {
+  color: #8de9d8;
+}
+
+.candidate-cv-panel__status--error {
+  color: #fda4af;
+}
