@@ -1,3 +1,0 @@
-John Doe
-8 years of experience in software engineering.
-MSc in Computer Science.
