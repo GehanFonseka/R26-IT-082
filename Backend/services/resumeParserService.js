@@ -7,7 +7,6 @@ export const parseResume = async (filePath) => {
     const fileBuffer = fs.readFileSync(filePath);
     let text = '';
 
-    // Check file type
     if (filePath.endsWith('.pdf')) {
       const pdfData = await pdfParse(fileBuffer);
       text = pdfData.text;
@@ -18,7 +17,6 @@ export const parseResume = async (filePath) => {
       throw new Error('Unsupported file format');
     }
 
-    // Parse skills
     const extractedSkills = parseSkills(text);
     const extractedExperience = parseExperience(text);
     const extractedEducation = parseEducation(text);
@@ -89,6 +87,7 @@ const parseSkills = (text) => {
 
   return [...new Set(foundSkills)];
 };
+
 
 const parseExperience = (text) => {
   // Look for common experience patterns

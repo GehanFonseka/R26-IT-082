@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import SkillProficiencyDashboard from "./SkillProficiencyDashboard";
 
@@ -12,12 +11,19 @@ export default function ResumeUpload() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await axios.post(
+    const res = await fetch(
       "http://127.0.0.1:8000/api/upload",
-      formData
+      {
+        method: "POST",
+        body: formData,
+      }
     );
 
-    setResult(res.data);
+    if (!res.ok) {
+      throw new Error(`Upload failed: ${res.status}`);
+    }
+
+    setResult(await res.json());
   };
 
   return (
