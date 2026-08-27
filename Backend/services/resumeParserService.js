@@ -18,7 +18,7 @@ export const parseResume = async (filePath) => {
       throw new Error('Unsupported file format');
     }
 
-
+    // Parse skills
     const extractedSkills = parseSkills(text);
     const extractedExperience = parseExperience(text);
     const extractedEducation = parseEducation(text);
@@ -34,7 +34,6 @@ export const parseResume = async (filePath) => {
     throw error;
   }
 };
-
 
 const parseSkills = (text) => {
   const commonSkills = [
@@ -88,12 +87,11 @@ const parseSkills = (text) => {
   const lowerText = text.toLowerCase();
   const foundSkills = commonSkills.filter(skill => lowerText.includes(skill));
 
-
   return [...new Set(foundSkills)];
 };
 
 const parseExperience = (text) => {
-
+  // Look for common experience patterns
   const patterns = [
     /(\d+)\+?\s*(?:years?|yrs?)\s+(?:of\s+)?(?:professional\s+)?experience/i,
     /experience:\s*(\d+)\+?\s*(?:years?|yrs?)/i,
