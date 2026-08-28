@@ -1,7 +1,0 @@
-fastapi
-uvicorn
-python-multipart
-pymongo
-python-dotenv
-pdfplumber
-spacy
