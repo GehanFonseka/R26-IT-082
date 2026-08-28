@@ -1,0 +1,15 @@
+.cv-topbar--admin .cv-topbar__breadcrumb { display: flex; }
+.cv-topbar--admin .cv-topbar__left { min-width: 40px; }
+.cv-topbar--admin .cv-topbar__status { display: inline-flex; }
+.cv-topbar__quick-actions { display: flex; align-items: center; gap: 9px; }
+.cv-topbar__quick-actions button,
+.cv-topbar__notifications { display: grid; width: 42px; height: 42px; place-items: center; color: #66748e; background: #fff; border: 1px solid #e6eaf3; border-radius: 13px; }
+.cv-topbar__quick-actions button:hover,
+.cv-topbar__quick-actions button:focus-visible,
+.cv-topbar__notifications:hover,
+.cv-topbar__notifications:focus-visible { color: #ff4045; background: #fff8f8; border-color: #ffd4d3; }
+.cv-topbar__notifications { position: relative; border-radius: 50%; }
+.cv-topbar__notifications b { position: absolute; top: -3px; right: -3px; display: grid; width: 16px; height: 16px; place-items: center; color: #fff; font-size: 9px; background: #ff4045; border: 2px solid #fff; border-radius: 50%; }
+.cv-topbar--admin .cv-topbar__avatar { background: #ff4045; border-color: #ff4045; box-shadow: 0 5px 14px rgba(255,64,69,.2); }
+.cv-topbar--admin .cv-topbar__avatar > i { background: #2bc4a4; }
+@media (max-width: 760px) { .cv-topbar__quick-actions { display: none; } }

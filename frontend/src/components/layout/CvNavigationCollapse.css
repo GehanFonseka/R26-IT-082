@@ -1,0 +1,70 @@
+.cv-navigation__collapse {
+  position: absolute;
+  top: 72px;
+  right: 8px;
+  z-index: 2;
+  display: grid;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  place-items: center;
+  color: #8b8ca7;
+  background: #fff;
+  border: 1px solid #e7e7ef;
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(70, 75, 119, .1);
+  transition: color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.cv-navigation__collapse:hover,
+.cv-navigation__collapse:focus-visible {
+  color: #ff4b43;
+  background: #fff5f4;
+  transform: scale(1.06);
+}
+
+.cv-navigation--collapsed {
+  width: 80px;
+  padding-right: 10px;
+  padding-left: 10px;
+  align-items: center;
+}
+
+.cv-navigation--collapsed .cv-navigation__window-controls {
+  gap: 6px;
+  padding: 0 0 18px;
+}
+
+.cv-navigation--collapsed .cv-navigation__window-controls i { width: 8px; height: 8px; }
+.cv-navigation--collapsed .cv-navigation__brand { width: 100%; padding: 0; justify-content: center; }
+.cv-navigation--collapsed .cv-navigation__brand-mark { margin: 0; }
+.cv-navigation--collapsed .cv-navigation__brand-copy,
+.cv-navigation--collapsed .cv-navigation__close,
+.cv-navigation--collapsed .cv-navigation__workspace > div:nth-child(2),
+.cv-navigation--collapsed .cv-navigation__label,
+.cv-navigation--collapsed .cv-navigation__item span,
+.cv-navigation--collapsed .cv-navigation__logout span { display: none; }
+
+.cv-navigation--collapsed .cv-navigation__workspace {
+  width: 60px;
+  justify-content: center;
+  gap: 5px;
+  margin: 25px 0 28px;
+  padding: 8px;
+}
+
+.cv-navigation--collapsed .cv-navigation__workspace-avatar { width: 29px; height: 29px; }
+.cv-navigation--collapsed .cv-navigation__workspace > .icon { width: 12px; height: 12px; }
+.cv-navigation--collapsed .cv-navigation__nav { width: 100%; align-items: center; gap: 7px; }
+.cv-navigation--collapsed .cv-navigation__item { width: 56px; min-height: 56px; justify-content: center; gap: 0; padding: 0; border-radius: 15px; }
+.cv-navigation--collapsed .cv-navigation__item .icon { width: 36px; height: 36px; flex-basis: 36px; padding: 8px; }
+.cv-navigation--collapsed .cv-navigation__bottom { width: 100%; align-items: center; gap: 10px; }
+.cv-navigation--collapsed .cv-navigation__user { width: 100%; flex-direction: column; gap: 10px; padding: 15px 0 5px; }
+.cv-navigation--collapsed .cv-navigation__logout { width: 40px; min-height: 36px; padding: 8px !important; }
+.cv-navigation--collapsed .cv-navigation__bottom > .cv-navigation__item { width: 56px; margin-top: 0; }
+
+.admin-app-shell:has(.cv-navigation--collapsed) .admin-app-shell__main { margin-left: 80px; }
+
+@media (max-width: 900px) {
+  .admin-app-shell:has(.cv-navigation--collapsed) .admin-app-shell__main { margin-left: 0; }
+}

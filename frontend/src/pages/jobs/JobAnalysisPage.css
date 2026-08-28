@@ -1,0 +1,130 @@
+.job-analysis-shell__main { min-height: 100vh; margin-left: 285px; background: #f4f4f2; }
+.job-analysis-page { min-height: calc(100vh - 62px); padding: 30px 24px 60px; color: #111; }
+.job-analysis-page__container { width: min(1080px, 100%); margin: 0 auto; }
+.job-analysis-page__back { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 28px; padding: 0; color: #555; font: inherit; font-size: .72rem; background: transparent; border: 0; cursor: pointer; }
+.job-analysis-page__back:hover { color: #111; }
+.job-analysis-page__header { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 22px; }
+.job-analysis-page__header h1 { margin: 8px 0 6px; color: #111; font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: -.055em; }
+.job-analysis-page__header p { margin: 0; color: #777; font-size: .78rem; }
+.job-analysis-page__model { display: inline-flex; align-items: center; gap: 6px; padding: 8px 10px; color: #087f73; font-size: .65rem; font-weight: 800; background: #e8faf7; border: 1px solid #c7ebe4; border-radius: 8px; white-space: nowrap; }
+.job-analysis-summary { display: grid; grid-template-columns: 190px 1fr; align-items: center; gap: 25px; padding: 24px; background: #111; border-radius: 16px; box-shadow: 0 14px 30px rgba(0,0,0,.08); }
+.job-analysis-summary__score { display: grid; gap: 4px; padding-right: 24px; border-right: 1px solid #333; }
+.job-analysis-summary__score span, .job-analysis-summary__label { color: #aaa; font-size: .62rem; text-transform: uppercase; letter-spacing: .06em; }
+.job-analysis-summary__score strong { color: #fff; font-size: 2.6rem; letter-spacing: -.08em; }
+.job-analysis-summary__score b { color: #5eead4; font-size: .7rem; }
+.job-analysis-summary h2 { margin: 6px 0; color: #fff; font-size: 1.2rem; }
+.job-analysis-summary p { margin: 0; color: #aaa; font-size: .72rem; line-height: 1.5; }
+.job-analysis-explanation { margin-top: 16px; padding: 23px; color: #eef2fc; background: #151515; border-radius: 16px; box-shadow: 0 14px 30px rgba(0,0,0,.08); }
+.job-analysis-explanation__heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 15px; }
+.job-analysis-explanation__heading > div > span { color: #5eead4; font-size: .62rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.job-analysis-explanation h2 { margin: 6px 0 0; color: #fff; font-size: 1.25rem; letter-spacing: -.04em; }
+.job-analysis-explanation__heading small { color: #929292; font-size: .64rem; }
+.job-analysis-explanation__summary, .job-analysis-explanation__score { max-width: 850px; color: #d7d7d7; font-size: .78rem; line-height: 1.6; }
+.job-analysis-explanation__score { color: #8de9d8; }
+.job-analysis-explanation__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+.job-analysis-explanation__grid article { padding: 16px; background: #202020; border: 1px solid #353535; border-radius: 11px; }
+.job-analysis-explanation h3 { margin: 0 0 10px; color: #fff; font-size: .82rem; }
+.job-analysis-explanation__item { display: grid; gap: 4px; padding: 11px 0; border-top: 1px solid #363636; }
+.job-analysis-explanation__item strong { color: #8de9d8; font-size: .73rem; }
+.job-analysis-explanation__item--gap strong { color: #f3c783; }
+.job-analysis-explanation__item em { margin-left: 5px; color: #aaa; font-size: .58rem; font-style: normal; text-transform: uppercase; }
+.job-analysis-explanation__item p { margin: 0; color: #d4d4d4; font-size: .68rem; line-height: 1.45; }
+.job-analysis-explanation__item small { color: #999; font-size: .61rem; line-height: 1.35; }
+.job-analysis-explanation__empty { margin: 0; color: #aaa; font-size: .68rem; line-height: 1.5; }
+.job-analysis-explanation__notice, .job-analysis-explanation__recommendations { display: grid; gap: 7px; margin-top: 15px; padding: 14px; background: #202020; border: 1px solid #353535; border-radius: 10px; }
+.job-analysis-explanation__notice strong, .job-analysis-explanation__recommendations h3 { margin: 0; color: #f3c783; font-size: .75rem; }
+.job-analysis-explanation__notice span, .job-analysis-explanation__recommendations span { color: #c9c9c9; font-size: .66rem; line-height: 1.4; }
+.job-analysis-explanation__notice b { color: #fff; }
+.job-analysis-explanation__recommendations h3 { color: #8de9d8; }
+.job-analysis-explanation__recommendations div { display: grid; gap: 3px; padding-top: 7px; border-top: 1px solid #363636; }
+.job-analysis-explanation__recommendations strong { color: #fff; font-size: .7rem; }
+.job-analysis-explanation__limitations { margin: 15px 0 0; color: #999; font-size: .62rem; line-height: 1.45; }
+.job-analysis-explanation__fallback { display: flex; align-items: center; gap: 7px; margin: 16px 0 0; padding: 12px; color: #777; font-size: .7rem; background: #fff; border: 1px solid #dededb; border-radius: 9px; }
+.job-analysis-explanation__fallback svg { color: #087f73; }
+.job-analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+.job-analysis-card { padding: 21px; background: #fff; border: 1px solid #dededb; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,.045); }
+.job-analysis-card__heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 15px; margin-bottom: 14px; }
+.job-analysis-card__heading h2 { margin: 6px 0 0; color: #111; font-size: 1.05rem; letter-spacing: -.035em; }
+.job-analysis-card__heading > span { color: #777; font-size: .65rem; }
+.job-analysis-signal { display: flex; align-items: flex-start; gap: 10px; padding: 13px 0; border-top: 1px solid #e8e8e5; }
+.job-analysis-signal svg { flex: 0 0 auto; color: #087f73; }
+.job-analysis-signal strong { color: #222; font-size: .76rem; }
+.job-analysis-signal p { margin: 4px 0 0; color: #777; font-size: .68rem; line-height: 1.45; }
+.job-analysis-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.job-analysis-chips span { padding: 7px 9px; color: #3730a3; font-size: .67rem; background: #eef0ff; border-radius: 6px; }
+.job-analysis-card__note, .job-analysis-empty { margin: 16px 0 0; color: #777; font-size: .7rem; line-height: 1.5; }
+.job-analysis-card--details { margin-top: 16px; }
+.job-analysis-card--details .job-analysis-card__heading button { display: inline-flex; align-items: center; gap: 6px; padding: 8px 10px; color: #fff; font: inherit; font-size: .65rem; font-weight: 800; background: #111; border: 1px solid #111; border-radius: 7px; cursor: pointer; }
+.job-analysis-card--details > p { color: #666; font-size: .76rem; line-height: 1.6; }
+.job-analysis-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+.job-analysis-details div { display: grid; gap: 5px; padding: 11px; background: #f7f7f5; border-radius: 8px; }
+.job-analysis-details strong { color: #555; font-size: .62rem; }
+.job-analysis-details span { color: #222; font-size: .68rem; line-height: 1.4; }
+.job-analysis-page__disclaimer { margin: 18px 0 0; color: #888; font-size: .65rem; text-align: center; }
+.job-analysis-state { display: grid; min-height: 300px; place-items: center; align-content: center; gap: 9px; color: #777; text-align: center; }
+.job-analysis-state strong { color: #222; font-size: .95rem; }
+.job-analysis-state span { font-size: .72rem; }
+.job-analysis-state--error svg { color: #9f2940; }
+.job-analysis-state button { margin-top: 7px; padding: 9px 12px; color: #fff; font: inherit; font-size: .68rem; font-weight: 800; background: #111; border: 1px solid #111; border-radius: 7px; cursor: pointer; }
+@media (max-width: 700px) { .job-analysis-page { padding: 24px 14px 45px; } .job-analysis-page__header { align-items: flex-start; flex-direction: column; } .job-analysis-summary { grid-template-columns: 1fr; } .job-analysis-summary__score { padding: 0 0 15px; border-right: 0; border-bottom: 1px solid #333; } .job-analysis-grid, .job-analysis-details { grid-template-columns: 1fr; } }
+@media (max-width: 700px) { .job-analysis-explanation__heading, .job-analysis-explanation__grid { grid-template-columns: 1fr; flex-direction: column; align-items: flex-start; } }
+
+/* Light evidence-dashboard presentation, aligned with the Skill analysis page. */
+.job-analysis-shell__main,
+.job-analysis-page { background: #f8fafc; }
+.job-analysis-page { color: #16243d; }
+.job-analysis-page__back { color: #687892; }
+.job-analysis-page__back:hover { color: #14233c; }
+.job-analysis-page__header h1 { color: #14233c; }
+.job-analysis-page__header p { color: #687892; }
+.job-analysis-summary { background: linear-gradient(135deg, #fff, #f2f7fb); border: 1px solid #dfe7f0; box-shadow: 0 12px 30px rgba(34, 61, 94, .07); }
+.job-analysis-summary__score { border-right-color: #e1e7ef; }
+.job-analysis-summary__score span, .job-analysis-summary__label { color: #687892; }
+.job-analysis-summary__score strong { color: #14233c; }
+.job-analysis-summary__score b { color: #079b78; }
+.job-analysis-summary h2 { color: #14233c; }
+.job-analysis-summary p { color: #687892; }
+.job-analysis-explanation { color: #16243d; background: #fff; border: 1px solid #dfe7f0; box-shadow: 0 12px 30px rgba(34, 61, 94, .06); }
+.job-analysis-explanation__heading > div > span { color: #079b78; }
+.job-analysis-explanation h2 { color: #14233c; }
+.job-analysis-explanation__heading small { color: #73829a; }
+.job-analysis-explanation__summary { color: #40516c; }
+.job-analysis-explanation__score { color: #087f73; }
+.job-analysis-explanation__grid article { background: #f8fafc; border-color: #e1e7ef; }
+.job-analysis-explanation h3 { color: #16243d; }
+.job-analysis-explanation__item { border-top-color: #e1e7ef; }
+.job-analysis-explanation__item strong { color: #078e78; }
+.job-analysis-explanation__item--gap strong { color: #bf7a16; }
+.job-analysis-explanation__item em { color: #73829a; }
+.job-analysis-explanation__item p { color: #40516c; }
+.job-analysis-explanation__item small { color: #73829a; }
+.job-analysis-explanation__empty { color: #73829a; }
+.job-analysis-explanation__notice, .job-analysis-explanation__recommendations { background: #f8fafc; border-color: #e1e7ef; }
+.job-analysis-explanation__notice strong { color: #bf7a16; }
+.job-analysis-explanation__recommendations h3 { color: #078e78; }
+.job-analysis-explanation__notice span, .job-analysis-explanation__recommendations span { color: #53647d; }
+.job-analysis-explanation__notice b { color: #16243d; }
+.job-analysis-explanation__recommendations div { border-top-color: #e1e7ef; }
+.job-analysis-explanation__recommendations strong { color: #16243d; }
+.job-analysis-explanation__limitations { color: #73829a; }
+.job-analysis-card { border-color: #e1e7ef; box-shadow: 0 10px 28px rgba(34, 61, 94, .05); }
+.job-analysis-card__heading h2 { color: #16243d; }
+.job-analysis-card__heading > span { color: #73829a; }
+.job-analysis-signal { border-top-color: #e5e9ef; }
+.job-analysis-signal strong { color: #16243d; }
+.job-analysis-signal p { color: #687892; }
+.job-analysis-chips span { color: #3557c5; background: #eef3ff; border: 1px solid #dbe5ff; }
+.job-analysis-card__note, .job-analysis-empty { color: #687892; }
+.job-analysis-card--details .job-analysis-card__heading button { color: #fff; background: #4775ed; border-color: #4775ed; }
+.job-analysis-card--details .job-analysis-card__heading button:hover { background: #355fd2; border-color: #355fd2; }
+.job-analysis-card--details > p { color: #53647d; }
+.job-analysis-details div { background: #f8fafc; border: 1px solid #e7ebf1; }
+.job-analysis-details strong { color: #687892; }
+.job-analysis-details span { color: #16243d; }
+.job-analysis-page__disclaimer { color: #73829a; }
+.job-analysis-state { color: #687892; }
+.job-analysis-state strong { color: #16243d; }
+.job-analysis-state button { color: #fff; background: #4775ed; border-color: #4775ed; }
+.job-analysis-state button:hover { background: #355fd2; border-color: #355fd2; }
+@media (max-width: 900px) { .job-analysis-shell__main { margin-left: 0; } }
+@media (max-width: 700px) { .job-analysis-summary__score { border-right-color: transparent; border-bottom-color: #e1e7ef; } }

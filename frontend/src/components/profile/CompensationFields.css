@@ -1,0 +1,47 @@
+.profile-compensation {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 14px;
+  background: #f7f8f6;
+  border: 1px solid #e1e3df;
+  border-radius: 12px;
+}
+
+.profile-compensation__heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.profile-compensation__heading strong {
+  color: #222;
+  font-size: .78rem;
+}
+
+.profile-compensation__heading small,
+.profile-compensation label span {
+  color: #888;
+  font-size: .66rem;
+  font-weight: 500;
+}
+
+.profile-compensation__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.profile-compensation label {
+  color: #444;
+}
+
+.profile-compensation input {
+  background: #fff;
+}
+
+@media (max-width: 520px) {
+  .profile-compensation__fields { grid-template-columns: 1fr; }
+  .profile-compensation__heading { align-items: flex-start; flex-direction: column; }
+}

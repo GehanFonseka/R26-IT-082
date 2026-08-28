@@ -1,0 +1,6 @@
+.job-card__actions { display: flex; align-items: flex-start; justify-content: flex-end; gap: 8px; }
+.job-match-analysis { display: flex; min-width: 0; flex-direction: column; align-items: flex-start; gap: 5px; }
+.job-match-analysis__button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 35px; padding: 8px 10px; color: #111; font: inherit; font-size: 0.65rem; font-weight: 800; background: #fff; border: 1px solid #d1d1cd; border-radius: 7px; cursor: pointer; }
+.job-match-analysis__button:hover:not(:disabled) { color: #fff; background: #3730a3; border-color: #3730a3; }
+.job-match-analysis__button:disabled { cursor: wait; opacity: 0.68; }
+@media (max-width: 560px) { .job-card__footer { align-items: stretch; flex-direction: column; } .job-card__actions { justify-content: space-between; } }

@@ -1,0 +1,40 @@
+{
+  "name": "lanka-talent-insights",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --workspaces --no-audit --no-fund && npm --prefix backend/services/auth-service install --no-audit --no-fund && npm --prefix backend/services/candidate-service install --no-audit --no-fund && npm --prefix backend/services/job-service install --no-audit --no-fund && npm run install:speech-to-text && npm run install:attrition-model && npm run install:early-attrition-model && npm run install:resume-strength-model && npm run install:interview-answer-model && npm run install:resume-explanation-model",
+    "install:speech-to-text": "python -m pip install -r backend/services/speech-to-text-service/requirements.txt",
+    "install:attrition-model": "python -m pip install -r backend/services/attrition-model-service/requirements.txt",
+    "install:early-attrition-model": "python -m pip install -r backend/services/early-attrition-model-service/requirements.txt",
+    "install:resume-strength-model": "python -m pip install -r backend/services/resume-strength-model-service/requirements.txt",
+    "install:interview-answer-model": "python -m pip install -r backend/services/interview-answer-model-service/requirements.txt",
+    "install:resume-explanation-model": "npm --prefix backend/services/resume-explanation-model-service install --no-audit --no-fund",
+    "dev:attrition-model": "python -m uvicorn app:app --app-dir backend/services/attrition-model-service/src --host 127.0.0.1 --port 4008",
+    "dev:early-attrition-model": "python -m uvicorn app:app --app-dir backend/services/early-attrition-model-service/src --host 127.0.0.1 --port 4011",
+    "dev:resume-strength-model": "python -m uvicorn app:app --app-dir backend/services/resume-strength-model-service/src --host 127.0.0.1 --port 4009",
+    "dev:interview-answer-model": "python -m uvicorn app:app --app-dir backend/services/interview-answer-model-service/src --host 127.0.0.1 --port 4010",
+    "dev:resume-explanation-model": "npm --prefix backend/services/resume-explanation-model-service run dev",
+    "dev": "concurrently -k -n frontend,gateway,extraction,matching,attrition,attrition-model,early-attrition-model,strength,answer-model,speech,auth,candidate,jobs,analysis,cvprofile,explanation-model -c blue,green,cyan,magenta,yellow,yellowBright,red,blueBright,magentaBright,black,gray,white,red,greenBright,cyanBright,cyanBright,cyanBright \"npm --prefix frontend run dev\" \"npm --prefix backend/api-gateway run dev\" \"npm --prefix backend/services/cv-extraction-service run dev\" \"npm --prefix backend/services/cv-matching-service run dev\" \"node scripts/start-local-attrition.mjs\" \"npm run dev:attrition-model\" \"npm run dev:early-attrition-model\" \"npm run dev:resume-strength-model\" \"npm run dev:interview-answer-model\" \"python -m uvicorn server:app --app-dir backend/services/speech-to-text-service/src --host 127.0.0.1 --port 4005\" \"npm --prefix backend/services/auth-service start\" \"npm --prefix backend/services/candidate-service run dev\" \"npm --prefix backend/services/job-service run dev\" \"npm --prefix backend/services/interview-analysis-service run dev\" \"npm --prefix backend/services/cv-profile-analysis-service run dev\" \"npm run dev:resume-explanation-model\"",
+    "dev:core": "concurrently -k -n frontend,gateway,extraction,matching,attrition,attrition-model,early-attrition-model,strength,cvprofile,explanation-model -c blue,green,cyan,magenta,yellow,yellowBright,red,blueBright,cyanBright \"npm --prefix frontend run dev\" \"npm --prefix backend/api-gateway run dev\" \"npm --prefix backend/services/cv-extraction-service run dev\" \"npm --prefix backend/services/cv-matching-service run dev\" \"node scripts/start-local-attrition.mjs\" \"npm run dev:attrition-model\" \"npm run dev:early-attrition-model\" \"npm run dev:resume-strength-model\" \"npm --prefix backend/services/cv-profile-analysis-service run dev\" \"npm run dev:resume-explanation-model\"",
+    "build": "npm --prefix frontend run build",
+    "test": "npm --prefix backend/api-gateway test && npm --prefix backend/services/cv-extraction-service test && npm --prefix backend/services/cv-matching-service test && npm --prefix backend/services/attrition-service test && npm --prefix backend/services/job-service test && npm --prefix backend/services/interview-analysis-service test && npm --prefix backend/services/cv-profile-analysis-service test && npm --prefix backend/services/resume-explanation-model-service test",
+    "lint": "npm --prefix frontend run build && npm --prefix backend/api-gateway run lint && npm --prefix backend/services/cv-extraction-service run lint && npm --prefix backend/services/cv-matching-service run lint && npm --prefix backend/services/attrition-service run lint && npm --prefix backend/services/job-service run lint && npm --prefix backend/services/interview-analysis-service run lint && npm --prefix backend/services/cv-profile-analysis-service run lint && npm --prefix backend/services/resume-explanation-model-service run lint && python -m py_compile backend/services/speech-to-text-service/src/server.py backend/services/resume-strength-model-service/src/app.py backend/services/resume-strength-model-service/src/model_input.py backend/services/resume-strength-model-service/src/model_decode.py backend/services/resume-strength-model-service/src/model_runner.py backend/services/interview-answer-model-service/src/app.py backend/services/interview-answer-model-service/src/model_runner.py backend/services/early-attrition-model-service/src/app.py backend/services/early-attrition-model-service/src/model_runner.py"
+  },
+  "workspaces": [
+    "frontend",
+    "backend/api-gateway",
+    "backend/services/cv-extraction-service",
+    "backend/services/cv-matching-service",
+    "backend/services/attrition-service",
+    "backend/services/job-service",
+    "backend/services/interview-analysis-service",
+    "backend/services/cv-profile-analysis-service"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "dependencies": {
+    "onnxruntime-node": "^1.24.3"
+  }
+}
