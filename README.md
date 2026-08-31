@@ -5,6 +5,14 @@ comparing candidates with job descriptions, and exploring employee-retention
 scenarios. The UI remains the existing React/Vite application; document parsing,
 model inference, and attrition calculations now run behind an API Gateway.
 
+## Reproducibility and publication notes
+
+An evidence-based reproducibility report for the attrition experiments and saved
+model artifact is available in [REPRODUCIBILITY.md](REPRODUCIBILITY.md). It records
+what is directly verifiable from the repository and explicitly labels any missing
+provenance, tuning, or threshold-selection details as "NOT AVAILABLE IN
+REPOSITORY" without inventing unsupported claims.
+
 ## Structure
 
 ```text

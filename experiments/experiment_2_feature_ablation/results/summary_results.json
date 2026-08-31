@@ -1,0 +1,147 @@
+{
+  "summary_results": {
+    "Config A: Standard IBM Features (26)": {
+      "configuration": "Config A: Standard IBM Features (26)",
+      "feature_count": 26,
+      "description": "Standard IBM HR attributes only (no regional compensation or ratios)",
+      "threshold": 0.3300000000000002,
+      "mean_fit_time_sec": 22.659854440001073,
+      "accuracy_mean": 0.8421768707482993,
+      "accuracy_std": 0.009024829361511265,
+      "balanced_accuracy_mean": 0.7320707117130177,
+      "balanced_accuracy_std": 0.011966091260016569,
+      "precision_mean": 0.5115294034040436,
+      "precision_std": 0.02442376762826791,
+      "recall_mean": 0.5695921985815603,
+      "recall_std": 0.034389850798392796,
+      "f1_mean": 0.5377698494784383,
+      "f1_std": 0.012590001387258984,
+      "roc_auc_mean": 0.8159640021490662,
+      "roc_auc_std": 0.020408894384236757,
+      "pr_auc_mean": 0.5833842171135016,
+      "pr_auc_std": 0.040158816954073535
+    },
+    "Config B: Raw + Regional Features (45)": {
+      "configuration": "Config B: Raw + Regional Features (45)",
+      "feature_count": 45,
+      "description": "IBM HR attributes + Sri Lankan regional hiring & compensation features",
+      "threshold": 0.3300000000000002,
+      "mean_fit_time_sec": 24.50700552000053,
+      "accuracy_mean": 0.85578231292517,
+      "accuracy_std": 0.024108904961454874,
+      "balanced_accuracy_mean": 0.7214042432385303,
+      "balanced_accuracy_std": 0.013940932276815515,
+      "precision_mean": 0.5806518775492544,
+      "precision_std": 0.11268622819429921,
+      "recall_mean": 0.5231382978723405,
+      "recall_std": 0.0399530683885264,
+      "f1_mean": 0.5418177806749236,
+      "f1_std": 0.03293422120447895,
+      "roc_auc_mean": 0.8141856475363358,
+      "roc_auc_std": 0.008565376524122377,
+      "pr_auc_mean": 0.5816649523378221,
+      "pr_auc_std": 0.05165686976123376
+    },
+    "Config C: Full 52 Features (+ 7 Ratios)": {
+      "configuration": "Config C: Full 52 Features (+ 7 Ratios)",
+      "feature_count": 52,
+      "description": "Configuration B + 7 Domain-Engineered Interaction Ratios",
+      "threshold": 0.3300000000000002,
+      "mean_fit_time_sec": 24.629947200000608,
+      "accuracy_mean": 0.838095238095238,
+      "accuracy_std": 0.018950188132223267,
+      "balanced_accuracy_mean": 0.7040261112943631,
+      "balanced_accuracy_std": 0.015026232668470032,
+      "precision_mean": 0.504391594269112,
+      "precision_std": 0.05545488274028447,
+      "recall_mean": 0.5062056737588653,
+      "recall_std": 0.027180336377226746,
+      "f1_mean": 0.503351978232749,
+      "f1_std": 0.031088306445814545,
+      "roc_auc_mean": 0.8070858664698284,
+      "roc_auc_std": 0.023894176024443783,
+      "pr_auc_mean": 0.5753227853282377,
+      "pr_auc_std": 0.047540268039660494
+    }
+  },
+  "deltas_c_vs_b": {
+    "f1": -0.03846580244217453,
+    "roc_auc": -0.007099781066507438,
+    "pr_auc": -0.00634216700958441,
+    "balanced_accuracy": -0.017378131944167242,
+    "accuracy": -0.01768707482993199,
+    "precision": -0.07626028328014257,
+    "recall": -0.01693262411347519
+  },
+  "deltas_b_vs_a": {
+    "f1": 0.00404793119648521,
+    "roc_auc": -0.001778354612730393,
+    "pr_auc": -0.0017192647756794298,
+    "balanced_accuracy": -0.01066646847448749,
+    "accuracy": 0.01360544217687074,
+    "precision": 0.0691224741452108,
+    "recall": -0.04645390070921984
+  },
+  "p_values_c_vs_b": {
+    "f1": 0.026366753212370923,
+    "roc_auc": 0.46303030407782514,
+    "pr_auc": 0.5746692505933972,
+    "balanced_accuracy": 0.04601381809456562,
+    "accuracy": 0.056767233812321745,
+    "precision": 0.1472701516618057,
+    "recall": 0.3732232117030194
+  },
+  "p_values_b_vs_a": {
+    "f1": 0.8297740361292176,
+    "roc_auc": 0.8208993279807011,
+    "pr_auc": 0.9332043223355815,
+    "balanced_accuracy": 0.3687654292294161,
+    "accuracy": 0.19982918553771997,
+    "precision": 0.23825481641755872,
+    "recall": 0.13075674647569374
+  },
+  "top_engineered_features": [
+    {
+      "Feature": "AverageSatisfaction",
+      "Mean_Absolute_SHAP": 0.3167306312950958,
+      "Is_Engineered_Ratio": true,
+      "Rank": 3
+    },
+    {
+      "Feature": "RoleTenureRatio",
+      "Mean_Absolute_SHAP": 0.10423848981418528,
+      "Is_Engineered_Ratio": true,
+      "Rank": 17
+    },
+    {
+      "Feature": "ManagerTenureRatio",
+      "Mean_Absolute_SHAP": 0.09596375558997564,
+      "Is_Engineered_Ratio": true,
+      "Rank": 20
+    },
+    {
+      "Feature": "PromotionDelayRatio",
+      "Mean_Absolute_SHAP": 0.08884415286018847,
+      "Is_Engineered_Ratio": true,
+      "Rank": 22
+    },
+    {
+      "Feature": "InterviewComponentAverage",
+      "Mean_Absolute_SHAP": 0.05948172402461426,
+      "Is_Engineered_Ratio": true,
+      "Rank": 29
+    },
+    {
+      "Feature": "OfferExpectedRatio",
+      "Mean_Absolute_SHAP": 0.039182722102485086,
+      "Is_Engineered_Ratio": true,
+      "Rank": 38
+    },
+    {
+      "Feature": "MatchInterviewAverage",
+      "Mean_Absolute_SHAP": 0.03213544257067461,
+      "Is_Engineered_Ratio": true,
+      "Rank": 41
+    }
+  ]
+}

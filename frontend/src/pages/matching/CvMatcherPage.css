@@ -126,7 +126,7 @@
   color: #9ca9ff;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .cv-app-shell__main {
     margin-left: 0;
   }

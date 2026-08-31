@@ -5,6 +5,7 @@ import ProtectedRoute from "../components/auth/ProtectedRoute";
 import ProfilePage from "../pages/profile/ProfilePage";
 import AdminDashboardPage from "../pages/admin/AdminDashboardPage";
 import AdminApplicationAnalysisPage from "../pages/admin/AdminApplicationAnalysisPage";
+import AdminApplicationSkillsPage from "../pages/admin/AdminApplicationSkillsPage";
 import InterviewSchedulingPage from "../pages/admin/InterviewSchedulingPage";
 import InterviewResultsPage from "../pages/admin/InterviewResultsPage";
 import InterviewResultDetailPage from "../pages/admin/InterviewResultDetailPage";
@@ -40,6 +41,7 @@ function AppRoutes() {
         <Route path="/admin" element={<AdminDashboardPage mode="overview" />} />
         <Route path="/admin/jobs" element={<AdminDashboardPage mode="jobs" />} />
         <Route path="/admin/applications" element={<AdminDashboardPage mode="applications" />} />
+        <Route path="/admin/applications/:applicationId/skills" element={<AdminApplicationSkillsPage />} />
         <Route path="/admin/applications/:applicationId" element={<AdminApplicationAnalysisPage />} />
       <Route path="/admin/interviews" element={<InterviewSchedulingPage />} />
         <Route path="/admin/interview-results/:interviewId" element={<InterviewResultDetailPage />} />

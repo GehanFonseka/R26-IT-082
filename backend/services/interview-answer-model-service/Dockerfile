@@ -9,6 +9,10 @@ RUN pip install --no-cache-dir \
     --retries=10 \
     -r requirements.txt
 
+RUN pip install --no-cache-dir \
+    torch==2.6.0 \
+    --index-url https://download.pytorch.org/whl/cpu
+
 COPY . .
 
 ENV PYTHONUNBUFFERED=1

@@ -1,0 +1,56 @@
+{
+  "inter_rater_reliability": {
+    "num_evaluators": 3,
+    "num_samples": 10,
+    "mean_pairwise_pearson_r": 0.9084311207531517,
+    "mean_pairwise_spearman_rho": 0.8827560273541107,
+    "fleiss_kappa": 0.5199999999999996,
+    "mean_pairwise_qwk": 0.5352564102564102
+  },
+  "model_benchmarks": {
+    "Proposed DeBERTa-v3 (Calibrated)": {
+      "MAE": 9.062999999999999,
+      "RMSE": 11.579166204869848,
+      "Pearson_r": 0.42923950679820455,
+      "Pearson_p": 0.21575312070080394,
+      "Spearman_rho": 0.587180674734059,
+      "Spearman_p": 0.07430647010294689,
+      "QWK": 0.2592592592592592,
+      "Exact_Agreement_Pct": 60.0,
+      "Macro_F1_Pct": 37.142857142857146
+    },
+    "Sentence-BERT (all-MiniLM-L6-v2)": {
+      "MAE": 7.5489999999999995,
+      "RMSE": 11.21076134791924,
+      "Pearson_r": -0.07188736484149759,
+      "Pearson_p": 0.8435565268757185,
+      "Spearman_rho": 0.006116465361813115,
+      "Spearman_p": 0.9866207325622852,
+      "QWK": -0.12903225806451601,
+      "Exact_Agreement_Pct": 30.0,
+      "Macro_F1_Pct": 15.384615384615385
+    },
+    "BERTScore (F1)": {
+      "MAE": 7.193,
+      "RMSE": 8.826291973416696,
+      "Pearson_r": 0.2581307312369931,
+      "Pearson_p": 0.4714829085764428,
+      "Spearman_rho": 0.4465019714123573,
+      "Spearman_p": 0.19581349826394667,
+      "QWK": 0.0,
+      "Exact_Agreement_Pct": 10.0,
+      "Macro_F1_Pct": 9.090909090909092
+    },
+    "ROUGE-L": {
+      "MAE": 47.251999999999995,
+      "RMSE": 48.093900236932335,
+      "Pearson_r": 0.5624212975787765,
+      "Pearson_p": 0.09057088022449836,
+      "Spearman_rho": 0.5810642093722459,
+      "Spearman_p": 0.07813223153408824,
+      "QWK": 0.04081632653061229,
+      "Exact_Agreement_Pct": 0.0,
+      "Macro_F1_Pct": 0.0
+    }
+  }
+}

@@ -1,30 +1,15 @@
 /* Shared navigation styling based on the admin light workspace reference. */
 .cv-navigation {
-  width: 285px;
+  width: min(285px, 100vw);
+  max-width: 100vw;
   padding: 15px 12px 14px;
   color: #717391;
   background: linear-gradient(180deg, #fff 0%, #fdfdff 100%);
   border: 1px solid #ececf4;
   border-left: 0;
-  border-radius: 0 28px 28px 0;
+  border-radius: 0;
   box-shadow: 12px 0 30px rgba(64, 73, 118, 0.08);
 }
-
-.cv-navigation .cv-navigation__window-controls {
-  display: flex;
-  gap: 10px;
-  padding: 0 28px 18px;
-}
-
-.cv-navigation .cv-navigation__window-controls i {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
-.cv-navigation .cv-navigation__window-controls i:nth-child(1) { background: #ff3f43; }
-.cv-navigation .cv-navigation__window-controls i:nth-child(2) { background: #ffb31a; }
-.cv-navigation .cv-navigation__window-controls i:nth-child(3) { background: #42c853; }
 
 .cv-navigation .cv-navigation__brand { min-height: 52px; padding: 0 28px; }
 .cv-navigation .cv-navigation__brand-mark {
@@ -128,8 +113,11 @@
 .cv-navigation .cv-navigation__bottom > .cv-navigation__item { margin-top: 2px; }
 
 @media (max-width: 900px) {
-  .cv-navigation { border-radius: 0 22px 22px 0; }
-  .cv-navigation .cv-navigation__window-controls { padding-left: 28px; }
+  .cv-navigation {
+    width: min(285px, 100vw);
+    max-height: 100dvh;
+    border-radius: 0;
+  }
 }
 
 .admin-app-shell__main { margin-left: 285px; }

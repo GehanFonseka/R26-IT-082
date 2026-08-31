@@ -1,0 +1,103 @@
+.admin-skill-analysis-shell {
+  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.admin-skill-analysis-shell__main {
+  display: flex;
+  height: 100vh;
+  min-height: 100vh;
+  margin-left: 285px;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.admin-skill-analysis-page {
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #f5f7fa;
+}
+
+.admin-skill-analysis-page .resume-strength__overview {
+  display: none;
+}
+
+.admin-skill-analysis-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 18px clamp(20px, 4vw, 58px) 0;
+  padding: 8px 10px;
+  color: #245dc5;
+  font-size: 0.68rem;
+  font-weight: 800;
+  background: #fff;
+  border: 1px solid #d7e5fb;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.admin-skill-analysis-page__back:hover,
+.admin-skill-analysis-page__back:focus-visible {
+  color: #fff;
+  background: #155dcc;
+  border-color: #155dcc;
+}
+
+.admin-skill-analysis-page__back:focus-visible {
+  outline: 3px solid rgba(78, 135, 232, 0.2);
+  outline-offset: 3px;
+}
+
+.admin-skill-analysis-state {
+  display: grid;
+  min-height: 350px;
+  place-items: center;
+  align-content: center;
+  gap: 9px;
+  padding: 30px;
+  color: #66758d;
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+.admin-skill-analysis-state strong {
+  color: #15233b;
+  font-size: 0.9rem;
+}
+
+.admin-skill-analysis-state--error > .icon {
+  color: #c44755;
+}
+
+.admin-skill-analysis-state button {
+  padding: 9px 12px;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  background: #155dcc;
+  border: 1px solid #155dcc;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.admin-skill-analysis-loader {
+  width: 21px;
+  height: 21px;
+  border: 2px solid #d8e5f8;
+  border-top-color: #2e70d1;
+  border-radius: 50%;
+  animation: admin-skill-analysis-spin 800ms linear infinite;
+}
+
+@keyframes admin-skill-analysis-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+  .admin-skill-analysis-shell__main {
+    margin-left: 0;
+  }
+}

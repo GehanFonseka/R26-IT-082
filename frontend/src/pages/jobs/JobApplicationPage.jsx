@@ -18,6 +18,7 @@ function JobApplicationPage() {
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [job, setJob] = useState(null);
   const [candidate, setCandidate] = useState(toMatcherCandidate());
+  const [profileAnalysis, setProfileAnalysis] = useState(null);
   const [profilePhoto, setProfilePhoto] = useState(user?.profilePhoto || "");
   const [profileReady, setProfileReady] = useState(false);
   const [existingApplication, setExistingApplication] = useState(null);
@@ -36,6 +37,7 @@ function JobApplicationPage() {
       setProfilePhoto(savedPhoto);
       updateUser({ profilePhoto: savedPhoto });
       setCandidate(toMatcherCandidate({ ...profileResponse.data?.cv?.candidate, compensation: profileResponse.data?.compensation || profileResponse.data?.cv?.candidate?.compensation }));
+      setProfileAnalysis(profileResponse.data?.cv?.profileAnalysis || null);
       setProfileReady(true);
       setExistingApplication((applicationsResponse.data || []).find((item) => item.jobId === jobId) || null);
     }).catch((requestError) => mounted && setError(requestError.message || "Could not load this job application."))
@@ -50,7 +52,7 @@ function JobApplicationPage() {
     setSubmitting(true);
     setError("");
     try {
-      await applyForJob(job.id, candidate, coverLetter);
+      await applyForJob(job.id, candidate, coverLetter, profileAnalysis);
       setSuccess(true);
     } catch (requestError) {
       setError(requestError.message || "Could not submit this application.");

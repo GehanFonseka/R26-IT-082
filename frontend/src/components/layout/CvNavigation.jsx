@@ -4,6 +4,7 @@ import { useState } from "react";
 import "./CvNavigation.css";
 import "./CvAdminNavigation.css";
 import "./CvNavigationCollapse.css";
+import "./CvNavigationResponsive.css";
 
 const navigationItems = [
   { label: "Open jobs", icon: "briefcase", view: "jobs" },
@@ -42,8 +43,7 @@ function CvNavigation({ isOpen, activeView, onNavigate, onClose }) {
   return (
     <>
       {isOpen && <button className="cv-navigation__scrim" type="button" aria-label="Close navigation" onClick={onClose} />}
-      <aside className={`cv-navigation ${isAdmin ? "cv-navigation--admin" : ""} ${isCollapsed ? "cv-navigation--collapsed" : ""} ${isOpen ? "cv-navigation--open" : ""}`}>
-        {isAdmin && <div className="cv-navigation__window-controls" aria-hidden="true"><i /><i /><i /></div>}
+      <aside className={`cv-navigation ${isAdmin ? "cv-navigation--admin" : ""} ${isAdmin && isCollapsed ? "cv-navigation--collapsed" : ""} ${isOpen ? "cv-navigation--open" : ""}`}>
         {isAdmin && <button className="cv-navigation__collapse" type="button" aria-label={isCollapsed ? "Expand navigation" : "Collapse navigation"} title={isCollapsed ? "Expand navigation" : "Collapse navigation"} aria-pressed={isCollapsed} onClick={toggleCollapse}><Icon name={isCollapsed ? "arrowRight" : "arrowLeft"} size={14} /></button>}
         <div className="cv-navigation__brand">
           <div className="cv-navigation__brand-mark" aria-hidden="true"><Icon name="layers" size={18} /></div>
@@ -71,10 +71,6 @@ function CvNavigation({ isOpen, activeView, onNavigate, onClose }) {
         </nav>
 
         <div className="cv-navigation__bottom">
-          {user?.role !== "admin" && <div className="cv-navigation__model-card">
-            <div className="cv-navigation__model-icon"><Icon name="shield" size={16} /></div>
-            <div><strong>Local model inference</strong><span>cv-match-browser-local</span><small><i />Backend model service</small></div>
-          </div>}
           <div className="cv-navigation__user">
             <div className={`cv-navigation__user-avatar ${profilePhoto ? "cv-navigation__user-avatar--photo" : ""}`}>
               {profilePhoto ? <img src={profilePhoto} alt="" /> : initials}

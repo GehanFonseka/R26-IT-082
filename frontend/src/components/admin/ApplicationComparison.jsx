@@ -1,3 +1,5 @@
+import CandidateSkillsToggle from "./CandidateSkillsToggle";
+
 const displayList = (value) => (Array.isArray(value) ? value : String(value || "").split(/[|,;\n]+/)).map((item) => String(item).trim()).filter(Boolean);
 
 function ApplicationComparison({ application }) {
@@ -5,7 +7,9 @@ function ApplicationComparison({ application }) {
   const job = application.job || {};
   const score = application.matchScore;
   return (
-    <details className="admin-application__comparison">
+    <>
+      <CandidateSkillsToggle applicationId={application.id} candidate={candidate} />
+      <details className="admin-application__comparison">
       <summary><span>View CV and job comparison</span><b>{score ? `${score.percentage}% model match` : "Analysis pending"}</b></summary>
       <div className="admin-comparison-grid">
         <div>
@@ -17,8 +21,6 @@ function ApplicationComparison({ application }) {
             <div><dt>Industry</dt><dd>{candidate.candidateIndustry || candidate.industry || "Not provided"}</dd></div>
             <div><dt>Education</dt><dd>{candidate.education || "Not provided"}</dd></div>
           </dl>
-          <span className="admin-comparison__sub-label">Skills</span>
-          <div className="admin-comparison__chips">{displayList(candidate.candidateSkills || candidate.skills).length ? displayList(candidate.candidateSkills || candidate.skills).map((skill) => <span key={skill}>{skill}</span>) : <small>Not provided</small>}</div>
           {candidate.summary && <p className="admin-comparison__summary">{candidate.summary}</p>}
         </div>
         <div>
@@ -35,7 +37,8 @@ function ApplicationComparison({ application }) {
         </div>
       </div>
       <p className="admin-comparison__note">The percentage and classification above come from the server-side local matching model. The fields shown here are the candidate CV snapshot and the job data used for that comparison.</p>
-    </details>
+      </details>
+    </>
   );
 }
 

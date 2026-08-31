@@ -1,5 +1,5 @@
 const configuredApiBase = import.meta.env.VITE_API_BASE_URL;
-const API_BASE = (configuredApiBase || (typeof window !== "undefined" ? window.location.origin : "http://localhost:8080")).replace(/\/$/, "");
+const API_BASE = (configuredApiBase || "http://localhost:8080").replace(/\/$/, "");
 const TOKEN_KEY = "lti_access_token";
 
 export const getAccessToken = () => localStorage.getItem(TOKEN_KEY);
@@ -72,6 +72,7 @@ export const updateAdminJob = (jobId, job) => apiRequest(`/api/admin/jobs/${jobI
 });
 export const getAdminApplications = () => apiRequest("/api/admin/applications");
 export const getAdminApplicationCvContext = (applicationId) => apiRequest(`/api/admin/applications/${applicationId}/cv-context`);
+export const getAdminApplicationCvAnalysis = (applicationId) => apiRequest(`/api/admin/applications/${applicationId}/cv-analysis`, { method: "POST" });
 export const updateAdminApplication = (applicationId, status) => apiRequest(`/api/admin/applications/${applicationId}`, {
   method: "PATCH", body: JSON.stringify({ status }),
 });
@@ -126,6 +127,6 @@ export const getInterviewAnalysis = (interviewId) => apiRequest(`/api/interviews
 
 export const getOpenJobs = () => apiRequest("/api/jobs");
 export const getMyApplications = () => apiRequest("/api/applications/me");
-export const applyForJob = (jobId, candidate, coverLetter = "") => apiRequest(`/api/jobs/${jobId}/applications`, {
-  method: "POST", body: JSON.stringify({ candidate, coverLetter }),
+export const applyForJob = (jobId, candidate, coverLetter = "", candidateAnalysis = null) => apiRequest(`/api/jobs/${jobId}/applications`, {
+  method: "POST", body: JSON.stringify({ candidate, coverLetter, ...(candidateAnalysis ? { candidateAnalysis } : {}) }),
 });

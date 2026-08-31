@@ -75,7 +75,7 @@
 .interview-room-loader { width: 20px; height: 20px; border: 2px solid rgba(124, 140, 255, 0.25); border-top-color: #8290ff; border-radius: 50%; animation: interview-room-spin 800ms linear infinite; }
 @keyframes interview-room-spin { to { transform: rotate(360deg); } }
 @media (max-width: 980px) { .interview-room-grid { grid-template-columns: 1fr; } }
-@media (max-width: 800px) { .interview-room-shell__main { margin-left: 0; } .interview-room-page { padding: 22px 12px 45px; } .interview-room-header { align-items: flex-start; flex-direction: column; padding: 22px 19px; } }
+@media (max-width: 900px) { .interview-room-shell__main { margin-left: 0; } .interview-room-page { padding: 22px 12px 45px; } .interview-room-header { align-items: flex-start; flex-direction: column; padding: 22px 19px; } }
 @media (max-width: 520px) { .interview-room-call, .interview-transcript-card { padding: 17px 14px; } .interview-room-call__heading, .interview-transcript-card__heading { display: grid; } .interview-room-controls { display: grid; } .interview-room-button { width: 100%; } .interview-room-toggle { margin: 0; } .interview-room-video-grid { grid-template-columns: 1fr; } }
 
 /* Admin rooms follow the same white/black workspace language as the admin panel. */

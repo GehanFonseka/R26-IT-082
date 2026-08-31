@@ -29,6 +29,10 @@
   margin: 0;
 }
 
+.skill-analysis-page .resume-strength__overview > div:nth-child(2) {
+  display: none;
+}
+
 .skill-analysis-state {
   display: grid;
   min-height: 350px;
@@ -100,7 +104,7 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .skill-analysis-shell__main {
     margin-left: 0;
   }

@@ -1,0 +1,6 @@
+Configuration,Features,Accuracy (%),Balanced Acc (%),Precision (%),Recall (%),F1-Score (%),ROC-AUC,PR-AUC
+Config A: Standard IBM Features (26),26,84.22 ± 0.90,73.21 ± 1.20,51.15 ± 2.44,56.96 ± 3.44,53.78 ± 1.26,0.8160 ± 0.0204,0.5834 ± 0.0402
+Config B: Raw + Regional Features (45),45,85.58 ± 2.41,72.14 ± 1.39,58.07 ± 11.27,52.31 ± 4.00,54.18 ± 3.29,0.8142 ± 0.0086,0.5817 ± 0.0517
+Config C: Full 52 Features (+ 7 Ratios),52,83.81 ± 1.90,70.40 ± 1.50,50.44 ± 5.55,50.62 ± 2.72,50.34 ± 3.11,0.8071 ± 0.0239,0.5753 ± 0.0475
+Delta: (B - A) [Regional Features Uplift],+19,+1.36%,-1.07%,+6.91%,-4.65%,+0.40% (p=0.830),-0.0018 (p=0.821),-0.0017 (p=0.933)
+Delta: (C - B) [7 Engineered Ratios Uplift],+7,-1.77%,-1.74%,-7.63%,-1.69%,-3.85% (p=0.026),-0.0071 (p=0.463),-0.0063 (p=0.575)

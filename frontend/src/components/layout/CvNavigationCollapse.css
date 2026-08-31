@@ -30,12 +30,6 @@
   align-items: center;
 }
 
-.cv-navigation--collapsed .cv-navigation__window-controls {
-  gap: 6px;
-  padding: 0 0 18px;
-}
-
-.cv-navigation--collapsed .cv-navigation__window-controls i { width: 8px; height: 8px; }
 .cv-navigation--collapsed .cv-navigation__brand { width: 100%; padding: 0; justify-content: center; }
 .cv-navigation--collapsed .cv-navigation__brand-mark { margin: 0; }
 .cv-navigation--collapsed .cv-navigation__brand-copy,

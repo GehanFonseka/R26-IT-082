@@ -1,0 +1,5 @@
+Model / Method,NDCG@5 (vs Reference),NDCG@10,MRR,MAP,Precision@5,Spearman rho,Pearson r (95% CI),MAE
+Proposed BERT Cross-Encoder (6-Layer ONNX),1.000 (Reference),1.000,1.000,1.000,0.389,0.953,"0.715 [0.16, 0.93]",38.65
+Sentence-BERT (all-MiniLM-L6-v2),"0.991 (Delta=+0.009, p=1.000, d_z=0.58)",0.991,1.000,0.944,0.389,0.922,"0.925 [0.71, 0.98]",15.77
+TF-IDF + Cosine Similarity,"1.000 (Delta=+0.000, p=nan, d_z=0.00)",1.000,1.000,1.000,0.389,0.877,"0.863 [0.51, 0.97]",45.82
+BM25 Lexical Ranking,"0.670 (Delta=+0.330, p=0.053, d_z=4.28)",0.670,0.333,0.361,0.389,-0.908,"-0.809 [-0.95, -0.37]",56.19
