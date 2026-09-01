@@ -3,7 +3,6 @@ import "./AttritionExplainability.css";
 
 const entries = (result) => [
   ["attrition", "Attrition", result?.models?.attrition],
-  ["earlyAttrition", "EarlyAttrition", result?.models?.earlyAttrition],
 ].filter(([, , model]) => model);
 
 const percent = (value) => Number.isFinite(Number(value)) ? `${(Number(value) * 100).toFixed(1)}%` : "—";

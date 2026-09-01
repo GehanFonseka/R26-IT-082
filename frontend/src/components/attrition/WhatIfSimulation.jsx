@@ -40,11 +40,8 @@ function WhatIfSimulation({ candidate, simulation = {}, features, baselineFeatur
   const hasBaseline = baselineResultScore !== null;
   const change = hasResult && hasBaseline ? currentResultScore - baselineResultScore : 0;
   const riskScore = hasResult ? Math.min(100, Math.max(0, currentResultScore)) : 0;
-  const earlyModel = features?.models?.earlyAttrition;
-  const earlyScore = resultScore(earlyModel);
   const riskLabel = displayRiskLabel(features, "attrition risk");
-  const earlyRiskLabel = displayRiskLabel(earlyModel, "early attrition risk");
-  const drivers = resultDrivers(features).length > 0 ? resultDrivers(features) : resultDrivers(earlyModel);
+  const drivers = resultDrivers(features);
   const riskBand = riskScore >= 70 ? "high" : riskScore >= 30 ? "medium" : "low";
   const statusText = error ? "Live update failed" : loading ? "Updating live" : hasResult ? "Live result" : "Connecting";
   const inputSummary = [`Salary +${salaryAdjustment}%`, safeSimulation.roleChange && "Role changed", safeSimulation.managerChange && "Manager changed", safeSimulation.remoteWork && "Remote work"].filter(Boolean).join(" · ");
@@ -64,7 +61,6 @@ function WhatIfSimulation({ candidate, simulation = {}, features, baselineFeatur
         <div className={`what-if-simulation__result-score ${hasResult ? `what-if-simulation__result-score--${riskBand}` : ""}`}>
           <div className="what-if-simulation__meter-group">
             <div className="what-if-simulation__meter-tile"><span className="what-if-simulation__meter-title">Attrition</span><RiskMeter value={hasResult ? riskScore : null} label={hasResult ? riskLabel : loading ? "Calculating" : "Waiting for service"} /></div>
-            {earlyModel && <div className="what-if-simulation__meter-tile"><span className="what-if-simulation__meter-title">EarlyAttrition</span><RiskMeter value={earlyScore} label={earlyRiskLabel} /></div>}
           </div>
         </div>
         <div className="what-if-simulation__result-copy">
@@ -115,7 +111,7 @@ function WhatIfSimulation({ candidate, simulation = {}, features, baselineFeatur
       {!error && !hasResult && !loading && <p className="what-if-simulation__waiting">Waiting for the local attrition model to return the first result.</p>}
 
       <div className="what-if-simulation__footer">
-         <span><Icon name="info" size={13} />{features?.models?.attrition && features?.models?.earlyAttrition ? "Live Attrition and EarlyAttrition model outputs; CV match scoring remains separate." : isLocalModel ? "Live local CatBoost output; CV match scoring remains separate." : features?.modelId ? `Live ${features.modelId} output; CV match scoring remains separate.` : "Live rule-based fallback output; configure the local model service for model predictions."}</span>
+         <span><Icon name="info" size={13} />{isLocalModel ? "Live local attrition output; CV match scoring remains separate." : features?.modelId ? `Live ${features.modelId} output; CV match scoring remains separate.` : "Live rule-based fallback output; configure the local model service for model predictions."}</span>
         <button type="button" onClick={onReset} disabled={!hasChanges}>Reset <Icon name="close" size={12} /></button>
       </div>
     </section>

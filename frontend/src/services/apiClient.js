@@ -1,5 +1,5 @@
 const configuredApiBase = import.meta.env.VITE_API_BASE_URL;
-const API_BASE = (configuredApiBase || "http://localhost:8080").replace(/\/$/, "");
+const API_BASE = (configuredApiBase || (typeof window !== "undefined" ? window.location.origin : "http://localhost:8080")).replace(/\/$/, "");
 const TOKEN_KEY = "lti_access_token";
 
 export const getAccessToken = () => localStorage.getItem(TOKEN_KEY);

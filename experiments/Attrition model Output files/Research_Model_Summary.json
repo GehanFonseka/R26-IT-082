@@ -1,0 +1,23 @@
+{
+  "Dataset": "Sri Lankan Employee Attrition & Workforce Experience Survey",
+  "Rows": 835,
+  "Original_Columns": 29,
+  "Predictors": 26,
+  "Target": "Employment Status / Turnover Event",
+  "No_Turnover": 706,
+  "Turnover": 129,
+  "Final_Model": "Logistic Regression",
+  "Model_Selection": "Highest repeated-CV PR-AUC",
+  "Cross_Validation": "Repeated Stratified 5-Fold CV, 2 repeats",
+  "Train_Test_Split": "80/20 stratified",
+  "Threshold_Selection": "Training-only OOF F1 optimization",
+  "Test_Set": "Untouched until final evaluation",
+  "Accuracy": 0.8862275449101796,
+  "Precision": 0.6296296296296297,
+  "Recall": 0.6538461538461539,
+  "F1": 0.6415094339622641,
+  "Balanced_Accuracy": 0.7914620840152755,
+  "ROC_AUC": 0.9028914348063284,
+  "PR_AUC": 0.6577210212926492,
+  "MCC": 0.5740667482993472
+}

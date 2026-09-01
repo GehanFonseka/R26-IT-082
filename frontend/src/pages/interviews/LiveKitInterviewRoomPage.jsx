@@ -14,6 +14,7 @@ import { getAdminInterviews, getInterviewTranscript, getMyInterviews } from "../
 import "./LiveKitInterviewRoomPage.css";
 
 const dateLabel = (value) => value ? new Date(value).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }) : "Date unavailable";
+const sortTranscriptEntries = (entries) => [...entries].sort((left, right) => new Date(left.createdAt) - new Date(right.createdAt));
 
 function MetaCard({ icon, label, value, tone = "" }) {
   return <div className={`livekit-room-meta-card ${tone ? `livekit-room-meta-card--${tone}` : ""}`}><span className="livekit-room-meta-card__icon"><Icon name={icon} size={15} /></span><span><small>{label}</small><strong>{value}</strong></span></div>;
@@ -30,6 +31,20 @@ function LiveKitInterviewRoomPage() {
     load(); return () => { mounted = false; };
   }, [interviewId, isAdmin]);
 
+  useEffect(() => {
+    if (!room) return undefined;
+    let mounted = true;
+    const syncTranscript = async () => {
+      try {
+        const response = await getInterviewTranscript(interviewId);
+        if (mounted && Array.isArray(response.data)) setTranscript(sortTranscriptEntries(response.data));
+      } catch { /* LiveKit data remains visible if persistence is briefly unavailable. */ }
+    };
+    const interval = window.setInterval(syncTranscript, 1500);
+    syncTranscript();
+    return () => { mounted = false; window.clearInterval(interval); };
+  }, [interviewId, room]);
+
   const navigateFromSidebar = (view) => { if (isAdmin) return navigate(view === "admin" ? "/admin" : view === "admin-jobs" ? "/admin/jobs" : view === "admin-applications" ? "/admin/applications" : view === "admin-interview-results" ? "/admin/interview-results" : "/admin/interviews"); return navigate(view === "jobs" ? "/jobs" : view === "skill-analysis" ? "/skill-analysis" : view === "matching" ? "/matching" : "/interviews"); };
   if (!user) return <Navigate to="/auth" replace />;
   const jobTitle = interview?.job?.title || "Interview room"; const company = interview?.job?.company || "Hiring team"; const participantCount = room ? room.remoteParticipants.size + 1 : 0;
@@ -37,7 +52,7 @@ function LiveKitInterviewRoomPage() {
     {loading && <div className="livekit-room-state"><span className="livekit-room-loader" />Loading interview room...</div>}{!loading && error && <div className="livekit-room-state livekit-room-state--error"><Icon name="alert" size={24} /><strong>Could not open this room</strong><span>{error}</span><button type="button" onClick={() => window.location.reload()}>Try again</button></div>}{!loading && !error && interview && <>
       <header className="livekit-room-titlebar"><div><span><i /> <Icon name="shield" size={13} /> Private interview room</span><h1>{jobTitle}</h1><p>{company} · {dateLabel(interview.scheduledAt)}</p></div><div className="livekit-room-titlebar__actions"><InterviewLinkButton interviewId={interview.id} compact /><b>{isAdmin ? "Interviewer" : "Candidate"}</b></div></header>
       <div className="livekit-room-meta"><MetaCard icon="shield" label="Private interview room" value="Secure & encrypted" /><MetaCard icon="people" label="Participants" value={participantCount || "Waiting"} /><MetaCard icon="clock" label="Duration" value={interview.durationMinutes ? `${interview.durationMinutes} min` : "Scheduled"} /><MetaCard icon="activity" label="Room status" value={room ? "Live" : "Ready"} tone={room ? "live" : ""} /><MetaCard icon="message" label="Transcript" value={recording ? "Recording" : transcript.length ? "Available" : "Ready"} tone={recording ? "live" : ""} /><div className="livekit-room-meta-card livekit-room-meta-card--link"><span className="livekit-room-meta-card__icon"><Icon name="link" size={15} /></span><span><small>Room link</small><strong>Share with candidate</strong></span><InterviewLinkButton interviewId={interview.id} compact /></div></div>
-      <div className="livekit-room-grid"><LiveKitCall interviewId={interviewId} jobTitle={jobTitle} company={company} audioRequested={audioRequested} videoRequested={videoRequested} onAudioRequestedChange={setAudioRequested} onVideoRequestedChange={setVideoRequested} onRoom={handleRoom} /><aside className="livekit-room-sidebar"><LiveKitParticipants room={room} user={user} isAdmin={isAdmin} /><LiveKitTranscriptPanel interviewId={interviewId} room={room} isAdmin={isAdmin} transcript={transcript} setTranscript={setTranscript} onRecordingChange={setRecording} /><RoomCollaborationPanel /></aside></div><InterviewAnalysisPanel interviewId={interviewId} isAdmin={isAdmin} />
+      <div className="livekit-room-grid"><LiveKitCall interviewId={interviewId} jobTitle={jobTitle} company={company} audioRequested={audioRequested} videoRequested={videoRequested} onAudioRequestedChange={setAudioRequested} onVideoRequestedChange={setVideoRequested} onRoom={handleRoom} /><aside className="livekit-room-sidebar"><LiveKitParticipants room={room} user={user} isAdmin={isAdmin} /><LiveKitTranscriptPanel interviewId={interviewId} room={room} isAdmin={isAdmin} currentUserId={user.id} currentUserName={user.displayName} transcript={transcript} setTranscript={setTranscript} onRecordingChange={setRecording} /><RoomCollaborationPanel /></aside></div><InterviewAnalysisPanel interviewId={interviewId} isAdmin={isAdmin} />
     </>}</div></main></div></div>;
 }
 

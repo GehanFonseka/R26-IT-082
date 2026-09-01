@@ -1,0 +1,82 @@
+Feature,Coefficient,AbsoluteImportance
+numeric__Expected Monthly Salary for New Role / Progression (LKR),7.827527731646872,7.827527731646872
+numeric__Current Monthly Base Salary (LKR),-7.804817802388326,7.804817802388326
+categorical__Primary / Preferred Employment District in Sri Lanka_Monaragala,2.4199654702194873,2.4199654702194873
+categorical__Job Role / Professional Designation_Laboratory Technician,2.111743774905762,2.111743774905762
+numeric__Job Involvement & Sense of Purpose,-2.1115795849239856,2.1115795849239856
+categorical__Primary / Preferred Employment District in Sri Lanka_Matale,-1.9984595782723669,1.9984595782723669
+categorical__Primary / Preferred Employment District in Sri Lanka_Kilinochchi,1.6696940528775892,1.6696940528775892
+categorical__Primary / Preferred Employment District in Sri Lanka_Galle,1.6620399922783486,1.6620399922783486
+categorical__Highest Level of Completed Education_Doctorate / PhD,1.6548743949719789,1.6548743949719789
+numeric__Years in Current Role,1.643061789431142,1.643061789431142
+numeric__Work-Life Balance Rating,-1.499948116389027,1.499948116389027
+numeric__Overall Job & Role Satisfaction,-1.4651811354809303,1.4651811354809303
+categorical__Highest Level of Completed Education_Postgraduate Professional / MPhil,-1.4621063802094156,1.4621063802094156
+categorical__Job Role / Professional Designation_Healthcare Representative,-1.4528176348071806,1.4528176348071806
+categorical__Job Role / Professional Designation_Manufacturing Director,-1.437128522582359,1.437128522582359
+numeric__Physical & Virtual Work Environment Satisfaction,-1.3499726440210844,1.3499726440210844
+categorical__Primary / Preferred Employment District in Sri Lanka_Badulla,-1.2525217250019567,1.2525217250019567
+categorical__Primary / Preferred Employment District in Sri Lanka_Batticaloa,-1.1881808862534236,1.1881808862534236
+categorical__Primary / Preferred Employment District in Sri Lanka_Mullaitivu,1.0972074222418422,1.0972074222418422
+categorical__Primary / Preferred Employment District in Sri Lanka_Vavuniya,-1.0513928771934726,1.0513928771934726
+categorical__Primary / Preferred Employment District in Sri Lanka_Puttalam,1.0193763225237473,1.0193763225237473
+numeric__Interpersonal & Management Relationship Satisfaction,-1.0085500934498426,1.0085500934498426
+categorical__Functional Department_Information Technology,-0.9791920845088058,0.9791920845088058
+categorical__Contractual Notice Period_30 Days (One Month),-0.9763543222130173,0.9763543222130173
+numeric__Total Years of Service with Current Company,-0.9672285812122942,0.9672285812122942
+categorical__Functional Department_Sales,0.946277501519716,0.946277501519716
+categorical__Functional Department_Research & Development,-0.9132418935883405,0.9132418935883405
+categorical__Functional Department_Human Resources,0.8550112977667513,0.8550112977667513
+categorical__Academic Discipline / Field of Study_Other Disciplines,-0.8461376552680568,0.8461376552680568
+categorical__Primary / Preferred Employment District in Sri Lanka_Kurunegala,-0.8193772650456799,0.8193772650456799
+categorical__Contractual Notice Period_60 Days (Two Months),0.7869961318250706,0.7869961318250706
+categorical__Primary / Preferred Employment District in Sri Lanka_Ratnapura,0.7677541490182105,0.7677541490182105
+categorical__Primary / Preferred Employment District in Sri Lanka_Negambo,-0.7403404782572774,0.7403404782572774
+categorical__Primary / Preferred Employment District in Sri Lanka_Kandy,-0.7295651324154209,0.7295651324154209
+categorical__Academic Discipline / Field of Study_Medical (Medicine / Nursing / Allied Health Sciences),-0.7267885976530919,0.7267885976530919
+categorical__Business Travel Frequency_Non-Travel,0.6455101435809047,0.6455101435809047
+categorical__Job Role / Professional Designation_Human Resources,-0.6363292071548934,0.6363292071548934
+categorical__Academic Discipline / Field of Study_Marketing (Business / Commerce / Marketing Management),0.6271210478668932,0.6271210478668932
+categorical__Primary / Preferred Employment District in Sri Lanka_Trincomalee,-0.6251200867513126,0.6251200867513126
+categorical__Marital Status_Divorced,-0.56607746691511,0.56607746691511
+categorical__Primary / Preferred Employment District in Sri Lanka_Hambantota,-0.5207952574423402,0.5207952574423402
+categorical__Marital Status_Single,0.466991108339351,0.466991108339351
+numeric__Years Working with Current Manager,-0.45045598085203586,0.45045598085203586
+categorical__Work Operating Model_On-site (Fully Office/Facility-Based),-0.44679597736181664,0.44679597736181664
+categorical__Primary / Preferred Employment District in Sri Lanka_Colombo,0.42497625488331836,0.42497625488331836
+categorical__Job Role / Professional Designation_Manager,0.4118459958506229,0.4118459958506229
+categorical__Primary / Preferred Employment District in Sri Lanka_Kalutara,-0.4048585164725615,0.4048585164725615
+categorical__Academic Discipline / Field of Study_Technical Degree (Engineering / Technology / Computing),0.402136820806166,0.402136820806166
+categorical__Business Travel Frequency_Travel_Frequently,-0.40135088693043786,0.40135088693043786
+categorical__Job Role / Professional Designation_Sales Executive,0.38417707990056543,0.38417707990056543
+categorical__Academic Discipline / Field of Study_Life Sciences (Biology / Biochemistry / Environmental Sciences),0.36774019193221996,0.36774019193221996
+categorical__Job Role / Professional Designation_IT,0.35261288124320295,0.35261288124320295
+categorical__Contractual Notice Period_0 Days (Immediate / On Probation),0.34897106834891445,0.34897106834891445
+numeric__Total Number of Previous Companies Worked For,-0.3386254243343303,0.3386254243343303
+categorical__Business Travel Frequency_Travel_Rarely,-0.33530443546113947,0.33530443546113947
+numeric__Daily Commute Distance from Home to Workplace,0.2998450126816268,0.2998450126816268
+categorical__Primary / Preferred Employment District in Sri Lanka_Nuwara Eliya,0.2803115665725203,0.2803115665725203
+categorical__Primary / Preferred Employment District in Sri Lanka_Jaffna,-0.2788530809818552,0.2788530809818552
+categorical__Contractual Notice Period_14 Days (Two Weeks),-0.2015264051149973,0.2015264051149973
+numeric__Years Since Last Promotion,0.19947207586488974,0.19947207586488974
+categorical__Work Operating Model_Hybrid (Mix of On-site & Remote),0.1786539407666591,0.1786539407666591
+categorical__Work Operating Model_Remote (Fully Home-Based),0.17699685778448565,0.17699685778448565
+categorical__Job Role / Professional Designation_Research Scientist,0.17475045383360846,0.17475045383360846
+categorical__Primary / Preferred Employment District in Sri Lanka_Anuradhapura,-0.1723825575448487,0.1723825575448487
+categorical__Highest Level of Completed Education_Bachelor's Degree,-0.1716627243542319,0.1716627243542319
+categorical__Primary / Preferred Employment District in Sri Lanka_Mannar,0.16364866277813847,0.16364866277813847
+numeric__Age,0.15225729849963132,0.15225729849963132
+categorical__Highest Level of Completed Education_Master's Degree / Post-Graduate Diploma,-0.1415404354327825,0.1415404354327825
+categorical__Overtime Requirement_No,-0.1319215776837044,0.1319215776837044
+categorical__Primary / Preferred Employment District in Sri Lanka_Matara,0.12731763099389215,0.12731763099389215
+numeric__Seniority Level / Job Tier,-0.10754594759174056,0.10754594759174056
+categorical__Gender_Male,-0.10381089123383531,0.10381089123383531
+categorical__Academic Discipline / Field of Study_Human Resources (HRM / Organizational Psychology),0.08478301350520838,0.08478301350520838
+categorical__Contractual Notice Period_90 Days (Three Months),-0.04923165165663825,0.04923165165663825
+categorical__Overtime Requirement_Yes,0.04077639887302488,0.04077639887302488
+categorical__Highest Level of Completed Education_High School / Advanced Level / Diploma,0.029289966213788203,0.029289966213788203
+categorical__Primary / Preferred Employment District in Sri Lanka_Gampaha,0.0234763470509601,0.0234763470509601
+categorical__Primary / Preferred Employment District in Sri Lanka_Ampara,0.01887249782215117,0.01887249782215117
+categorical__Primary / Preferred Employment District in Sri Lanka_Polonnaruwa,0.0160618935616376,0.0160618935616376
+categorical__Gender_Female,0.01266571242314805,0.01266571242314805
+categorical__Marital Status_Married,0.00794117976508088,0.00794117976508088

@@ -57,6 +57,10 @@ const requireInterviewParticipant = async (interviewId, userId, role) => {
   return interview;
 };
 
+const canManageTranscript = (entry, userId, role) => (
+  entry.role === "admin" ? role === "admin" : entry.userId === userId
+);
+
 const mapRoomDescription = (description) => description && ({
   ...description,
   sdp: normalizeSessionDescription(description.sdp),
@@ -273,7 +277,7 @@ export const jobRepository = {
     const collection = await interviewTranscriptCollection();
     const existing = await collection.findOne({ id: entryId, interviewId });
     if (!existing) throw Object.assign(new Error("Transcript entry not found"), { statusCode: 404 });
-    if (existing.role !== "admin") throw Object.assign(new Error("Only interviewer questions can be edited"), { statusCode: 403 });
+    if (!canManageTranscript(existing, userId, role)) throw Object.assign(new Error("You can only edit your own transcript messages"), { statusCode: 403 });
     const updatedAt = new Date();
     await collection.updateOne({ id: entryId, interviewId }, { $set: { text: input.text, updatedAt } });
     return { ...existing, text: input.text, updatedAt, _id: undefined };
@@ -284,7 +288,7 @@ export const jobRepository = {
     const collection = await interviewTranscriptCollection();
     const existing = await collection.findOne({ id: entryId, interviewId });
     if (!existing) throw Object.assign(new Error("Transcript entry not found"), { statusCode: 404 });
-    if (existing.role !== "admin") throw Object.assign(new Error("Only interviewer questions can be deleted"), { statusCode: 403 });
+    if (!canManageTranscript(existing, userId, role)) throw Object.assign(new Error("You can only delete your own transcript messages"), { statusCode: 403 });
     await collection.deleteOne({ id: entryId, interviewId });
     return { id: entryId };
   },
