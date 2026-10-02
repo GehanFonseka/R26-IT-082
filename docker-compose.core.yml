@@ -1,3 +1,6 @@
+# Core Deployment Profile: Lightweight recruitment stack without heavy ASAG & Whisper ASR models
+# Usage: docker compose -f docker-compose.core.yml up
+
 services:
   frontend:
     build: ./frontend
@@ -18,9 +21,6 @@ services:
       AUTH_SERVICE_URL: http://auth-service:3001
       CANDIDATE_SERVICE_URL: http://candidate-service:3002
       JOB_SERVICE_URL: http://job-service:4004
-      SPEECH_TO_TEXT_SERVICE_URL: http://speech-to-text-service:4005
-      INTERVIEW_ANALYSIS_SERVICE_URL: http://interview-analysis-service:4006
-      INTERVIEW_ANSWER_MODEL_SERVICE_URL: http://interview-answer-model-service:4010
       CV_PROFILE_ANALYSIS_SERVICE_URL: http://cv-profile-analysis-service:4007
       RESUME_STRENGTH_MODEL_SERVICE_URL: http://resume-strength-model-service:4009
       JWT_SECRET: ${JWT_SECRET:-change-this-local-secret}
@@ -31,12 +31,9 @@ services:
       - attrition-model-service
       - early-attrition-model-service
       - resume-strength-model-service
-      - interview-answer-model-service
-      - speech-to-text-service
       - auth-service
       - candidate-service
       - job-service
-      - interview-analysis-service
       - cv-profile-analysis-service
     networks: [lti-network]
 
@@ -112,21 +109,6 @@ services:
       - ${MODEL_ROOT:-./backend/services/resume-strength-model-service/model}:/app/model:ro
     networks: [lti-network]
 
-  interview-answer-model-service:
-    build: ./backend/services/interview-answer-model-service
-    environment:
-      PORT: 4010
-      MODEL_DIR: /app/model/v5
-      NLI_MODEL_DIR: /app/model/nli
-      MODEL_DEVICE: ${INTERVIEW_ANSWER_MODEL_DEVICE:-cpu}
-      MODEL_MAX_LENGTH: ${INTERVIEW_ANSWER_MODEL_MAX_LENGTH:-384}
-      MODEL_ID: ${INTERVIEW_ANSWER_MODEL_ID:-Final_ASAG_Interview_Scorer_V5}
-      NLI_MODEL_ID: ${INTERVIEW_ANSWER_NLI_MODEL_ID:-cross-encoder/nli-deberta-v3-base}
-      LAZY_LOAD_MODEL: ${LAZY_LOAD_MODEL:-false}
-    volumes:
-      - ${MODEL_ROOT:-./backend/services/interview-answer-model-service/model}:/app/model:ro
-    networks: [lti-network]
-
   resume-explanation-model-service:
     build: ./backend/services/resume-explanation-model-service
     environment:
@@ -134,20 +116,6 @@ services:
       NODE_ENV: ${NODE_ENV:-production}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.5-flash-lite}
-    networks: [lti-network]
-
-  speech-to-text-service:
-    build: ./backend/services/speech-to-text-service
-    environment:
-      PORT: 4005
-      NODE_ENV: ${NODE_ENV:-production}
-      WHISPER_MODEL_SIZE: ${WHISPER_MODEL_SIZE:-tiny}
-      WHISPER_MODEL_PATH: /app/model/${WHISPER_MODEL_SIZE:-tiny}
-      WHISPER_DEVICE: ${WHISPER_DEVICE:-cpu}
-      WHISPER_COMPUTE_TYPE: ${WHISPER_COMPUTE_TYPE:-int8}
-      WHISPER_BEAM_SIZE: ${WHISPER_BEAM_SIZE:-1}
-    volumes:
-      - ${MODEL_ROOT:-./backend/services/speech-to-text-service/model}:/app/model:ro
     networks: [lti-network]
 
   auth-service:
@@ -180,22 +148,6 @@ services:
       LIVEKIT_URL: ${LIVEKIT_URL:-}
       LIVEKIT_API_KEY: ${LIVEKIT_API_KEY:-}
       LIVEKIT_API_SECRET: ${LIVEKIT_API_SECRET:-}
-    networks: [lti-network]
-
-  interview-analysis-service:
-    build: ./backend/services/interview-analysis-service
-    environment:
-      PORT: 4006
-      NODE_ENV: ${NODE_ENV:-production}
-      JOB_SERVICE_URL: http://job-service:4004
-      MONGODB_URI: ${MONGODB_URI}
-      INTERVIEW_ANALYSIS_DB_NAME: ${INTERVIEW_ANALYSIS_DB_NAME:-lanka_talent_analysis}
-      INTERVIEW_NLI_MODEL_DIR: /app/model
-      INTERVIEW_NLI_MODEL_ID: ${INTERVIEW_NLI_MODEL_ID:-nli-deberta-v3-xsmall-local}
-      INTERVIEW_NLI_MODEL_DTYPE: ${INTERVIEW_NLI_MODEL_DTYPE:-q8}
-      INTERVIEW_ANSWER_MODEL_SERVICE_URL: http://interview-answer-model-service:4010
-    volumes:
-      - ${MODEL_ROOT:-./backend/services/interview-analysis-service/model}:/app/model:ro
     networks: [lti-network]
 
   cv-profile-analysis-service:

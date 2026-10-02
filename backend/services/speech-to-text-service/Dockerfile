@@ -10,12 +10,11 @@ RUN pip install --no-cache-dir \
     -r requirements.txt
 
 COPY src ./src
-COPY model ./model
 
 ENV PYTHONUNBUFFERED=1
 ENV PORT=4005
-ENV WHISPER_MODEL_SIZE=small.en
-ENV WHISPER_MODEL_PATH=/app/model/small.en
+ENV WHISPER_MODEL_SIZE=tiny
+ENV WHISPER_MODEL_PATH=/app/model/tiny
 ENV WHISPER_DEVICE=cpu
 ENV WHISPER_COMPUTE_TYPE=int8
 

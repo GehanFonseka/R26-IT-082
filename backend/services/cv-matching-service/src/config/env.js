@@ -3,7 +3,9 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const directory = path.dirname(fileURLToPath(import.meta.url));
-const defaultModelDir = path.resolve(directory, "../../model");
+const defaultModelDir = process.env.MODEL_ROOT
+  ? path.resolve(process.env.MODEL_ROOT, "cv-matching")
+  : path.resolve(directory, "../../model");
 const modelDir = process.env.MATCHING_MODEL_DIR
   ? path.resolve(process.cwd(), process.env.MATCHING_MODEL_DIR)
   : defaultModelDir;

@@ -13,7 +13,14 @@ except ImportError:
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MODEL_FILE = Path(os.getenv("MODEL_FILE", ROOT / "model" / "model.pkl"))
+MODEL_ROOT = os.getenv("MODEL_ROOT")
+if os.getenv("MODEL_FILE"):
+    MODEL_FILE = Path(os.getenv("MODEL_FILE"))
+elif MODEL_ROOT:
+    MODEL_FILE = Path(MODEL_ROOT) / "early-attrition" / "model.pkl"
+else:
+    MODEL_FILE = ROOT / "model" / "model.pkl"
+
 MODEL_ID = os.getenv("MODEL_ID", "early-attrition-logistic-v1")
 runner = EarlyAttritionRunner(MODEL_FILE, MODEL_ID)
 model_error = ""

@@ -1,0 +1,62 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  lint-and-test:
+    name: Lint, Test & Frontend Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Node Dependencies
+        run: npm ci || npm install
+
+      - name: Run Linters & Syntax Checks
+        run: npm run lint
+
+      - name: Run Service Tests
+        run: npm test
+
+      - name: Build Frontend Distribution
+        run: npm run build
+
+  validate-docker:
+    name: Validate Docker Configurations & Builds
+    runs-on: ubuntu-latest
+    needs: [lint-and-test]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Validate Default Docker Compose Config
+        run: docker compose config
+
+      - name: Validate Core Profile Docker Compose Config
+        run: docker compose -f docker-compose.core.yml config
+
+      - name: Validate Dev Profile Docker Compose Config
+        run: docker compose -f docker-compose.yml -f docker-compose.dev.yml config
+
+      - name: Build Docker Images Without Model Weights (Decoupled Build)
+        # Verifies that clean checkout builds succeed without gitignored model binaries
+        run: |
+          docker compose build --parallel frontend api-gateway auth-service candidate-service job-service cv-extraction-service cv-matching-service attrition-service interview-analysis-service cv-profile-analysis-service attrition-model-service early-attrition-model-service resume-explanation-model-service

@@ -1,0 +1,51 @@
+# Optional development override to expose internal microservice ports directly on localhost
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+services:
+  frontend:
+    ports: ["5173:80"]
+
+  api-gateway:
+    ports: ["8080:8080"]
+
+  auth-service:
+    ports: ["3001:3001"]
+
+  candidate-service:
+    ports: ["3002:3002"]
+
+  cv-extraction-service:
+    ports: ["4001:4001"]
+
+  cv-matching-service:
+    ports: ["4002:4002"]
+
+  attrition-service:
+    ports: ["4003:4003"]
+
+  job-service:
+    ports: ["4004:4004"]
+
+  speech-to-text-service:
+    ports: ["4005:4005"]
+
+  interview-analysis-service:
+    ports: ["4006:4006"]
+
+  cv-profile-analysis-service:
+    ports: ["4007:4007"]
+
+  attrition-model-service:
+    ports: ["4008:4008"]
+
+  resume-strength-model-service:
+    ports: ["4009:4009"]
+
+  interview-answer-model-service:
+    ports: ["4010:4010"]
+
+  early-attrition-model-service:
+    ports: ["4011:4011"]
+
+  resume-explanation-model-service:
+    ports: ["4012:4012"]

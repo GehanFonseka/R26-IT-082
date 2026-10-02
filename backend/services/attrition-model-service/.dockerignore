@@ -1,5 +1,6 @@
 __pycache__
 *.pyc
-model
-model/**
+*.joblib
+*.cbm
+*.csv
 *.log

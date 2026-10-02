@@ -8,15 +8,26 @@ dotenv.config();
 
 const integer = (value, fallback) => Number.parseInt(value ?? fallback, 10);
 
+const isProduction = (process.env.NODE_ENV ?? "development") === "production";
+const jwtSecret = process.env.JWT_SECRET;
+if (isProduction && (!jwtSecret || jwtSecret === "development-only-secret")) {
+  throw new Error("FATAL: In production mode, JWT_SECRET must be explicitly set and cannot use the development fallback.");
+}
+
+const rawCors = process.env.CORS_ORIGIN;
+const parsedCorsOrigin = rawCors?.includes(",")
+  ? rawCors.split(",").map((item) => item.trim()).filter(Boolean)
+  : (rawCors || "http://localhost:5173");
+
 export const env = {
   nodeEnv: process.env.NODE_ENV ?? "development",
   port: integer(process.env.PORT, 8080),
-  jwtSecret: process.env.JWT_SECRET ?? "development-only-secret",
-  corsOrigin: process.env.CORS_ORIGIN ?? "http://localhost:5173",
+  jwtSecret: jwtSecret || "development-only-secret",
+  corsOrigin: parsedCorsOrigin,
   requestTimeoutMs: integer(process.env.REQUEST_TIMEOUT_MS, 120000),
   rateLimit: {
     windowMs: integer(process.env.RATE_LIMIT_WINDOW_MS, 60000),
-    limit: integer(process.env.RATE_LIMIT_MAX, process.env.NODE_ENV === "production" ? 120 : 300),
+    limit: integer(process.env.RATE_LIMIT_MAX, isProduction ? 120 : 300),
     standardHeaders: true,
     legacyHeaders: false,
     message: { success: false, message: "Too many requests; please try again shortly" },

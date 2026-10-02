@@ -3,9 +3,12 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const directory = path.dirname(fileURLToPath(import.meta.url));
-const defaultNliModelDir = path.resolve(directory, "../../model");
 dotenv.config({ path: path.resolve(directory, "../../../../../.env") });
 dotenv.config();
+
+const defaultNliModelDir = process.env.MODEL_ROOT
+  ? path.resolve(process.env.MODEL_ROOT, "interview-analysis")
+  : path.resolve(directory, "../../model");
 
 const integer = (value, fallback) => Number.parseInt(value ?? fallback, 10);
 

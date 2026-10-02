@@ -55,8 +55,11 @@ were removed.
 ```powershell
 npm install
 npm run install:all
+npm run models:validate
 npm run dev
 ```
+
+For production deployment profiles, Docker instructions, and cloud architecture, see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 `npm run dev` starts the frontend, gateway, extraction, matching, local resume-strength
 model, the supplied interview-answer model, CatBoost model, attrition API, local

@@ -9,10 +9,16 @@ SERVICE_DIRECTORY = Path(__file__).resolve().parents[1]
 load_dotenv(SERVICE_DIRECTORY / ".env")
 
 PORT = int(os.getenv("PORT", "4005"))
-MODEL_SIZE = os.getenv("WHISPER_MODEL_SIZE", "small.en")
+MODEL_ROOT = os.getenv("MODEL_ROOT")
+MODEL_SIZE = os.getenv("WHISPER_MODEL_SIZE", "tiny")
 DEVICE = os.getenv("WHISPER_DEVICE", "cpu")
 COMPUTE_TYPE = os.getenv("WHISPER_COMPUTE_TYPE", "int8" if DEVICE == "cpu" else "float16")
-MODEL_PATH = Path(os.getenv("WHISPER_MODEL_PATH") or SERVICE_DIRECTORY / "model" / MODEL_SIZE).resolve()
+if os.getenv("WHISPER_MODEL_PATH"):
+    MODEL_PATH = Path(os.getenv("WHISPER_MODEL_PATH")).resolve()
+elif MODEL_ROOT:
+    MODEL_PATH = (Path(MODEL_ROOT) / "speech-to-text" / MODEL_SIZE).resolve()
+else:
+    MODEL_PATH = (SERVICE_DIRECTORY / "model" / MODEL_SIZE).resolve()
 BEAM_SIZE = int(os.getenv("WHISPER_BEAM_SIZE", "5"))
 MAX_AUDIO_BYTES = int(os.getenv("MAX_AUDIO_BYTES", str(5 * 1024 * 1024)))
 DEFAULT_INITIAL_PROMPT = "English technical job interview. Preserve technical terms, acronyms, product names, programming languages, frameworks, cloud services, databases, and software engineering vocabulary."

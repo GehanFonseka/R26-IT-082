@@ -15,8 +15,21 @@ except ImportError:
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MODEL_FILE = Path(os.getenv("MODEL_FILE", ROOT / "attrition_risk_catboost_v7_optuna.joblib"))
-DATASET_FILE = Path(os.getenv("MODEL_DATASET_FILE", ROOT / "Sri_Lankan_Hiring_Attrition_Dataset.csv"))
+MODEL_ROOT = os.getenv("MODEL_ROOT")
+if os.getenv("MODEL_FILE"):
+    MODEL_FILE = Path(os.getenv("MODEL_FILE"))
+elif MODEL_ROOT:
+    MODEL_FILE = Path(MODEL_ROOT) / "attrition" / "attrition_risk_catboost_v7_optuna.joblib"
+else:
+    MODEL_FILE = ROOT / "attrition_risk_catboost_v7_optuna.joblib"
+
+if os.getenv("MODEL_DATASET_FILE"):
+    DATASET_FILE = Path(os.getenv("MODEL_DATASET_FILE"))
+elif MODEL_ROOT:
+    DATASET_FILE = Path(MODEL_ROOT) / "attrition" / "Sri_Lankan_Hiring_Attrition_Dataset.csv"
+else:
+    DATASET_FILE = ROOT / "Sri_Lankan_Hiring_Attrition_Dataset.csv"
+
 MODEL_ID = os.getenv("MODEL_ID", "attrition-risk-catboost-v7")
 runner = ModelRunner(MODEL_FILE, MODEL_ID, float(os.getenv("MODEL_THRESHOLD", "0.33")))
 model_error = ""

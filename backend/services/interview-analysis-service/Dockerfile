@@ -10,7 +10,6 @@ RUN npm install --omit=dev \
 	--fetch-retry-maxtimeout=120000 \
 	--fetch-timeout=300000
 COPY src ./src
-COPY model ./model
 ENV NODE_ENV=production
 EXPOSE 4006
 CMD ["npm", "start"]

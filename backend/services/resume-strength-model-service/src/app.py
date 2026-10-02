@@ -14,7 +14,13 @@ except ImportError:  # Supports uvicorn app:app --app-dir src for local developm
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MODEL_DIR = Path(os.getenv("MODEL_DIR", ROOT / "model"))
+MODEL_ROOT = os.getenv("MODEL_ROOT")
+if os.getenv("MODEL_DIR"):
+    MODEL_DIR = Path(os.getenv("MODEL_DIR"))
+elif MODEL_ROOT:
+    MODEL_DIR = Path(MODEL_ROOT) / "resume-strength"
+else:
+    MODEL_DIR = ROOT / "model"
 if not MODEL_DIR.is_absolute():
     MODEL_DIR = (Path.cwd() / MODEL_DIR).resolve()
 MODEL_DEVICE = os.getenv("MODEL_DEVICE", "cpu")

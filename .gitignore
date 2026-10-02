@@ -27,3 +27,5 @@ temp/
 *.tmp
 *.temp
 *.swp
+
+models-s3/

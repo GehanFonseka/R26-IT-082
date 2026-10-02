@@ -13,16 +13,31 @@ except ImportError:  # Supports uvicorn app:app --app-dir src for local developm
 
 
 ROOT = Path(__file__).resolve().parents[1]
-MODEL_DIR = Path(os.getenv("MODEL_DIR", ROOT / "model" / "v5"))
+MODEL_ROOT = os.getenv("MODEL_ROOT")
+if os.getenv("MODEL_DIR"):
+    MODEL_DIR = Path(os.getenv("MODEL_DIR"))
+elif MODEL_ROOT:
+    MODEL_DIR = Path(MODEL_ROOT) / "interview-answer" / "v5"
+else:
+    MODEL_DIR = ROOT / "model" / "v5"
 if not MODEL_DIR.is_absolute():
     MODEL_DIR = (Path.cwd() / MODEL_DIR).resolve()
-NLI_MODEL_DIR = Path(os.getenv("NLI_MODEL_DIR", ROOT / "model" / "nli"))
+
+if os.getenv("NLI_MODEL_DIR"):
+    NLI_MODEL_DIR = Path(os.getenv("NLI_MODEL_DIR"))
+elif MODEL_ROOT:
+    NLI_MODEL_DIR = Path(MODEL_ROOT) / "interview-answer" / "nli"
+else:
+    NLI_MODEL_DIR = ROOT / "model" / "nli"
 if not NLI_MODEL_DIR.is_absolute():
     NLI_MODEL_DIR = (Path.cwd() / NLI_MODEL_DIR).resolve()
+
 MODEL_DEVICE = os.getenv("MODEL_DEVICE", "cpu")
 MODEL_MAX_LENGTH = int(os.getenv("MODEL_MAX_LENGTH", "384"))
 MODEL_ID = os.getenv("MODEL_ID", "Final_ASAG_Interview_Scorer_V5")
 NLI_MODEL_ID = os.getenv("NLI_MODEL_ID", "cross-encoder/nli-deberta-v3-base")
+LAZY_LOAD_MODEL = os.getenv("LAZY_LOAD_MODEL", "false").lower() in ("true", "1", "yes")
+
 runner = InterviewAnswerModelRunner(MODEL_DIR, NLI_MODEL_DIR, MODEL_DEVICE, MODEL_MAX_LENGTH, MODEL_ID, NLI_MODEL_ID)
 model_error = ""
 
@@ -30,12 +45,15 @@ model_error = ""
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     global model_error
-    try:
-        runner.load()
-        print(f"interview-answer-model-service loaded {MODEL_ID} from {MODEL_DIR}")
-    except Exception as error:  # Keep health available with an actionable failure state.
-        model_error = str(error)
-        print(f"interview-answer-model-service model loading failed: {model_error}")
+    if LAZY_LOAD_MODEL:
+        print(f"interview-answer-model-service: lazy loading enabled, model will load on first inference request")
+    else:
+        try:
+            runner.load()
+            print(f"interview-answer-model-service loaded {MODEL_ID} from {MODEL_DIR}")
+        except Exception as error:  # Keep health available with an actionable failure state.
+            model_error = str(error)
+            print(f"interview-answer-model-service model loading failed: {model_error}")
     yield
 
 
@@ -54,12 +72,14 @@ def request_id(request: Request) -> str:
 
 @app.get("/health")
 def health(request: Request):
+    status = "ok" if runner.loaded else ("standby" if LAZY_LOAD_MODEL and not model_error else "degraded")
     return {
         "success": not bool(model_error),
         "service": "interview-answer-model-service",
-        "status": "ok" if runner.loaded else "degraded",
+        "status": status,
         "modelLoaded": runner.loaded,
         "modelId": MODEL_ID,
+        "lazyLoading": LAZY_LOAD_MODEL,
         "modelError": model_error or None,
         "requestId": request_id(request),
     }
@@ -67,11 +87,23 @@ def health(request: Request):
 
 @app.post("/predict")
 def predict(payload: PredictRequest, request: Request):
-    if model_error or not runner.loaded:
+    global model_error
+    if not runner.loaded:
+        try:
+            runner.load()
+            model_error = ""
+        except Exception as error:
+            model_error = str(error)
+            raise HTTPException(status_code=503, detail={
+                "success": False,
+                "message": "Interview answer scoring model could not be loaded",
+                "error": model_error,
+            }) from error
+    if model_error:
         raise HTTPException(status_code=503, detail={
             "success": False,
             "message": "Interview answer scoring model is unavailable",
-            "error": model_error or "Model is not loaded",
+            "error": model_error,
         })
     try:
         result = runner.predict(payload.question, payload.referenceAnswer, payload.candidateAnswer)

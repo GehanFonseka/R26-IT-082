@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import { createRequire } from "node:module";
 import { env } from "../config/env.js";
 import { compactModelText } from "./modelInput.js";
@@ -21,6 +22,11 @@ export function modelStatus() {
 
 export async function loadModel() {
   if (state.loaded) return;
+  if (!fs.existsSync(env.modelDir)) {
+    const error = new Error(`Matching model directory not found: ${env.modelDir}. Set MODEL_ROOT or MATCHING_MODEL_DIR.`);
+    state.error = error;
+    throw error;
+  }
   if (!state.promise) {
     state.promise = Promise.all([
       AutoTokenizer.from_pretrained(env.modelDir, { local_files_only: true }),
