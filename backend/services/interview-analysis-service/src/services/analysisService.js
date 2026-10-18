@@ -5,6 +5,7 @@ import { calculateSpeechMetrics } from "./metricsService.js";
 import { scoreInterviewAnswer } from "./answerModelClient.js";
 import { analyzeAnswer, analyzeQuestionRelevance } from "./scoringService.js";
 import { pairTranscript } from "./transcriptService.js";
+import { averageModelScore } from "../utils/modelScores.js";
 
 const hash = (value) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
 const average = (values) => values.length ? Math.round(values.reduce((sum, value) => sum + value, 0) / values.length) : 0;
@@ -60,7 +61,7 @@ export const runInterviewAnalysis = async (interviewId, req, references = []) =>
   for (const pair of pairs) questionAnswers.push(await analyzePair(pair, context, references, req));
   const answered = questionAnswers.filter((item) => item.answer);
   const summary = {
-    overallScore: average(answered.map((item) => item.answerScore)),
+    overallScore: averageModelScore(answered),
     questionRelevance: average(questionAnswers.map((item) => item.questionRelevance.score)),
     answerCount: answered.length,
     questionCount: questionAnswers.length,

@@ -1,0 +1,10 @@
+.results-management { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 14px; margin: 0 0 20px; }
+.results-management label { display: grid; gap: 6px; color: #52627e; font-size: .72rem; font-weight: 700; }
+.results-management select { min-width: 180px; max-width: 100%; padding: 10px 12px; border: 1px solid #dbe3f1; border-radius: 9px; background: #fff; color: #243653; font: inherit; }
+.results-management span { margin-left: auto; align-self: center; color: #64748b; font-size: .72rem; }
+.results-management button { padding: 11px 16px; border: 1px solid #c4b5fd; border-radius: 9px; background: #f3eeff; color: #6540b3; font: inherit; font-size: .72rem; font-weight: 800; cursor: pointer; }
+.results-management button:hover { background: #e9ddff; }
+.results-management button:disabled { opacity: .5; cursor: not-allowed; }
+.results-management :focus-visible { outline: 3px solid #a5b4fc; outline-offset: 3px; }
+@media (max-width: 640px) { .results-management label { width: 100%; } .results-management span { margin-left: 0; } }
+.results-management { padding: 14px; border: 1px solid #e1e4f4; border-radius: 12px; background: #f5f8fc; }

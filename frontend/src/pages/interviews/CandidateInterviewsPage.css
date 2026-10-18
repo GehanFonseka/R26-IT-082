@@ -1,3 +1,5 @@
+@import "./CandidateInterviewsTheme.css";
+
 .candidate-interviews-shell__main { min-height: 100vh; margin-left: 285px; }
 .candidate-interviews-page { min-height: calc(100vh - 65px); padding: 32px clamp(18px, 4vw, 52px) 60px; color: #eef3ff; background: radial-gradient(circle at 82% 0%, rgba(124, 140, 255, 0.13), transparent 34%), #080d17; }
 .candidate-interviews-page__container { width: min(1180px, 100%); margin: 0 auto; }

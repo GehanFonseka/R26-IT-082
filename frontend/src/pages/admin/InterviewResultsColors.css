@@ -1,0 +1,38 @@
+.interview-results-page { color: #233654; background: radial-gradient(ellipse at 0% 0%, #e4ecff 0, transparent 45%), radial-gradient(ellipse at 100% 35%, #eee6fa 0, transparent 50%), #f5f8fc; }
+.interview-results-hero { position: relative; overflow: hidden; color: #142b52; background: linear-gradient(115deg, #e8f1ff, #f3edff 65%, #e4f7f2); border: 1px solid #d8e2f4; box-shadow: 0 12px 30px #385d9110; }
+.interview-results-hero h1 { color: #142b52; }
+.interview-results-hero p { color: #536585; }
+.interview-results-eyebrow, .interview-results-overline { color: #6350ad; }
+.interview-results-eyebrow i { background: #7c60d8; box-shadow: 0 0 0 4px #7c60d819; }
+.interview-results-hero__stat { color: #536585; background: #ffffffc9; border-color: #d5dff1; }
+.interview-results-hero__stat strong { color: #375dbe; }
+.interview-results-hero__stat small { color: #6b7b95; }
+.interview-results-summary div { position: relative; overflow: hidden; border-color: #dce5f3; background: linear-gradient(120deg, #fff, #edf4ff); }
+.interview-results-summary div::before { content: ""; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; background: #5785e5; }
+.interview-results-summary div:nth-child(2) { background: linear-gradient(120deg, #fff, #f2edff); }
+.interview-results-summary div:nth-child(2)::before { background: #9470df; }
+.interview-results-summary div:nth-child(3) { background: linear-gradient(120deg, #fff, #fff3df); }
+.interview-results-summary div:nth-child(3)::before { background: #dfa34c; }
+.interview-results-summary strong { color: #375dbe; }
+.interview-results-summary div:nth-child(2) strong { color: #7852bf; }
+.interview-results-summary div:nth-child(3) strong { color: #946311; }
+.interview-results-summary span { color: #5c6d88; }
+.interview-results-card { border-color: #dce5f3; box-shadow: 0 12px 30px #385d9110; }
+.interview-results-card h2, .interview-results-group__header h3, .interview-result-row h3 { color: #183052; }
+.interview-results-group { background: #f4f7fe; border-color: #dce5f3; border-top: 3px solid #7b92d7; }
+.interview-results-group:nth-child(3n+2) { background: #f7f4fc; border-top-color: #a389d8; }
+.interview-results-group:nth-child(3n+3) { background: #f0f9f7; border-top-color: #64b6a5; }
+.interview-results-group__header strong { color: #4262a4; background: #fff; border-color: #dbe3f1; }
+.interview-results-refresh, .interview-results-filters button { background: #eff4ff; color: #395eac; border-color: #d7e3fc; cursor: pointer; }
+.interview-results-refresh:hover, .interview-results-filters button:hover, .interview-results-filters button.is-active { background: #426ac8; color: white; border-color: #426ac8; }
+.interview-results-refresh:disabled { opacity: .6; cursor: wait; }
+.interview-results-toolbar { background: #f5f7fc; border-color: #e0e6f1; flex-wrap: wrap; }
+.interview-results-toolbar input { border-color: #dbe3f1; }
+.interview-results-toolbar input:focus { border-color: #7b92d7; box-shadow: 0 0 0 3px #7b92d722; }
+.interview-result-row { background: white; border-color: #e0e6f1; }
+.interview-result-row:hover { border-color: #b2bfe1; box-shadow: 0 5px 15px #385d9110; }
+.interview-result-row__avatar { color: #7758ba; background: #f0eaff; }
+.interview-result-row__action { color: #fff; background: #426ac8; border-color: #426ac8; cursor: pointer; }
+.interview-result-row__action:hover { background: #3558ad; border-color: #3558ad; }
+.interview-results-page button:focus-visible { outline: 3px solid #a5b4fc; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .interview-results-loader { animation: none; } }

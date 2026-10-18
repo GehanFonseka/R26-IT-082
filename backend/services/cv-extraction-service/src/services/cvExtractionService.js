@@ -1,6 +1,7 @@
 import { createRequire } from "node:module";
-import * as mammoth from "mammoth";
 import { extractCandidateFields } from "../utils/candidateParser.js";
+import { renderPdfPage } from "../utils/pdfText.js";
+import { extractDocxText } from "../utils/docxText.js";
 
 const require = createRequire(import.meta.url);
 const pdfParse = require("pdf-parse/lib/pdf-parse.js");
@@ -11,13 +12,13 @@ export async function extractRawText(file) {
   const extension = extensionOf(file.originalname);
   if (extension === "txt") return file.buffer.toString("utf8");
   if (extension === "pdf") {
-    try { return (await pdfParse(file.buffer)).text; }
+    try { return (await pdfParse(new Uint8Array(file.buffer), { pagerender: renderPdfPage })).text; }
     catch (error) {
       throw Object.assign(new Error("Could not read this PDF. Please upload a valid text-based PDF, DOCX, or TXT file."), { statusCode: 422, technicalError: error.message });
     }
   }
   if (extension === "docx") {
-    try { return (await mammoth.extractRawText({ buffer: file.buffer })).value; }
+    try { return await extractDocxText(file.buffer); }
     catch (error) {
       throw Object.assign(new Error("Could not read this DOCX file. Please upload a valid DOCX, PDF, or TXT file."), { statusCode: 422, technicalError: error.message });
     }

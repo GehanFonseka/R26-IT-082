@@ -1,4 +1,6 @@
 import { getDatabase } from "../config/mongo.js";
+import { cvRevision } from "../utils/cvRevision.js";
+import { certificateCheckRepository } from "./certificateCheckRepository.js";
 
 const collection = async () => (await getDatabase()).collection("candidate_profiles");
 
@@ -16,9 +18,15 @@ const map = (profile) => profile && ({
   updatedAt: profile.updatedAt,
 });
 
+const hydrate = async (profile) => {
+  if (!profile?.cv) return profile;
+  const revision = cvRevision(profile.cv);
+  return { ...profile, cv: { ...profile.cv, revision, certificateChecks: await certificateCheckRepository.list(profile.userId, revision) } };
+};
+
 export const profileRepository = {
   async get(userId) {
-    return map(await (await collection()).findOne({ userId }));
+    return hydrate(map(await (await collection()).findOne({ userId })));
   },
   async getPhotos(userIds = []) {
     const ids = [...new Set(userIds.map((userId) => String(userId || "").trim()).filter(Boolean))].slice(0, 500);
@@ -29,6 +37,7 @@ export const profileRepository = {
   async upsert(userId, profile) {
     const profiles = await collection();
     const update = { ...profile, userId, updatedAt: new Date() };
+    if (profile.cv) update.cv = { ...profile.cv, revision: cvRevision(profile.cv) };
     if (profile.cv) update.cvUpdatedAt = new Date();
     const updateDocument = { $set: update };
     if (profile.cv) {
@@ -49,6 +58,6 @@ export const profileRepository = {
       updateDocument,
       { upsert: true },
     );
-    return map(await profiles.findOne({ userId }));
+    return hydrate(map(await profiles.findOne({ userId })));
   },
 };

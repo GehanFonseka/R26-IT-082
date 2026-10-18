@@ -1,3 +1,4 @@
+import { getInterviewContext } from "../services/contextClient.js";
 import { getInterviewAnalysis, runInterviewAnalysis } from "../services/analysisService.js";
 import { validateInterviewId, validateReferences } from "../validation/analysisValidation.js";
 
@@ -14,7 +15,9 @@ export const analyzeInterview = async (req, res) => {
 
 export const readInterviewAnalysis = async (req, res) => {
   requireUser(req);
-  const data = await getInterviewAnalysis(validateInterviewId(req.params.interviewId));
+  const interviewId = validateInterviewId(req.params.interviewId);
+  await getInterviewContext(interviewId, req);
+  const data = await getInterviewAnalysis(interviewId);
   if (!data) return res.status(404).json({ success: false, message: "No interview analysis is available yet", requestId: req.requestId });
   return res.json({ success: true, data, requestId: req.requestId });
 };

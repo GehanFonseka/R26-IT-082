@@ -24,6 +24,10 @@ function resolvePath(serviceDir, subpath, rootSubpath) {
   return path.resolve(rootDir, "backend/services", serviceDir, subpath);
 }
 
+const customDatasetPath = process.env.ATTRITION_DATASET_PATH
+  ? path.resolve(process.env.ATTRITION_DATASET_PATH)
+  : resolvePath("attrition-model-service", "Sri_Lankan_Hiring_Attrition_Dataset.csv", "attrition/Sri_Lankan_Hiring_Attrition_Dataset.csv");
+
 const checks = [
   {
     name: "cv-matching model (ONNX BERT)",
@@ -43,7 +47,6 @@ const checks = [
   {
     name: "speech-to-text model (Faster-Whisper)",
     files: [
-      // Check tiny or small.en
       fs.existsSync(resolvePath("speech-to-text-service", "model/tiny/model.bin", "speech-to-text/tiny/model.bin"))
         ? resolvePath("speech-to-text-service", "model/tiny/model.bin", "speech-to-text/tiny/model.bin")
         : resolvePath("speech-to-text-service", "model/small.en/model.bin", "speech-to-text/small.en/model.bin"),
@@ -74,7 +77,7 @@ const checks = [
     name: "attrition model (CatBoost V7 & dataset)",
     files: [
       resolvePath("attrition-model-service", "attrition_risk_catboost_v7_optuna.joblib", "attrition/attrition_risk_catboost_v7_optuna.joblib"),
-      resolvePath("attrition-model-service", "Sri_Lankan_Hiring_Attrition_Dataset.csv", "attrition/Sri_Lankan_Hiring_Attrition_Dataset.csv"),
+      customDatasetPath,
     ],
   },
   {

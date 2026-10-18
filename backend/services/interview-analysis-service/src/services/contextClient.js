@@ -10,6 +10,7 @@ const request = async (url, req) => {
         "x-request-id": req.requestId,
         "x-user-id": req.header("x-user-id") || "",
         "x-user-role": req.header("x-user-role") || "",
+        "x-company-id": req.header("x-company-id") || "",
       },
       signal: controller.signal,
     });

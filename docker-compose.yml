@@ -3,6 +3,7 @@ services:
     build: ./frontend
     ports: ["${FRONTEND_PORT:-80}:80"]
     depends_on: [api-gateway]
+    restart: unless-stopped
     networks: [lti-network]
 
   api-gateway:
@@ -24,6 +25,7 @@ services:
       CV_PROFILE_ANALYSIS_SERVICE_URL: http://cv-profile-analysis-service:4007
       RESUME_STRENGTH_MODEL_SERVICE_URL: http://resume-strength-model-service:4009
       JWT_SECRET: ${JWT_SECRET:-change-this-local-secret}
+      CERTIFICATE_REQUEST_TIMEOUT_MS: ${CERTIFICATE_REQUEST_TIMEOUT_MS:-250000}
     depends_on:
       - cv-extraction-service
       - cv-matching-service
@@ -38,6 +40,7 @@ services:
       - job-service
       - interview-analysis-service
       - cv-profile-analysis-service
+    restart: unless-stopped
     networks: [lti-network]
 
   cv-extraction-service:
@@ -45,6 +48,47 @@ services:
     environment:
       PORT: 4001
       NODE_ENV: ${NODE_ENV:-production}
+      CERTIFICATE_LOCAL_MODEL_SERVICE_URL: http://certificate-reader-service:4013
+      CERTIFICATE_LOCAL_MODEL_TIMEOUT_MS: ${CERTIFICATE_LOCAL_MODEL_TIMEOUT_MS:-200000}
+      CERTIFICATE_VERIFICATION_ENABLED: ${CERTIFICATE_VERIFICATION_ENABLED:-true}
+      CERTIFICATE_MATCH_THRESHOLD: ${CERTIFICATE_MATCH_THRESHOLD:-0.9}
+      CERTIFICATE_OCR_CONFIDENCE: ${CERTIFICATE_OCR_CONFIDENCE:-0.85}
+      CERTIFICATE_CACHE_TTL_MS: ${CERTIFICATE_CACHE_TTL_MS:-0}
+      CERTIFICATE_DOWNLOAD_TIMEOUT_MS: ${CERTIFICATE_DOWNLOAD_TIMEOUT_MS:-20000}
+      CERTIFICATE_MAX_BYTES: ${CERTIFICATE_MAX_BYTES:-12582912}
+      CERTIFICATE_BROWSER_TIMEOUT_MS: ${CERTIFICATE_BROWSER_TIMEOUT_MS:-60000}
+      CERTIFICATE_BROWSER_MAX_SCREENS: ${CERTIFICATE_BROWSER_MAX_SCREENS:-8}
+      CERTIFICATE_BROWSER_MAX_REQUESTS: ${CERTIFICATE_BROWSER_MAX_REQUESTS:-256}
+      CERTIFICATE_BROWSER_MAX_JOBS: ${CERTIFICATE_BROWSER_MAX_JOBS:-2}
+    restart: unless-stopped
+    networks: [lti-network]
+
+  certificate-reader-service:
+    profiles: ["certificate-ai"]
+    build: ./backend/ai-services/certificate-reader-service
+    environment:
+      OLLAMA_BASE_URL: http://ollama:11434
+      CERTIFICATE_VISION_MODEL: ${CERTIFICATE_VISION_MODEL:-qwen3-vl:2b}
+      CERTIFICATE_VISION_ENABLED: ${CERTIFICATE_VISION_ENABLED:-true}
+      CERTIFICATE_VISION_MAX_SIDE: ${CERTIFICATE_VISION_MAX_SIDE:-1024}
+      CERTIFICATE_OCR_DEVICE: ${CERTIFICATE_OCR_DEVICE:-cpu}
+      CERTIFICATE_OCR_LANGUAGE: ${CERTIFICATE_OCR_LANGUAGE:-en}
+      CERTIFICATE_OCR_CONFIDENCE: ${CERTIFICATE_OCR_CONFIDENCE:-0.85}
+      CERTIFICATE_MAX_IMAGES: ${CERTIFICATE_MAX_IMAGES:-8}
+      CERTIFICATE_MODEL_MAX_JOBS: ${CERTIFICATE_MODEL_MAX_JOBS:-1}
+      CERTIFICATE_LOCAL_MODEL_TIMEOUT_SECONDS: ${CERTIFICATE_LOCAL_MODEL_TIMEOUT_SECONDS:-180}
+    volumes:
+      - certificate-ocr-models:/root/.paddlex
+    depends_on: [ollama]
+    restart: unless-stopped
+    networks: [lti-network]
+
+  ollama:
+    profiles: ["certificate-ai"]
+    image: ollama/ollama:0.40.3
+    volumes:
+      - ollama-models:/root/.ollama
+    restart: unless-stopped
     networks: [lti-network]
 
   cv-matching-service:
@@ -61,6 +105,7 @@ services:
     volumes:
       - ${MODEL_ROOT:-./backend/services/cv-matching-service/model}:/app/model:ro
     depends_on: [resume-explanation-model-service]
+    restart: unless-stopped
     networks: [lti-network]
 
   attrition-service:
@@ -76,6 +121,7 @@ services:
       - attrition-model-service
       - early-attrition-model-service
       - resume-explanation-model-service
+    restart: unless-stopped
     networks: [lti-network]
 
   attrition-model-service:
@@ -83,12 +129,14 @@ services:
     environment:
       PORT: 4008
       MODEL_FILE: /app/attrition_risk_catboost_v7_optuna.joblib
+      ATTRITION_DATASET_PATH: /app/Sri_Lankan_Hiring_Attrition_Dataset.csv
       MODEL_DATASET_FILE: /app/Sri_Lankan_Hiring_Attrition_Dataset.csv
       MODEL_ID: attrition-risk-catboost-v7
       MODEL_THRESHOLD: "0.33"
     volumes:
       - ${MODEL_ROOT:-./backend/services/attrition-model-service}/attrition_risk_catboost_v7_optuna.joblib:/app/attrition_risk_catboost_v7_optuna.joblib:ro
-      - ${MODEL_ROOT:-./backend/services/attrition-model-service}/Sri_Lankan_Hiring_Attrition_Dataset.csv:/app/Sri_Lankan_Hiring_Attrition_Dataset.csv:ro
+      - ${ATTRITION_DATASET_PATH:-./backend/services/attrition-model-service/Sri_Lankan_Hiring_Attrition_Dataset.csv}:/app/Sri_Lankan_Hiring_Attrition_Dataset.csv:ro
+    restart: unless-stopped
     networks: [lti-network]
 
   early-attrition-model-service:
@@ -99,6 +147,7 @@ services:
       MODEL_ID: early-attrition-logistic-v1
     volumes:
       - ${MODEL_ROOT:-./backend/services/early-attrition-model-service/model}:/app/model:ro
+    restart: unless-stopped
     networks: [lti-network]
 
   resume-strength-model-service:
@@ -110,6 +159,7 @@ services:
       MODEL_MAX_LENGTH: ${RESUME_STRENGTH_MODEL_MAX_LENGTH:-384}
     volumes:
       - ${MODEL_ROOT:-./backend/services/resume-strength-model-service/model}:/app/model:ro
+    restart: unless-stopped
     networks: [lti-network]
 
   interview-answer-model-service:
@@ -125,6 +175,7 @@ services:
       LAZY_LOAD_MODEL: ${LAZY_LOAD_MODEL:-false}
     volumes:
       - ${MODEL_ROOT:-./backend/services/interview-answer-model-service/model}:/app/model:ro
+    restart: unless-stopped
     networks: [lti-network]
 
   resume-explanation-model-service:
@@ -134,6 +185,7 @@ services:
       NODE_ENV: ${NODE_ENV:-production}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
       GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.5-flash-lite}
+    restart: unless-stopped
     networks: [lti-network]
 
   speech-to-text-service:
@@ -148,6 +200,7 @@ services:
       WHISPER_BEAM_SIZE: ${WHISPER_BEAM_SIZE:-1}
     volumes:
       - ${MODEL_ROOT:-./backend/services/speech-to-text-service/model}:/app/model:ro
+    restart: unless-stopped
     networks: [lti-network]
 
   auth-service:
@@ -158,7 +211,7 @@ services:
       JWT_SECRET: ${JWT_SECRET:-change-this-local-secret}
       MONGODB_URI: ${MONGODB_URI}
       MONGODB_DB_NAME: ${MONGODB_DB_NAME:-lanka_talent}
-      ADMIN_INVITE_CODE: ${ADMIN_INVITE_CODE:-change-me-admin-code}
+    restart: unless-stopped
     networks: [lti-network]
 
   candidate-service:
@@ -168,6 +221,10 @@ services:
       NODE_ENV: ${NODE_ENV:-production}
       MONGODB_URI: ${MONGODB_URI}
       MONGODB_DB_NAME: ${MONGODB_DB_NAME:-lanka_talent}
+      CV_EXTRACTION_SERVICE_URL: http://cv-extraction-service:4001
+      CERTIFICATE_REQUEST_TIMEOUT_MS: ${CERTIFICATE_REQUEST_TIMEOUT_MS:-250000}
+    depends_on: [cv-extraction-service]
+    restart: unless-stopped
     networks: [lti-network]
 
   job-service:
@@ -180,6 +237,7 @@ services:
       LIVEKIT_URL: ${LIVEKIT_URL:-}
       LIVEKIT_API_KEY: ${LIVEKIT_API_KEY:-}
       LIVEKIT_API_SECRET: ${LIVEKIT_API_SECRET:-}
+    restart: unless-stopped
     networks: [lti-network]
 
   interview-analysis-service:
@@ -196,6 +254,7 @@ services:
       INTERVIEW_ANSWER_MODEL_SERVICE_URL: http://interview-answer-model-service:4010
     volumes:
       - ${MODEL_ROOT:-./backend/services/interview-analysis-service/model}:/app/model:ro
+    restart: unless-stopped
     networks: [lti-network]
 
   cv-profile-analysis-service:
@@ -212,7 +271,12 @@ services:
     depends_on:
       - resume-strength-model-service
       - resume-explanation-model-service
+    restart: unless-stopped
     networks: [lti-network]
+
+volumes:
+  certificate-ocr-models:
+  ollama-models:
 
 networks:
   lti-network:

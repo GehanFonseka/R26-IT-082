@@ -1,6 +1,6 @@
-import { getDatabase } from "../config/mongo.js";
+import { companyCollection } from "./companyCollection.js";
 
-const collection = async (name) => (await getDatabase()).collection(name);
+const collection = companyCollection;
 const clean = (record) => {
   if (!record) return null;
   const { _id, ...data } = record;

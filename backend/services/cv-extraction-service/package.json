@@ -9,14 +9,20 @@
     "test": "node --test",
     "lint": "node --check src/server.js"
   },
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
+    "fastest-levenshtein": "^1.0.16",
+    "graphql": "^16.14.2",
     "helmet": "^8.1.0",
+    "htmlparser2": "^10.0.0",
     "mammoth": "^1.8.0",
     "multer": "^2.0.2",
-    "pdf-parse": "1.1.1"
+    "pdf-parse": "1.1.1",
+    "playwright": "^1.64.0"
   }
 }
