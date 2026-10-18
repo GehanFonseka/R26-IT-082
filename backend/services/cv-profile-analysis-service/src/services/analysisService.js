@@ -2,6 +2,7 @@ import { canonicalSkill, countSkillOccurrences, findSkill, skillCatalog } from "
 import { enrichStrengthAnalysis } from "./strengthAnalysis.js";
 import { explainAnalysis } from "./explanationClient.js";
 import { clean, clamp, list, normalize, parseSections, titleCase } from "../utils/text.js";
+import { createHash } from "node:crypto";
 
 const prepareText = (rawText) => String(rawText || "").replace(/\r/g, "").replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n").trim().slice(0, 100000);
 
@@ -72,5 +73,7 @@ export const analyzeCvWithModel = async (input, requestId = "") => {
   const projects = projectsFrom(projectLines);
   const analysis = await enrichStrengthAnalysis({ base, text, sections, candidate: input.candidate || {}, projects, skills: base.skills, requestId });
   const explanation = await explainAnalysis({ rawText: text, analysis, requestId });
-  return { ...analysis, explainability: explanation ? { status: "live", model: "gemini", ...explanation } : { status: "unavailable", model: "gemini" } };
+  return { ...analysis, source: { ...analysis.source,
+    inputSignature: createHash("sha256").update(JSON.stringify({ rawText: input.rawText, candidate: input.candidate || {}, job: input.job || null })).digest("hex") },
+    explainability: explanation ? { status: "live", model: "gemini", ...explanation } : { status: "unavailable", model: "gemini" } };
 };

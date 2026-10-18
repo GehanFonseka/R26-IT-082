@@ -1,3 +1,5 @@
+import { validateCertificates } from "./certificateValidation.js";
+
 const text = (value, limit) => String(value ?? "").trim().slice(0, limit);
 const hasOwn = (value, key) => Object.prototype.hasOwnProperty.call(value, key);
 
@@ -38,6 +40,7 @@ const validateProfilePhoto = (value) => {
 const candidateFields = (candidate = {}) => {
   const compensation = validateCompensation(candidate.compensation);
   return {
+    name: text(candidate.name, 180),
     role: text(candidate.role, 160),
     seniority: text(candidate.seniority, 80),
     yearsExperience: Number(candidate.yearsExperience) || 0,
@@ -45,6 +48,7 @@ const candidateFields = (candidate = {}) => {
     education: text(candidate.education, 240),
     skills: Array.isArray(candidate.skills) ? candidate.skills.map((item) => text(item, 80)).slice(0, 40) : [],
     certifications: Array.isArray(candidate.certifications) ? candidate.certifications.map((item) => text(item, 180)).slice(0, 20) : [],
+    certificateDetails: validateCertificates(candidate.certificateDetails),
     summary: text(candidate.summary, 4000),
     experienceHighlights: Array.isArray(candidate.experienceHighlights)
       ? candidate.experienceHighlights.map((item) => text(item, 500)).slice(0, 30) : [],

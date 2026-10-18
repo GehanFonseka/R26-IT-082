@@ -1,3 +1,4 @@
+import JobPublisher from "../../components/jobs/JobPublisher";
 import { useEffect, useMemo, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import CvNavigation from "../../components/layout/CvNavigation";
@@ -9,6 +10,8 @@ import { explainMatch, scoreMatch } from "../../services/matchingService";
 import { toMatcherCandidate } from "../../utils/candidateProfile";
 import { generateMatchAnalysis } from "../../utils/matchingAnalysis";
 import "./JobAnalysisPage.css";
+import "./JobAnalysisScroll.css";
+import "./JobAnalysisBackgrounds.css";
 
 const normalizeJob = (job) => ({ ...job, jobTitle: job.title || "", jobSeniority: job.seniority || "", jobIndustry: job.industry || "", jobDescription: job.description || "", responsibilities: job.responsibilities || "", requirements: job.requirements || "" });
 const hasEvidence = (candidate) => Object.values(candidate).some(Boolean);
@@ -74,10 +77,13 @@ function JobAnalysisPage() {
     <CvNavigation isOpen={navigationOpen} activeView="jobs" onNavigate={navigateFromSidebar} onClose={() => setNavigationOpen(false)} />
     <div className="cv-app-shell__main job-analysis-shell__main">
       <CvTopbar activeView="jobs" profilePhoto={profilePhoto} monochrome onMenuToggle={() => setNavigationOpen(true)} />
-      <main className="job-analysis-page"><div className="job-analysis-page__container">
+      <div className="job-analysis-content">
+      <div className="job-analysis-toolbar"><div className="job-analysis-page__container">
         <button className="job-analysis-page__back" type="button" onClick={() => navigate("/jobs")}><Icon name="arrowLeft" size={15} /> Back to open jobs</button>
+      </div></div>
+      <main className="job-analysis-page"><div className="job-analysis-page__container">
         {loading ? <div className="job-analysis-state"><span className="jobs-loader" /><strong>Analyzing this job...</strong><span>{stage}</span></div> : error ? <div className="job-analysis-state job-analysis-state--error"><Icon name="alert" size={24} /><strong>{error}</strong><button type="button" onClick={() => navigate("/profile")}>Review my CV profile</button></div> : <>
-          <header className="job-analysis-page__header"><div><span className="jobs-eyebrow"><i /> Job analysis</span><h1>{job.title}</h1><p>{job.company}{job.location ? ` · ${job.location}` : ""} · {fileName}</p></div><span className="job-analysis-page__model"><Icon name="activity" size={14} />{explanation ? "Gemini explanation generated" : "Matching model analyzed"}</span></header>
+          <header className="job-analysis-page__header"><div><span className="jobs-eyebrow"><i /> Job analysis</span><h1>{job.title}</h1><JobPublisher job={job} /><p>{job.company}{job.location ? ` · ${job.location}` : ""} · {fileName}</p></div><span className="job-analysis-page__model"><Icon name="activity" size={14} />{explanation ? "Gemini explanation generated" : "Matching model analyzed"}</span></header>
           <section className="job-analysis-summary"><div className="job-analysis-summary__score"><span>CV match score</span><strong>{Number(result.percentage).toFixed(1)}%</strong><b>{result.classification || result.verdict}</b></div><div><span className="job-analysis-summary__label">Model result</span><h2>How your CV fits this role</h2><p>This score is an assistive comparison of the saved CV profile and this job description.</p></div></section>
           {explanation && <section className="job-analysis-explanation"><div className="job-analysis-explanation__heading"><div><span>Gemini explainable AI</span><h2>Why this result?</h2></div><small>Grounded in the current CV and job offer</small></div><p className="job-analysis-explanation__summary">{explanation.summary}</p><p className="job-analysis-explanation__score">{explanation.scoreExplanation}</p><div className="job-analysis-explanation__grid"><article><h3>What the CV supports</h3>{explanation.matchingEvidence.length ? explanation.matchingEvidence.map((item, index) => <div className="job-analysis-explanation__item" key={`${item.area}-${index}`}><strong>{item.area}</strong><p>{item.reason}</p><small>Job: {item.jobRequirement}</small><small>CV: {item.cvEvidence}</small></div>) : <p className="job-analysis-explanation__empty">No strong matching evidence was identified in the supplied CV.</p>}</article><article><h3>Why gaps appear</h3>{explanation.gaps.length ? explanation.gaps.map((item, index) => <div className="job-analysis-explanation__item job-analysis-explanation__item--gap" key={`${item.skill}-${index}`}><strong>{item.skill} <em>{item.severity}</em></strong><p>{item.reason}</p><small>Required: {item.jobRequirement}</small><small>CV evidence: {item.cvEvidence}</small></div>) : <p className="job-analysis-explanation__empty">No grounded skill gap was found against the listed requirements.</p>}</article></div>{explanation.missingEvidence.length > 0 && <div className="job-analysis-explanation__notice"><strong>Evidence not visible in the CV</strong>{explanation.missingEvidence.map((item) => <span key={item.area}><b>{item.area}:</b> {item.reason}</span>)}</div>}{explanation.recommendations.length > 0 && <div className="job-analysis-explanation__recommendations"><h3>What would improve the fit signal?</h3>{explanation.recommendations.map((item) => <div key={item.action}><strong>{item.action}</strong><span>{item.reason}</span></div>)}</div>}{explanation.limitations.length > 0 && <p className="job-analysis-explanation__limitations"><b>Limitations:</b> {explanation.limitations.join(" · ")}</p>}</section>}
           {!explanation && explanationError && <p className="job-analysis-explanation__fallback"><Icon name="info" size={15} />Match score is available, but Gemini explanation is temporarily unavailable.</p>}
@@ -87,6 +93,7 @@ function JobAnalysisPage() {
           <p className="job-analysis-page__disclaimer">This is a decision-support signal, not an automatic hiring decision.</p>
         </>}
       </div></main>
+      </div>
     </div>
   </div>;
 }

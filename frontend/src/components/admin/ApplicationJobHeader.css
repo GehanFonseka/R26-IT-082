@@ -1,0 +1,39 @@
+.application-job-header { position:relative; display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:14px; min-height:104px; overflow:hidden; margin:12px 0 1px; padding:17px 20px; background:linear-gradient(105deg,#f8fbff 0%,#eef5ff 62%,#f2f0ff 100%); border:1px solid #d4e2f4; border-radius:16px; box-shadow:0 9px 24px rgba(38,79,139,.06); }.application-job-header::after { position:absolute; top:-58px; right:135px; width:150px; height:150px; content:""; background:radial-gradient(circle,rgba(81,107,232,.13),transparent 68%); pointer-events:none; }
+.application-job-header__icon { display:grid; width:46px; height:46px; place-items:center; color:#fff; background:linear-gradient(145deg,#2168d9,#6258e8); border:4px solid rgba(255,255,255,.82); border-radius:14px; box-shadow:0 9px 20px rgba(46,87,198,.22); }.application-job-header__copy { min-width:0; }.application-job-header__eyebrow { display:flex; align-items:center; gap:6px; color:#607794; font-size:.57rem; font-weight:750; letter-spacing:.06em; text-transform:uppercase; }.application-job-header__eyebrow i { width:6px; height:6px; background:#20bca5; border-radius:50%; box-shadow:0 0 0 4px rgba(32,188,165,.12); }.application-job-header__eyebrow b { padding-left:7px; color:#2a65c8; border-left:1px solid #cbd9eb; }
+.application-job-header h3 { margin:6px 0; overflow:hidden; color:#0d2954; font-size:1rem; letter-spacing:-.025em; text-overflow:ellipsis; white-space:nowrap; }.application-job-header__meta { display:flex; flex-wrap:wrap; gap:6px 13px; }.application-job-header__meta span { display:inline-flex; align-items:center; gap:5px; color:#71849f; font-size:.61rem; }.application-job-header__meta .icon { color:#5e7eaf; }
+.application-job-header__count { position:relative; z-index:1; display:flex; align-items:center; gap:9px; min-width:145px; padding:10px 12px; color:#245dc5; background:rgba(255,255,255,.86); border:1px solid #cfdef2; border-radius:12px; box-shadow:0 7px 18px rgba(41,81,144,.07); }.application-job-header__count>span { display:grid; width:30px; height:30px; place-items:center; background:#edf4ff; border-radius:9px; }.application-job-header__count div { display:grid; flex:1; }.application-job-header__count strong { color:#12366f; font-size:.86rem; line-height:1; }.application-job-header__count small { margin-top:3px; color:#71839d; font-size:.55rem; }
+@media(max-width:600px){.application-job-header{grid-template-columns:auto minmax(0,1fr);padding:15px}.application-job-header__count{grid-column:1/-1;width:100%}.application-job-header::after{right:-30px}.application-job-header__eyebrow b{display:none}}
+/* Artwork stays behind the content, with a light layer for legibility. */
+.applications-workspace .application-job-header {
+  min-height: 112px;
+  padding: 20px 22px;
+  background-color: #edf2ff;
+  background-image: linear-gradient(100deg, rgba(236,232,255,.88), rgba(235,245,255,.65) 48%, rgba(234,247,246,.12)), url('../../assets/published-job-item-bg.png');
+  background-position: center, right center;
+  background-size: cover;
+  border-color: #d3dbf2;
+  border-radius: 20px;
+  box-shadow: 0 10px 26px rgba(63,76,135,.08), inset 0 1px 0 rgba(255,255,255,.9);
+}
+.applications-workspace .application-job-header::after { display: none; }
+.applications-workspace .application-job-header__icon {
+  background: linear-gradient(145deg, #4e77df, #7954d8);
+  border-radius: 16px;
+}
+.applications-workspace .application-job-header__eyebrow { color: #526587; }
+.applications-workspace .application-job-header__meta span { color: #516785; }
+.applications-workspace .application-job-header__count {
+  padding: 12px 14px;
+  background: rgba(255,255,255,.93);
+  border-color: #d5dff1;
+  border-radius: 14px;
+}
+.applications-workspace .application-job-header__count > span {
+  color: #6952bc;
+  background: #f0eaff;
+  border-radius: 10px;
+}
+@media (max-width: 600px) {
+  .applications-workspace .application-job-header { padding: 18px 16px; }
+  .applications-workspace .application-job-header__count { box-sizing: border-box; }
+}

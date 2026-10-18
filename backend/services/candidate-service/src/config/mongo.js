@@ -11,6 +11,7 @@ export const connectDatabase = async () => {
       .then(() => client.db(env.mongoDbName))
       .then(async (database) => {
         await database.collection("candidate_profiles").createIndex({ userId: 1 }, { unique: true });
+        await database.collection("candidate_certificate_checks").createIndex({ userId: 1, cvRevision: 1, url: 1 }, { unique: true });
         return database;
       })
       .catch((error) => {

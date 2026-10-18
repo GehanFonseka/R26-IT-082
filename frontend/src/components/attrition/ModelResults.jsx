@@ -2,6 +2,7 @@ import "./ModelResults.css";
 
 const modelEntries = (result) => [
   ["Attrition", result?.models?.attrition],
+  ["Early attrition", result?.models?.earlyAttrition],
 ].filter(([, model]) => model);
 
 const numberValue = (value) => Number.isFinite(Number(value)) ? Number(value) : null;
@@ -20,7 +21,7 @@ const driversValue = (model) => Array.isArray(model?.topRiskDrivers) ? model.top
 const percent = (value) => value === null ? "—" : `${(value * 100).toFixed(2)}%`;
 const score = (value) => value === null ? "—" : `${value.toFixed(2)}%`;
 const threshold = (value) => value === null ? "—" : `${(value * 100).toFixed(2)}%`;
-const title = (target) => target;
+const title = (target) => target === "Early attrition" ? "EarlyAttrition" : target;
 
 function ModelResults({ result }) {
   const entries = modelEntries(result);
@@ -29,7 +30,7 @@ function ModelResults({ result }) {
   return (
     <div className="model-results">
       <div className="model-results__heading">
-        <span>Model output</span>
+        <span>Both model outputs</span>
         <small>{result?.modelAgreement || "single-model"}</small>
       </div>
       <div className="model-results__grid">

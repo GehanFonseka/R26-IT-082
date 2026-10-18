@@ -12,7 +12,8 @@ const conceptRecall = (answer, concept) => {
 };
 
 export const referenceFor = (pair, job, references = []) => {
-  const provided = references.find((item) => item.questionId === pair.questionId || questionKey(item.question) === questionKey(pair.question));
+  const provided = references.find((item) => pair.questionId && item.questionId === pair.questionId)
+    || references.find((item) => !item.questionId && questionKey(item.question) === questionKey(pair.question));
   const referenceAnswer = String(provided?.answer || "").trim();
   const matchingSkills = jobSkills(job).filter((skill) => overlapScore(pair.question, skill) > 0 || meaningfulWords(pair.question).some((word) => meaningfulWords(skill).includes(word)));
   const explicitPoints = unique([...(provided?.keyConcepts || []), ...matchingSkills]);

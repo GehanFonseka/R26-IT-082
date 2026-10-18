@@ -1,0 +1,16 @@
+import ApplicationComparison from "./ApplicationComparison";
+import Icon from "../common/Icon";
+import { dateLabel, initials, jobTitle, matchScore, stages, stageLabels, statusLabels } from "./applicationBoardUtils";
+import "./ApplicationCard.css";
+
+function StageProgress({ status }) {
+  const current = stages.indexOf(status);
+  const width = current < 0 ? 0 : (current / (stages.length - 1)) * 100;
+  return <div className={`application-result__progress application-result__progress--${status}`} aria-label={`Application stage: ${statusLabels[status] || "New"}`}><div className="application-result__track"><i style={{ width: `${width}%` }} /></div><div className="application-result__steps">{stages.map((stage, index) => <span className={`${index <= current ? "is-complete" : ""}${index === current ? " is-current" : ""}`} key={stage}><i /><b>{stageLabels[stage]}</b></span>)}</div></div>;
+}
+
+function ApplicationCard({ application, changeApplicationStatus, navigate }) {
+  const applicant = application.applicant || {}; const candidate = application.candidate || {}; const status = application.status || "new"; const score = matchScore(application); const photo = applicant.profilePhoto || "";
+  return <article className="application-result"><div className="application-result__identity"><span className={`application-result__avatar${photo ? " application-result__avatar--photo" : ""}`}>{photo ? <img src={photo} alt="" /> : initials(applicant.displayName || applicant.email)}</span><div><small>Applied {dateLabel(application.createdAt)}</small><h3>{applicant.displayName || applicant.email || "Candidate"}</h3><p>{applicant.email || "No email provided"}</p></div></div><div className="application-result__journey"><div className="application-result__job"><Icon name="briefcase" size={14} /><strong>{jobTitle(application)}</strong><span className={`application-result__status application-result__status--${status}`}>{statusLabels[status] || "New"}</span></div><StageProgress status={status} /><div className="application-result__facts"><span><b>Role</b>{candidate.candidateRole || "Not provided"}</span><span><b>Experience</b>{candidate.yearsExperience ? `${candidate.yearsExperience} years` : "Not provided"}</span></div></div><div className="application-result__score"><small>CV match</small><strong>{score >= 0 ? `${Math.round(score)}%` : "—"}</strong><span>{application.matchScore?.classification || "Analysis pending"}</span>{score >= 0 && <i><em style={{ width: `${Math.min(100, Math.max(0, score))}%` }} /></i>}</div><div className="application-result__actions"><label>Stage<select value={status} onChange={(event) => changeApplicationStatus(application.id, event.target.value)}><option value="new">New</option><option value="reviewing">Reviewing</option><option value="shortlisted">Shortlisted</option><option value="rejected">Rejected</option><option value="hired">Hired</option></select></label><button type="button" onClick={() => navigate(`/admin/applications/${application.id}`)}>Review CV <Icon name="arrowRight" size={14} /></button></div><div className="application-result__comparison"><ApplicationComparison application={application} />{application.coverLetter && <p>{application.coverLetter}</p>}</div></article>;
+}
+export default ApplicationCard;

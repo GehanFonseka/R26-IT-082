@@ -1,10 +1,12 @@
+import { extractCertificates } from "./certificateParser.js";
+
 const headers = [
   ["summary", /^(professional\s+)?summary|profile|about\s+me|objective$/i],
   ["experience", /^(professional\s+)?(work\s+)?experience|employment\s+history|career\s+history$/i],
   ["education", /^education(al\s+background)?|academic\s+qualifications?$/i],
   ["skills", /^(technical\s+|core\s+|key\s+|professional\s+)?skills?|competenc(y|ies)|technologies$/i],
   ["projects", /^(?:(?:selected|personal|academic|relevant|featured|major)\s+)?projects?(?:\s+(?:experience|work|portfolio))?$|^(?:project\s+)?portfolio(?:\s+projects?)?$/i],
-  ["certifications", /^(professional\s+|relevant\s+|industry\s+)?certifications?|licenses?|credentials?$/i],
+  ["certifications", /^(?:(?:professional|relevant|industry|technical)\s+)?(?:certifications?|certificates?|licenses?|credentials?)(?:\s*(?:&|and)\s*(?:certifications?|certificates?|licenses?|credentials?))?$/i],
 ];
 
 const cleanLine = (line) => line.replace(/^[^\p{L}\p{N}]+/u, "").trim();
@@ -28,7 +30,7 @@ const parseSections = (text) => {
 };
 
 const firstNonContactLine = (text) => text.split(/\r?\n/).slice(0, 12).map(cleanLine).find((line) => (
-  line && !headerName(line) && !/@|https?:\/\/|www\.|(?:\+?\d[\d ()-]{7,})/i.test(line) && line.split(/\s+/).length <= 10
+  line && !headerName(line) && !/^(?:curriculum\s+vitae|resume|résumé|cv)$/i.test(line) && !/@|https?:\/\/|www\.|(?:\+?\d[\d ()-]{7,})/i.test(line) && line.split(/\s+/).length <= 10
 )) ?? "";
 
 const sectionText = (section = [], limit = 800) => section.join(" ").trim().slice(0, limit);
@@ -115,16 +117,18 @@ export function extractCandidateFields(text) {
   const skills = sectionItems(sections.skills) || inlineSection(text, "technical\\s+skills|core\\s+skills|skills|competenc(?:y|ies)|technologies", "experience|education|summary|certifications|projects", 1200);
   const summary = sectionText(sections.summary) || inlineSection(text, "professional\\s+summary|summary|profile|objective", "experience|education|skills|certifications|projects", 900) || sectionText((sections.other ?? []).slice(1, 5), 900);
   const experience = sectionItems(sections.experience) || inlineSection(text, "professional\\s+experience|work\\s+experience|experience|employment\\s+history", "education|skills|summary|certifications|projects", 1400);
-  const certifications = sectionItems(sections.certifications, 1000) || inlineSection(text, "professional\\s+certifications?|relevant\\s+certifications?|certifications?|licenses?|credentials?", "experience|education|skills|summary|projects", 1000);
+  const certificateDetails = extractCertificates(text);
   const projects = sections.projects?.length ? structuredProjects(sections.projects) : inlineProjects(text);
   return {
+    name: (sections.other || []).includes(firstLine) && !roleWords.some((word) => new RegExp(`\\b${word}\\b`, "i").test(firstLine)) ? firstLine : "",
     role,
     seniority: seniority.replace("-", " ").replace(/\b\w/g, (letter) => letter.toUpperCase()),
     yearsExperience: Number.parseFloat(years) || 0,
     industry,
     education,
     skills: list(skills),
-    certifications: list(certifications),
+    certifications: certificateDetails.map((certificate) => certificate.name),
+    certificateDetails,
     summary,
     experienceHighlights: list(experience),
     projects,

@@ -1,6 +1,8 @@
 import app from "./app.js";
 import { env } from "./config/env.js";
 import { connectDatabase } from "./config/mongo.js";
+import { resumePendingCertificateChecks } from "./services/certificateChecks.js";
+import { log } from "./utils/logger.js";
 
 const pause = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 const startupRetries = Math.max(1, Number.parseInt(process.env.DATABASE_STARTUP_RETRIES ?? "12", 10) || 12);
@@ -21,6 +23,7 @@ const start = async () => {
   try {
     await connectWithRetry();
     app.listen(env.port, () => console.log(`${env.serviceName} listening on port ${env.port}`));
+    void resumePendingCertificateChecks().catch(() => log("error", "certificate.pending_resume_failed"));
   } catch (error) {
     console.error(`${env.serviceName} MongoDB connection failed`, error.name);
     process.exitCode = 1;

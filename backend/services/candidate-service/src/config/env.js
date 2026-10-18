@@ -12,4 +12,6 @@ export const env = {
   nodeEnv: process.env.NODE_ENV ?? "development",
   mongoUri: process.env.MONGODB_URI ?? "",
   mongoDbName: process.env.MONGODB_DB_NAME ?? "lanka_talent",
+  extractionUrl: process.env.CV_EXTRACTION_SERVICE_URL ?? "http://localhost:4001",
+  certificateTimeoutMs: Number.parseInt(process.env.CERTIFICATE_REQUEST_TIMEOUT_MS ?? "250000", 10),
 };

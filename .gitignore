@@ -7,8 +7,8 @@ dist/
 coverage/
 .DS_Store
 Thumbs.db
-backend/**/.pytest_cache/
-backend/**/__pycache__/
+**/.pytest_cache/
+**/__pycache__/
 backend/services/attrition-model-service/*.joblib
 backend/services/attrition-model-service/*.cbm
 backend/services/attrition-model-service/*.csv
@@ -20,7 +20,6 @@ backend/services/speech-to-text-service/model/
 backend/services/**/model/.cache/
 .tmp-video-frames/
 .tmp-profile-browser/
-.tmp-profile-browser/
 .tmp/
 tmp/
 temp/
@@ -29,3 +28,7 @@ temp/
 *.swp
 
 models-s3/
+.venv-certificate/
+.venv/
+.local-ai/
+New folder (3)/

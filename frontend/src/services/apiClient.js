@@ -1,4 +1,4 @@
-const configuredApiBase = import.meta.env.VITE_API_BASE_URL;
+const configuredApiBase = import.meta.env?.VITE_API_BASE_URL;
 const API_BASE = (configuredApiBase || (typeof window !== "undefined" ? window.location.origin : "http://localhost:8080")).replace(/\/$/, "");
 const TOKEN_KEY = "lti_access_token";
 
@@ -44,6 +44,7 @@ export const extractCv = (file) => {
 export const analyzeCvProfile = (rawText, candidate, job = null) => apiRequest("/api/cv/analyze", {
   method: "POST", body: JSON.stringify({ rawText, candidate, ...(job ? { job } : {}) }),
 });
+export const getMyCvAnalysis = () => apiRequest("/api/cv/analysis/me");
 
 export const scoreMatch = (job, candidate) => apiRequest("/api/match/score", {
   method: "POST", body: JSON.stringify({ job, candidate }),

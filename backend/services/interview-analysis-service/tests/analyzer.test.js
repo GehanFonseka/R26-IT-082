@@ -25,3 +25,17 @@ test("derives a transparent role-based reference plan when no answer is supplied
   assert.equal(plan.referenceSource, "job-context");
   assert.ok(plan.concepts.includes("React"));
 });
+
+test("uses the interviewer reference for the matching question ID", () => {
+  const plan = referenceFor({ questionId: "q2", question: "What is Redux?" }, {}, [
+    { questionId: "q1", question: "What is Redux?", answer: "An earlier question's answer." },
+    { questionId: "q2", question: "What is Redux?", answer: "Redux is a predictable state container." },
+  ]);
+  assert.equal(plan.referenceAnswer, "Redux is a predictable state container.");
+  assert.equal(plan.referenceSource, "provided");
+});
+test("supports question-text references without assigning another question's answer", () => {
+  const pair = { questionId: "q2", question: "What is Redux?" };
+  assert.equal(referenceFor(pair, {}, [{ question: "what is redux", answer: "State container." }]).referenceAnswer, "State container.");
+  assert.equal(referenceFor(pair, {}, [{ questionId: "q1", question: pair.question, answer: "Different question." }]).referenceSource, "job-context");
+});

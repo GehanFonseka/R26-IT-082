@@ -1,4 +1,7 @@
+import { certificateEntries } from "./candidateCertificates.js";
+
 export const toMatcherCandidate = (candidate = {}) => ({
+  candidateName: candidate.name || "",
   candidateRole: candidate.role || "",
   candidateSeniority: candidate.seniority || "",
   yearsExperience: candidate.yearsExperience ? String(candidate.yearsExperience) : "",
@@ -6,6 +9,7 @@ export const toMatcherCandidate = (candidate = {}) => ({
   education: candidate.education || "",
   candidateSkills: Array.isArray(candidate.skills) ? candidate.skills.join(", ") : candidate.skills || "",
   candidateCertifications: Array.isArray(candidate.certifications) ? candidate.certifications.join("; ") : candidate.certifications || "",
+  candidateCertificateDetails: certificateEntries(candidate.certifications, candidate.certificateDetails),
   summary: candidate.summary || "",
   experienceBullets: Array.isArray(candidate.experienceHighlights)
     ? candidate.experienceHighlights.join("; ") : candidate.experienceHighlights || "",
@@ -14,6 +18,7 @@ export const toMatcherCandidate = (candidate = {}) => ({
 });
 
 export const toStoredCandidate = (candidate = {}) => ({
+  name: candidate.candidateName || "",
   role: candidate.candidateRole || "",
   seniority: candidate.candidateSeniority || "",
   yearsExperience: Number(candidate.yearsExperience) || 0,
@@ -21,6 +26,7 @@ export const toStoredCandidate = (candidate = {}) => ({
   education: candidate.education || "",
   skills: String(candidate.candidateSkills || "").split(",").map((item) => item.trim()).filter(Boolean),
   certifications: String(candidate.candidateCertifications || "").split(";").map((item) => item.trim()).filter(Boolean),
+  certificateDetails: certificateEntries(candidate.candidateCertifications, candidate.candidateCertificateDetails),
   summary: candidate.summary || "",
   experienceHighlights: String(candidate.experienceBullets || "").split(";").map((item) => item.trim()).filter(Boolean),
   projects: String(candidate.candidateProjects || "").split(/\r?\n|;/).map((item) => item.trim()).filter(Boolean),

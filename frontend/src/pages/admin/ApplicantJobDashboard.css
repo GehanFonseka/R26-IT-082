@@ -1,0 +1,7 @@
+.applicant-job-dashboard__back { color: #2164c7; text-decoration: none; font-weight: 700; }
+.applicant-job-dashboard__error { padding: 14px; border-radius: 10px; background: #fff1f3; color: #b4233c; }
+.applicant-job-dashboard__back { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 16px; border: 1px solid #c4d7ef; border-radius: 10px; background: #fff; }
+.applicant-job-dashboard__back:hover { background: #edf4ff; border-color: #2164c7; text-decoration: underline; }
+.applicant-job-dashboard__back:active { background: #dce9fc; }
+.applicant-job-dashboard__back:focus-visible { outline: 3px solid #2164c7; outline-offset: 3px; }
+@media (max-width: 520px) { .applicant-job-dashboard__back { padding: 8px; font-size: .75rem; } }

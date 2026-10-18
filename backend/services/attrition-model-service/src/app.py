@@ -16,6 +16,7 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parents[1]
 MODEL_ROOT = os.getenv("MODEL_ROOT")
+
 if os.getenv("MODEL_FILE"):
     MODEL_FILE = Path(os.getenv("MODEL_FILE"))
 elif MODEL_ROOT:
@@ -23,7 +24,9 @@ elif MODEL_ROOT:
 else:
     MODEL_FILE = ROOT / "attrition_risk_catboost_v7_optuna.joblib"
 
-if os.getenv("MODEL_DATASET_FILE"):
+if os.getenv("ATTRITION_DATASET_PATH"):
+    DATASET_FILE = Path(os.getenv("ATTRITION_DATASET_PATH"))
+elif os.getenv("MODEL_DATASET_FILE"):
     DATASET_FILE = Path(os.getenv("MODEL_DATASET_FILE"))
 elif MODEL_ROOT:
     DATASET_FILE = Path(MODEL_ROOT) / "attrition" / "Sri_Lankan_Hiring_Attrition_Dataset.csv"

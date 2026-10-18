@@ -1,8 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import CvMatcherPage from "../pages/matching/CvMatcherPage";
+import CompanyAdminsPage from "../pages/company/CompanyAdminsPage";
 import AuthPage from "../pages/auth/AuthPage";
 import ProtectedRoute from "../components/auth/ProtectedRoute";
 import ProfilePage from "../pages/profile/ProfilePage";
+import AdminJobApplicantsPage from "../pages/admin/AdminJobApplicantsPage";
+import ApplicantJobDashboard from "../pages/admin/ApplicantJobDashboard";
 import AdminDashboardPage from "../pages/admin/AdminDashboardPage";
 import AdminApplicationAnalysisPage from "../pages/admin/AdminApplicationAnalysisPage";
 import AdminApplicationSkillsPage from "../pages/admin/AdminApplicationSkillsPage";
@@ -38,14 +41,19 @@ function AppRoutes() {
         <Route path="/jobs/analyze/:jobId" element={<JobAnalysisPage />} />
         <Route path="/profile" element={<ProfileEntry />} />
         <Route path="/skill-analysis" element={<SkillAnalysisPage />} />
-        <Route path="/admin" element={<AdminDashboardPage mode="overview" />} />
-        <Route path="/admin/jobs" element={<AdminDashboardPage mode="jobs" />} />
-        <Route path="/admin/applications" element={<AdminDashboardPage mode="applications" />} />
-        <Route path="/admin/applications/:applicationId/skills" element={<AdminApplicationSkillsPage />} />
-        <Route path="/admin/applications/:applicationId" element={<AdminApplicationAnalysisPage />} />
-      <Route path="/admin/interviews" element={<InterviewSchedulingPage />} />
-        <Route path="/admin/interview-results/:interviewId" element={<InterviewResultDetailPage />} />
-        <Route path="/admin/interview-results" element={<InterviewResultsPage />} />
+        <Route element={<ProtectedRoute roles={["admin"]} />}>
+          <Route path="/admin" element={<AdminDashboardPage mode="overview" />} />
+          <Route path="/admin/jobs" element={<AdminDashboardPage mode="jobs" />} />
+          <Route path="/admin/jobs/:jobId" element={<AdminJobApplicantsPage />} />
+          <Route path="/admin/jobs/:jobId/applicants/:applicationId" element={<ApplicantJobDashboard />} />
+          <Route path="/admin/applications" element={<AdminDashboardPage mode="applications" />} />
+          <Route path="/admin/applications/:applicationId/skills" element={<AdminApplicationSkillsPage />} />
+          <Route path="/admin/applications/:applicationId" element={<AdminApplicationAnalysisPage />} />
+          <Route path="/admin/interviews" element={<InterviewSchedulingPage />} />
+          <Route path="/admin/interview-results/:interviewId" element={<InterviewResultDetailPage />} />
+          <Route path="/admin/interview-results" element={<InterviewResultsPage />} />
+        </Route>
+        <Route element={<ProtectedRoute roles={["admin"]} />}><Route path="/company/admins" element={<CompanyAdminsPage />} /></Route>
         <Route path="/interviews" element={<CandidateInterviewsPage />} />
         <Route path="/interviews/:interviewId" element={<InterviewRoomPage />} />
       </Route>

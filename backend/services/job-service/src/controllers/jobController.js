@@ -13,23 +13,23 @@ const identity = (req) => String(req.header("x-user-id") ?? "");
 const role = (req) => String(req.header("x-user-role") ?? "user");
 const displayName = (req) => String(req.header("x-user-name") || req.header("x-user-email") || "Participant");
 
-export const listJobs = async (req, res) => res.json({ success: true, data: await jobRepository.listJobs({ status: req.query.status }), requestId: req.requestId });
+export const listJobs = async (req, res) => res.json({ success: true, data: await jobRepository.listJobs({ status: role(req) === "admin" ? req.query.status : "open" }), requestId: req.requestId });
 
 export const getJob = async (req, res) => {
   const data = await jobRepository.getJob(req.params.jobId);
-  if (!data) return res.status(404).json({ success: false, message: "Job post not found", requestId: req.requestId });
+  if (!data || (role(req) !== "admin" && data.status !== "open")) return res.status(404).json({ success: false, message: "Job post not found", requestId: req.requestId });
   return res.json({ success: true, data, requestId: req.requestId });
 };
 
 export const createJob = async (req, res) => {
   if (!requireAdmin(req, res)) return;
-  const data = await jobRepository.createJob(identity(req), validateJob(req.body));
+  const data = await jobRepository.createJob(identity(req), validateJob({ ...req.body, company: req.header("x-company-name") }));
   return res.status(201).json({ success: true, data, requestId: req.requestId });
 };
 
 export const updateJob = async (req, res) => {
   if (!requireAdmin(req, res)) return;
-  const data = await jobRepository.updateJob(req.params.jobId, validateJob(req.body));
+  const data = await jobRepository.updateJob(req.params.jobId, validateJob({ ...req.body, company: req.header("x-company-name") }));
   return res.json({ success: true, data, requestId: req.requestId });
 };
 
