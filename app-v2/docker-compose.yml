@@ -50,7 +50,7 @@ services:
       NODE_ENV: ${NODE_ENV:-production}
       CERTIFICATE_LOCAL_MODEL_SERVICE_URL: http://certificate-reader-service:4013
       CERTIFICATE_LOCAL_MODEL_TIMEOUT_MS: ${CERTIFICATE_LOCAL_MODEL_TIMEOUT_MS:-200000}
-      CERTIFICATE_VERIFICATION_ENABLED: ${CERTIFICATE_VERIFICATION_ENABLED:-true}
+      CERTIFICATE_VERIFICATION_ENABLED: ${CERTIFICATE_VERIFICATION_ENABLED:-false}
       CERTIFICATE_MATCH_THRESHOLD: ${CERTIFICATE_MATCH_THRESHOLD:-0.9}
       CERTIFICATE_OCR_CONFIDENCE: ${CERTIFICATE_OCR_CONFIDENCE:-0.85}
       CERTIFICATE_CACHE_TTL_MS: ${CERTIFICATE_CACHE_TTL_MS:-0}
@@ -103,7 +103,7 @@ services:
       MATCH_EXPLANATION_MODEL_SERVICE_URL: http://resume-explanation-model-service:4012
       MATCH_EXPLANATION_TIMEOUT_MS: ${MATCH_EXPLANATION_TIMEOUT_MS:-30000}
     volumes:
-      - ${MODEL_ROOT:-./backend/services/cv-matching-service/model}:/app/model:ro
+      - ${CV_MATCHING_MODEL_PATH:-./backend/services/cv-matching-service/model}:/app/model:ro
     depends_on: [resume-explanation-model-service]
     restart: unless-stopped
     networks: [lti-network]
@@ -134,7 +134,7 @@ services:
       MODEL_ID: attrition-risk-catboost-v7
       MODEL_THRESHOLD: "0.33"
     volumes:
-      - ${MODEL_ROOT:-./backend/services/attrition-model-service}/attrition_risk_catboost_v7_optuna.joblib:/app/attrition_risk_catboost_v7_optuna.joblib:ro
+      - ${ATTRITION_MODEL_PATH:-./backend/services/attrition-model-service/attrition_risk_catboost_v7_optuna.joblib}:/app/attrition_risk_catboost_v7_optuna.joblib:ro
       - ${ATTRITION_DATASET_PATH:-./backend/services/attrition-model-service/Sri_Lankan_Hiring_Attrition_Dataset.csv}:/app/Sri_Lankan_Hiring_Attrition_Dataset.csv:ro
     restart: unless-stopped
     networks: [lti-network]
@@ -146,7 +146,7 @@ services:
       MODEL_FILE: /app/model/model.pkl
       MODEL_ID: early-attrition-logistic-v1
     volumes:
-      - ${MODEL_ROOT:-./backend/services/early-attrition-model-service/model}:/app/model:ro
+      - ${EARLY_ATTRITION_MODEL_PATH:-./backend/services/early-attrition-model-service/model}:/app/model:ro
     restart: unless-stopped
     networks: [lti-network]
 
@@ -158,7 +158,7 @@ services:
       MODEL_DEVICE: ${RESUME_STRENGTH_MODEL_DEVICE:-cpu}
       MODEL_MAX_LENGTH: ${RESUME_STRENGTH_MODEL_MAX_LENGTH:-384}
     volumes:
-      - ${MODEL_ROOT:-./backend/services/resume-strength-model-service/model}:/app/model:ro
+      - ${RESUME_STRENGTH_MODEL_PATH:-./backend/services/resume-strength-model-service/model}:/app/model:ro
     restart: unless-stopped
     networks: [lti-network]
 
@@ -174,7 +174,7 @@ services:
       NLI_MODEL_ID: ${INTERVIEW_ANSWER_NLI_MODEL_ID:-cross-encoder/nli-deberta-v3-base}
       LAZY_LOAD_MODEL: ${LAZY_LOAD_MODEL:-false}
     volumes:
-      - ${MODEL_ROOT:-./backend/services/interview-answer-model-service/model}:/app/model:ro
+      - ${INTERVIEW_ANSWER_MODEL_PATH:-./backend/services/interview-answer-model-service/model}:/app/model:ro
     restart: unless-stopped
     networks: [lti-network]
 
@@ -199,7 +199,7 @@ services:
       WHISPER_COMPUTE_TYPE: ${WHISPER_COMPUTE_TYPE:-int8}
       WHISPER_BEAM_SIZE: ${WHISPER_BEAM_SIZE:-1}
     volumes:
-      - ${MODEL_ROOT:-./backend/services/speech-to-text-service/model}:/app/model:ro
+      - ${SPEECH_TO_TEXT_MODEL_PATH:-./backend/services/speech-to-text-service/model}:/app/model:ro
     restart: unless-stopped
     networks: [lti-network]
 
@@ -253,7 +253,7 @@ services:
       INTERVIEW_NLI_MODEL_DTYPE: ${INTERVIEW_NLI_MODEL_DTYPE:-q8}
       INTERVIEW_ANSWER_MODEL_SERVICE_URL: http://interview-answer-model-service:4010
     volumes:
-      - ${MODEL_ROOT:-./backend/services/interview-analysis-service/model}:/app/model:ro
+      - ${INTERVIEW_ANALYSIS_MODEL_PATH:-./backend/services/interview-analysis-service/model}:/app/model:ro
     restart: unless-stopped
     networks: [lti-network]
 
@@ -280,5 +280,5 @@ volumes:
 
 networks:
   lti-network:
-    name: lti-network
+    name: lti-v2-network
     driver: bridge
