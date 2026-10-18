@@ -1,0 +1,26 @@
+.applicant-certificates { padding: 24px; min-width: 0; background: #fff; border: 1px solid #dfe7f1; border-radius: 18px; }
+.applicant-certificates__toolbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.applicant-certificates__toolbar h2 { margin-bottom: 8px; }
+.applicant-certificates__toolbar p { margin: 0; color: #637993; font-size: .82rem; line-height: 1.6; }
+.applicant-certificates__toolbar button { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; gap: 8px; min-height: 44px; padding: 10px 16px; border: 1px solid #c4d7ef; border-radius: 10px; color: #2164c7; background: #f1f6ff; font: inherit; font-size: .8rem; font-weight: 700; cursor: pointer; }
+.applicant-certificates__toolbar button:hover:not(:disabled) { background: #e1edff; }
+.applicant-certificates__toolbar button:disabled { opacity: .65; cursor: wait; }
+.applicant-certificates__notice, .applicant-certificates__error { margin: 20px 0 0; padding: 16px; border-radius: 10px; font-size: .85rem; line-height: 1.6; }
+.applicant-certificates__notice { background: #f7faff; color: #4e637e; }
+.applicant-certificates__error { color: #a82f3b; background: #fff1f3; border: 1px solid #f4d5da; }
+.applicant-certificates__file { display: flex; align-items: flex-start; gap: 8px; margin: 20px 0; color: #637993; font-size: .8rem; overflow-wrap: anywhere; }
+.applicant-certificates__file svg { flex-shrink: 0; }
+.applicant-certificates .profile-card { margin-top: 24px; }
+.applicant-certificates .profile-card__heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+.applicant-certificates .profile-card__heading h2 { margin: 4px 0 0; font-size: 1rem; }
+.applicant-certificates .profile-card__heading .cv-overline { margin: 0; color: #637993; font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; }
+.applicant-certificates .profile-card__intro { margin: 0 0 20px; color: #637993; font-size: .8rem; line-height: 1.6; }
+.applicant-certificates .profile-certificates__list > li > div { flex: 1; }
+.applicant-certificates .certificate-name-check dl > div { justify-content: flex-start; border-bottom: 0; padding: 0; }
+.applicant-certificates .certificate-name-check dd { text-align: left; }
+.applicant-certificates .certificate-name-check dt { flex-shrink: 0; }
+@media (max-width: 560px) {
+  .applicant-certificates { padding: 18px 14px; }
+  .applicant-certificates__toolbar { flex-direction: column; gap: 14px; }
+  .applicant-certificates__toolbar button { width: 100%; }
+}

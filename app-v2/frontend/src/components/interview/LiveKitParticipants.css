@@ -1,0 +1,18 @@
+.room-participants { min-width: 0; padding: 17px; background: #fff; border: 1px solid #e2e9f3; border-radius: 14px; box-shadow: 0 10px 25px rgba(25, 66, 125, .05); }
+.room-participants__heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.room-panel-overline { display: inline-flex; align-items: center; gap: 6px; color: #425cf0; font-size: .59rem; font-weight: 850; }
+.room-participants h2 { margin: 7px 0 0; color: #102449; font-size: 1rem; letter-spacing: -.035em; }
+.room-participants h2 small { color: #7e8ca5; font-size: .76rem; font-weight: 700; }
+.room-participants__heading button { display: grid; width: 28px; height: 28px; place-items: center; color: #71809b; background: #fff; border: 1px solid #e4ebf5; border-radius: 8px; }
+.room-participants__heading button:hover { color: #425cf0; border-color: #cbd9f4; }
+.room-participants ul { display: grid; gap: 4px; margin: 14px 0 0; padding: 0; list-style: none; }
+.room-participants li { display: flex; align-items: center; gap: 9px; min-width: 0; padding: 7px 3px; }
+.room-participant-avatar { display: grid; width: 30px; height: 30px; flex: 0 0 auto; place-items: center; color: #fff; font-size: .58rem; font-weight: 850; background: linear-gradient(135deg, #5877db, #8360cf); border-radius: 50%; }
+.room-participant-avatar--local { background: #7354e8; box-shadow: 0 0 0 3px #ebe8ff; }
+.room-participant-avatar--waiting { color: #8392ab; background: #f1f5fa; }
+.room-participant-copy { display: grid; min-width: 0; flex: 1; gap: 3px; }
+.room-participant-copy strong { overflow: hidden; color: #1b3158; font-size: .64rem; text-overflow: ellipsis; white-space: nowrap; }
+.room-participant-copy small { color: #8a99b2; font-size: .56rem; }
+.room-participants li > .icon { color: #92a0b4; }.room-participants li > .room-participant-mic--on { color: #19b995; }
+.room-participants__waiting { border-top: 1px dashed #e2e8f1; }.room-participants__view { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; padding: 5px 2px; color: #4f5eef; font: inherit; font-size: .59rem; font-weight: 800; background: transparent; border: 0; }
+.room-participants__view:hover { color: #293ed2; }

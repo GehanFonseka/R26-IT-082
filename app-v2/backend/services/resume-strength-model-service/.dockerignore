@@ -1,0 +1,8 @@
+__pycache__
+*.pyc
+model
+model/**
+*.safetensors
+*.bin
+*.pt
+*.log

@@ -1,0 +1,80 @@
+@import "./ApplicantJobBackgrounds.css";
+
+.applicant-results { display: grid; gap: 16px; color: #142d50; }
+.applicant-results__header { display: flex; align-items: center; gap: 18px; padding: 20px 24px; background: #fff; border: 1px solid #dfe7f1; border-radius: 18px; }
+.applicant-results__header h1 { margin: 5px 0; font-size: 1.6rem; }
+.applicant-results__header p { margin: 6px 0; font-size: .85rem; }
+.applicant-results__header > div > span, .applicant-results__header small { font-size: .75rem; }
+.applicant-results__header p, .applicant-results small, .applicant-results__panel > p { color: #637993; }
+.applicant-results__avatar { width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; overflow: hidden; display: grid; place-items: center; background: #edf3ff; color: #2164c7; font-size: 1.6rem; font-weight: 700; }
+.applicant-results__avatar img { width: 100%; height: 100%; object-fit: cover; }
+.applicant-results__metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.applicant-results__metrics article { display: grid; gap: 12px; padding: 24px; border: 1px solid #dfe7f1; border-radius: 16px; background: #fff; }
+.applicant-results__metrics strong { font-size: 2rem; color: #2164c7; }
+.applicant-results__panel { padding: 24px; border: 1px solid #dfe7f1; border-radius: 18px; background: #fff; min-width: 0; }
+.applicant-results h2 { margin: 0 0 16px; font-size: 1.25rem; }
+.applicant-results__skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 16px; }
+.applicant-results__tabs { display: flex; gap: 6px; padding: 6px; background: #eaf0f8; border: 1px solid #dfe7f1; border-radius: 12px; overflow-x: auto; }
+.applicant-results__tabs button { padding: 12px 20px; border: 0; border-radius: 8px; background: transparent; color: #637993; font: inherit; font-size: .85rem; font-weight: 700; white-space: nowrap; cursor: pointer; }
+.applicant-results__tabs button[aria-selected="true"] { color: #2164c7; background: #fff; box-shadow: 0 3px 10px rgba(26, 57, 105, .08); }
+.applicant-results__tabs button:focus-visible, .applicant-results__tab-content:focus-visible { outline: 2px solid #2164c7; outline-offset: 2px; }
+.applicant-results__skill-details { margin-top: 12px; }
+.applicant-results__skill-details summary { cursor: pointer; color: #2164c7; font-size: .8rem; font-weight: 650; }
+.applicant-results__skill-summary { overflow: hidden; border: 1px solid #dfe7f1; border-radius: 18px; background: #fff; }
+.applicant-results__skill-summary .resume-strength--skill-analysis { min-height: 0; padding: 26px; }
+@media (max-width: 560px) { .applicant-results__skill-summary .resume-strength--skill-analysis { padding: 18px 14px; } }
+.applicant-results__skill { padding: 18px; border: 1px solid #e3ebf6; border-radius: 12px; }
+.applicant-results__skill-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.applicant-results__skill-heading h3 { margin: 0; }
+.applicant-results__skill-heading span { padding: 5px 8px; background: #edf3ff; color: #2164c7; border-radius: 6px; font-size: .75rem; }
+.applicant-results__skill-heading strong { margin-left: auto; color: #2164c7; }
+.applicant-results progress { width: 100%; height: 8px; margin-top: 14px; accent-color: #2164c7; }
+.applicant-results__details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.applicant-results dl > div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid #edf1f7; }
+.applicant-results dd { margin: 0; text-align: right; }
+.applicant-results__panel p { white-space: pre-wrap; line-height: 1.65; }
+.applicant-results__panel a { color: #2164c7; font-weight: 700; }
+.applicant-results__header {
+  min-height: 156px;
+  background-color: #e5efff;
+  background-image: linear-gradient(90deg, rgba(230,240,255,.94), rgba(230,240,255,.72) 42%, rgba(230,240,255,.08) 75%), url("../../assets/applications-pipeline-art.png");
+  background-size: cover; background-position: center, right center; background-repeat: no-repeat;
+  box-shadow: 0 8px 24px rgba(27,61,110,.05);
+}
+.applicant-results__header > div { min-width: 0; overflow-wrap: anywhere; }
+.applicant-results__metrics article {
+  min-height: 150px; padding: 20px; gap: 10px; background-repeat: no-repeat;
+  background-size: cover; background-position: center, right center;
+  box-shadow: 0 6px 20px rgba(27,61,110,.04);
+}
+.applicant-results__metrics article:nth-child(1) { background-image: linear-gradient(90deg, rgba(222,247,242,.94), rgba(222,247,242,.78) 48%, rgba(222,247,242,.12)), url("../../assets/application-match-bg.png"); border-color: #bcded8; }
+.applicant-results__metrics article:nth-child(2) { background-image: linear-gradient(90deg, rgba(255,237,223,.94), rgba(255,237,223,.78) 48%, rgba(255,237,223,.12)), url("../../assets/application-review-bg.png"); border-color: #efd4c3; }
+.applicant-results__metrics article:nth-child(3) { background-image: linear-gradient(90deg, rgba(224,237,255,.94), rgba(224,237,255,.78) 48%, rgba(224,237,255,.12)), url("../../assets/job-readiness-card-bg.png"); border-color: #c3d8f4; }
+.applicant-results__panel {
+  background-image: linear-gradient(180deg, rgba(255,255,255,.91), #fff 190px), url("../../assets/published-jobs-card-bg.png");
+  background-size: 100% 100%, auto 190px; background-position: top right; background-repeat: no-repeat;
+}
+.applicant-results__panel--cv { background-image: linear-gradient(180deg, rgba(255,255,255,.91), #fff 190px), url("../../assets/recent-applications-bg.png"); }
+.applicant-results__skill-summary .resume-strength--skill-analysis {
+  background: linear-gradient(180deg, rgba(255,255,255,.94), #fff 175px), url("../../assets/application-review-bg.png") top right / auto 175px no-repeat;
+}
+.applicant-results small, .applicant-results__header p, .applicant-results__panel > p { color: #4e637e; }
+.applicant-results__tabs button { min-height: 44px; color: #4e637e; border: 1px solid transparent; transition: background-color 140ms ease, border-color 140ms ease; }
+.applicant-results__tabs button:hover { background: #f7faff; color: #174e9d; }
+.applicant-results__tabs button[aria-selected="true"] { border-color: #2164c7; box-shadow: 0 2px 8px rgba(26,57,105,.08); }
+.applicant-results__tabs button:active { background: #dce9fc; }
+.applicant-results__panel a { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 16px; border: 1px solid #c4d7ef; border-radius: 10px; background: #f1f6ff; text-decoration: none; }
+.applicant-results__panel a:hover { background: #e1edff; text-decoration: underline; }
+.applicant-results__panel a:active { background: #d3e3fa; }
+.applicant-results :is(a, button, summary):focus-visible { outline: 3px solid #2164c7; outline-offset: 3px; }
+.applicant-results summary { min-height: 44px; padding-block: 10px; cursor: pointer; }
+.applicant-results summary:hover { text-decoration: underline; }
+.applicant-results dd { overflow-wrap: anywhere; min-width: 0; }
+@media (prefers-reduced-motion: reduce) { .applicant-results__tabs button { transition: none; } }
+@media (max-width: 560px) {
+  .applicant-results__header { background-image: linear-gradient(90deg, rgba(230,240,255,.95), rgba(230,240,255,.72)), url("../../assets/applications-pipeline-art.png"); }
+  .applicant-results dl > div { flex-direction: column; gap: 6px; }
+  .applicant-results dd { text-align: left; }
+  .applicant-results__tabs button { padding-inline: 14px; }
+}
+@media (max-width: 800px) { .applicant-results__metrics, .applicant-results__details, .applicant-results__skills { grid-template-columns: 1fr; } .applicant-results__header { align-items: flex-start; padding: 20px; } .applicant-results__avatar { width: 58px; height: 58px; } }

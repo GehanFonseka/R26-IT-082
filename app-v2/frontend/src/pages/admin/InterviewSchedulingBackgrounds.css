@@ -1,0 +1,97 @@
+.interview-scheduling-page {
+  --schedule-art: url("../../assets/interview-schedule-bg.png");
+  --roles-art: url("../../assets/published-job-item-bg.png");
+  --candidate-art: url("../../assets/application-match-bg.png");
+  --plan-art: url("../../assets/interviews-planned-card-bg.png");
+  --mix-art: url("../../assets/application-mix-bg.png");
+  --ready-art: url("../../assets/job-readiness-card-bg.png");
+  --notes-art: url("../../assets/application-review-bg.png");
+  background-image: linear-gradient(rgba(246,248,252,.86), rgba(246,248,252,.94)), var(--mix-art);
+  background-size: cover;
+  background-position: top right;
+}
+
+.interview-scheduling-page :is(.interview-scheduling-hero, .interview-hero-stat,
+  .interview-opportunities, .interview-upcoming, .interview-candidate-panel,
+  .interview-form-card, .interview-job-card, .interview-candidate,
+  .interview-upcoming-group, .interview-upcoming-item, .interview-empty,
+  .interview-internal-room-note, .interview-form-card__heading,
+  .interview-upcoming-group__header, .interview-audio-note, .interview-message) {
+  --surface-art: var(--schedule-art);
+  background-color: #f7f5ff;
+  background-image: linear-gradient(100deg, rgba(255,255,255,.94), rgba(255,255,255,.76) 55%, rgba(255,255,255,.18)), var(--surface-art);
+  background-position: center, right center;
+  background-size: cover, auto 100%;
+  background-repeat: no-repeat;
+  border-color: #dce3f2;
+}
+.interview-scheduling-page .interview-scheduling-hero { min-height: 170px; background-size: cover; }
+.interview-scheduling-page .interview-hero-stat { --surface-art: var(--plan-art); border-color: #d4dcf6; }
+.interview-scheduling-page .interview-opportunities { --surface-art: var(--roles-art); }
+.interview-scheduling-page .interview-upcoming { --surface-art: var(--plan-art); }
+.interview-scheduling-page .interview-candidate-panel { --surface-art: var(--candidate-art); }
+.interview-scheduling-page .interview-form-card { --surface-art: var(--ready-art); }
+.interview-scheduling-page .interview-job-card { --surface-art: var(--roles-art); border-color: #cedef0; }
+.interview-scheduling-page .interview-job-card:nth-child(3n + 2) { --surface-art: var(--ready-art); border-color: #cde7dd; }
+.interview-scheduling-page .interview-job-card:nth-child(3n) { --surface-art: var(--mix-art); border-color: #dfd5f1; }
+.interview-scheduling-page .interview-candidate { --surface-art: var(--candidate-art); }
+.interview-scheduling-page .interview-candidate:nth-of-type(even) { --surface-art: var(--mix-art); }
+.interview-scheduling-page .interview-upcoming-group { --surface-art: var(--mix-art); }
+.interview-scheduling-page .interview-upcoming-item { --surface-art: var(--plan-art); }
+.interview-scheduling-page .interview-upcoming-item:nth-child(even) { --surface-art: var(--ready-art); }
+.interview-scheduling-page .interview-upcoming-group__header { --surface-art: var(--roles-art); padding: 12px; border-radius: 9px; margin-bottom: 10px; }
+.interview-scheduling-page .interview-form-card__heading { --surface-art: var(--schedule-art); padding: 14px; border-radius: 9px; }
+.interview-scheduling-page .interview-internal-room-note { --surface-art: var(--candidate-art); }
+.interview-scheduling-page .interview-empty { --surface-art: var(--mix-art); margin-top: 16px; padding: 20px; border-radius: 12px; }
+.interview-scheduling-page .interview-audio-note { --surface-art: var(--notes-art); padding: 12px; border: 1px solid #eadfce; border-radius: 9px; color: #52647d; }
+.interview-scheduling-page .interview-message--success { --surface-art: var(--ready-art); }
+.interview-scheduling-page .interview-message--error { --surface-art: var(--notes-art); }
+
+.interview-scheduling-page :is(.interview-count, .interview-job-card__meta span,
+  .interview-job-status, .interview-candidate__avatar, .interview-candidate__fit,
+  .interview-upcoming-item__date, .interview-upcoming-group__header > strong) {
+  background-image: linear-gradient(rgba(255,255,255,.52), rgba(255,255,255,.52)), var(--mix-art);
+  background-size: cover;
+  background-position: right center;
+}
+.interview-scheduling-page .interview-candidate__fit { padding: 7px; border-radius: 7px; }
+.interview-scheduling-page .interview-job-status--open { background-image: linear-gradient(rgba(232,250,247,.62), rgba(232,250,247,.62)), var(--ready-art); }
+.interview-scheduling-page :is(.interview-job-card__action, .interview-primary-button) {
+  background-image: linear-gradient(100deg, rgba(16,72,169,.97), rgba(56,63,166,.9)), var(--schedule-art);
+  background-size: cover;
+  background-position: right center;
+}
+.interview-scheduling-page :is(.interview-upcoming-item__actions button, .interview-upcoming-item__actions a, .interview-close-button) {
+  background-image: linear-gradient(rgba(255,255,255,.65), rgba(255,255,255,.65)), var(--candidate-art);
+  background-size: cover;
+}
+.interview-scheduling-page .interview-form-card label { padding: 11px; border: 1px solid #d8e5e2; border-radius: 10px; background-image: linear-gradient(100deg, rgba(255,255,255,.9), rgba(255,255,255,.4)), var(--notes-art); background-size: cover; }
+.interview-scheduling-page :is(.interview-form-card input, .interview-form-card select, .interview-form-card textarea) { background-color: rgba(255,255,255,.95); }
+.interview-scheduling-page :is(.interview-candidate--selected, .interview-job-card--selected) { border-color: #3379df; box-shadow: inset 0 0 0 1px #3379df, 0 8px 22px rgba(37,95,190,.1); }
+
+.interview-scheduling-page :is(.scheduling-tabs, .scheduling-toolbar, .scheduling-context) {
+  background-image: linear-gradient(100deg, rgba(255,255,255,.86), rgba(255,255,255,.35)), var(--mix-art);
+  background-size: cover;
+  background-position: right center;
+  border: 1px solid #dcdff2;
+  border-radius: 12px;
+}
+.interview-scheduling-page :is(.scheduling-toolbar, .scheduling-context) { padding: 14px; }
+.interview-scheduling-page .scheduling-tabs button {
+  --tab-art: var(--roles-art);
+  background-image: linear-gradient(100deg, rgba(255,255,255,.8), rgba(255,255,255,.2)), var(--tab-art);
+  background-size: cover;
+  background-position: right center;
+  color: #344d71;
+}
+.interview-scheduling-page .scheduling-tabs button:nth-child(2) { --tab-art: var(--ready-art); }
+.interview-scheduling-page .scheduling-tabs button:nth-child(3) { --tab-art: var(--schedule-art); }
+.interview-scheduling-page .scheduling-tabs button[aria-selected="true"] { box-shadow: inset 0 -3px #155dcc, inset 0 0 0 1px #91b4eb; color: #104da6; }
+.interview-scheduling-page .scheduling-tabs button span { background-image: var(--mix-art); background-size: cover; color: #254a85; }
+.interview-scheduling-page .scheduling-context button { background-image: var(--candidate-art); background-size: cover; }
+.interview-scheduling-page .scheduling-toolbar :is(input, select) { background-color: rgba(255,255,255,.94); }
+@media (max-width: 650px) {
+  .interview-scheduling-page .interview-scheduling-hero { min-height: 0; }
+  .interview-scheduling-page .scheduling-toolbar { padding: 12px; }
+  .interview-scheduling-page .interview-candidate__fit { padding: 5px; }
+}

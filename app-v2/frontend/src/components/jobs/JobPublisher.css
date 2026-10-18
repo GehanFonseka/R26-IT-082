@@ -1,0 +1,3 @@
+.job-publisher { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; margin: 8px 0; padding: 8px 10px; border: 1px solid #dce5ef; border-radius: 8px; background: #f5f8fc; color: #50617a; font-size: .8rem; line-height: 1.5; overflow-wrap: anywhere; }
+.job-publisher > .icon { flex-shrink: 0; color: #3678df; }
+.job-publisher strong { color: #202e46; font-weight: 700; }

@@ -1,0 +1,14 @@
+import { Router } from "express";
+import { login, logout, refresh, register } from "../controllers/authController.js";
+import { createAdmin, deleteAdmin, listAdmins } from "../controllers/companyController.js";
+import { validateSession } from "../controllers/sessionController.js";
+const router = Router();
+router.post("/register", register);
+router.post("/login", login);
+router.post("/refresh", refresh);
+router.post("/logout", logout);
+router.get("/company/admins", listAdmins);
+router.post("/company/admins", createAdmin);
+router.delete("/company/admins/:adminId", deleteAdmin);
+router.get("/session", validateSession);
+export default router;

@@ -1,0 +1,17 @@
+.certificate-name-check { margin-top: 10px; padding: 10px 12px; color: #60718a; background: #f7f9fc; border: 1px solid #e4eaf2; border-radius: 6px; }
+.certificate-name-check__status { display: inline-block; color: #576b87; font-size: .7rem; font-weight: 800; }
+.certificate-name-check--matched { background: #f0fbf7; border-color: #c8eadc; }
+.certificate-name-check--matched .certificate-name-check__status { color: #15765b; }
+.certificate-name-check--mismatched { background: #fff2f2; border-color: #f3d0d0; }
+.certificate-name-check--mismatched .certificate-name-check__status { color: #b5363c; }
+.certificate-name-check--needs_review { background: #fffaf0; border-color: #efdfb9; }
+.certificate-name-check--needs_review .certificate-name-check__status { color: #91621a; }
+.certificate-name-check dl { display: grid; gap: 6px; margin: 9px 0; }
+.certificate-name-check dl > div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 8px; font-size: .7rem; line-height: 1.5; }
+.certificate-name-check dt { color: #7b899c; }
+.certificate-name-check dd { margin: 0; color: #34465e; overflow-wrap: anywhere; }
+.certificate-name-check--matched dd, .certificate-name-check--matched p { color: #15765b; }
+.profile-certificates__list .certificate-name-check p { margin-top: 8px; font-size: .7rem; line-height: 1.5; }
+.certificate-name-check button { display: inline-flex; align-items: center; gap: 6px; margin-top: 9px; padding: 6px 9px; color: #b43d40; font: inherit; font-size: .68rem; font-weight: 700; background: #fff; border: 1px solid #ebd6d7; border-radius: 5px; cursor: pointer; }
+.certificate-name-check button:focus-visible { outline: 2px solid #ff5146; outline-offset: 3px; }
+@media (max-width: 620px) { .certificate-name-check dl > div { grid-template-columns: 1fr; gap: 2px; } }
