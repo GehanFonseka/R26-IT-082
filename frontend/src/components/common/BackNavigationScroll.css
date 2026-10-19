@@ -1,0 +1,86 @@
+/* Keep the header outside the scroll area on every remaining back-navigation page. */
+:root .app-shell .cv-app-shell:has(:is(
+  .admin-analysis-page__back, .admin-skill-analysis-page__back,
+  .admin-job-applicants__back, .applicant-job-dashboard__back,
+  .interview-detail-back, .cv-analysis-page__back, .interview-room-back
+)) {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+:root .app-shell .cv-app-shell__main:has(:is(
+  .admin-analysis-page__back, .admin-skill-analysis-page__back,
+  .admin-job-applicants__back, .applicant-job-dashboard__back,
+  .interview-detail-back, .cv-analysis-page__back, .interview-room-back
+)) {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+:root .app-shell .cv-app-shell__main:has(:is(
+  .admin-analysis-page__back, .admin-skill-analysis-page__back,
+  .admin-job-applicants__back, .applicant-job-dashboard__back,
+  .interview-detail-back, .cv-analysis-page__back, .interview-room-back
+)) > .cv-topbar {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 15;
+}
+:root .app-shell .cv-app-shell__main > main:has(:is(
+  .admin-analysis-page__back, .admin-skill-analysis-page__back,
+  .admin-job-applicants__back, .applicant-job-dashboard__back, .interview-detail-back,
+  .cv-analysis-page__back, .interview-room-back
+)),
+:root .app-shell .cv-app-shell__main:has(.applicant-job-dashboard__back) > main {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-top: 20px;
+}
+/* Only the button covers content: the surrounding area stays transparent. */
+:root .app-shell :is(
+  .admin-analysis-page__back, .admin-skill-analysis-page__back,
+  .admin-job-applicants__back, .applicant-job-dashboard__back, .interview-detail-back,
+  .cv-analysis-page__back, .interview-room-back
+) {
+  position: sticky;
+  top: 20px;
+  z-index: 10;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+:root .app-shell .cv-analysis-page__header { margin-top: 0; }
+@media (min-width: 901px) {
+  :root .app-shell .cv-app-shell:has(.cv-navigation--collapsed) > .cv-app-shell__main:has(:is(
+    .admin-analysis-page__back, .admin-skill-analysis-page__back,
+    .admin-job-applicants__back, .applicant-job-dashboard__back,
+    .interview-detail-back, .cv-analysis-page__back, .interview-room-back
+  )) { margin-left: 80px; }
+}
+@media (max-width: 900px) {
+  :root .app-shell .cv-app-shell > .cv-app-shell__main:has(:is(
+    .admin-analysis-page__back, .admin-skill-analysis-page__back,
+    .admin-job-applicants__back, .applicant-job-dashboard__back,
+    .interview-detail-back, .cv-analysis-page__back, .interview-room-back
+  )) { margin-left: 0; }
+}
+@media (max-width: 640px) {
+  :root .app-shell .cv-app-shell__main > main:has(:is(
+    .admin-analysis-page__back, .admin-skill-analysis-page__back,
+    .admin-job-applicants__back, .applicant-job-dashboard__back,
+    .interview-detail-back, .cv-analysis-page__back, .interview-room-back
+  )) { padding-top: 14px; }
+  :root .app-shell :is(
+    .admin-analysis-page__back, .admin-skill-analysis-page__back,
+    .admin-job-applicants__back, .applicant-job-dashboard__back, .interview-detail-back,
+    .cv-analysis-page__back, .interview-room-back
+  ) { top: 14px; }
+}

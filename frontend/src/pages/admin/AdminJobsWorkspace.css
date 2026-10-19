@@ -1,0 +1,2 @@
+:where(.admin-job-form) input[readonly] { background: #f4f7fb; color: #314767; cursor: default; }
+:where(.admin-job-form) #job-company-hint { color: #64748b; line-height: 1.5; }

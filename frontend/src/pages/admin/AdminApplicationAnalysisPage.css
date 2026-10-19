@@ -1,0 +1,441 @@
+.admin-analysis-page {
+  min-height: calc(100vh - 72px);
+  padding: 29px clamp(18px, 4vw, 52px) 60px;
+  background: #f5f5f3;
+}
+
+.admin-analysis-page__container {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.admin-analysis-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 22px;
+  padding: 8px 10px;
+  color: #555;
+  font-size: 0.69rem;
+  font-weight: 800;
+  background: transparent;
+  border: 1px solid #d6d6d2;
+  border-radius: 7px;
+}
+
+.admin-analysis-page__back:hover,
+.admin-analysis-page__back:focus-visible {
+  color: #fff;
+  background: #111;
+  border-color: #111;
+}
+
+.admin-analysis-page__back:focus-visible {
+  outline: 3px solid rgba(17, 17, 17, 0.18);
+  outline-offset: 3px;
+}
+
+.admin-analysis-retention {
+  margin-top: 18px;
+}
+
+.admin-analysis-retention__heading {
+  margin: 0 4px 12px;
+  padding: 15px 17px;
+  background: linear-gradient(135deg, #fff, #effbf8);
+  border: 1px solid #d8ebe6;
+  border-left: 3px solid #0f8f83;
+  border-radius: 11px;
+}
+
+.admin-analysis-retention__heading > span {
+  display: inline-flex;
+  padding: 4px 7px;
+  color: #087f73;
+  font-size: 0.63rem;
+  font-weight: 850;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  background: #e5f8f4;
+  border-radius: 5px;
+}
+
+.admin-analysis-retention__heading h2 {
+  margin: 6px 0 5px;
+  color: #111;
+  font-size: 1.2rem;
+  letter-spacing: -0.04em;
+}
+
+.admin-analysis-retention__heading p {
+  max-width: 780px;
+  margin: 0;
+  color: #777;
+  font-size: 0.7rem;
+  line-height: 1.55;
+}
+
+.admin-analysis-retention__error {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 12px;
+  color: #9f2940;
+  font-size: 0.7rem;
+  background: #ffedf0;
+  border: 1px solid #f2cbd3;
+  border-radius: 9px;
+}
+
+.admin-analysis-grid,
+.admin-analysis-review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.admin-analysis-card {
+  min-width: 0;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid #dededb;
+  border-radius: 13px;
+}
+
+.admin-analysis-card__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #ecece9;
+}
+
+.admin-analysis-card__heading > div > span,
+.admin-analysis-copy > span,
+.admin-analysis-label {
+  color: #777;
+  font-size: 0.6rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-analysis-card__heading h2 {
+  margin: 5px 0 0;
+  color: #111;
+  font-size: 1.15rem;
+  letter-spacing: -0.04em;
+}
+
+.admin-analysis-card__heading > span:last-child {
+  color: #777;
+  font-size: 0.62rem;
+  white-space: nowrap;
+}
+
+.admin-analysis-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 7px;
+  color: #333 !important;
+  background: #f0f0ee;
+  border: 1px solid #dededb;
+  border-radius: 6px;
+}
+
+.admin-analysis-fields {
+  display: grid;
+  gap: 0;
+  margin: 15px 0 0;
+}
+
+.admin-analysis-fields div {
+  display: grid;
+  grid-template-columns: minmax(80px, 0.35fr) minmax(0, 0.65fr);
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #efefec;
+}
+
+.admin-analysis-fields dt {
+  color: #888;
+  font-size: 0.67rem;
+}
+
+.admin-analysis-fields dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: #333;
+  font-size: 0.68rem;
+  font-weight: 750;
+  text-align: right;
+}
+
+.admin-analysis-label {
+  display: block;
+  margin: 16px 0 7px;
+}
+
+.admin-analysis-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.admin-analysis-chips span {
+  padding: 5px 7px;
+  color: #3730a3;
+  font-size: 0.62rem;
+  background: #eef0ff;
+  border-radius: 5px;
+}
+
+.admin-analysis-chips small,
+.admin-analysis-empty {
+  color: #888;
+  font-size: 0.68rem;
+}
+
+.admin-analysis-copy {
+  margin-top: 16px;
+}
+
+.admin-analysis-copy p {
+  margin: 6px 0 0;
+  color: #666;
+  font-size: 0.7rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.admin-analysis-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.admin-analysis-list > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 11px;
+  background: #fafaf8;
+  border: 1px solid #e8e8e4;
+  border-radius: 8px;
+}
+
+.admin-analysis-list > div > .icon {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: #111;
+}
+
+.admin-analysis-list strong {
+  color: #222;
+  font-size: 0.7rem;
+}
+
+.admin-analysis-list p {
+  margin: 4px 0 0;
+  color: #777;
+  font-size: 0.67rem;
+  line-height: 1.5;
+}
+
+.admin-analysis-priority {
+  min-width: 45px;
+  padding: 4px 5px;
+  color: #805c00;
+  font-size: 0.56rem;
+  font-weight: 850;
+  text-align: center;
+  text-transform: uppercase;
+  background: #fff3ce;
+  border-radius: 4px;
+}
+
+.admin-analysis-priority--low {
+  color: #087f73;
+  background: #e8faf7;
+}
+
+.admin-analysis-priority--medium {
+  color: #805c00;
+  background: #fff3ce;
+}
+
+.admin-analysis-priority--high {
+  color: #9f2940;
+  background: #ffedf0;
+}
+
+.admin-analysis-page .admin-application__comparison {
+  margin-top: 15px;
+}
+
+.admin-analysis-disclaimer {
+  margin: 16px 3px 0;
+  color: #888;
+  font-size: 0.64rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.admin-analysis-state {
+  display: grid;
+  min-height: 390px;
+  place-items: center;
+  align-content: center;
+  gap: 9px;
+  color: #777;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.admin-analysis-state strong {
+  color: #111;
+  font-size: 0.95rem;
+}
+
+.admin-analysis-state button {
+  margin-top: 6px;
+  padding: 8px 10px;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  background: #111;
+  border: 1px solid #111;
+  border-radius: 7px;
+}
+
+.admin-analysis-state--error .icon {
+  color: #9f2940;
+}
+
+.admin-analysis-loader {
+  width: 23px;
+  height: 23px;
+  border: 2px solid #ddd;
+  border-top-color: #111;
+  border-radius: 50%;
+  animation: admin-analysis-spin 800ms linear infinite;
+}
+
+@keyframes admin-analysis-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 700px) {
+  .admin-analysis-grid,
+  .admin-analysis-review-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .admin-analysis-page {
+    padding: 22px 12px 45px;
+  }
+
+  .admin-analysis-card {
+    padding: 18px 15px;
+  }
+}
+
+/* Talent AI candidate analysis surface. */
+.admin-analysis-page {
+  color: #17315a;
+  background: radial-gradient(circle at 94% 0%, rgba(42, 108, 219, 0.08), transparent 25%), #f6f8fc;
+}
+
+.admin-analysis-page__back {
+  color: #1d5fc9;
+  border-color: #d5e0ee;
+}
+
+.admin-analysis-page__back:hover,
+.admin-analysis-page__back:focus-visible {
+  color: #fff;
+  background: #155dcc;
+  border-color: #155dcc;
+}
+
+.admin-analysis-card__heading h2,
+.admin-analysis-list strong,
+.admin-analysis-state strong {
+  color: #0b1e42;
+}
+
+.admin-analysis-card__heading > span:last-child,
+.admin-analysis-copy p,
+.admin-analysis-disclaimer {
+  color: #71819b;
+}
+
+.admin-analysis-card,
+.admin-analysis-state {
+  background: #fff;
+  border-color: #dfe7f1;
+  box-shadow: 0 12px 28px rgba(30, 64, 116, 0.05);
+}
+
+.admin-analysis-retention__heading {
+  background: linear-gradient(135deg, #fff, #eff6ff);
+  border-color: #d7e6f7;
+  border-left-color: #1d6fe1;
+}
+
+.admin-analysis-retention__heading > span {
+  color: #1d5fc9;
+  background: #edf4ff;
+}
+
+.admin-analysis-retention__heading h2 {
+  color: #0b1e42;
+}
+
+.admin-analysis-retention__heading p {
+  color: #71819b;
+}
+
+.admin-analysis-card__heading {
+  border-bottom-color: #e5ebf2;
+}
+
+.admin-analysis-card__heading > div > span,
+.admin-analysis-copy > span,
+.admin-analysis-label,
+.admin-analysis-fields dt {
+  color: #72839d;
+}
+
+.admin-analysis-fields div {
+  border-bottom-color: #e5ebf2;
+}
+
+.admin-analysis-fields dd {
+  color: #294568;
+}
+
+.admin-analysis-chips span {
+  color: #245fc6;
+  background: #edf3ff;
+}
+
+.admin-analysis-list > div {
+  background: #f8fbff;
+  border-color: #e0e8f2;
+}
+
+.admin-analysis-list > div > .icon {
+  color: #2466cf;
+}
+
+.admin-analysis-priority--low {
+  color: #128f7d;
+  background: #e8faf7;
+}

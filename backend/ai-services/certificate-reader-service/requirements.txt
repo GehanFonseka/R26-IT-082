@@ -1,0 +1,9 @@
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+httpx>=0.28,<1
+paddlepaddle==3.2.2
+paddleocr==3.3.2
+Pillow>=11,<13
+PyMuPDF>=1.26,<2
+python-dotenv>=1,<2
+numpy==1.26.4

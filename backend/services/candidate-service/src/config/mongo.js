@@ -1,0 +1,25 @@
+import { MongoClient } from "mongodb";
+import { env } from "./env.js";
+
+let databasePromise;
+
+export const connectDatabase = async () => {
+  if (!env.mongoUri) throw new Error("MONGODB_URI is not configured");
+  if (!databasePromise) {
+    const client = new MongoClient(env.mongoUri);
+    databasePromise = client.connect()
+      .then(() => client.db(env.mongoDbName))
+      .then(async (database) => {
+        await database.collection("candidate_profiles").createIndex({ userId: 1 }, { unique: true });
+        await database.collection("candidate_certificate_checks").createIndex({ userId: 1, cvRevision: 1, url: 1 }, { unique: true });
+        return database;
+      })
+      .catch((error) => {
+        databasePromise = undefined;
+        throw error;
+      });
+  }
+  return databasePromise;
+};
+
+export const getDatabase = () => connectDatabase();

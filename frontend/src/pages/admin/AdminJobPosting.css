@@ -1,0 +1,147 @@
+.admin-page--jobs {
+  background: #f5f8fc;
+}
+.admin-page--jobs .admin-content-grid {
+  align-items: start;
+  gap: 22px;
+}
+.admin-page--jobs .admin-job-form,
+.admin-page--jobs .admin-jobs-card {
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #dae5f2;
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(20, 49, 91, .07);
+}
+.admin-page--jobs .admin-card::before {
+  display: none;
+}
+.admin-job-form__intro,
+.admin-jobs-card__intro {
+  min-height: 178px;
+  padding: 30px 31px 25px;
+  background-color: #fffaf8;
+  background-position: center right;
+  background-size: cover;
+  border-bottom: 1px solid #e9eef5;
+}
+.admin-job-form__intro {
+  background-image: linear-gradient(90deg, #fff 0%, rgba(255,255,255,.96) 42%, rgba(255,255,255,.3) 100%), url("../../assets/job-publishing-card-bg.png");
+}
+.admin-jobs-card__intro {
+  min-height: 156px;
+  background-image: linear-gradient(90deg, #fff 0%, rgba(255,255,255,.95) 46%, rgba(255,255,255,.22) 100%), url("../../assets/published-jobs-card-bg.png");
+}
+.admin-page--jobs .admin-card__heading {
+  align-items: flex-start;
+}
+.admin-page--jobs .admin-card h2 {
+  margin-top: 9px;
+  color: #10264a;
+  font-size: clamp(1.45rem, 2.2vw, 1.85rem);
+  line-height: 1.2;
+  letter-spacing: -.045em;
+}
+.admin-page--jobs .admin-card__intro,
+.admin-jobs-card__intro p {
+  max-width: 430px;
+  margin: 12px 0 0;
+  color: #586d89;
+  font-size: .78rem;
+  line-height: 1.55;
+}
+.admin-page--jobs .admin-job-form form {
+  gap: 19px;
+  padding: 26px 31px 31px;
+}
+.admin-page--jobs .admin-job-form__progress {
+  margin: 0 0 8px;
+  padding: 17px 19px;
+  background: #f5f9ff;
+  border-color: #dce8f7;
+}
+.admin-page--jobs .admin-form-section {
+  align-items: center;
+  margin-top: 15px;
+  padding: 0 0 12px;
+  border-bottom-color: #dce6f3;
+}
+.admin-page--jobs .admin-form-section__title b {
+  width: 29px;
+  height: 29px;
+  border-radius: 9px;
+}
+.admin-page--jobs .admin-form-section span {
+  font-size: .73rem;
+  letter-spacing: .08em;
+}
+.admin-page--jobs .admin-job-form label {
+  gap: 7px;
+  color: #263d60;
+  font-size: .75rem;
+  font-weight: 750;
+}
+.admin-page--jobs .admin-job-form label > span:not(.admin-skill-preview):not(.admin-field-meta),
+.admin-page--jobs .admin-job-form label em {
+  color: #697f9e;
+  font-size: .67rem;
+}
+
+.admin-page--jobs .admin-job-form label em {
+  padding: 3px 6px;
+  color: #1b5bb7;
+  background: #eaf3ff;
+  border-radius: 5px;
+}
+
+.admin-page--jobs .admin-job-form input,
+.admin-page--jobs .admin-job-form select,
+.admin-page--jobs .admin-job-form textarea {
+  min-height: 46px;
+  padding: 11px 13px;
+  border-radius: 10px;
+}
+
+.admin-page--jobs .admin-job-form textarea {
+  min-height: 116px;
+  line-height: 1.55;
+}
+
+.admin-page--jobs .admin-job-form input:focus,
+.admin-page--jobs .admin-job-form select:focus,
+.admin-page--jobs .admin-job-form textarea:focus {
+  background: #fff;
+  border-color: #276fda;
+  box-shadow: 0 0 0 4px rgba(39,111,218,.13);
+}
+
+.admin-page--jobs .admin-jobs-card > .admin-job-search,
+.admin-page--jobs .admin-jobs-card > .admin-empty,
+.admin-page--jobs .admin-jobs-card > .admin-job-filter-empty,
+.admin-page--jobs .admin-jobs-card > .admin-job-list {
+  margin-right: 24px;
+  margin-left: 24px;
+}
+
+.admin-page--jobs .admin-jobs-card > .admin-job-list {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 800px) {
+  .admin-job-form__intro,
+  .admin-jobs-card__intro { padding: 25px 21px; }
+  .admin-page--jobs .admin-job-form form { padding: 22px 21px 26px; }
+}
+
+@media (max-width: 500px) {
+  .admin-job-form__intro,
+  .admin-jobs-card__intro { min-height: 0; background-position: 70% center; }
+  .admin-page--jobs .admin-card__heading { gap: 12px; }
+  .admin-page--jobs .admin-card__badge { white-space: nowrap; }
+  .admin-page--jobs .admin-form-section { align-items: flex-start; flex-direction: column; gap: 7px; }
+  .admin-page--jobs .admin-jobs-card > .admin-job-search,
+  .admin-page--jobs .admin-jobs-card > .admin-empty,
+  .admin-page--jobs .admin-jobs-card > .admin-job-filter-empty,
+  .admin-page--jobs .admin-jobs-card > .admin-job-list { margin-right: 17px; margin-left: 17px; }
+}

@@ -1,0 +1,50 @@
+.interview-results-page {
+  --results-mint: url("../../assets/interview-glass-evaluation.png");
+  --results-review: url("../../assets/interview-glass-review.png");
+  --results-pending: url("../../assets/interview-glass-pending.png");
+  background: #f1f6fb;
+}
+.interview-results-page .interview-results-hero {
+  min-height: 180px;
+  background: linear-gradient(90deg, #f8fcfbee 38%, #f8fcfb00 75%), var(--results-mint) right center / auto 140% no-repeat, #f8fcfb;
+}
+.interview-results-page .interview-results-hero__stat {
+  background: #ffffffbf; backdrop-filter: blur(12px);
+  border: 1px solid #ffffffee; box-shadow: 0 8px 24px #4466a31a;
+}
+.interview-results-page .interview-results-summary > div {
+  min-height: 104px;
+  background: linear-gradient(90deg, #f5fcfaf2 30%, #f5fcfa00 78%), var(--results-mint) right center / auto 145% no-repeat, #f5fcfa;
+}
+.interview-results-page .interview-results-summary > div:nth-child(2) {
+  background: linear-gradient(90deg, #fff8f5f2 30%, #fff8f500 78%), var(--results-review) right center / auto 145% no-repeat, #fff8f5;
+}
+.interview-results-page .interview-results-summary > div:nth-child(3) {
+  background: linear-gradient(90deg, #f8f5fff2 30%, #f8f5ff00 78%), var(--results-pending) right center / auto 145% no-repeat, #f8f5ff;
+}
+.interview-results-summary :is(span, strong) { position: relative; max-width: 65%; }
+.interview-results-page .interview-results-card { background: #ffffffed; }
+.interview-results-card__heading {
+  min-height: 100px; padding: 18px; border-radius: 12px;
+  background: linear-gradient(90deg, #fffbf8f5 48%, #fffbf800 85%), var(--results-review) right center / auto 155% no-repeat, #fffbf8;
+}
+.interview-results-refresh { position: relative; }
+.interview-results-page .interview-results-toolbar { background: #f5f8fc; }
+.interview-results-page .interview-results-group { background: #f3faf8; }
+.interview-results-page .interview-results-group:nth-child(3n+2) { background: #fff8f5; }
+.interview-results-page .interview-results-group:nth-child(3n+3) { background: #f8f5fc; }
+.interview-results-group__header {
+  padding: 12px; margin-bottom: 10px; border-radius: 9px;
+  background: linear-gradient(90deg, #ffffffed 50%, #ffffff66), var(--results-mint) right center / auto 170% no-repeat, #fff;
+}
+.interview-results-page .interview-result-row { background: #ffffffed; }
+.interview-results-page .interview-results-empty {
+  padding: 24px 18px; border-radius: 12px; border: 1px dashed #dfe6f4;
+  background: linear-gradient(90deg, #f8fafff5 55%, #f8faff99), var(--results-pending) right center / auto 100% no-repeat, #f8faff;
+}
+@media (max-width: 640px) {
+  .interview-results-card__heading { flex-wrap: wrap; }
+  .interview-results-page .interview-results-hero { min-height: auto; background-size: auto, auto 100%; }
+  .interview-results-hero > div:first-child { padding: 8px; border-radius: 10px; background: #f7faffcc; }
+  .interview-results-group__header { background: #ffffffdf; }
+}
