@@ -39,7 +39,7 @@ function InterviewResultDetailPage() {
   }, [interviewId]);
 
   const navigateFromSidebar = (view) => {
-    const destinations = { admin: "/admin", "admin-jobs": "/admin/jobs", "admin-applications": "/admin/applications", "admin-interviews": "/admin/interviews", "admin-interview-results": "/admin/interview-results" };
+    const destinations = { admin: "/admin", "admin-jobs": "/admin/jobs", "admin-applications": "/admin/applications", "admin-attrition": "/admin/attrition", "admin-interviews": "/admin/interviews", "admin-interview-results": "/admin/interview-results" };
     navigate(destinations[view] || "/admin");
   };
   if (user?.role !== "admin") return <Navigate to="/matching" replace />;

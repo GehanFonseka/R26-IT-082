@@ -1,0 +1,786 @@
+.attrition-report-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.attrition-report-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 27, 52, 0.65);
+  backdrop-filter: blur(6px);
+  animation: modal-fade-in 180ms ease;
+}
+
+.attrition-report-modal__content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1040px;
+  max-height: 90vh;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(18, 38, 74, 0.28);
+  overflow: hidden;
+  animation: modal-scale-up 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.attrition-report-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 26px;
+  background: linear-gradient(135deg, #0e1c36, #162c54);
+  color: #ffffff;
+}
+
+.attrition-report-modal__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  margin-bottom: 4px;
+  color: #7ce8c9;
+  background: rgba(124, 232, 201, 0.15);
+  border: 1px solid rgba(124, 232, 201, 0.3);
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.attrition-report-modal__header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.attrition-report-modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.attrition-report-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 160ms ease;
+  border: none;
+}
+
+.attrition-report-btn--primary {
+  color: #0b1a34;
+  background: #7ce8c9;
+  box-shadow: 0 2px 8px rgba(124, 232, 201, 0.35);
+}
+.attrition-report-btn--primary:hover {
+  background: #95f0d6;
+  transform: translateY(-1px);
+}
+
+.attrition-report-btn--secondary {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.attrition-report-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.attrition-report-modal__close {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: #b0c4de;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+.attrition-report-modal__close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Printable Sheet */
+.attrition-report-sheet {
+  padding: 32px 38px;
+  overflow-y: auto;
+  color: #172b4d;
+  background: #ffffff;
+}
+
+.attrition-report-sheet__brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #eef2f7;
+}
+
+.attrition-report-sheet__logo-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.attrition-report-sheet__logo-icon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  color: #1e5cb3;
+  background: #eef5ff;
+  border-radius: 6px;
+}
+
+.attrition-report-sheet__meta-company {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.attrition-report-sheet__doc-tag {
+  padding: 2px 8px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.03em;
+}
+
+.attrition-report-sheet__brand h1 {
+  margin: 4px 0 6px;
+  font-size: 1.55rem;
+  color: #0d1e3a;
+  letter-spacing: -0.03em;
+}
+
+.attrition-report-sheet__brand p {
+  margin: 0;
+  font-size: 0.76rem;
+  color: #6b7c96;
+}
+
+.attrition-report-sheet__stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 8px 14px;
+  border: 2px solid #dc2626;
+  border-radius: 8px;
+  color: #dc2626;
+  background: #fff5f5;
+  transform: rotate(-1deg);
+}
+
+.attrition-report-sheet__stamp strong {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+}
+.attrition-report-sheet__stamp span {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.attrition-report-sheet__stamp small {
+  font-size: 0.58rem;
+  color: #991b1b;
+  margin-top: 2px;
+}
+
+/* Scope */
+.attrition-report-sheet__scope {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  padding: 14px 18px;
+  margin: 18px 0;
+  background: #f8fafc;
+  border: 1px solid #e3e8f0;
+  border-radius: 12px;
+}
+
+.attrition-report-sheet__scope-item label {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #73849e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 3px;
+}
+
+.attrition-report-sheet__scope-item strong {
+  font-size: 0.85rem;
+  color: #0e1e38;
+}
+
+.attrition-report-sheet__scope-item span {
+  font-size: 0.78rem;
+  color: #435572;
+}
+
+/* KPIs */
+.attrition-report-sheet__kpis {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.attrition-report-kpi {
+  padding: 12px 14px;
+  background: #ffffff;
+  border: 1px solid #dfe6ef;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(20, 45, 80, 0.03);
+}
+
+.attrition-report-kpi span {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #63758f;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.attrition-report-kpi strong {
+  display: block;
+  font-size: 1.45rem;
+  color: #122442;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.attrition-report-kpi small {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.62rem;
+  color: #7b8ea7;
+}
+
+.attrition-report-kpi--low {
+  border-left: 4px solid #10b981;
+}
+.attrition-report-kpi--low strong {
+  color: #047857;
+}
+
+.attrition-report-kpi--medium {
+  border-left: 4px solid #f59e0b;
+}
+.attrition-report-kpi--medium strong {
+  color: #b45309;
+}
+
+.attrition-report-kpi--high {
+  border-left: 4px solid #ef4444;
+}
+.attrition-report-kpi--high strong {
+  color: #b91c1c;
+}
+
+
+/* Distribution Bar */
+.attrition-report-sheet__distribution {
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  background: #fbfcfe;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.attrition-report-distribution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.attrition-report-distribution-legend {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #475569;
+}
+.attrition-report-distribution-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.attrition-report-distribution-legend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.legend-safe { background: #10b981; }
+.legend-moderate { background: #f59e0b; }
+.legend-flight { background: #ef4444; }
+
+.attrition-report-distribution-bar {
+  display: flex;
+  height: 10px;
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+.dist-segment {
+  height: 100%;
+  transition: width 300ms ease;
+}
+.dist-segment--safe { background: #10b981; }
+.dist-segment--moderate { background: #f59e0b; }
+.dist-segment--flight { background: #ef4444; }
+
+/* Guidance */
+.attrition-report-sheet__guidance {
+  margin-bottom: 24px;
+  padding: 18px 20px;
+  background: #fbfcfe;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.attrition-report-sheet__guidance h3 {
+  margin: 0 0 12px;
+  font-size: 0.92rem;
+  color: #0e203c;
+  letter-spacing: -0.01em;
+}
+
+.attrition-report-sheet__guidance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.attrition-report-sheet__recommendation {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #eef2f6;
+  border-radius: 10px;
+}
+
+.attrition-rec-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  color: #1e5cb3;
+  background: #eef5ff;
+  border-radius: 8px;
+}
+
+.attrition-report-sheet__recommendation strong {
+  display: block;
+  font-size: 0.74rem;
+  color: #0c1c38;
+  margin-bottom: 2px;
+}
+
+.attrition-report-sheet__recommendation p {
+  margin: 0;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: #586982;
+}
+
+/* Table */
+.attrition-report-sheet__table-wrap {
+  margin-bottom: 24px;
+}
+
+.attrition-report-table-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.attrition-report-table-heading h3 {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #0e203c;
+}
+
+.attrition-report-table-heading span {
+  font-size: 0.7rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.attrition-report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.74rem;
+}
+
+.attrition-report-table th {
+  padding: 10px 12px;
+  background: #f1f5f9;
+  color: #4b5f7d;
+  font-weight: 700;
+  text-align: left;
+  border-bottom: 2px solid #cbd5e1;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.attrition-report-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #1a2f4c;
+}
+
+.attrition-report-table tr:hover td {
+  background: #fafcff;
+}
+
+.attrition-report-table strong {
+  display: block;
+  font-weight: 700;
+}
+
+.attrition-report-table small {
+  color: #798b9f;
+  font-size: 0.64rem;
+}
+
+.attrition-table-pill {
+  display: inline-block;
+  padding: 3px 8px;
+  color: #1e40af;
+  background: #dbeafe;
+  border-radius: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.attrition-score-tag {
+  font-size: 0.82rem;
+}
+.attrition-score-tag--low { color: #059669; }
+.attrition-score-tag--medium { color: #d97706; }
+.attrition-score-tag--high { color: #dc2626; }
+
+.attrition-tier-badge {
+  display: inline-block;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-size: 0.64rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.attrition-tier-badge--low {
+  color: #065f46;
+  background: #d1fae5;
+}
+.attrition-tier-badge--medium {
+  color: #92400e;
+  background: #fef3c7;
+}
+.attrition-tier-badge--high {
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.attrition-driver-label {
+  color: #556885;
+  font-size: 0.68rem;
+}
+
+.attrition-action-tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.66rem;
+  font-weight: 650;
+  line-height: 1.3;
+}
+.attrition-action-tag--low {
+  color: #065f46;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+}
+.attrition-action-tag--medium {
+  color: #92400e;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+}
+.attrition-action-tag--high {
+  color: #991b1b;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+.attrition-action-tag--unknown {
+  color: #4b5563;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+}
+
+/* Formal Sign-off */
+.attrition-report-signoff {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.attrition-signoff-card {
+  padding: 14px 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.attrition-signoff-title {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.attrition-signoff-card p {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.attrition-signoff-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.66rem;
+  color: #475569;
+}
+
+.attrition-signoff-status {
+  padding: 2px 7px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.signature-line {
+  font-weight: 500;
+}
+
+/* Footer */
+.attrition-report-sheet__footer {
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+}
+.attrition-report-sheet__footer p {
+  margin: 0;
+  font-size: 0.62rem;
+  line-height: 1.5;
+  color: #8fa0b5;
+}
+
+/* Animations */
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-scale-up {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Responsive modal rules */
+@media (max-width: 900px) {
+  .attrition-report-sheet__scope {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .attrition-report-sheet__kpis {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .attrition-report-sheet__guidance-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Print Stylesheet — Zero Blank Pages Guarantee */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm 12mm 12mm;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    overflow: visible !important;
+    font-size: 8.5pt !important;
+    line-height: 1.35 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Completely remove all application chrome from the layout flow so they take ZERO pages */
+  .cv-navigation,
+  .cv-topbar,
+  .cv-app-shell__main,
+  .admin-page,
+  .attrition-hero,
+  .attrition-metrics-grid,
+  .attrition-job-selector,
+  .attrition-controls,
+  .attrition-roster,
+  .attrition-report-modal__backdrop,
+  .no-print,
+  .is-printing-report .cv-app-shell__main,
+  .is-printing-report .cv-topbar,
+  .is-printing-report .cv-navigation {
+    display: none !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .cv-app-shell,
+  .admin-app-shell,
+  .attrition-dashboard-shell,
+  #root,
+  .app-shell {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+  }
+
+  .attrition-report-modal {
+    position: static !important;
+    display: block !important;
+    inset: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  .attrition-report-modal__content {
+    position: static !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+  }
+
+  .attrition-report-sheet {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    background: #ffffff !important;
+  }
+
+  /* Prevent awkward component-splitting across pages */
+  .attrition-report-sheet__brand,
+  .attrition-report-sheet__scope,
+  .attrition-report-sheet__kpis,
+  .attrition-report-sheet__distribution,
+  .attrition-report-sheet__guidance {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .attrition-report-table {
+    page-break-inside: auto !important;
+    font-size: 7.5pt !important;
+  }
+
+  .attrition-report-table thead {
+    display: table-header-group !important;
+  }
+
+  .attrition-report-table tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .attrition-report-signoff {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-top: 16px !important;
+  }
+
+  .attrition-report-sheet__footer {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-top: 12px !important;
+  }
+}

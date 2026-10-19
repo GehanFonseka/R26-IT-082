@@ -29,3 +29,6 @@ temp/
 *.swp
 
 models-s3/
+New folder*/
+*.zip
+*.backup

@@ -25,3 +25,4 @@ export const applicationMatchScore = (application) => {
   return -1;
 };
 export const applicationJobSubtitle = (application) => [application.job?.company, application.job?.location].filter(Boolean).join(" · ") || "Job details unavailable";
+

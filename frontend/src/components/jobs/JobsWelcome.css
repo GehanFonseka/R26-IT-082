@@ -1,0 +1,64 @@
+.jobs-welcome .jobs-hero {
+  position: relative;
+  min-height: 238px;
+  padding: 32px 36px;
+  align-items: flex-end;
+  gap: 26px;
+  background-color: #143e34;
+  background-image: linear-gradient(90deg, rgba(9, 34, 27, .45), rgba(9, 34, 27, .08)), url("../../assets/jobs-opportunities-hero.webp");
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #294e40;
+  border-radius: 22px;
+  box-shadow: 0 14px 34px rgba(25, 57, 43, .12);
+}
+.jobs-welcome .jobs-hero::before, .jobs-welcome .jobs-hero::after { display: none; }
+.jobs-welcome .jobs-welcome__copy { position: relative; max-width: 68%; align-self: center; }
+.jobs-welcome .jobs-eyebrow { color: #d4e7da; font-size: 10px; letter-spacing: .16em; }
+.jobs-welcome .jobs-eyebrow i { background: #bce2cd; }
+.jobs-welcome .jobs-hero h1 { max-width: 610px; margin: 15px 0 13px; color: #fff; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.13; letter-spacing: -.045em; }
+.jobs-welcome .jobs-hero p { max-width: 590px; color: #deebe4; font-size: 12px; line-height: 1.8; }
+.jobs-welcome .jobs-hero__profile {
+  position: relative;
+  min-width: 180px;
+  max-width: 30%;
+  padding: 13px 15px;
+  background: rgba(15, 43, 33, .85);
+  border: 1px solid rgba(221, 241, 224, .28);
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .08);
+}
+.jobs-welcome .jobs-hero__profile > span { color: #244d3d; background: #edf5ef; border-radius: 12px; }
+.jobs-welcome .jobs-hero__profile small { color: #d0e1d7; font-size: 10px; }
+.jobs-welcome .jobs-hero__profile strong { color: #fff; font-size: 12px; }
+.jobs-welcome .jobs-overview { gap: 15px; margin: 18px 0 0; }
+.jobs-welcome .jobs-welcome__stat {
+  min-height: 105px;
+  padding: 22px 24px;
+  align-content: center;
+  gap: 7px;
+  background-color: #fff;
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  border: 1px solid #e2e7df;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(38, 56, 44, .035);
+}
+.jobs-welcome .jobs-welcome__stat::before { display: none; }
+.jobs-welcome .jobs-welcome__stat--roles { background-image: linear-gradient(90deg, #fff 0%, rgba(255,255,255,.94) 36%, rgba(255,255,255,.08) 100%), url("../../assets/open-jobs-card-bg.png"); }
+.jobs-welcome .jobs-welcome__stat--applications { background-image: linear-gradient(90deg, #fff 0%, rgba(255,255,255,.94) 36%, rgba(255,255,255,.08) 100%), url("../../assets/total-applications-card-bg.png"); }
+.jobs-welcome .jobs-welcome__stat--profile { background-image: linear-gradient(90deg, #fff 0%, rgba(255,255,255,.94) 36%, rgba(255,255,255,.08) 100%), url("../../assets/profile-completion-card-bg.png"); }
+.jobs-welcome .jobs-welcome__stat strong { position: relative; color: #203e31; font-size: 25px; letter-spacing: -.04em; }
+.jobs-welcome .jobs-welcome__stat span { position: relative; color: #53675a; font-size: 11px; }
+@media (max-width: 900px) {
+  .jobs-welcome .jobs-hero { padding: 27px; flex-direction: column; align-items: flex-start; background-position: 65% center; }
+  .jobs-welcome .jobs-welcome__copy { max-width: 85%; align-self: flex-start; }
+  .jobs-welcome .jobs-hero__profile { width: auto; max-width: 100%; }
+}
+@media (max-width: 620px) {
+  .jobs-welcome .jobs-hero { padding: 25px 22px; background-image: linear-gradient(90deg, rgba(9,34,27,.94), rgba(9,34,27,.68)), url("../../assets/jobs-opportunities-hero.webp"); }
+  .jobs-welcome .jobs-welcome__copy { max-width: 100%; }
+  .jobs-welcome .jobs-overview { grid-template-columns: 1fr; gap: 10px; }
+  .jobs-welcome .jobs-welcome__stat { min-height: 92px; padding: 18px 22px; background-size: 100% 100%, auto 180%; }
+}

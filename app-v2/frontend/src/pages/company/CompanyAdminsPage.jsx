@@ -53,7 +53,7 @@ export default function CompanyAdminsPage() {
     } catch (failure) { setError(failure.message); }
     finally { setBusy(false); }
   };
-  const navigateFromSidebar = (view) => navigate({ admin: "/admin", "admin-jobs": "/admin/jobs", "admin-applications": "/admin/applications", "admin-interviews": "/admin/interviews", "admin-interview-results": "/admin/interview-results" }[view] || "/admin");
+  const navigateFromSidebar = (view) => navigate({ admin: "/admin", "admin-jobs": "/admin/jobs", "admin-applications": "/admin/applications", "admin-attrition": "/admin/attrition", "admin-interviews": "/admin/interviews", "admin-interview-results": "/admin/interview-results" }[view] || "/admin");
   return <div className="cv-app-shell admin-app-shell company-admins-shell">
     <CvNavigation isOpen={navigationOpen} activeView="admin-management" onNavigate={navigateFromSidebar} onClose={() => setNavigationOpen(false)} />
     <div className="cv-app-shell__main admin-app-shell__main">

@@ -1,0 +1,47 @@
+.job-application-shell__main, .job-application-page { background: #f7f8fb; }
+.job-application-page__container { width: min(1200px, 100%); }
+.job-application-card { padding: 0; background: transparent; border: 0; box-shadow: none; }
+.job-application-card__header { align-items: center; padding: 12px 0 30px; }
+.job-application-eyebrow { color: #a84a51; font-size: .6rem; letter-spacing: .15em; }
+.job-application-eyebrow i { background: #ff5b62; }
+.job-application-card h1 { margin: 12px 0 9px; color: #182741; font-size: clamp(1.8rem, 3.1vw, 2.8rem); line-height: 1.15; letter-spacing: -.055em; }
+.job-application-card__header p { color: #758299; font-size: .78rem; line-height: 1.6; }
+.job-application-card__header p strong { color: #465770; font-weight: 600; }
+.job-application-close { width: 36px; height: 36px; flex-shrink: 0; place-items: center; background: #fff; border: 1px solid #e4e8f0; border-radius: 50%; }
+.job-application-close:hover { color: #d0444f; background: #fff0f1; }
+.job-application-layout { display: grid; grid-template-columns: minmax(260px, .85fr) minmax(0, 1.65fr); align-items: start; gap: 24px; }
+.job-application-editor { min-width: 0; padding: 30px; background: #fff; border: 1px solid #e8eaf0; border-radius: 20px; box-shadow: 0 8px 30px #20365d06; }
+.job-application-editor__heading { display: flex; align-items: center; gap: 12px; margin-bottom: 25px; }
+.job-application-editor__heading > span { display: grid; width: 42px; height: 42px; flex-shrink: 0; place-items: center; color: #d54d58; background: #fff0f1; border-radius: 12px; }
+.job-application-editor__heading h2 { margin: 0 0 5px; color: #182741; font-size: 1rem; letter-spacing: -.02em; }
+.job-application-editor__heading p { margin: 0; color: #7b879b; font-size: .69rem; line-height: 1.5; }
+.job-application-candidate { grid-template-columns: 46px minmax(0, 1fr); margin: 0 0 28px; padding: 16px; background: #f8fafc; border-color: #e8edf3; border-radius: 14px; }
+.job-application-candidate__avatar { background: #f36b71; border-radius: 50%; }
+.job-application-candidate strong { color: #21324e; font-size: .8rem; }
+.job-application-candidate span { color: #728198; font-size: .66rem; white-space: normal; line-height: 1.6; }
+.job-application-candidate button { grid-column: 2; justify-self: start; padding: 0; color: #bc3b49; font-size: .65rem; background: transparent; border: 0; }
+.job-application-candidate button:hover { color: #8f2532; background: transparent; }
+.job-application-form { gap: 20px; }
+.job-application-form label { gap: 9px; color: #26364e; font-size: .8rem; }
+.job-application-form label span { color: #7b879a; font-size: .66rem; font-weight: 400; }
+.job-application-form textarea { min-height: 210px; padding: 17px; color: #26364e; font-size: .75rem; font-weight: 400; background: #fdfdfe; border-color: #dfe5ee; border-radius: 12px; }
+.job-application-form textarea::placeholder { color: #98a3b4; font-weight: 400; }
+.job-application-form textarea:focus { border-color: #f1858c; box-shadow: 0 0 0 3px #ff404514; }
+.job-application-actions { gap: 12px; margin: 0; padding-top: 20px; border-top: 1px solid #edf0f5; }
+.job-application-cancel, .job-application-submit { min-height: 44px; padding: 11px 18px; border-radius: 10px; font-size: .7rem; }
+.job-application-cancel { color: #64728a; border-color: #e4e8f0; }
+.job-application-cancel:hover { color: #26364e; background: #f8fafc; border-color: #c5cfdc; }
+.job-application-submit { color: #fff; background: #ed4e5b; border-color: #ed4e5b; box-shadow: 0 5px 14px #ed4e5b20; }
+.job-application-submit:hover:not(:disabled) { color: #fff; background: #d63c49; border-color: #d63c49; }
+.job-application-editor button:focus-visible, .job-application-close:focus-visible { outline: 3px solid #f5aab0; outline-offset: 3px; }
+.job-application-success, .job-application-existing { align-items: flex-start; flex-wrap: wrap; padding: 20px; }
+.job-application-success div:nth-child(2), .job-application-existing div { flex-basis: 180px; }
+.job-application-success button { margin-left: 50px; }
+.job-application-state { color: #718096; border-color: #e0e6ef; }
+@media (max-width: 1000px) { .job-application-editor { padding: 24px; }.job-application-layout { gap: 18px; } }
+@media (max-width: 760px) {
+  .job-application-layout { grid-template-columns: 1fr; }
+  .job-application-card__header { padding-bottom: 24px; }
+  .job-application-editor { padding: 22px; }
+}
+@media (max-width: 420px) { .job-application-editor { padding: 18px; }.job-application-close { align-self: flex-start; } }

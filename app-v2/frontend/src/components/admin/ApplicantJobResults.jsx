@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ResumeStrengthSummary from "../resume/ResumeStrengthSummary";
 import ApplicantCertificates from "./ApplicantCertificates";
+import ApplicantAttritionMeters from "./ApplicantAttritionMeters";
+import ApplicantAttritionPlanner from "./ApplicantAttritionPlanner";
+import { useApplicantAttrition } from "../../hooks/useApplicantAttrition";
+import { useApplicantAttritionSimulation } from "../../hooks/useApplicantAttritionSimulation";
 import { descriptionScore, skillScore } from "../../utils/applicantRanking";
 import { initials, dateLabel, statusLabels } from "./applicationBoardUtils";
 import "./ApplicantJobResults.css";
@@ -9,9 +13,32 @@ import "./ApplicantJobResults.css";
 const list = (value) => (Array.isArray(value) ? value : String(value || "").split(/[,;\n]+/)).map((item) => String(item).trim()).filter(Boolean);
 const percent = (value) => value !== null && value !== undefined && value !== "" && Number.isFinite(Number(value)) && Number(value) >= 0 ? `${Number(value).toFixed(2)}%` : "Unavailable";
 
-function ApplicantJobResults({ application, job }) {
-  const [activeTab, setActiveTab] = useState("overview");
-  const tabs = [{ id: "overview", label: "Overview" }, { id: "skills", label: "Skills" }, { id: "cv", label: "Candidate CV" }, { id: "certificates", label: "Certificates" }, { id: "job", label: "Job details" }];
+function ApplicantJobResults({ application, job, initialTab = "overview" }) {
+  const tabs = [
+    { id: "overview", label: "Overview" },
+    { id: "skills", label: "Skills" },
+    { id: "cv", label: "Candidate CV" },
+    { id: "certificates", label: "Certificates" },
+    { id: "attrition", label: "What-If Simulation" },
+    { id: "job", label: "Job details" },
+  ];
+  const normalizeTab = (t) => (t === "simulation" || t === "what-if" || t === "whatif") ? "attrition" : t;
+  const [activeTab, setActiveTab] = useState(() => {
+    const norm = normalizeTab(initialTab);
+    return tabs.some((t) => t.id === norm) ? norm : "overview";
+  });
+
+  useEffect(() => {
+    if (initialTab) {
+      const norm = normalizeTab(initialTab);
+      if (tabs.some((t) => t.id === norm)) {
+        setActiveTab(norm);
+      }
+    }
+  }, [initialTab]);
+
+  const attrition = useApplicantAttrition(application, job);
+  const planner = useApplicantAttritionSimulation(attrition);
   const handleTabKey = (event, index) => {
     const next = event.key === "ArrowRight" ? index + 1 : event.key === "ArrowLeft" ? index - 1 : event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : null;
     if (next === null) return;
@@ -36,6 +63,8 @@ function ApplicantJobResults({ application, job }) {
       <article><span>Job-relevant skill evidence</span><strong>{percent(relevantSkills)}</strong><small>Secondary ranking score · mean evidence for required skills</small></article>
       <article><span>Technical competency</span><strong>{percent(analysis.model?.status === "live" ? analysis.technicalCompetencyScore : null)}</strong><small>Overall skill model output</small></article>
     </section>}
+    {activeTab === "overview" && <ApplicantAttritionMeters {...attrition} />}
+    {activeTab === "attrition" && <ApplicantAttritionPlanner planner={planner} retry={attrition.retry} baselineLoading={attrition.loading} baselineError={attrition.error} />}
     {activeTab === "skills" && <div className="applicant-results__skill-summary"><ResumeStrengthSummary analysis={application.candidateAnalysis} variant="skill-analysis" />{!application.candidateAnalysis && <p>Skill model results are unavailable.</p>}</div>}
     {activeTab === "certificates" && <ApplicantCertificates key={application.id} application={application} />}
       {activeTab === "cv" && <section className="applicant-results__panel applicant-results__panel--cv"><h2>Candidate CV</h2><dl>{facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value || "Not provided"}</dd></div>)}</dl>{candidate.summary && <p>{candidate.summary}</p>}<h3>Experience highlights</h3><ul>{list(candidate.experienceBullets || candidate.experienceHighlights).map((item, index) => <li key={index}>{item}</li>)}</ul>{application.coverLetter && <><h3>Cover letter</h3><p>{application.coverLetter}</p></>}</section>}

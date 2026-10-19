@@ -52,3 +52,4 @@ export const prepareProfilePhoto = (file) => new Promise((resolve, reject) => {
   };
   image.src = objectUrl;
 });
+

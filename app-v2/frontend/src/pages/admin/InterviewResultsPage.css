@@ -62,3 +62,6 @@
 @keyframes interview-results-spin { to { transform: rotate(360deg); } }
 @media (max-width: 850px) { .interview-result-row { grid-template-columns: 42px minmax(0, 1fr) auto; } .interview-result-score { grid-column: 2; } .interview-result-row__action { grid-column: 3; grid-row: 2; } }
 @media (max-width: 640px) { .interview-results-hero { align-items: flex-start; flex-direction: column; } .interview-results-summary { grid-template-columns: 1fr; } .interview-results-toolbar { align-items: stretch; flex-direction: column; } .interview-results-filters { overflow-x: auto; } .interview-results-group__header { align-items: flex-start; flex-direction: column; } .interview-result-row { grid-template-columns: 36px minmax(0, 1fr); } .interview-result-row__avatar { width: 36px; height: 36px; } .interview-result-row__top { display: grid; } .interview-result-score, .interview-result-row__action { grid-column: 2; grid-row: auto; justify-self: start; } }
+
+
+

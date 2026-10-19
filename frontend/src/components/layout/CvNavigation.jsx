@@ -1,6 +1,6 @@
 import Icon from "../common/Icon";
 import { useAuth } from "../../context/AuthContext";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./CvNavigation.css";
 import "./CvAdminNavigation.css";
 import "./CvNavigationCollapse.css";
@@ -16,35 +16,21 @@ const adminNavigationItems = [
   { label: "Admin dashboard", icon: "dashboard", view: "admin" },
   { label: "Job posts", icon: "briefcase", view: "admin-jobs" },
   { label: "Applications", icon: "people", view: "admin-applications" },
+  { label: "Attrition analytics", icon: "shield", view: "admin-attrition" },
   { label: "Interview scheduling", icon: "calendar", view: "admin-interviews" },
   { label: "Interview results", icon: "chart", view: "admin-interview-results" },
 ];
 
-const initialCollapsedState = () => {
-  try {
-    return window.localStorage.getItem("lti-admin-navigation-collapsed") === "true";
-  } catch {
-    return false;
-  }
-};
-
 function CvNavigation({ isOpen, activeView, onNavigate, onClose }) {
   const { user, signOut } = useAuth();
-  const [isCollapsed, setIsCollapsed] = useState(initialCollapsedState);
   const items = user?.role === "admin" ? adminNavigationItems : navigationItems;
   const initials = (user?.displayName || "User").split(" ").map((part) => part[0]).join("").slice(0, 2).toUpperCase();
   const profilePhoto = user?.profilePhoto || "";
   const isAdmin = user?.role === "admin";
-  const toggleCollapse = () => setIsCollapsed((current) => {
-    const next = !current;
-    try { window.localStorage.setItem("lti-admin-navigation-collapsed", String(next)); } catch {}
-    return next;
-  });
   return (
     <>
       {isOpen && <button className="cv-navigation__scrim" type="button" aria-label="Close navigation" onClick={onClose} />}
-      <aside className={`cv-navigation ${isAdmin ? "cv-navigation--admin" : ""} ${isAdmin && isCollapsed ? "cv-navigation--collapsed" : ""} ${isOpen ? "cv-navigation--open" : ""}`}>
-        {isAdmin && <button className="cv-navigation__collapse" type="button" aria-label={isCollapsed ? "Expand navigation" : "Collapse navigation"} title={isCollapsed ? "Expand navigation" : "Collapse navigation"} aria-pressed={isCollapsed} onClick={toggleCollapse}><Icon name={isCollapsed ? "arrowRight" : "arrowLeft"} size={14} /></button>}
+      <aside className={`cv-navigation ${isAdmin ? "cv-navigation--admin" : ""} ${isOpen ? "cv-navigation--open" : ""}`}>
         <div className="cv-navigation__brand">
           <div className="cv-navigation__brand-mark" aria-hidden="true"><Icon name="layers" size={18} /></div>
           <div className="cv-navigation__brand-copy"><strong>Match<span>OS</span></strong><small>Talent workspace</small></div>
@@ -53,7 +39,7 @@ function CvNavigation({ isOpen, activeView, onNavigate, onClose }) {
 
         <div className="cv-navigation__workspace">
           <div className="cv-navigation__workspace-avatar" aria-hidden="true"><Icon name="compass" size={15} /></div>
-          <div><span>Workspace</span><strong>Northstar Hiring</strong></div>
+          <div><span>Workspace</span><strong>{user?.companyName || "Personal workspace"}</strong></div>
           <Icon name="arrowDown" size={14} />
         </div>
 
@@ -67,7 +53,7 @@ function CvNavigation({ isOpen, activeView, onNavigate, onClose }) {
               </button>
             );
           })}
-          {user?.role !== "admin" && <><span className="cv-navigation__label cv-navigation__label--spaced">Manage</span><a className="cv-navigation__item" href="#settings" onClick={onClose}><Icon name="tune" size={17} /><span>Settings</span></a></>}
+          {isAdmin && <Link className={`cv-navigation__item ${activeView === "admin-management" ? "cv-navigation__item--active" : ""}`} to="/company/admins" title="Company admins" aria-current={activeView === "admin-management" ? "page" : undefined} onClick={onClose}><Icon name="people" size={17} /><span>Company admins</span></Link>}
         </nav>
 
         <div className="cv-navigation__bottom">
@@ -75,7 +61,7 @@ function CvNavigation({ isOpen, activeView, onNavigate, onClose }) {
             <div className={`cv-navigation__user-avatar ${profilePhoto ? "cv-navigation__user-avatar--photo" : ""}`}>
               {profilePhoto ? <img src={profilePhoto} alt="" /> : initials}
             </div>
-            <div><strong>{user?.displayName}</strong><span>{user?.role === "admin" ? "Administrator" : "User"}</span></div>
+            <div><strong>{user?.displayName}</strong><span>{user?.accountType === "company" ? "Company owner" : user?.role === "admin" ? "Company administrator" : "User"}</span></div>
             <button className="cv-navigation__logout" type="button" aria-label="Log out" title="Log out" onClick={() => { signOut(); onClose(); }}>
               <Icon name="logout" size={15} />
               <span>Log out</span>

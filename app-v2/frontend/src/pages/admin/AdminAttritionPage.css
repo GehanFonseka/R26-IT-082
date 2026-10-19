@@ -1,0 +1,1435 @@
+/* ==========================================================================
+   Admin Attrition Page — Executive AI Retention Intelligence Stylesheet
+   Designed for High-Impact Presentation, Retention Analytics & Enterprise UX
+   ========================================================================== */
+
+/* Overall Page Shell */
+.attrition-dashboard-shell {
+  background: radial-gradient(circle at 10% 8%, rgba(37, 99, 235, 0.04) 0%, transparent 45%),
+              radial-gradient(circle at 90% 92%, rgba(16, 185, 129, 0.035) 0%, transparent 45%),
+              #f8fafc;
+  min-height: 100vh;
+}
+
+.admin-attrition-page {
+  padding-bottom: 70px;
+}
+
+/* ==========================================================================
+   1. Hero Header
+   ========================================================================== */
+.attrition-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 34px 40px;
+  margin-bottom: 26px;
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.93) 55%, rgba(255, 255, 255, 0.6) 100%),
+    url("../../assets/candidate-momentum-bg.png");
+  background-position: center, right center;
+  background-size: 100% 100%, auto 165%;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 24px;
+  box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.05), 
+              0 4px 12px rgba(15, 23, 42, 0.02);
+  position: relative;
+  overflow: hidden;
+}
+
+.attrition-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2563eb, #38bdf8, #10b981);
+}
+
+.attrition-hero__copy {
+  max-width: 680px;
+}
+
+.attrition-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  margin-bottom: 14px;
+  color: #1d4ed8;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border: 1px solid #bfdbfe;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
+}
+
+.attrition-hero h1 {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: 1.85rem;
+  font-weight: 850;
+  letter-spacing: -0.04em;
+  line-height: 1.25;
+}
+
+.attrition-hero p {
+  margin: 0 0 22px;
+  color: #475569;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.attrition-hero__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.attrition-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  font-size: 0.82rem;
+  font-weight: 750;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+  text-decoration: none;
+}
+
+.attrition-btn--primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+}
+.attrition-btn--primary:hover {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  transform: translateY(-1.5px);
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.4);
+}
+.attrition-btn--primary:active {
+  transform: translateY(0);
+}
+
+.attrition-btn--ghost {
+  color: #334155;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+}
+.attrition-btn--ghost:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: translateY(-1.5px);
+}
+
+.attrition-calculating-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  color: #4338ca;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 99px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(67, 56, 202, 0.08);
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Explainable AI (XAI) Hero Hub Badge */
+.attrition-hero__xai-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 22px 26px;
+  min-width: 230px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  border: 1.5px solid #bfdbfe;
+  border-radius: 20px;
+  box-shadow: 0 10px 28px -4px rgba(37, 99, 235, 0.12), 0 4px 12px rgba(15, 23, 42, 0.04);
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.attrition-hero__xai-badge:hover {
+  transform: translateY(-2px);
+  border-color: #2563eb;
+  box-shadow: 0 14px 34px -4px rgba(37, 99, 235, 0.22);
+}
+
+.attrition-xai-avatar {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 10px;
+  color: #2563eb;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.18);
+}
+
+.attrition-hero__xai-badge span {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #1d4ed8;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.attrition-hero__xai-badge strong {
+  margin: 3px 0 2px;
+  font-size: 1rem;
+  font-weight: 850;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.attrition-hero__xai-badge small {
+  font-size: 0.72rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.attrition-xai-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 6px 14px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border: none;
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+.attrition-xai-trigger-btn:hover {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  transform: translateY(-1px);
+}
+
+/* Error Banner */
+.attrition-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  color: #991b1b;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.05);
+}
+
+/* ==========================================================================
+   2. Executive Dashboard Metrics Grid (4 Cards)
+   ========================================================================== */
+.attrition-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.attrition-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 26px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.035);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms ease;
+}
+
+.attrition-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.08);
+}
+
+.attrition-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+}
+
+.attrition-card--mean::before {
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+}
+.attrition-card--safe::before {
+  background: linear-gradient(90deg, #059669, #34d399);
+}
+.attrition-card--moderate::before {
+  background: linear-gradient(90deg, #d97706, #fbbf24);
+}
+.attrition-card--flight::before {
+  background: linear-gradient(90deg, #dc2626, #f87171);
+}
+
+.attrition-card--mean {
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.88)), url("../../assets/admin-dashboard-network.png");
+  background-size: cover;
+  background-position: right bottom;
+}
+.attrition-card--safe {
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.9)), url("../../assets/application-match-bg.png");
+  background-size: cover;
+  background-position: right bottom;
+}
+.attrition-card--moderate {
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.9)), url("../../assets/application-pending-bg.png");
+  background-size: cover;
+  background-position: right bottom;
+}
+.attrition-card--flight {
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.9)), url("../../assets/needs-review-card-bg.png");
+  background-size: cover;
+  background-position: right bottom;
+}
+
+.attrition-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.attrition-card__icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.attrition-card__icon--blue {
+  color: #2563eb;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+}
+.attrition-card__icon--green {
+  color: #059669;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+}
+.attrition-card__icon--amber {
+  color: #d97706;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+}
+.attrition-card__icon--red {
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.attrition-status-chip {
+  padding: 4px 11px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 99px;
+}
+.attrition-status-chip--low {
+  color: #065f46;
+  background: #d1fae5;
+  border: 1px solid #a7f3d0;
+}
+.attrition-status-chip--medium {
+  color: #92400e;
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+}
+.attrition-status-chip--high {
+  color: #991b1b;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+}
+
+.attrition-card__body small {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 750;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 4px;
+}
+
+.attrition-card__body strong {
+  display: block;
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1.15;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+}
+
+.text-emerald { color: #059669 !important; }
+.text-amber { color: #d97706 !important; }
+.text-red { color: #dc2626 !important; }
+
+.attrition-card__body p {
+  margin: 6px 0 0;
+  font-size: 0.74rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.attrition-card__bar {
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+.attrition-card__bar-fill {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.attrition-card__pill-footer {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+.attrition-card__pill-footer span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==========================================================================
+   3. Job Requisition Selector Tabs
+   ========================================================================== */
+.attrition-job-selector {
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+}
+
+.attrition-job-selector__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.attrition-job-selector__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #2563eb;
+}
+.attrition-job-selector__title h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.attrition-job-count {
+  font-size: 0.72rem;
+  font-weight: 750;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 4px 11px;
+  border-radius: 99px;
+  border: 1px solid #e2e8f0;
+}
+
+.attrition-job-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+}
+
+.attrition-job-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 18px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+}
+.attrition-job-chip:hover {
+  background: #f8fafc;
+  border-color: #93c5fd;
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.08);
+}
+.attrition-job-chip--active {
+  background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+  border-color: #2563eb;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15), inset 0 0 0 1px #2563eb;
+  transform: translateY(-1.5px);
+}
+
+.attrition-job-chip strong {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+.attrition-job-chip--active strong {
+  color: #1d4ed8;
+}
+
+.attrition-job-chip span {
+  font-size: 0.68rem;
+  color: #64748b;
+  margin-top: 3px;
+}
+.attrition-job-chip--active span {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   4. Controls Bar (Search, Risk Level, Stage, Sort By)
+   ========================================================================== */
+.attrition-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px 24px;
+  margin-bottom: 26px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.035);
+}
+
+.attrition-controls__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 270px;
+  max-width: 390px;
+  color: #64748b;
+}
+.attrition-controls__search svg {
+  position: absolute;
+  left: 14px;
+  pointer-events: none;
+  color: #64748b;
+}
+.attrition-controls__search input {
+  width: 100%;
+  padding: 10px 38px 10px 40px;
+  font-size: 0.8rem;
+  color: #0f172a;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  outline: none;
+  transition: all 180ms ease;
+  font-family: inherit;
+}
+.attrition-controls__search input:focus {
+  background: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+.attrition-search-clear {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+}
+.attrition-search-clear:hover {
+  color: #0f172a;
+  background: #e2e8f0;
+}
+
+.attrition-controls__filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.attrition-select-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.76rem;
+  color: #475569;
+  font-weight: 700;
+}
+
+.attrition-select-wrap select {
+  padding: 9px 34px 9px 13px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0f172a;
+  background-color: #f8fafc;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: 15px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 11px;
+  outline: none;
+  cursor: pointer;
+  transition: all 180ms ease;
+  font-family: inherit;
+}
+.attrition-select-wrap select:hover {
+  border-color: #93c5fd;
+  background-color: #ffffff;
+}
+.attrition-select-wrap select:focus {
+  border-color: #2563eb;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.attrition-select-wrap--highlight {
+  color: #1d4ed8;
+  font-weight: 800;
+}
+.attrition-select-wrap--highlight select {
+  color: #1e40af;
+  background-color: #eff6ff;
+  border-color: #93c5fd;
+  font-weight: 750;
+}
+.attrition-select-wrap--highlight select:hover {
+  background-color: #ffffff;
+  border-color: #2563eb;
+}
+.attrition-select-wrap--highlight select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* ==========================================================================
+   5. Roster Section & View Toggle
+   ========================================================================== */
+.attrition-roster {
+  margin-top: 14px;
+}
+
+.attrition-roster__heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.attrition-roster__heading h2 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+  font-weight: 850;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+}
+.attrition-roster__heading p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.attrition-roster__controls-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* Capsule Segmented Switch */
+.attrition-view-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 13px;
+  gap: 3px;
+}
+
+.attrition-view-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  font-size: 0.76rem;
+  font-weight: 750;
+  color: #64748b;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 180ms ease;
+  font-family: inherit;
+}
+.attrition-view-toggle-btn.active {
+  color: #1d4ed8;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+.attrition-view-toggle-btn:hover:not(.active) {
+  color: #0f172a;
+}
+
+.attrition-roster__legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.7rem;
+  font-weight: 750;
+  color: #64748b;
+}
+.attrition-roster__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.attrition-roster__legend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.attrition-roster__legend .is-safe { 
+  background: #10b981; 
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.4); 
+}
+.attrition-roster__legend .is-moderate { 
+  background: #f59e0b; 
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.4); 
+}
+.attrition-roster__legend .is-high { 
+  background: #ef4444; 
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.4); 
+}
+
+/* ==========================================================================
+   6. Candidate Cards Grid & Attrition Evaluation Dossier
+   ========================================================================== */
+.attrition-candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 22px;
+}
+
+.attrition-candidate-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.035);
+  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.attrition-candidate-card:hover {
+  transform: translateY(-4px);
+  border-color: #bfdbfe;
+  box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.09);
+}
+
+.attrition-candidate-card--low {
+  border-top: 4.5px solid #10b981;
+}
+.attrition-candidate-card--medium {
+  border-top: 4.5px solid #f59e0b;
+}
+.attrition-candidate-card--high {
+  border-top: 4.5px solid #ef4444;
+}
+
+.attrition-candidate-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.attrition-candidate-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  font-weight: 850;
+  color: #1d4ed8;
+  background: #eff6ff;
+  border: 2px solid #e2e8f0;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.attrition-candidate-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.attrition-candidate-avatar--low { 
+  border-color: #a7f3d0; 
+  color: #047857; 
+  background: #ecfdf5; 
+}
+.attrition-candidate-avatar--medium { 
+  border-color: #fde68a; 
+  color: #b45309; 
+  background: #fffbeb; 
+}
+.attrition-candidate-avatar--high { 
+  border-color: #fecaca; 
+  color: #b91c1c; 
+  background: #fef2f2; 
+}
+
+.attrition-candidate-info {
+  flex: 1;
+  min-width: 0;
+}
+.attrition-candidate-info h4 {
+  margin: 0 0 2px;
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.attrition-candidate-info p {
+  margin: 0 0 8px;
+  font-size: 0.72rem;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.attrition-job-pill {
+  display: inline-block;
+  padding: 3px 9px;
+  font-size: 0.65rem;
+  font-weight: 750;
+  color: #334155;
+  background: #f1f5f9;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.attrition-stage-badge {
+  padding: 5px 10px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  border-radius: 8px;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+}
+.attrition-stage-badge--new { color: #d97706; background: #fef3c7; border: 1px solid #fde68a; }
+.attrition-stage-badge--reviewing { color: #2563eb; background: #dbeafe; border: 1px solid #bfdbfe; }
+.attrition-stage-badge--shortlisted { color: #059669; background: #d1fae5; border: 1px solid #a7f3d0; }
+.attrition-stage-badge--hired { color: #7c3aed; background: #ede9fe; border: 1px solid #ddd6fe; }
+
+/* Prominent Risk Meter Area */
+.attrition-candidate-card__meter-wrap {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.02);
+}
+
+.attrition-candidate-gauge {
+  flex-shrink: 0;
+  width: 132px;
+}
+.attrition-candidate-gauge .risk-meter {
+  width: 132px;
+  height: 82px;
+}
+.attrition-candidate-gauge .risk-meter__label strong {
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+.attrition-candidate-gauge .risk-meter__label span {
+  font-size: 0.6rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+}
+
+.attrition-candidate-verdict {
+  flex: 1;
+  min-width: 0;
+}
+
+.attrition-verdict-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  border-radius: 99px;
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+.attrition-verdict-pill i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 6px currentColor;
+}
+.attrition-verdict-pill--low { 
+  color: #047857; 
+  background: #d1fae5; 
+  border: 1px solid #a7f3d0; 
+}
+.attrition-verdict-pill--medium { 
+  color: #b45309; 
+  background: #fef3c7; 
+  border: 1px solid #fde68a; 
+}
+.attrition-verdict-pill--high { 
+  color: #b91c1c; 
+  background: #fee2e2; 
+  border: 1px solid #fecaca; 
+}
+.attrition-verdict-pill--unknown { 
+  color: #4b5563; 
+  background: #e5e7eb; 
+  border: 1px solid #d1d5db; 
+}
+
+.attrition-candidate-scores {
+  display: flex;
+  gap: 16px;
+}
+.attrition-candidate-scores div small {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 750;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.attrition-candidate-scores div strong {
+  font-size: 0.95rem;
+  font-weight: 850;
+  color: #0f172a;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Primary Model Driver */
+.attrition-candidate-card__driver {
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border: 1px solid #eef2f6;
+  border-radius: 12px;
+}
+.attrition-driver-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #2563eb;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.attrition-candidate-card__driver p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #334155;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+/* Actions in Card Footer */
+.attrition-candidate-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.attrition-card-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 16px;
+  font-size: 0.76rem;
+  font-weight: 750;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.attrition-card-action--primary {
+  flex: 1;
+  color: #1d4ed8;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+.attrition-card-action--primary:hover {
+  background: #dbeafe;
+  color: #1e40af;
+  border-color: #93c5fd;
+  transform: translateY(-1px);
+}
+
+.attrition-card-action--xai {
+  color: #4338ca;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+}
+.attrition-card-action--xai:hover {
+  background: #e0e7ff;
+  color: #3730a3;
+  border-color: #a5b4fc;
+  transform: translateY(-1px);
+}
+
+.attrition-card-action--secondary {
+  color: #334155;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+}
+.attrition-card-action--secondary:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+
+/* Loading & Empty States */
+.attrition-loading-state,
+.attrition-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 70px 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+}
+
+.attrition-spinner {
+  margin-bottom: 14px;
+  color: #2563eb;
+}
+
+.attrition-empty-icon {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 14px;
+  color: #94a3b8;
+  background: #f1f5f9;
+  border-radius: 18px;
+}
+
+.attrition-empty-state h3 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.attrition-empty-state p {
+  margin: 0 0 18px;
+  font-size: 0.82rem;
+  color: #64748b;
+  max-width: 420px;
+}
+
+/* ==========================================================================
+   7. Strategic 4-Quadrant Talent Matrix
+   ========================================================================== */
+.attrition-talent-matrix-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.attrition-matrix-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 28px;
+  background: linear-gradient(135deg, #0b1528 0%, #172a4d 50%, #0f172a 100%);
+  color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 32px rgba(11, 21, 40, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.attrition-matrix-intro::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #10b981, #38bdf8, #818cf8);
+}
+
+.attrition-matrix-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 8px;
+  color: #34d399;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.attrition-matrix-intro-text h3 {
+  margin: 0 0 6px;
+  font-size: 1.25rem;
+  font-weight: 850;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+}
+.attrition-matrix-intro-text p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  max-width: 620px;
+  line-height: 1.5;
+}
+
+.attrition-matrix-axes-indicator {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.attrition-matrix-axes-indicator strong {
+  color: #f8fafc;
+}
+
+.attrition-talent-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.attrition-matrix-quadrant {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.035);
+  transition: all 200ms ease;
+}
+.attrition-matrix-quadrant:hover {
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.attrition-matrix-quadrant--star {
+  border-top: 4.5px solid #10b981;
+  background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 90px);
+}
+.attrition-matrix-quadrant--flight {
+  border-top: 4.5px solid #ef4444;
+  background: linear-gradient(180deg, #fef2f2 0%, #ffffff 90px);
+}
+.attrition-matrix-quadrant--steady {
+  border-top: 4.5px solid #3b82f6;
+  background: linear-gradient(180deg, #eff6ff 0%, #ffffff 90px);
+}
+.attrition-matrix-quadrant--caution {
+  border-top: 4.5px solid #f59e0b;
+  background: linear-gradient(180deg, #fffbeb 0%, #ffffff 90px);
+}
+
+.attrition-quadrant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.attrition-quadrant-title {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.attrition-quadrant-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.attrition-matrix-quadrant--star .attrition-quadrant-icon { color: #10b981; }
+.attrition-matrix-quadrant--flight .attrition-quadrant-icon { color: #ef4444; }
+.attrition-matrix-quadrant--steady .attrition-quadrant-icon { color: #3b82f6; }
+.attrition-matrix-quadrant--caution .attrition-quadrant-icon { color: #f59e0b; }
+
+.attrition-quadrant-title h4 {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.015em;
+}
+.attrition-quadrant-title small {
+  display: block;
+  font-size: 0.68rem;
+  color: #64748b;
+  font-weight: 650;
+  margin-top: 2px;
+}
+
+.attrition-quadrant-count {
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  border-radius: 99px;
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+
+.attrition-quadrant-strategy {
+  margin: 0 0 16px;
+  padding: 9px 14px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.attrition-quadrant-candidates {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 120px;
+}
+
+.attrition-matrix-chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 180ms ease;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+}
+.attrition-matrix-chip:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+.attrition-matrix-chip--alert {
+  border-left: 3.5px solid #ef4444;
+}
+.attrition-matrix-chip--warning {
+  border-left: 3.5px solid #f59e0b;
+}
+
+.attrition-matrix-chip-info strong {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+.attrition-matrix-chip-info span {
+  display: block;
+  font-size: 0.68rem;
+  color: #64748b;
+  margin-top: 1px;
+}
+
+.attrition-matrix-chip-sim {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 750;
+  text-decoration: none;
+  transition: all 180ms ease;
+}
+.attrition-matrix-chip-sim:hover {
+  background: #dbeafe;
+  color: #1e40af;
+  border-color: #93c5fd;
+  transform: translateY(-1px);
+}
+
+.attrition-quadrant-empty {
+  display: grid;
+  place-items: center;
+  padding: 34px 20px;
+  font-size: 0.74rem;
+  color: #94a3b8;
+  font-style: italic;
+  background: rgba(248, 250, 252, 0.6);
+  border-radius: 10px;
+  border: 1px dashed #e2e8f0;
+}
+
+/* ==========================================================================
+   8. Responsive Layout Adjustments
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .attrition-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 960px) {
+  .attrition-talent-matrix {
+    grid-template-columns: 1fr;
+  }
+  .attrition-matrix-intro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .attrition-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 20px;
+  }
+  .attrition-hero__model-badge {
+    width: 100%;
+  }
+  .attrition-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  .attrition-candidate-grid {
+    grid-template-columns: 1fr;
+  }
+  .attrition-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .attrition-controls__search {
+    max-width: 100%;
+  }
+  .attrition-controls__filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .attrition-select-wrap {
+    justify-content: space-between;
+  }
+  .attrition-select-wrap select {
+    flex: 1;
+  }
+}

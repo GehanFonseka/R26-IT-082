@@ -48,6 +48,7 @@ function InterviewSchedulingPage() {
     if (view === "admin") return navigate("/admin");
     if (view === "admin-jobs") return navigate("/admin/jobs");
     if (view === "admin-applications") return navigate("/admin/applications");
+    if (view === "admin-attrition") return navigate("/admin/attrition");
     if (view === "admin-interview-results") return navigate("/admin/interview-results");
     if (view === "matcher") return navigate("/matching");
     navigate("/admin/interviews");

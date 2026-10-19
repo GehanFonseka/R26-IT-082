@@ -2,7 +2,7 @@ import Icon from "../common/Icon";
 import "./AttritionExplainability.css";
 
 const entries = (result) => [
-  ["attrition", "Attrition", result?.models?.attrition],
+  ["attrition", "Attrition", result?.models?.attrition || (result?.target === "EarlyAttrition" ? null : result)],
 ].filter(([, , model]) => model);
 
 const percent = (value) => Number.isFinite(Number(value)) ? `${(Number(value) * 100).toFixed(1)}%` : "—";
@@ -34,7 +34,7 @@ function AttritionExplainability({ result }) {
   const live = explanation?.status === "live";
   return (
     <section className="attrition-explainability" aria-label="Explainable AI model review">
-      <header className="attrition-explainability__heading"><div><span><Icon name="spark" size={12} />Explainable AI</span><h3>CV + job reasons behind each local model</h3><p>Gemini compares the supplied CV evidence and job requirements with each model&apos;s exact inputs and outputs.</p></div><b className={live ? "is-live" : ""}><i />{live ? "CV + job grounded" : "Local evidence"}</b></header>
+      <header className="attrition-explainability__heading"><div><span><Icon name="spark" size={12} />Explainable AI</span><h3>CV + job reasons behind the attrition model</h3><p>Gemini compares the supplied CV evidence and job requirements with the model&apos;s exact inputs and outputs.</p></div><b className={live ? "is-live" : ""}><i />{live ? "CV + job grounded" : "Local evidence"}</b></header>
       {explanation?.overview && <p className="attrition-explainability__overview">{explanation.overview}</p>}
       {explanation?.context && <div className="attrition-explainability__source"><span className={explanation.context.cvAvailable ? "is-ready" : ""}>CV {explanation.context.cvAvailable ? "included" : "not available"}</span><span className={explanation.context.jobAvailable ? "is-ready" : ""}>Job {explanation.context.jobAvailable ? "included" : "not available"}</span></div>}
       <div className="attrition-explainability__grid">{models.map(([modelKey, target, model]) => <ModelExplanation key={modelKey} modelKey={modelKey} target={target} model={model} explanation={byKey.get(modelKey)} />)}</div>

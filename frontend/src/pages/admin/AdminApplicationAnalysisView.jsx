@@ -1,21 +1,25 @@
+import { useState } from "react";
 import ApplicationComparison from "../../components/admin/ApplicationComparison";
 import WhatIfSimulation from "../../components/attrition/WhatIfSimulation";
 import Icon from "../../components/common/Icon";
 import { MODEL_ID } from "../../services/matchingService";
 import "./AdminApplicationAnalysisView.css";
+import "./ApplicationRetentionLayout.css";
+import "./ApplicationReviewSections.css";
+import "./ApplicationReviewArtwork.css";
 
 const displayList = (value) => (Array.isArray(value) ? value : String(value || "").split(/[|,;\n]+/)).map((item) => String(item).trim()).filter(Boolean);
 const initials = (value) => String(value || "Candidate").split(" ").map((part) => part[0]).join("").slice(0, 2).toUpperCase();
 const text = (value, fallback) => value || fallback;
 
-function ProfileCard({ applicant, candidate, job, score }) {
+function ProfileCard({ applicant, candidate, job, score, onViewProfile }) {
   const name = text(applicant.displayName || applicant.email, "Candidate");
   const role = text(candidate.candidateRole || candidate.role, "Candidate profile");
   const location = text(candidate.location || candidate.currentLocation || applicant.location || job.location, "Location not provided");
   const experience = candidate.yearsExperience ? `${candidate.yearsExperience} years experience` : "Experience not provided";
   const photo = applicant.profilePhoto || "";
   const match = Number(score?.percentage);
-  return <aside className="analysis-reference-profile"><div className="analysis-reference-profile__art"><div className="analysis-reference-profile__glow" />{photo ? <img src={photo} alt={`${name} profile`} /> : <span>{initials(name)}</span>}<i><Icon name="check" size={13} /></i></div><h1>{name}</h1><p>{role}</p><span className="analysis-reference-profile__match">{Number.isFinite(match) ? `${match}% model match` : "Model review ready"}</span><div className="analysis-reference-profile__meta"><span><Icon name="compass" size={13} />{location}</span><span><Icon name="briefcase" size={13} />{experience}</span></div><div className="analysis-reference-profile__facts"><article><span>Current role</span><strong>{role}</strong><small>{text(job.company, "Hiring team")}</small></article><article><span>Education</span><strong>{text(candidate.education, "Not provided")}</strong></article></div><a href="#candidate-evidence" className="analysis-reference-profile__button">View full profile <Icon name="arrowRight" size={14} /></a></aside>;
+  return <aside className="analysis-reference-profile"><div className="analysis-reference-profile__art"><div className="analysis-reference-profile__glow" />{photo ? <img src={photo} alt={`${name} profile`} /> : <span>{initials(name)}</span>}<i><Icon name="check" size={13} /></i></div><h1>{name}</h1><p>{role}</p><span className="analysis-reference-profile__match">{Number.isFinite(match) ? `${match}% model match` : "Model review ready"}</span><div className="analysis-reference-profile__meta"><span><Icon name="compass" size={13} />{location}</span><span><Icon name="briefcase" size={13} />{experience}</span></div><div className="analysis-reference-profile__facts"><article><span>Applied role</span><strong>{text(job.title, role)}</strong><small>{text(job.company, "Hiring team")}</small></article><article><span>Education</span><strong>{text(candidate.education, "Not provided")}</strong></article></div><button type="button" onClick={onViewProfile} className="analysis-reference-profile__button">View full profile <Icon name="arrowRight" size={14} /></button></aside>;
 }
 
 function EvidenceCard({ candidate, job, application, kind }) {
@@ -30,7 +34,29 @@ function ReviewCard({ eyebrow, title, items, positive = false }) {
 }
 
 function AdminApplicationAnalysisView({ application, applicant, candidate, job, analysis, score, retentionCandidate, retentionSimulation, retentionRisk, baselineRetentionRisk, retentionLoading, retentionError, onSimulationChange, onReset }) {
-  return <div className="analysis-reference-layout"><ProfileCard applicant={applicant} candidate={candidate} job={job} score={score} /><div className="analysis-reference-main"><section className="analysis-reference-retention-hero"><div><span><Icon name="spark" size={12} /> Separate attrition model analysis</span><h1>Retention planning</h1><p>This is a separate retention service. It explores practical interventions without changing the CV match score or deciding whether this applicant should be hired.</p></div><b><i /> Separate service</b></section><section className="analysis-reference-planner"><WhatIfSimulation candidate={retentionCandidate} simulation={retentionSimulation} features={retentionRisk} baselineFeatures={baselineRetentionRisk} loading={retentionLoading} error={retentionError} onSimulationChange={onSimulationChange} onReset={onReset} /></section><div className="analysis-reference-evidence-grid"><EvidenceCard candidate={candidate} job={job} application={application} kind="candidate" /><EvidenceCard candidate={candidate} job={job} application={application} kind="role" /></div><div className="analysis-reference-review-grid"><ReviewCard eyebrow="Explainable review" title="Positive signals" items={analysis.strengths} positive /><ReviewCard eyebrow="Human review queue" title="Points to verify" items={analysis.actions} /></div><ApplicationComparison application={application} /><p className="admin-analysis-disclaimer">This is an assistive ranking signal from {MODEL_ID}, not an automatic hiring decision. Review the original CV, interview evidence, and job requirements before making a decision.</p></div></div>;
+  const [section, setSection] = useState("retention");
+  const sections = [["retention", "Retention planning", "chart"], ["evidence", "CV & job details", "briefcase"], ["review", "Review signals", "check"]];
+  return <div className="analysis-reference-layout">
+    <header className="analysis-reference-retention-hero"><div><span><Icon name="spark" size={12} /> Application workspace</span><h1>Application review</h1><p>{text(job.title || application.jobTitle, "Job opportunity")} · {text(job.company, "Hiring team")}</p></div><b><i />{text(application.status, "Application received")}</b></header>
+    <ProfileCard applicant={applicant} candidate={candidate} job={job} score={score} onViewProfile={() => setSection("evidence")} />
+    <div className="analysis-reference-main">
+      <nav className="application-review-sections" aria-label="Application review sections">{sections.map(([id, label, icon]) => <button key={id} id={`review-section-${id}`} type="button" aria-pressed={section === id} aria-controls={`review-panel-${id}`} onClick={() => setSection(id)}><Icon name={icon} size={16} /><span>{label}</span>{id === "review" && <small>{analysis.actions.length}</small>}</button>)}</nav>
+      <section className="application-review-panel" id="review-panel-retention" aria-labelledby="review-section-retention" hidden={section !== "retention"}>
+        <div className="application-review-section-heading"><span>Retention outlook</span><h2>Explore the next steps</h2><p>Review current risk and compare salary, role, manager and flexible-work scenarios.</p></div>
+        <section className="analysis-reference-planner"><WhatIfSimulation candidate={retentionCandidate} simulation={retentionSimulation} features={retentionRisk} baselineFeatures={baselineRetentionRisk} loading={retentionLoading} error={retentionError} onSimulationChange={onSimulationChange} onReset={onReset} /></section>
+      </section>
+      <section className="application-review-panel" id="review-panel-evidence" aria-labelledby="review-section-evidence" hidden={section !== "evidence"}>
+        <div className="application-review-section-heading"><span>Candidate & opportunity</span><h2>Compare the CV with the role</h2><p>Review the profile, skills and requirements together.</p></div>
+        <div className="analysis-reference-evidence-grid"><EvidenceCard candidate={candidate} job={job} application={application} kind="candidate" /><EvidenceCard candidate={candidate} job={job} application={application} kind="role" /></div>
+      </section>
+      <section className="application-review-panel" id="review-panel-review" aria-labelledby="review-section-review" hidden={section !== "review"}>
+        <div className="application-review-section-heading"><span>Recruiter review</span><h2>Signals and points to verify</h2><p>Use the available evidence to guide your review.</p></div>
+        <div className="analysis-reference-review-grid"><ReviewCard eyebrow="Explainable review" title="Positive signals" items={analysis.strengths} positive /><ReviewCard eyebrow="Human review queue" title="Points to verify" items={analysis.actions} /></div>
+        <ApplicationComparison application={application} />
+      </section>
+      <p className="admin-analysis-disclaimer">Review the original CV, interview evidence and job requirements alongside the assistive {MODEL_ID} output before making a hiring decision.</p>
+    </div>
+  </div>;
 }
 
 export default AdminApplicationAnalysisView;

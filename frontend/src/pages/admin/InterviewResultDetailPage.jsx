@@ -4,11 +4,15 @@ import CvNavigation from "../../components/layout/CvNavigation";
 import CvTopbar from "../../components/layout/CvTopbar";
 import Icon from "../../components/common/Icon";
 import ModelOutput from "../../components/interview/ModelOutput";
+import ReferenceAnswerEditor from "../../components/interview/ReferenceAnswerEditor";
+import useInterviewComparison from "../../hooks/useInterviewComparison";
+import { referenceDraft } from "../../utils/interviewReferences";
 import { useAuth } from "../../context/AuthContext";
 import { getAdminInterviews, getInterviewAnalysis } from "../../services/apiClient";
 import "./InterviewResultDetailPage.css";
+import "./InterviewResultDetailBackgrounds.css";
 
-const score = (value) => Number.isFinite(Number(value)) ? `${Math.round(Number(value))}%` : "N/A";
+const score = (value) => value !== null && value !== undefined && Number.isFinite(Number(value)) ? `${Math.round(Number(value))}%` : "N/A";
 const dateLabel = (value) => value ? new Date(value).toLocaleString(undefined, { day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit" }) : "Date unavailable";
 const initials = (value) => String(value || "Candidate").split(" ").map((part) => part[0]).join("").slice(0, 2).toUpperCase();
 
@@ -21,6 +25,7 @@ function InterviewResultDetailPage() {
   const [analysis, setAnalysis] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const { references, comparing, comparisonError, compare, updateReference } = useInterviewComparison(interviewId, analysis, setAnalysis);
 
   useEffect(() => {
     let active = true;
@@ -34,7 +39,7 @@ function InterviewResultDetailPage() {
   }, [interviewId]);
 
   const navigateFromSidebar = (view) => {
-    const destinations = { admin: "/admin", "admin-jobs": "/admin/jobs", "admin-applications": "/admin/applications", "admin-interviews": "/admin/interviews", "admin-interview-results": "/admin/interview-results" };
+    const destinations = { admin: "/admin", "admin-jobs": "/admin/jobs", "admin-applications": "/admin/applications", "admin-attrition": "/admin/attrition", "admin-interviews": "/admin/interviews", "admin-interview-results": "/admin/interview-results" };
     navigate(destinations[view] || "/admin");
   };
   if (user?.role !== "admin") return <Navigate to="/matching" replace />;
@@ -45,7 +50,16 @@ function InterviewResultDetailPage() {
     {loading ? <div className="interview-detail-state"><span className="interview-detail-loader" />Loading result...</div> : error ? <div className="interview-detail-state interview-detail-state--error"><Icon name="alert" size={26} /><strong>Could not open this result</strong><span>{error}</span><button type="button" onClick={() => navigate("/admin/interview-results")}>Return to results</button></div> : !analysis ? <div className="interview-detail-state"><Icon name="chart" size={27} /><strong>No model output yet</strong><span>Open the interview room and run the answer model first.</span><button type="button" onClick={() => navigate(`/interviews/${interviewId}`)}>Open interview analyzer<Icon name="arrowRight" size={14} /></button></div> : <>
       <header className="interview-detail-hero"><div className="interview-detail-identity"><div className="interview-detail-avatar">{initials(applicant.displayName || applicant.email)}</div><div><span className="interview-detail-eyebrow"><i /><Icon name="chart" size={13} /> Interview result</span><h1>{applicant.displayName || applicant.email || "Candidate"}</h1><p>{applicant.email || "No email provided"} · {interview?.job?.title || "Interview"}</p></div></div><div className="interview-detail-hero-score"><span>Overall model score</span><strong>{score(summary.overallScore)}</strong><small>{analysis.model || "Interview answer model"}</small></div></header>
       <section className="interview-detail-meta"><div><span>Job opportunity</span><strong>{interview?.job?.title || "Interview"}</strong></div><div><span>Interview date</span><strong>{dateLabel(interview?.scheduledAt)}</strong></div><div><span>Inference model</span><strong>{analysis.model || "Interview answer model"}</strong><small>{analysis.modelStatus || "available"}</small></div></section>
-      <section className="interview-detail-card"><div className="interview-detail-card__heading"><div><span className="interview-detail-overline">Model output</span><h2>Question-by-question results</h2><p>Only the score, prediction, confidence and class probabilities returned by the model are shown.</p></div><button type="button" onClick={() => navigate(`/interviews/${interviewId}`)}>Open interview room<Icon name="arrowRight" size={14} /></button></div><div className="interview-detail-questions">{(analysis.questionAnswers || []).map((item, index) => <article className="interview-detail-question" key={item.questionId}><div className="interview-detail-question__top"><div><span>Question {String(index + 1).padStart(2, "0")}</span><h3>{item.question}</h3></div></div><div className="interview-detail-answer"><span>Candidate answer</span><p>{item.answer || "No candidate answer was detected."}</p></div><ModelOutput modelScore={item.modelScore} /></article>)}</div></section>
+      <section className="interview-detail-card">
+        <div className="interview-detail-card__heading"><div><span className="interview-detail-overline">Model output</span><h2>Question-by-question results</h2><p>Add a reference answer to compare the candidate's answer and update the saved model output.</p></div><button type="button" onClick={() => navigate(`/interviews/${interviewId}`)}>Open interview room<Icon name="arrowRight" size={14} /></button></div>
+        {comparisonError && <p className="interview-detail-warning" role="alert">{comparisonError}</p>}
+        <div className="interview-detail-questions">{(analysis.questionAnswers || []).map((item, index) => <article className="interview-detail-question" key={item.questionId}>
+          <div className="interview-detail-question__top"><div><span>Question {String(index + 1).padStart(2, "0")}</span><h3>{item.question}</h3></div></div>
+          <div className="interview-detail-answer"><span>Candidate answer</span><p>{item.answer || "No candidate answer was detected."}</p></div>
+          <ModelOutput modelScore={item.modelScore} />
+          <ReferenceAnswerEditor item={item} value={referenceDraft(item, references)} onChange={(value) => updateReference(item.questionId, value)} onCompare={compare} disabled={comparing} />
+        </article>)}</div>
+      </section>
       <p className="interview-detail-footnote"><Icon name="info" size={14} />This view presents the saved output from {analysis.model || "the interview answer model"}. It supports human review and does not make an automatic hiring decision.</p>
     </>}
   </div></main></div></div>;

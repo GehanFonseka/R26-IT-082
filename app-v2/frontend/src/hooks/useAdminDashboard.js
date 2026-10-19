@@ -66,7 +66,7 @@ export default function useAdminDashboard(mode, user) {
       navigate("/matching");
       return;
     }
-    const destination = view === "admin-applications" ? "/admin/applications" : view === "admin-jobs" ? "/admin/jobs" : view === "admin-interviews" ? "/admin/interviews" : view === "admin-interview-results" ? "/admin/interview-results" : "/admin";
+    const destination = view === "admin-applications" ? "/admin/applications" : view === "admin-jobs" ? "/admin/jobs" : view === "admin-attrition" ? "/admin/attrition" : view === "admin-interviews" ? "/admin/interviews" : view === "admin-interview-results" ? "/admin/interview-results" : "/admin";
     navigate(destination);
   };
 

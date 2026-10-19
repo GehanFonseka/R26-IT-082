@@ -23,9 +23,9 @@ function CvAnalysisPage({ job, candidate, result, selectedFile, retentionCandida
 
   return (
     <main className="cv-analysis-page" id="analysis">
+      <button className="cv-button cv-button--secondary cv-analysis-page__back" type="button" onClick={onGoToMatcher}>← Back to matcher</button>
       <header className="cv-analysis-page__header">
         <div><p className="cv-overline">Analysis workspace</p><h1>Reduce match risk before shortlisting</h1><p>Use the model score as a starting point, then work through the practical gaps that could improve this candidate’s fit signal.</p></div>
-        <button className="cv-button cv-button--secondary cv-analysis-page__back" type="button" onClick={onGoToMatcher}>← Back to matcher</button>
       </header>
 
       <section className="cv-analysis-page__summary">

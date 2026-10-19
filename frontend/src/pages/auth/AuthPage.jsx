@@ -6,7 +6,7 @@ import "./AuthPage.css";
 
 function AuthPage() {
   const [mode, setMode] = useState("login");
-  const [form, setForm] = useState({ displayName: "", email: "", password: "", role: "user", adminCode: "" });
+  const [form, setForm] = useState({ displayName: "", email: "", password: "", accountType: "user", companyName: "" });
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const { signIn, signUp } = useAuth();
@@ -20,7 +20,7 @@ function AuthPage() {
     try {
       const action = mode === "login" ? signIn : signUp;
       const nextUser = await action(mode === "login" ? { email: form.email, password: form.password } : form);
-      navigate(location.state?.from || (nextUser?.role === "admin" ? "/admin" : "/jobs"), { replace: true });
+      navigate(location.state?.from || (nextUser?.accountType === "company" ? "/company/admins" : nextUser?.role === "admin" ? "/admin" : "/jobs"), { replace: true });
     } catch (requestError) {
       setError(requestError.message);
     } finally {
@@ -46,7 +46,7 @@ function AuthPage() {
             <span><strong>MatchOS</strong><small>Talent Workspace</small></span>
           </div>
           <div className="auth-card__heading">
-            <p className="auth-card__eyebrow">Recruiter portal</p>
+            <p className="auth-card__eyebrow">Account access</p>
             <h1>{isLogin ? "Welcome back." : "Create your account."}</h1>
             <p>{isLogin ? "Sign in to continue building better teams." : "Set up your workspace and start making confident decisions."}</p>
           </div>
@@ -54,8 +54,8 @@ function AuthPage() {
           <form onSubmit={submit}>
             {mode === "register" && <>
               <label htmlFor="displayName">Display name<input id="displayName" name="displayName" autoComplete="name" value={form.displayName} onChange={update} required /></label>
-              <label htmlFor="role">Account type<select id="role" name="role" value={form.role} onChange={update}><option value="user">User</option><option value="admin">Admin</option></select></label>
-              {form.role === "admin" && <label htmlFor="adminCode">Admin invite code<input id="adminCode" name="adminCode" type="password" autoComplete="one-time-code" value={form.adminCode} onChange={update} required /></label>}
+              <label htmlFor="accountType">Account type<select id="accountType" name="accountType" value={form.accountType} onChange={update}><option value="user">User</option><option value="company">Company</option></select></label>
+              {form.accountType === "company" && <label htmlFor="companyName">Company name<input id="companyName" name="companyName" autoComplete="organization" value={form.companyName} onChange={update} required minLength="2" /></label>}
             </>}
             <label htmlFor="email">Email address<input id="email" name="email" type="email" autoComplete="email" placeholder="you@company.com" value={form.email} onChange={update} required /></label>
             <label htmlFor="password">Password<input id="password" name="password" type="password" autoComplete={isLogin ? "current-password" : "new-password"} placeholder="Enter your password" minLength="8" value={form.password} onChange={update} required /></label>

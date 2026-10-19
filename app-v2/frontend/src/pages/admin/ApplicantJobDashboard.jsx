@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import CvNavigation from "../../components/layout/CvNavigation";
 import CvTopbar from "../../components/layout/CvTopbar";
@@ -11,17 +11,22 @@ import { jobKey } from "../../components/admin/applicationBoardUtils";
 import "./AdminDashboardPage.css";
 import "./ApplicantJobDashboard.css";
 
-const destinations = { admin: "/admin", "admin-jobs": "/admin/jobs", "admin-applications": "/admin/applications", "admin-interviews": "/admin/interviews", "admin-interview-results": "/admin/interview-results" };
+const destinations = { admin: "/admin", "admin-jobs": "/admin/jobs", "admin-applications": "/admin/applications", "admin-attrition": "/admin/attrition", "admin-interviews": "/admin/interviews", "admin-interview-results": "/admin/interview-results" };
 
 function ApplicantJobDashboard() {
   const { user } = useAuth();
   const { jobId, applicationId } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [application, setApplication] = useState(null);
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const searchParams = new URLSearchParams(location.search);
+  const requestedTab = searchParams.get("tab") || location.state?.tab;
+  const initialTab = requestedTab || "overview";
 
   useEffect(() => {
     if (user?.role !== "admin") return;
@@ -30,8 +35,17 @@ function ApplicantJobDashboard() {
     async function load() {
       try {
         const [jobs, applications] = await Promise.all([getAdminJobs(), getAdminApplications()]);
-        const selectedJob = (jobs.data || []).find((item) => String(item.id) === jobId);
-        const selected = (applications.data || []).find((item) => String(item.id) === applicationId && String(jobKey(item)) === jobId);
+        const jobList = jobs.data || [];
+        const appList = applications.data || [];
+        let selectedJob = jobList.find((item) => String(item.id) === jobId);
+        let selected = appList.find((item) => String(item.id) === applicationId && String(jobKey(item)) === jobId);
+        if (!selected) {
+          selected = appList.find((item) => String(item.id) === applicationId);
+        }
+        if (selected && !selectedJob) {
+          const candidateJobId = selected.jobId || selected.job?.id;
+          selectedJob = jobList.find((item) => String(item.id) === String(candidateJobId)) || selected.job;
+        }
         if (!selectedJob || !selected) throw new Error("Application not found for this job.");
         const results = await loadRankedApplicants([selected], selectedJob, () => mounted);
         if (!mounted) return;
@@ -54,7 +68,7 @@ function ApplicantJobDashboard() {
         <Link to={`/admin/jobs/${encodeURIComponent(jobId)}`} className="applicant-job-dashboard__back">← Back to job applicants</Link>
         {error && <p className="applicant-job-dashboard__error" role="alert">{error}</p>}
         {loading && <p role="status">Loading CV matching and skill model results...</p>}
-        {!loading && application && job && <><ApplicantJobResults application={application} job={job} /><ApplicantInterviewStatus application={application} job={job} /></>}
+        {!loading && application && job && <><ApplicantJobResults application={application} job={job} initialTab={initialTab} /><ApplicantInterviewStatus application={application} job={job} /></>}
       </div></main>
     </div>
   </div>;

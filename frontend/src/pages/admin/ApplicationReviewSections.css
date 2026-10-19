@@ -1,0 +1,30 @@
+.admin-analysis-page .analysis-reference-layout > .analysis-reference-retention-hero { min-height: 130px; }
+.admin-analysis-page .analysis-reference-layout > .analysis-reference-profile { border-top: 3px solid #d9e5fb; }
+.admin-analysis-page .analysis-reference-profile__button { font: inherit; font-size: .7rem; font-weight: 750; cursor: pointer; border: 1px solid #d8e4fa; }
+.admin-analysis-page .analysis-reference-profile__button:focus-visible { outline: 3px solid #bad0f4; outline-offset: 3px; }
+.application-review-sections { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px; background: #fff; border: 1px solid #dfe7f2; border-radius: 14px; box-shadow: 0 5px 18px rgba(32,63,118,.035); }
+.application-review-sections button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; flex: 1; min-height: 48px; padding: 12px 18px; color: #657896; background: transparent; border: 1px solid transparent; border-radius: 10px; font: inherit; font-size: .8rem; font-weight: 750; cursor: pointer; }
+.application-review-sections button:hover { color: #2559a9; background: #f7faff; }
+.application-review-sections button[aria-pressed="true"] { color: #245ec1; background: #edf3ff; border-color: #dce7fc; }
+.application-review-sections button:focus-visible { outline: 3px solid #b8cef3; outline-offset: 2px; }
+.application-review-sections small { display: grid; place-items: center; min-width: 22px; height: 22px; padding: 0 5px; font-size: .65rem; border-radius: 7px; background: #e8eef8; }
+.application-review-panel { margin-top: 22px; }
+.application-review-panel[hidden] { display: none; }
+.application-review-section-heading { padding: 4px 2px 0; }
+.application-review-section-heading > span { color: #5176b3; font-size: .65rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.application-review-section-heading h2 { margin: 7px 0; color: #18365f; font-size: 1.25rem; letter-spacing: -.035em; }
+.application-review-section-heading p { margin: 0; color: #71839c; font-size: .75rem; line-height: 1.7; }
+.admin-analysis-page .analysis-reference-card { padding: 24px; border-radius: 16px; }
+.admin-analysis-page .analysis-reference-card dd { line-height: 1.6; overflow-wrap: anywhere; }
+.admin-analysis-page .analysis-reference-card__chips { gap: 8px; }
+.admin-analysis-page .analysis-reference-card__chips > span { padding: 7px 10px; line-height: 1.5; }
+.admin-analysis-page .analysis-reference-card__copy p { line-height: 1.8; }
+.admin-analysis-page .analysis-reference-review-list > div { padding: 14px; }
+.admin-analysis-page .analysis-reference-review-list small { line-height: 1.7; }
+.admin-analysis-page .admin-analysis-disclaimer { margin: 22px 0 0; padding: 16px 18px; font-size: .65rem; line-height: 1.7; background: #f0f4fa; border-radius: 12px; }
+@media (max-width: 680px) {
+  .application-review-sections { flex-direction: column; }
+  .application-review-sections button { justify-content: flex-start; min-height: 44px; }
+  .application-review-sections small { margin-left: auto; }
+  .admin-analysis-page .analysis-reference-card { padding: 18px; }
+}

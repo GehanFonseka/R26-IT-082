@@ -86,7 +86,7 @@ function InterviewResultsPage() {
   const analyzedCount = rows.filter((row) => row.analysis).length;
   const scoredRows = rows.filter((row) => resultScore(row) !== null);
   const averageScore = scoredRows.length ? scoredRows.reduce((total, row) => total + resultScore(row), 0) / scoredRows.length : null;
-  const navigateFromSidebar = (view) => navigate({ admin: "/admin", "admin-jobs": "/admin/jobs", "admin-applications": "/admin/applications", "admin-interviews": "/admin/interviews", "admin-interview-results": "/admin/interview-results" }[view] || "/admin");
+  const navigateFromSidebar = (view) => navigate({ admin: "/admin", "admin-jobs": "/admin/jobs", "admin-applications": "/admin/applications", "admin-attrition": "/admin/attrition", "admin-interviews": "/admin/interviews", "admin-interview-results": "/admin/interview-results" }[view] || "/admin");
 
   if (user?.role !== "admin") return <Navigate to="/matching" replace />;
   return <div className="cv-app-shell admin-app-shell"><CvNavigation isOpen={navigationOpen} activeView="admin-interview-results" onNavigate={navigateFromSidebar} onClose={() => setNavigationOpen(false)} /><div className="cv-app-shell__main admin-app-shell__main"><CvTopbar activeView="admin-interview-results" onMenuToggle={() => setNavigationOpen(true)} /><main className="interview-results-page"><div className="interview-results-page__container">

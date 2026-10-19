@@ -157,8 +157,9 @@ function AdminApplicationAnalysisPage() {
 
   const navigateFromSidebar = (view) => {
     if (view === "matcher") return navigate("/matching");
-    if (view === "admin-jobs") return navigate("/admin/jobs");
     if (view === "admin") return navigate("/admin");
+    if (view === "admin-jobs") return navigate("/admin/jobs");
+    if (view === "admin-attrition") return navigate("/admin/attrition");
     if (view === "admin-interviews") return navigate("/admin/interviews");
     if (view === "admin-interview-results") return navigate("/admin/interview-results");
     navigate("/admin/applications");

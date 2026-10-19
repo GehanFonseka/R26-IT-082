@@ -11,7 +11,7 @@ function CvTopbar({ activeView, onMenuToggle, monochrome = false, profilePhoto =
   const navigate = useNavigate();
   const avatarPhoto = profilePhoto || user?.profilePhoto || "";
   const adminInitial = (user?.displayName || "Admin").slice(0, 1).toUpperCase();
-  const pageTitle = activeView === "analysis" ? "Analysis" : activeView === "jobs" ? "Open jobs" : activeView === "skill-analysis" ? "Skill analysis" : activeView === "interviews" ? "My interviews" : activeView === "profile" ? "My profile" : activeView === "admin-jobs" ? "Job posts" : activeView === "admin-applications" ? "Applications" : activeView === "admin-interviews" ? "Interview scheduling" : activeView === "admin-interview-results" ? "Interview results" : activeView === "admin" ? "Admin workspace" : "CV matcher";
+  const pageTitle = activeView === "analysis" ? "Analysis" : activeView === "jobs" ? "Open jobs" : activeView === "skill-analysis" ? "Skill analysis" : activeView === "interviews" ? "My interviews" : activeView === "profile" ? "My profile" : activeView === "admin-jobs" ? "Job posts" : activeView === "admin-applications" ? "Applications" : activeView === "admin-attrition" ? "Attrition analytics" : activeView === "admin-interviews" ? "Interview scheduling" : activeView === "admin-interview-results" ? "Interview results" : activeView === "admin" ? "Admin workspace" : "CV matcher";
   const isAdmin = activeView?.startsWith("admin");
   return (
     <header className={`cv-topbar ${isAdmin ? "cv-topbar--admin" : "cv-topbar--candidate"}`}>

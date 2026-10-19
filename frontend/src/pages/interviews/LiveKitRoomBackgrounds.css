@@ -1,0 +1,75 @@
+.livekit-room-page {
+  --room-video-art: url("../../assets/interview-room-glass-video.png");
+  --room-speech-art: url("../../assets/interview-room-glass-transcript.png");
+  --room-security-art: url("../../assets/interview-room-glass-security.png");
+  --room-people-art: url("../../assets/interview-glass-evaluation.png");
+  --room-time-art: url("../../assets/interview-glass-pending.png");
+  --room-review-art: url("../../assets/interview-glass-review.png");
+  background: #f3f7fc;
+}
+.livekit-room-titlebar {
+  padding: 24px; margin-bottom: 16px; border: 1px solid #dce7f3; border-radius: 16px;
+  background: linear-gradient(90deg, #f8fbfff5 42%, #f8fbff22), var(--room-video-art) right center / auto 150% no-repeat, #f8fbff;
+}
+.livekit-room-titlebar__actions { flex-wrap: wrap; justify-content: flex-end; }
+.livekit-room-page .livekit-room-meta-card {
+  --meta-art: var(--room-security-art);
+  min-height: 76px;
+  background: linear-gradient(90deg, #ffffffed 35%, #ffffff66), var(--meta-art) right center / auto 135% no-repeat, #fff;
+}
+.livekit-room-meta-card:nth-child(2) { --meta-art: var(--room-people-art); }
+.livekit-room-meta-card:nth-child(3) { --meta-art: var(--room-time-art); }
+.livekit-room-meta-card:nth-child(4) { --meta-art: var(--room-video-art); }
+.livekit-room-meta-card:nth-child(5) { --meta-art: var(--room-speech-art); }
+.livekit-room-meta-card__icon { background: #eef3ffdf; }
+.livekit-room-meta-card small { color: #60728f; }
+.livekit-room-page :is(.livekit-call, .room-participants, .livekit-transcript, .room-collaboration, .complete-answer-analyzer) {
+  background: #ffffffed; border-color: #dce7f3;
+}
+.livekit-room-page :is(.livekit-call__heading, .room-participants__heading, .livekit-transcript__heading, .complete-answer-analyzer__header) {
+  --panel-art: var(--room-video-art);
+  padding: 16px; border-radius: 12px; gap: 12px; margin-bottom: 12px;
+  background: linear-gradient(90deg, #ffffffef 38%, #ffffff44), var(--panel-art) right center / auto 155% no-repeat, #f8fbff;
+}
+.livekit-room-page .room-participants__heading { --panel-art: var(--room-people-art); min-height: 90px; }
+.livekit-room-page .livekit-transcript__heading { --panel-art: var(--room-speech-art); min-height: 90px; }
+.livekit-room-page .complete-answer-analyzer__header { --panel-art: var(--room-review-art); min-height: 110px; }
+.livekit-room-page .livekit-stage { background: #f8fbff; }
+.livekit-room-page .livekit-primary-video:has(> span) {
+  background: linear-gradient(90deg, #f7fbffe8 25%, #f7fbff55), var(--room-video-art) right center / contain no-repeat, #f7fbff;
+}
+.livekit-room-page .livekit-primary-video > span {
+  padding: 16px 22px; border-radius: 14px; color: #526785;
+  background: #ffffffd9; border: 1px solid #ffffffed;
+}
+.livekit-room-page .livekit-filmstrip-tile:has(> span) {
+  background: linear-gradient(#ffffffb8, #ffffffb8), var(--room-people-art) right center / cover;
+}
+.livekit-room-page .room-participants li { background: #ffffffc9; border-radius: 9px; }
+.livekit-room-page .livekit-transcript__intro { color: #64748b; }
+.livekit-room-page .livekit-transcript__empty {
+  padding: 18px; border-radius: 12px;
+  background: linear-gradient(90deg, #faf8fff2 45%, #faf8ffa8), var(--room-speech-art) right center / auto 135% no-repeat, #faf8ff;
+}
+.livekit-room-page .room-collaboration__tabs {
+  background: linear-gradient(90deg, #f8f7fff2 55%, #f8f7ff88), var(--room-speech-art) right center / auto 180% no-repeat, #f8f7ff;
+}
+.livekit-room-page .room-collaboration__empty {
+  padding: 20px; border-radius: 10px;
+  background: linear-gradient(90deg, #ffffffee 40%, #ffffff99), var(--room-speech-art) right center / auto 125% no-repeat;
+}
+.livekit-room-page .room-collaboration__notes {
+  background: linear-gradient(90deg, #fffaf7ee, #fffaf7bb), var(--room-review-art) right center / auto 100% no-repeat;
+}
+.livekit-room-page .answer-analysis-metric {
+  background: linear-gradient(90deg, #ffffffed 45%, #ffffff88), var(--room-review-art) right center / auto 145% no-repeat;
+}
+.livekit-room-page .answer-analysis-summary-copy {
+  background: linear-gradient(90deg, #ffffffed 55%, #ffffffaa), var(--room-people-art) right center / auto 145% no-repeat;
+}
+@media (max-width: 680px) {
+  .livekit-room-titlebar { padding: 18px; background-size: auto, auto 100%; }
+  .livekit-room-titlebar > div:first-child { padding: 8px; border-radius: 10px; background: #ffffffcc; }
+  .livekit-room-page :is(.livekit-call__heading, .room-participants__heading, .livekit-transcript__heading, .complete-answer-analyzer__header) { padding: 12px; }
+  .livekit-room-titlebar__actions { justify-content: flex-start; }
+}

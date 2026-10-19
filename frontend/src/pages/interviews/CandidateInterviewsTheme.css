@@ -1,0 +1,91 @@
+/* Reuse the interview artwork from the hiring workspace. */
+.candidate-interviews-shell .candidate-interviews-shell__main { background: #f6f7fb; }
+.candidate-interviews-shell:has(.cv-navigation--collapsed) .candidate-interviews-shell__main { margin-left: 80px; }
+.candidate-interviews-shell .candidate-interviews-page {
+  color: #21324e;
+  background: linear-gradient(#f7f8fcf0, #f7f8fcfa), url("../../assets/interviews-planned-card-bg.png") top right / cover;
+}
+.candidate-interviews-page .candidate-interviews-hero {
+  align-items: center;
+  min-height: 218px;
+  padding: 32px 36px;
+  background: linear-gradient(90deg, #ffffffed, #ffffffb8 48%, #ffffff0d), url("../../assets/interview-schedule-bg.png") right center / cover;
+  border-color: #e1e3f2;
+  border-radius: 22px;
+  box-shadow: 0 12px 32px #3e487c0a;
+}
+.candidate-interviews-page .candidate-interviews-hero > div:first-child { max-width: 620px; }
+.candidate-interviews-page .candidate-interviews-eyebrow { color: #995360; font-size: .6rem; letter-spacing: .13em; }
+.candidate-interviews-page .candidate-interviews-eyebrow i { background: #f26374; }
+.candidate-interviews-page .candidate-interviews-hero h1 { color: #192b48; font-size: clamp(1.8rem, 3.3vw, 2.75rem); line-height: 1.12; }
+.candidate-interviews-page .candidate-interviews-hero p { max-width: 540px; color: #576c87; font-size: .76rem; line-height: 1.75; }
+.candidate-interviews-page .candidate-interviews-hero__summary {
+  align-self: center;
+  min-width: 170px;
+  min-height: 120px;
+  padding: 22px;
+  background: linear-gradient(90deg, #ffffffed, #ffffffa3), url("../../assets/interviews-planned-card-bg.png") right center / cover;
+  border-color: #ffffff;
+  border-radius: 17px;
+  box-shadow: 0 9px 22px #6355a51a;
+}
+.candidate-interviews-page .candidate-interviews-hero__summary strong { color: #56479a; font-size: 2.5rem; }
+.candidate-interviews-page .candidate-interviews-hero__summary span { color: #675686; font-size: .66rem; }
+.candidate-interviews-page .candidate-interviews-toolbar { margin: 22px 0 18px; padding: 10px; border-color: #e4e8f0; border-radius: 15px; box-shadow: 0 5px 18px #334b7505; }
+.candidate-interviews-page .candidate-interviews-tab { padding: 10px 12px; color: #66748b; border-radius: 9px; }
+.candidate-interviews-page .candidate-interviews-tab span { color: #66748b; background: #f0f2f7; }
+.candidate-interviews-page .candidate-interviews-tab:hover { color: #b64050; background: #fff5f5; border-color: #f5dde0; }
+.candidate-interviews-page .candidate-interviews-tab--active { color: #ad3b4c; background: #fff0f1; border-color: #f8d4da; }
+.candidate-interviews-page .candidate-interviews-tab--active span { color: #ad3b4c; background: #ffe0e5; }
+.candidate-interviews-page .candidate-interviews-refresh { color: #596987; background: #fff; border-color: #e3e8f1; border-radius: 9px; }
+.candidate-interviews-page .candidate-interviews-refresh:hover:not(:disabled) { color: #ac3d4e; background: #fff5f5; }
+.candidate-interviews-page .candidate-interviews-list { gap: 18px; }
+.candidate-interviews-page .candidate-interview-card {
+  min-width: 0;
+  gap: 22px;
+  padding: 24px;
+  background: linear-gradient(100deg, #fffffff5 30%, #fffffff0 65%, #ffffffad), url("../../assets/interviews-planned-card-bg.png") right center / cover;
+  border-color: #e2e6f1;
+  border-radius: 20px;
+  box-shadow: 0 10px 28px #35476c08;
+}
+.candidate-interviews-page .candidate-interview-card--upcoming { border-color: #c8dcd9; }
+.candidate-interviews-page .candidate-interview-card__body { min-width: 0; }
+.candidate-interviews-page .candidate-interview-card__date { min-height: 80px; color: #5a4b9b; background: linear-gradient(#f4efffbb, #ecebffa6), url("../../assets/interviews-planned-card-bg.png") center / cover; border-color: #dcd6f5; border-radius: 15px; }
+.candidate-interviews-page .candidate-interview-card__date span { color: #7260a3; }
+.candidate-interviews-page .candidate-interview-card h2 { margin-top: 12px; color: #1c2f4b; font-size: 1.15rem; }
+.candidate-interviews-page .candidate-interview-card__heading p { color: #64758d; font-size: .72rem; line-height: 1.5; }
+.candidate-interviews-page .candidate-interview-card__duration { color: #64708a; background: #ffffffd9; border-color: #e4e8f1; border-radius: 8px; }
+.candidate-interviews-page .candidate-interview-card__details { gap: 16px; margin-top: 22px; padding: 18px 0; border-color: #e8ecf3; }
+.candidate-interviews-page .candidate-interview-card__details small { color: #728198; font-size: .62rem; font-weight: 500; }
+.candidate-interviews-page .candidate-interview-card__details strong { color: #30445f; font-size: .7rem; white-space: normal; overflow-wrap: anywhere; line-height: 1.5; }
+.candidate-interviews-page .candidate-interview-card__footer { flex-wrap: wrap; gap: 16px; color: #65778f; }
+.candidate-interviews-page .candidate-interview-card__footer > span { flex: 1 1 240px; line-height: 1.65; }
+.candidate-interviews-page .candidate-interview-card__actions { flex-wrap: wrap; gap: 8px; }
+.candidate-interviews-page .candidate-interview-card__calendar,
+.candidate-interviews-page .candidate-interview-card__join,
+.candidate-interviews-page .interview-link-button { min-height: 38px; padding: 9px 12px; border-radius: 9px; }
+.candidate-interviews-page .candidate-interview-card__calendar { color: #526684; background: #fff; border-color: #dce3ee; }
+.candidate-interviews-page .candidate-interview-card__join { color: #fff; background: #d94b5c; border-color: #d94b5c; box-shadow: 0 4px 12px #d94b5c1a; }
+.candidate-interviews-page .candidate-interview-card__join:hover { color: #fff; background: #bb3547; border-color: #bb3547; }
+.candidate-interviews-page .candidate-interviews-empty { color: #6b7d95; background: linear-gradient(90deg, #fffffff2, #ffffffb8), url("../../assets/interview-schedule-bg.png") right center / cover; border-color: #dfe5ef; border-radius: 20px; }
+.candidate-interviews-page .candidate-interviews-empty > .icon { color: #b85668; }
+.candidate-interviews-page .candidate-interviews-empty strong { color: #263a55; }
+.candidate-interviews-page .candidate-interviews-empty button { color: #fff; background: #d94b5c; border-color: #d94b5c; }
+.candidate-interviews-page .candidate-interviews-empty button:hover { color: #fff; background: #bb3547; }
+.candidate-interviews-page .candidate-interviews-loader { border-color: #f6dce1; border-top-color: #d94b5c; }
+.candidate-interviews-page .candidate-interviews-footnote { padding: 13px 16px; color: #63758d; background: #ffffffb3; border: 1px solid #e7ecf4; border-radius: 12px; line-height: 1.7; }
+.candidate-interviews-page button:focus-visible { outline: 3px solid #be708a; outline-offset: 3px; }
+@media (max-width: 900px) {
+  .candidate-interviews-shell:has(.cv-navigation--collapsed) .candidate-interviews-shell__main { margin-left: 0; }
+  .candidate-interviews-page .candidate-interviews-hero { padding: 26px; }
+  .candidate-interviews-page .candidate-interviews-hero__summary { width: fit-content; min-width: 170px; justify-self: start; }
+}
+@media (max-width: 620px) {
+  .candidate-interviews-page .candidate-interviews-hero { padding: 24px 20px; background-position: center, 65% center; }
+  .candidate-interviews-page .candidate-interview-card { padding: 18px; gap: 16px; }
+  .candidate-interviews-page .candidate-interview-card__date { min-height: 0; padding: 9px 12px; border-radius: 10px; }
+  .candidate-interviews-page .candidate-interview-card__footer > span { flex-basis: auto; }
+  .candidate-interviews-page .candidate-interview-card__actions > * { flex: 1 1 130px; }
+}
+@media (prefers-reduced-motion: reduce) { .candidate-interviews-page .candidate-interviews-loader { animation: none; } }

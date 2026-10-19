@@ -22,4 +22,9 @@ export const saveSession = ({ accessToken, user }) => {
 
 export const register = async (input) => saveSession((await apiRequest("/auth/register", { method: "POST", body: JSON.stringify(input) })).data);
 export const login = async (input) => saveSession((await apiRequest("/auth/login", { method: "POST", body: JSON.stringify(input) })).data);
+export const restoreSession = async () => {
+  const user = (await apiRequest("/auth/session")).data;
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
+  return user;
+};
 export const logout = () => { clearAccessToken(); localStorage.removeItem(USER_KEY); };

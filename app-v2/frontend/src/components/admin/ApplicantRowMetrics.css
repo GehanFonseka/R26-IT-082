@@ -1,0 +1,94 @@
+/* 4-column balanced grid matching candidate cards */
+.applicant-row-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+}
+
+.applicant-row-metrics__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 0;
+  min-height: 64px;
+  padding: 8px 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 160ms ease;
+}
+
+.applicant-row-metrics__item:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.applicant-row-metrics__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 0.65rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+.applicant-row-metrics__item strong {
+  color: #1e40af;
+  font-size: 0.95rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+/* Risk Column Styling */
+.applicant-row-metrics__item--risk {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.applicant-row-metrics__item.is-safe {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+.applicant-row-metrics__item.is-safe strong {
+  color: #15803d;
+}
+
+.applicant-row-metrics__item.is-moderate {
+  background: #fefce8;
+  border-color: #fef08a;
+}
+.applicant-row-metrics__item.is-moderate strong {
+  color: #a16207;
+}
+
+.applicant-row-metrics__item.is-flight {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+.applicant-row-metrics__item.is-flight strong {
+  color: #b91c1c;
+}
+
+.applicant-row-metrics__item .applicant-row-metrics__unavailable {
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .applicant-row-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+}

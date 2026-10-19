@@ -6,10 +6,14 @@ import Icon from "../../components/common/Icon";
 import { useAuth } from "../../context/AuthContext";
 import { getAdminInterviews, getInterviewAnalysis } from "../../services/apiClient";
 import "./InterviewResultsPage.css";
+import "./InterviewResultsColors.css";
+import "./InterviewResultsBackgrounds.css";
+import InterviewResultsManagement from "../../components/admin/InterviewResultsManagement";
+import { exportInterviewResults, resultScore } from "../../utils/interviewResultsManagement";
 
 const dateLabel = (value) => value ? new Date(value).toLocaleString(undefined, { day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit" }) : "Date unavailable";
 const initials = (value) => String(value || "Candidate").split(" ").map((part) => part[0]).join("").slice(0, 2).toUpperCase();
-const scoreLabel = (value) => Number.isFinite(Number(value)) ? `${Math.round(Number(value))}%` : "Pending";
+const scoreLabel = (value) => value !== null && value !== undefined && Number.isFinite(Number(value)) ? `${Math.round(Number(value))}%` : "Pending";
 
 function InterviewResultRow({ row, navigate }) {
   const applicant = row.application?.applicant || {};
@@ -34,6 +38,8 @@ function InterviewResultsPage() {
   const [rows, setRows] = useState([]);
   const [filter, setFilter] = useState("all");
   const [query, setQuery] = useState("");
+  const [jobFilter, setJobFilter] = useState("all");
+  const [sort, setSort] = useState("score");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [reloadKey, setReloadKey] = useState(0);
@@ -63,9 +69,9 @@ function InterviewResultsPage() {
     return rows.filter((row) => {
       const applicant = row.application?.applicant || {};
       const searchable = [applicant.displayName, applicant.email, row.job?.title, row.job?.company].join(" ").toLowerCase();
-      return (!text || searchable.includes(text)) && (filter === "all" || (filter === "analyzed" ? Boolean(row.analysis) : !row.analysis));
-    }).sort((first, second) => Number(second.analysis?.summary?.overallScore ?? -1) - Number(first.analysis?.summary?.overallScore ?? -1) || new Date(second.scheduledAt || 0) - new Date(first.scheduledAt || 0));
-  }, [filter, query, rows]);
+      return (!text || searchable.includes(text)) && (jobFilter === "all" || String(row.job?.id || row.jobId || row.job?.title || "unknown-job") === jobFilter) && (filter === "all" || (filter === "review" ? Number(row.analysis?.summary?.needsReview) > 0 : filter === "analyzed" ? Boolean(row.analysis) : !row.analysis));
+    }).sort((first, second) => sort === "name" ? String(first.application?.applicant?.displayName || first.application?.applicant?.email || "").localeCompare(String(second.application?.applicant?.displayName || second.application?.applicant?.email || "")) : sort === "newest" ? new Date(second.scheduledAt || 0) - new Date(first.scheduledAt || 0) : sort === "lowest" ? (resultScore(first) ?? Infinity) - (resultScore(second) ?? Infinity) : (resultScore(second) ?? -1) - (resultScore(first) ?? -1));
+  }, [filter, query, rows, jobFilter, sort]);
 
   const groups = useMemo(() => {
     const grouped = new Map();
@@ -78,8 +84,9 @@ function InterviewResultsPage() {
   }, [visibleRows]);
 
   const analyzedCount = rows.filter((row) => row.analysis).length;
-  const averageScore = analyzedCount ? rows.filter((row) => row.analysis).reduce((total, row) => total + Number(row.analysis.summary?.overallScore || 0), 0) / analyzedCount : null;
-  const navigateFromSidebar = (view) => navigate({ admin: "/admin", "admin-jobs": "/admin/jobs", "admin-applications": "/admin/applications", "admin-interviews": "/admin/interviews", "admin-interview-results": "/admin/interview-results" }[view] || "/admin");
+  const scoredRows = rows.filter((row) => resultScore(row) !== null);
+  const averageScore = scoredRows.length ? scoredRows.reduce((total, row) => total + resultScore(row), 0) / scoredRows.length : null;
+  const navigateFromSidebar = (view) => navigate({ admin: "/admin", "admin-jobs": "/admin/jobs", "admin-applications": "/admin/applications", "admin-attrition": "/admin/attrition", "admin-interviews": "/admin/interviews", "admin-interview-results": "/admin/interview-results" }[view] || "/admin");
 
   if (user?.role !== "admin") return <Navigate to="/matching" replace />;
   return <div className="cv-app-shell admin-app-shell"><CvNavigation isOpen={navigationOpen} activeView="admin-interview-results" onNavigate={navigateFromSidebar} onClose={() => setNavigationOpen(false)} /><div className="cv-app-shell__main admin-app-shell__main"><CvTopbar activeView="admin-interview-results" onMenuToggle={() => setNavigationOpen(true)} /><main className="interview-results-page"><div className="interview-results-page__container">
@@ -87,7 +94,8 @@ function InterviewResultsPage() {
     {error && <p className="interview-results-message interview-results-message--error" role="alert"><Icon name="alert" size={15} />{error}</p>}
     <section className="interview-results-summary"><div><span>Analyzed interviews</span><strong>{analyzedCount}</strong></div><div><span>Average answer score</span><strong>{scoreLabel(averageScore)}</strong></div><div><span>Awaiting analysis</span><strong>{rows.length - analyzedCount}</strong></div></section>
     <section className="interview-results-card" aria-labelledby="interview-results-title"><div className="interview-results-card__heading"><div><span className="interview-results-overline">Candidate review</span><h2 id="interview-results-title">Interview result list</h2><p>Each job vacancy has its own candidate result group.</p></div><button className="interview-results-refresh" type="button" onClick={() => setReloadKey((value) => value + 1)} disabled={loading}><Icon name="refresh" size={14} />{loading ? "Refreshing..." : "Refresh"}</button></div>
-      <div className="interview-results-toolbar"><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search candidate or job" aria-label="Search interview results" /><div className="interview-results-filters">{[["all", "All"], ["analyzed", "Analyzed"], ["pending", "Pending"]].map(([value, label]) => <button className={filter === value ? "is-active" : ""} type="button" key={value} onClick={() => setFilter(value)}>{label}</button>)}</div></div>
+      <div className="interview-results-toolbar"><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search candidate or job" aria-label="Search interview results" /><div className="interview-results-filters">{[["all", "All"], ["analyzed", "Analyzed"], ["pending", "Pending"], ["review", "Needs review"]].map(([value, label]) => <button className={filter === value ? "is-active" : ""} type="button" aria-pressed={filter === value} key={value} onClick={() => setFilter(value)}>{label}</button>)}</div></div>
+      <InterviewResultsManagement rows={rows} visibleCount={visibleRows.length} jobFilter={jobFilter} setJobFilter={setJobFilter} sort={sort} setSort={setSort} disabled={loading} onExport={() => exportInterviewResults(visibleRows)} />
       {loading ? <div className="interview-results-empty"><span className="interview-results-loader" />Loading interview results...</div> : !visibleRows.length ? <div className="interview-results-empty"><Icon name="chart" size={28} /><strong>{rows.length ? "No matching results" : "No interview results yet"}</strong><span>{rows.length ? "Try another search or filter." : "Schedule an interview and run the analyzer from its interview room."}</span></div> : <InterviewResultGroups groups={groups} navigate={navigate} />}
     </section>
   </div></main></div></div>;

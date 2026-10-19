@@ -1,7 +1,7 @@
 import "./ModelResults.css";
 
 const modelEntries = (result) => [
-  ["Attrition", result?.models?.attrition],
+  ["Attrition", result?.models?.attrition || (result?.target === "EarlyAttrition" ? null : result)],
 ].filter(([, model]) => model);
 
 const numberValue = (value) => Number.isFinite(Number(value)) ? Number(value) : null;
@@ -29,8 +29,7 @@ function ModelResults({ result }) {
   return (
     <div className="model-results">
       <div className="model-results__heading">
-        <span>Model output</span>
-        <small>{result?.modelAgreement || "single-model"}</small>
+        <span>Attrition model output</span>
       </div>
       <div className="model-results__grid">
         {entries.map(([target, model]) => {

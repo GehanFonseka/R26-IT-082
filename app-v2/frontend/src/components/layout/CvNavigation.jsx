@@ -16,6 +16,7 @@ const adminNavigationItems = [
   { label: "Admin dashboard", icon: "dashboard", view: "admin" },
   { label: "Job posts", icon: "briefcase", view: "admin-jobs" },
   { label: "Applications", icon: "people", view: "admin-applications" },
+  { label: "Attrition analytics", icon: "shield", view: "admin-attrition" },
   { label: "Interview scheduling", icon: "calendar", view: "admin-interviews" },
   { label: "Interview results", icon: "chart", view: "admin-interview-results" },
 ];

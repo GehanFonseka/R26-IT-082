@@ -10,6 +10,7 @@ import AdminDashboardPage from "../pages/admin/AdminDashboardPage";
 import AdminApplicationAnalysisPage from "../pages/admin/AdminApplicationAnalysisPage";
 import AdminApplicationSkillsPage from "../pages/admin/AdminApplicationSkillsPage";
 import InterviewSchedulingPage from "../pages/admin/InterviewSchedulingPage";
+import AdminAttritionPage from "../pages/admin/AdminAttritionPage";
 import InterviewResultsPage from "../pages/admin/InterviewResultsPage";
 import InterviewResultDetailPage from "../pages/admin/InterviewResultDetailPage";
 import CandidateInterviewsPage from "../pages/interviews/CandidateInterviewsPage";
@@ -49,6 +50,7 @@ function AppRoutes() {
           <Route path="/admin/applications" element={<AdminDashboardPage mode="applications" />} />
           <Route path="/admin/applications/:applicationId/skills" element={<AdminApplicationSkillsPage />} />
           <Route path="/admin/applications/:applicationId" element={<AdminApplicationAnalysisPage />} />
+          <Route path="/admin/attrition" element={<AdminAttritionPage />} />
           <Route path="/admin/interviews" element={<InterviewSchedulingPage />} />
           <Route path="/admin/interview-results/:interviewId" element={<InterviewResultDetailPage />} />
           <Route path="/admin/interview-results" element={<InterviewResultsPage />} />

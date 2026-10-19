@@ -1,0 +1,78 @@
+/* One visual treatment for existing back links and buttons across all routes. */
+:root .app-shell :is(
+  .admin-analysis-page__back,
+  .admin-skill-analysis-page__back,
+  .admin-job-applicants__back,
+  .applicant-job-dashboard__back,
+  .interview-detail-back,
+  .job-analysis-page__back,
+  .cv-analysis-page__back,
+  .interview-room-back,
+  .job-application-back,
+  .livekit-room-page__back,
+  .admin-analysis-state--error > button,
+  .admin-skill-analysis-state--error > button,
+  .interview-detail-state--error > button,
+  .job-application-state--error > button
+) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 9px 13px;
+  border: 1px solid #d3e2fb;
+  border-radius: 8px;
+  background: #fff;
+  color: #155dcc;
+  font-family: inherit;
+  font-size: .78rem;
+  font-weight: 800;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: none;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+:root .app-shell :is(
+  .admin-analysis-page__back, .admin-skill-analysis-page__back,
+  .admin-job-applicants__back, .applicant-job-dashboard__back,
+  .interview-detail-back, .job-analysis-page__back, .cv-analysis-page__back,
+  .interview-room-back, .job-application-back, .livekit-room-page__back,
+  .admin-analysis-state--error > button, .admin-skill-analysis-state--error > button,
+  .interview-detail-state--error > button, .job-application-state--error > button
+):hover {
+  background: #edf4ff;
+  border-color: #91b7f4;
+  color: #155dcc;
+  text-decoration: none;
+}
+:root .app-shell :is(
+  .admin-analysis-page__back, .admin-skill-analysis-page__back,
+  .admin-job-applicants__back, .applicant-job-dashboard__back,
+  .interview-detail-back, .job-analysis-page__back, .cv-analysis-page__back,
+  .interview-room-back, .job-application-back, .livekit-room-page__back,
+  .admin-analysis-state--error > button, .admin-skill-analysis-state--error > button,
+  .interview-detail-state--error > button, .job-application-state--error > button
+):focus-visible { outline: 3px solid #2164c7; outline-offset: 3px; }
+:root .app-shell :is(
+  .admin-analysis-page__back, .admin-skill-analysis-page__back,
+  .admin-job-applicants__back, .applicant-job-dashboard__back,
+  .interview-detail-back, .job-analysis-page__back, .cv-analysis-page__back,
+  .interview-room-back, .job-application-back, .livekit-room-page__back,
+  .admin-analysis-state--error > button, .admin-skill-analysis-state--error > button,
+  .interview-detail-state--error > button, .job-application-state--error > button
+):active { background: #dce9fc; border-color: #2164c7; }
+@media (prefers-reduced-motion: reduce) {
+  :root .app-shell :is(
+    .admin-analysis-page__back, .admin-skill-analysis-page__back,
+    .admin-job-applicants__back, .applicant-job-dashboard__back,
+    .interview-detail-back, .job-analysis-page__back, .cv-analysis-page__back,
+    .interview-room-back, .job-application-back, .livekit-room-page__back,
+    .admin-analysis-state--error > button, .admin-skill-analysis-state--error > button,
+    .interview-detail-state--error > button, .job-application-state--error > button
+  ) { transition: none; }
+}

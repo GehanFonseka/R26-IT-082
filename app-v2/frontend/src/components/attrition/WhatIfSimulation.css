@@ -969,3 +969,196 @@
 
 .what-if-simulation__model-row strong { color: #0a3264; }
 .what-if-simulation__model-row small { color: #6d82a0; }
+
+/* AI Prescriptive Strategy Button */
+.what-if-auto-optimize-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(99, 102, 241, 0.35);
+  transition: all 160ms ease;
+}
+.what-if-auto-optimize-btn:hover {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.5);
+}
+
+.what-if-prescriptive-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(139, 92, 246, 0.1));
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  border-radius: 12px;
+  animation: modal-fade-in 200ms ease;
+}
+.what-if-prescriptive-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: #6366f1;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.2);
+}
+.what-if-prescriptive-banner strong {
+  display: block;
+  font-size: 0.76rem;
+  color: #3730a3;
+  margin-bottom: 2px;
+}
+.what-if-prescriptive-banner p {
+  margin: 0;
+  font-size: 0.7rem;
+  color: #4338ca;
+  line-height: 1.45;
+}
+.what-if-prescriptive-dismiss {
+  margin-left: auto;
+  color: #6366f1;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Survival Horizon Timeline Card */
+.what-if-survival-card {
+  margin: 20px 0;
+  padding: 20px 22px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+.what-if-survival-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #10b981, #06b6d4, #6366f1);
+}
+
+.what-if-survival-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.what-if-survival-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 850;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+.what-if-survival-title svg {
+  color: #2563eb;
+}
+
+.what-if-survival-half-life {
+  font-size: 0.74rem;
+  color: #475569;
+  font-weight: 600;
+  background: #f1f5f9;
+  padding: 4px 12px;
+  border-radius: 99px;
+  border: 1px solid #e2e8f0;
+}
+.what-if-survival-half-life strong {
+  color: #059669;
+  font-size: 0.84rem;
+  font-weight: 850;
+}
+
+.what-if-survival-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.what-if-milestone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 14px 10px;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  transition: all 180ms ease;
+}
+.what-if-milestone:hover {
+  background: #ffffff;
+  border-color: #bfdbfe;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+}
+
+.what-if-milestone-bar-wrap {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.what-if-milestone-bar {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  background: linear-gradient(90deg, #10b981, #059669);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+}
+
+.what-if-milestone strong {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.what-if-milestone small {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #2563eb;
+  margin-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.what-if-milestone span {
+  font-size: 0.65rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .what-if-survival-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
