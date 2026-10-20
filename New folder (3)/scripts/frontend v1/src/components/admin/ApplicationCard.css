@@ -1,0 +1,95 @@
+.applications-workspace .application-result {
+  position: relative;
+  overflow: hidden;
+  background-color: #f8fbff;
+  background-image: linear-gradient(100deg, rgba(255,255,255,.97), rgba(255,255,255,.92) 42%, rgba(245,244,255,.83)), url('../../assets/application-review-bg.png');
+  background-size: cover, auto 100%;
+  background-position: center, right top;
+  background-repeat: no-repeat;
+  border: 1px solid #dce3f3;
+  border-radius: 19px;
+  box-shadow: 0 9px 24px rgba(52,73,120,.06);
+}
+.applications-workspace .application-result::before {
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  left: 0;
+  width: 3px;
+  content: '';
+  background: linear-gradient(#8062d9, #469fd9, #32b39c);
+  border-radius: 0 4px 4px 0;
+  pointer-events: none;
+}
+.applications-workspace .application-result:hover {
+  border-color: #becbec;
+  box-shadow: 0 12px 28px rgba(69,79,139,.1);
+}
+.applications-workspace .application-result__avatar {
+  color: #6550b2;
+  background: linear-gradient(145deg, #eee6ff, #e4f1ff);
+  border: 1px solid #dcd8f5;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(87,75,164,.1);
+}
+.applications-workspace .application-result__identity p { color: #61738c; }
+.applications-workspace .application-result__facts span {
+  background: rgba(255,255,255,.88);
+  border-color: #dce5f0;
+  border-radius: 9px;
+}
+.applications-workspace .application-result__facts b { color: #627592; }
+.applications-workspace .application-result__steps b { color: #687a94; }
+.applications-workspace .application-result__steps .is-current b { color: #17315a; }
+.applications-workspace .application-result__score {
+  padding: 14px 12px;
+  background: linear-gradient(145deg, #ece7ff, #e7f3ff 65%, #e3f6f0);
+  border-color: #d8d8f3;
+  border-radius: 14px;
+  box-shadow: 0 5px 14px rgba(96,82,165,.07);
+}
+.applications-workspace .application-result__score strong { color: #5040ab; font-size: 1.35rem; }
+.applications-workspace .application-result__score small,
+.applications-workspace .application-result__score span { color: #59658b; }
+.applications-workspace .application-result__score > i { height: 5px; background: #d4dcf0; }
+.applications-workspace .application-result__score > i em { background: linear-gradient(90deg, #8160d9, #538ce0, #28b49f); }
+.applications-workspace .application-result__actions label { color: #5a6e8a; }
+.applications-workspace .application-result__actions select { border-radius: 10px; }
+.applications-workspace .application-result__actions button {
+  background: linear-gradient(115deg, #356bd8, #6b54cb);
+  border-color: #5265ce;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(76,87,186,.18);
+}
+.applications-workspace .application-result__actions button:hover { background: linear-gradient(115deg, #285bbf, #5c43b5); }
+.applications-workspace .application-result__actions button:focus-visible,
+.applications-workspace .application-result__actions select:focus-visible {
+  outline: 3px solid #9d8be2;
+  outline-offset: 3px;
+}
+.applications-workspace .application-result__comparison { border-color: #dee5f2; }
+.applications-workspace .application-result .candidate-skills-toggle {
+  color: #455aa4;
+  background: linear-gradient(100deg, rgba(233,241,255,.94), rgba(239,234,255,.92));
+  border-color: #d6def4;
+  border-radius: 11px;
+}
+.applications-workspace .application-result .candidate-skills-toggle:hover { background: #e7edfc; }
+.applications-workspace .application-result .admin-application__comparison { border-color: #dfe5f1; }
+.applications-workspace .application-result .admin-application__comparison summary {
+  color: #4f468c;
+  background: rgba(255,255,255,.91);
+  border-color: #dce2f1;
+  border-radius: 11px;
+}
+.applications-workspace .application-result .admin-application__comparison summary:hover { background: #f2efff; }
+.applications-workspace .application-result .admin-application__comparison summary:focus-visible { outline: 3px solid #9d8be2; outline-offset: -3px; }
+.applications-workspace .application-result .admin-application__comparison summary b { color: #6147ad; background: #eee8fc; }
+.applications-workspace .application-result .admin-application__comparison[open] { background: rgba(255,255,255,.95); border-radius: 11px; }
+@media (max-width: 560px) {
+  .applications-workspace .application-result__actions select { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .applications-workspace .application-result { transition: none; }
+  .applications-workspace .application-result:hover { transform: none; }
+}

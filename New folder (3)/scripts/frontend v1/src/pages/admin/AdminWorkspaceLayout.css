@@ -1,0 +1,96 @@
+/* Shared compact layout and artwork for the recruitment workspace. */
+.admin-app-shell .admin-page {
+  padding: 18px clamp(14px, 2vw, 30px) 24px;
+  background-color: #f7f9fd;
+}
+.admin-app-shell .admin-page__container { width: 100%; max-width: none; }
+.admin-app-shell .admin-page--overview .admin-hero {
+  min-height: 0;
+  padding: 16px 20px;
+  border: 1px solid #e1e7f2;
+  border-radius: 18px;
+  background: linear-gradient(90deg, #fff 30%, #ffffffd9 65%, #ffffff55),
+    url("../../assets/admin-dashboard-network.png") right center / cover;
+}
+.admin-app-shell .admin-page--overview .admin-hero h1 {
+  margin-top: 8px;
+  font-size: clamp(1.8rem, 2.6vw, 2.65rem);
+}
+.admin-app-shell .admin-page--overview .admin-hero__actions { margin-top: 12px; }
+.admin-app-shell .admin-page--overview .admin-stats { gap: 12px; margin-top: 12px; }
+.admin-app-shell .admin-page--overview .admin-stat { min-height: 116px; padding: 16px; }
+.admin-app-shell .admin-page--overview .admin-stat__spark { display: none; }
+.admin-app-shell .admin-page--overview .admin-stat > div { min-width: 0; }
+.admin-app-shell .admin-page--overview .admin-stat div > span {
+  white-space: normal;
+  overflow: visible;
+  line-height: 1.4;
+}
+.admin-app-shell .admin-overview--reference {
+  gap: 12px;
+  margin-top: 12px;
+  align-items: stretch;
+}
+.admin-app-shell .dashboard-card {
+  padding: 18px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+}
+.admin-app-shell .dashboard-card--pipeline {
+  background-image: linear-gradient(110deg, #fffffff5 15%, #ffffffa6),
+    url("../../assets/candidate-momentum-bg.png");
+}
+.admin-app-shell .dashboard-card--activity {
+  background-image: linear-gradient(110deg, #fffffff5 10%, #ffffff66),
+    url("../../assets/recent-applications-bg.png");
+}
+.admin-app-shell .dashboard-card--interviews {
+  background-image: linear-gradient(110deg, #fffffff5 10%, #ffffff80),
+    url("../../assets/interview-schedule-bg.png");
+}
+.admin-app-shell .dashboard-card--analytics {
+  background-image: linear-gradient(110deg, #fffffff5 10%, #ffffffb3),
+    url("../../assets/application-mix-bg.png");
+}
+.admin-app-shell .dashboard-side-stack { gap: 12px; }
+.admin-app-shell .dashboard-application-list,
+.admin-app-shell .dashboard-interview-list { margin-top: 12px; }
+.admin-app-shell .dashboard-application,
+.admin-app-shell .dashboard-interview { background-color: #fffffff2; }
+.admin-app-shell .admin-job-applicants__back { margin-bottom: 12px; }
+.admin-app-shell .admin-job-applicants__header {
+  min-height: 0;
+  margin-bottom: 14px;
+  padding: 24px;
+  background-image: linear-gradient(90deg, #fff 20%, #fffffff0 50%, #ffffff33),
+    url("../../assets/applications-pipeline-art.png");
+}
+.admin-app-shell .admin-job-applicants__header p { margin: 10px 0 14px; }
+.admin-app-shell .admin-job-applicants__list { gap: 12px; }
+.admin-app-shell .admin-job-applicants__person { min-height: 76px; padding: 14px 20px; }
+.admin-app-shell .admin-job-applicants__names li {
+  background-image: linear-gradient(90deg, #fff 25%, #fffffff0 55%, #ffffff66),
+    url("../../assets/recent-applications-bg.png");
+}
+.admin-app-shell .admin-page--jobs .admin-content-grid > .admin-card { min-height: 0; }
+.admin-app-shell .admin-page--jobs .admin-content-grid { gap: 12px; margin-top: 12px; }
+@media (max-width: 1180px) and (min-width: 801px) {
+  .admin-app-shell .admin-overview--reference { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .admin-app-shell .dashboard-side-stack {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 800px) {
+  .admin-app-shell .admin-overview--reference { grid-template-columns: minmax(0, 1fr); }
+  .admin-app-shell .admin-page { padding: 14px 12px 20px; }
+  .admin-app-shell .dashboard-side-stack { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 520px) {
+  .admin-app-shell .admin-page--overview .admin-stats { grid-template-columns: minmax(0, 1fr); }
+  .admin-app-shell .admin-page--overview .admin-hero,
+  .admin-app-shell .admin-job-applicants__header { padding: 18px 16px; }
+  .admin-app-shell .dashboard-card { padding: 16px; }
+  .admin-app-shell .admin-job-applicants__person { padding: 14px 16px; }
+}

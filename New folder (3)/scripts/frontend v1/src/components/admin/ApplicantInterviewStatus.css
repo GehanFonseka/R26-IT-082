@@ -1,0 +1,10 @@
+.applicant-interview-status { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 24px; margin-top: 16px; background: linear-gradient(90deg, rgba(232,241,255,.96), rgba(232,241,255,.84) 60%, rgba(232,241,255,.45)), url("../../assets/interview-schedule-bg.png") right center / cover no-repeat; border: 1px solid #c9daf2; border-radius: 20px; color: #183654; }
+.applicant-interview-status h2 { margin: 0 0 12px; font-size: 20px; }
+.applicant-interview-status p { margin: 0; }
+.applicant-interview-status__scheduled { color: #187447; font-weight: 600; }
+.applicant-interview-status ul { padding-left: 20px; margin-bottom: 0; }
+.applicant-interview-status li { margin-top: 12px; }
+.applicant-interview-status li a { display: block; margin-top: 6px; }
+.applicant-interview-status__action, .applicant-interview-status button { padding: 12px 18px; border: 1px solid #2266d8; border-radius: 10px; background: #fff; color: #2266d8; font-weight: 600; text-decoration: none; white-space: nowrap; cursor: pointer; }
+.applicant-interview-status a:focus-visible, .applicant-interview-status button:focus-visible { outline: 3px solid #2266d8; outline-offset: 3px; }
+@media (max-width: 640px) { .applicant-interview-status { align-items: flex-start; flex-direction: column; padding: 20px; } }

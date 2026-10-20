@@ -1,0 +1,116 @@
+/* Local illustrations stay decorative and behind readable content. */
+.applicant-job-dashboard {
+  --applicant-art: url("../../assets/profile-hero-bg.png");
+  --applicant-tint: #eef5ff;
+}
+
+.applicant-job-dashboard .applicant-results__header,
+.applicant-job-dashboard .applicant-results__tabs,
+.applicant-job-dashboard .applicant-results__metrics article,
+.applicant-job-dashboard .applicant-results__panel,
+.applicant-job-dashboard .applicant-results__skill-summary,
+.applicant-job-dashboard .resume-strength__competency-card,
+.applicant-job-dashboard .resume-strength__distribution-card,
+.applicant-job-dashboard .resume-strength__skills > article,
+.applicant-job-dashboard .applicant-interview-status {
+  background-color: var(--applicant-tint);
+  background-image: linear-gradient(100deg, rgba(255,255,255,.96) 5%, rgba(255,255,255,.88) 55%, rgba(255,255,255,.42)), var(--applicant-art);
+  background-position: center, right center;
+  background-repeat: no-repeat;
+  background-size: cover, auto 100%;
+  border-color: #dbe5f3;
+  box-shadow: 0 8px 24px rgba(42, 73, 122, .05);
+}
+
+.applicant-job-dashboard .applicant-results__tabs {
+  --applicant-art: url("../../assets/application-mix-bg.png");
+  --applicant-tint: #f2edff;
+}
+
+.applicant-job-dashboard .applicant-results__tabs button {
+  color: #395372;
+}
+
+.applicant-job-dashboard .applicant-results__tabs button[aria-selected="true"] {
+  color: #155dcc;
+  background: #fff;
+}
+
+.applicant-job-dashboard .applicant-results__metrics article:nth-child(1) {
+  --applicant-art: url("../../assets/application-match-bg.png");
+  --applicant-tint: #eaf8ff;
+}
+
+.applicant-job-dashboard .applicant-results__metrics article:nth-child(2),
+.applicant-job-dashboard .resume-strength__competency-card {
+  --applicant-art: url("../../assets/job-readiness-card-bg.png");
+  --applicant-tint: #e8faf3;
+  border-color: #cce9df;
+}
+
+.applicant-job-dashboard .applicant-results__metrics article:nth-child(3),
+.applicant-job-dashboard .resume-strength__distribution-card {
+  --applicant-art: url("../../assets/application-mix-bg.png");
+  --applicant-tint: #f3edff;
+  border-color: #e0d7f4;
+}
+
+.applicant-job-dashboard .applicant-results__skill-summary {
+  --applicant-art: url("../../assets/application-review-bg.png");
+  --applicant-tint: #fff4ed;
+}
+
+.applicant-job-dashboard .applicant-results__skill-summary .resume-strength {
+  background: transparent;
+}
+
+.applicant-job-dashboard .resume-strength__skills > article {
+  --applicant-art: url("../../assets/cv-status-card-bg.png");
+  --applicant-tint: #edf6ff;
+}
+
+.applicant-job-dashboard .resume-strength__skills > article:nth-child(3n + 2) {
+  --applicant-art: url("../../assets/profile-completion-card-bg.png");
+  --applicant-tint: #edf9f2;
+  border-color: #cfe7dc;
+}
+
+.applicant-job-dashboard .resume-strength__skills > article:nth-child(3n) {
+  --applicant-art: url("../../assets/application-pending-bg.png");
+  --applicant-tint: #fff3ea;
+  border-color: #f0dfcd;
+}
+
+.applicant-job-dashboard .applicant-results__panel {
+  --applicant-art: url("../../assets/job-publishing-card-bg.png");
+  --applicant-tint: #f4efff;
+}
+
+.applicant-job-dashboard .applicant-results__panel--cv {
+  --applicant-art: url("../../assets/cv-status-card-bg.png");
+  --applicant-tint: #eaf7ff;
+}
+
+.applicant-job-dashboard .applicant-interview-status {
+  --applicant-art: url("../../assets/interview-schedule-bg.png");
+  --applicant-tint: #fff3ee;
+  border-color: #eedbda;
+}
+
+.applicant-job-dashboard .resume-strength__evidence,
+.applicant-job-dashboard .resume-strength__skills > article > small {
+  color: #425d7c;
+}
+
+@media (max-width: 600px) {
+  .applicant-job-dashboard {
+    background-color: #f5f7fc;
+  }
+
+  .applicant-job-dashboard .applicant-results__panel,
+  .applicant-job-dashboard .resume-strength__skills > article,
+  .applicant-job-dashboard .resume-strength__competency-card,
+  .applicant-job-dashboard .resume-strength__distribution-card {
+    background-image: linear-gradient(100deg, rgba(255,255,255,.97), rgba(255,255,255,.78)), var(--applicant-art);
+  }
+}

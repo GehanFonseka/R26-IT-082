@@ -1,0 +1,34 @@
+.admin-page--jobs .admin-job-form__progress {
+  background-image:
+    linear-gradient(90deg, rgba(245,249,255,.98) 0%, rgba(245,249,255,.96) 70%, rgba(245,249,255,.83) 100%),
+    url("../../assets/job-readiness-card-bg.png");
+  background-position: center, right center;
+  background-repeat: no-repeat;
+  background-size: cover, auto 100%;
+}
+
+.admin-page--jobs .admin-job-item {
+  background-color: #fbfcff;
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,.99) 0%, rgba(255,255,255,.97) 68%, rgba(255,255,255,.78) 100%),
+    url("../../assets/published-job-item-bg.png");
+  background-position: center, right center;
+  background-repeat: no-repeat;
+  background-size: cover, auto 100%;
+  border-color: #dce6f3;
+}
+
+.admin-page--jobs .admin-job-item:hover {
+  border-color: #a9c5e9;
+  box-shadow: 0 10px 24px rgba(40, 83, 143, .1);
+}
+
+@media (max-width: 500px) {
+  .admin-page--jobs .admin-job-form__progress {
+    background-image: linear-gradient(90deg, rgba(245,249,255,.98), rgba(245,249,255,.9)), url("../../assets/job-readiness-card-bg.png");
+  }
+
+  .admin-page--jobs .admin-job-item {
+    background-image: linear-gradient(90deg, rgba(255,255,255,.99), rgba(255,255,255,.91)), url("../../assets/published-job-item-bg.png");
+  }
+}

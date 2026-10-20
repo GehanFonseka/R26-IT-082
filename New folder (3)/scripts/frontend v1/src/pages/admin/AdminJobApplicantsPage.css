@@ -1,0 +1,66 @@
+.admin-job-applicants__back { display: inline-block; margin-bottom: 20px; color: #2164c7; font-weight: 700; text-decoration: none; }
+.admin-job-applicants__header { padding: 28px; margin-bottom: 22px; border: 1px solid #dfe7f1; border-radius: 20px; background: #fff; }
+.admin-job-applicants__header > span { color: #657994; font-size: .8rem; font-weight: 700; }
+.admin-job-applicants__header h1 { margin: 10px 0; color: #102646; font-size: clamp(1.5rem, 3vw, 2rem); }
+.admin-job-applicants__header p { color: #657994; }
+.admin-job-applicants__header strong { color: #2164c7; }
+.admin-job-applicants__header small { margin-left: 16px; color: #526781; }
+.admin-job-applicants__list { display: grid; gap: 16px; }
+.admin-job-applicants__names { margin: 0; padding: 0; list-style: none; border: 1px solid #dfe7f1; border-radius: 16px; background: #fff; overflow: hidden; }
+.admin-job-applicants__names li + li { border-top: 1px solid #edf1f7; }
+.admin-job-applicants__person { display: flex; align-items: center; gap: 14px; padding: 16px 20px; color: #102646; font-weight: 650; text-decoration: none; overflow-wrap: anywhere; }
+.admin-job-applicants__person:hover { background: #f7faff; }
+.admin-job-applicants__person:focus-visible { outline: 3px solid #3678df; outline-offset: -3px; }
+.admin-job-applicants__photo { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; background: #edf3ff; color: #2164c7; overflow: hidden; }
+.admin-job-applicants__photo img { width: 100%; height: 100%; object-fit: cover; }
+.admin-job-applicants__empty { padding: 40px 24px; border: 1px solid #dfe7f1; border-radius: 16px; background: #fff; text-align: center; color: #657994; }
+.admin-job-applicants__empty h2 { color: #102646; }
+.admin-job-applicants__error { padding: 14px; background: #fff1f3; border-radius: 10px; color: #b4233c; }
+.admin-job-applicants__back { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 16px; border: 1px solid #c4d7ef; border-radius: 10px; background: #fff; }
+.admin-job-applicants__back:hover { background: #edf4ff; border-color: #2164c7; text-decoration: underline; }
+.admin-job-applicants__back:active { background: #dce9fc; }
+.admin-job-applicants__back:focus-visible { outline: 3px solid #2164c7; outline-offset: 3px; }
+.admin-job-applicants__header {
+  padding: 32px; min-height: 205px; overflow-wrap: anywhere;
+  background-image: linear-gradient(90deg, #fff 20%, rgba(255,255,255,.96) 53%, rgba(255,255,255,.45)), url("../../assets/applications-pipeline-art.png");
+  background-size: cover; background-position: center, right center;
+  box-shadow: 0 10px 30px rgba(25,62,116,.06);
+}
+.admin-job-applicants__header > span { color: #4b6380; letter-spacing: .06em; text-transform: uppercase; }
+.admin-job-applicants__header h1 { max-width: 850px; line-height: 1.25; }
+.admin-job-applicants__header p { color: #4b6380; line-height: 1.6; }
+.admin-job-applicants__header strong, .admin-job-applicants__header small { display: inline-block; padding: 7px 12px; border: 1px solid #d4e2f4; border-radius: 8px; background: rgba(245,249,255,.95); }
+.admin-job-applicants__header small { color: #344e6c; }
+.admin-job-applicants__list-heading h2 { margin: 0 0 6px; color: #102646; font-size: 1.15rem; }
+.admin-job-applicants__list-heading p { margin: 0; color: #4b6380; font-size: .85rem; line-height: 1.5; }
+.admin-job-applicants__names { box-shadow: 0 8px 24px rgba(25,62,116,.04); }
+.admin-job-applicants__names li {
+  background-image: linear-gradient(90deg, #fff 25%, rgba(255,255,255,.97) 60%, rgba(255,255,255,.83)), url("../../assets/recent-applications-bg.png");
+  background-position: center, right center; background-size: cover; background-repeat: no-repeat;
+}
+.admin-job-applicants__person { min-height: 88px; padding: 20px 24px; transition: background-color 140ms ease; }
+.admin-job-applicants__person:hover { background: rgba(231,241,255,.75); }
+.admin-job-applicants__person:active { background: #dce9fc; }
+.admin-job-applicants__person-info { display: grid; gap: 5px; min-width: 0; }
+.admin-job-applicants__person-info small { color: #4b6380; font-weight: 400; font-size: .78rem; }
+.admin-job-applicants__open { display: inline-flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; color: #2164c7; font-size: .8rem; }
+.admin-job-applicants__person:hover .admin-job-applicants__open span { text-decoration: underline; }
+.admin-job-applicants__photo { border: 1px solid #d6e4f8; background: #edf4ff; }
+.admin-job-applicants__person { display: grid; grid-template-columns: 46px minmax(130px, 1fr) minmax(470px, 570px) auto; gap: 18px; }
+.admin-job-applicants__person-info { padding-right: 12px; }
+@media (max-width: 1200px) {
+  .admin-job-applicants__person { grid-template-columns: 46px minmax(0, 1fr) auto; gap: 14px; }
+  .admin-job-applicants__person > .applicant-row-metrics { grid-column: 1 / -1; grid-row: 2; }
+  .admin-job-applicants__open { grid-column: 3; grid-row: 1; }
+}
+.admin-job-applicants__empty {
+  background-image: linear-gradient(90deg, rgba(255,255,255,.97), rgba(255,255,255,.89)), url("../../assets/application-pending-bg.png");
+  background-size: cover; background-position: right center; color: #4b6380;
+}
+@media (prefers-reduced-motion: reduce) { .admin-job-applicants__person { transition: none; } }
+@media (max-width: 600px) {
+  .admin-job-applicants__header { padding: 24px 20px; background-image: linear-gradient(90deg, rgba(255,255,255,.96), rgba(255,255,255,.88)), url("../../assets/applications-pipeline-art.png"); }
+  .admin-job-applicants__header small { margin: 8px 0 0 8px; }
+  .admin-job-applicants__person { padding: 18px 16px; gap: 12px; }
+  .admin-job-applicants__open span { display: none; }
+}

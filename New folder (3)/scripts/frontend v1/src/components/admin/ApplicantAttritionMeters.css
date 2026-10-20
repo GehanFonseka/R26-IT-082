@@ -1,0 +1,69 @@
+.applicant-attrition {
+  margin-top: 18px;
+  padding: 26px;
+  color: #142d50;
+  background: #fff;
+  border: 1px solid #dfe7f1;
+  border-radius: 20px;
+  box-shadow: 0 8px 28px rgba(27,61,110,.045);
+}
+.applicant-attrition > header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.applicant-attrition__eyebrow { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; color: #58749b; font-size: .62rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+.applicant-attrition h2 { margin: 0 0 7px; font-size: 1.2rem; letter-spacing: -.025em; }
+.applicant-attrition p { margin: 0; color: #647893; font-size: .78rem; line-height: 1.6; }
+.applicant-attrition__meters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.applicant-attrition__card {
+  --risk-accent: #178465;
+  --risk-tint: #e7f6ef;
+  --card-accent: #3777cb;
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  padding: 22px 24px 0;
+  background: linear-gradient(135deg, #f4f9ff, #fff 75%);
+  border: 1px solid #d7e5f5;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(41,78,127,.035);
+  transition: box-shadow 180ms ease, border-color 180ms ease;
+}
+.applicant-attrition__card::before { position: absolute; top: 0; right: 24px; left: 24px; height: 3px; background: #c5daf5; border-radius: 0 0 6px 6px; content: ""; }
+.applicant-attrition__card:nth-child(2) { --card-accent: #8060c8; background: linear-gradient(135deg, #f7f4ff, #fff 75%); border-color: #e4dcf4; }
+.applicant-attrition__card:nth-child(2)::before { background: #d9cbf2; }
+.applicant-attrition__card:hover { border-color: #bbcee5; box-shadow: 0 8px 24px rgba(41,78,127,.08); }
+.applicant-attrition__card--medium { --risk-accent: #a1680a; --risk-tint: #fff5de; }
+.applicant-attrition__card--high { --risk-accent: #c23d50; --risk-tint: #fff0f2; }
+.applicant-attrition__card--neutral { --risk-accent: #697c95; --risk-tint: #edf1f7; }
+.applicant-attrition__card-heading { display: flex; align-items: center; gap: 12px; }
+.applicant-attrition__icon { display: grid; flex-shrink: 0; place-items: center; width: 46px; height: 46px; color: var(--card-accent); background: #fff; border: 1px solid #e3eaf5; border-radius: 14px; box-shadow: 0 4px 10px rgba(42,73,122,.04); }
+.applicant-attrition__card h3 { margin: 0 0 3px; font-size: 1rem; letter-spacing: -.015em; }
+.applicant-attrition__card-heading p { font-size: .7rem; }
+.applicant-attrition__card-body { display: flex; align-items: center; gap: 24px; padding: 28px 0 22px; }
+.applicant-attrition__gauge { flex-shrink: 0; width: 180px; }
+.applicant-attrition__gauge .risk-meter { width: 180px; height: 106px; }
+.applicant-attrition__gauge .risk-meter path { stroke-width: 10; }
+.applicant-attrition__gauge .risk-meter__track { stroke: #e7edf5; }
+.applicant-attrition__gauge .risk-meter__label { bottom: 2px; }
+.applicant-attrition__gauge .risk-meter__label strong { font-size: 2rem; letter-spacing: -.045em; }
+.applicant-attrition__gauge .risk-meter__label span { bottom: -19px; color: #647893; font-size: .65rem; font-weight: 600; }
+.applicant-attrition__scale { display: flex; justify-content: space-between; margin: 8px 10px 0; color: #70839b; font-size: .58rem; }
+.applicant-attrition__summary { min-width: 0; }
+.applicant-attrition__badge { display: inline-flex; align-items: center; gap: 7px; max-width: 100%; padding: 7px 10px; color: var(--risk-accent); background: var(--risk-tint); border-radius: 8px; font-size: .7rem; font-weight: 750; line-height: 1.5; }
+.applicant-attrition__badge i { width: 6px; height: 6px; flex-shrink: 0; background: currentColor; border-radius: 50%; }
+.applicant-attrition__summary p { max-width: 185px; margin-top: 10px; font-size: .72rem; }
+.applicant-attrition__summary small { display: block; margin-top: 8px; font-size: .65rem; }
+.applicant-attrition__card footer { display: flex; align-items: center; gap: 7px; min-height: 42px; padding: 10px 0; color: #647893; border-top: 1px solid #e7edf5; font-size: .65rem; }
+.applicant-attrition__card footer svg { flex-shrink: 0; }
+.applicant-attrition button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 10px 16px; color: #2164c7; font: inherit; font-size: .8rem; font-weight: 700; background: #f1f6ff; border: 1px solid #c4d7ef; border-radius: 10px; cursor: pointer; }
+.applicant-attrition button:hover { background: #e1edff; }
+.applicant-attrition button:focus-visible { outline: 3px solid #2164c7; outline-offset: 3px; }
+.applicant-attrition .applicant-attrition__error { margin-top: 16px; color: #a83242; }
+@media (max-width: 1200px) { .applicant-attrition__meters { grid-template-columns: 1fr; } .applicant-attrition__card-body { justify-content: center; gap: 36px; } }
+@media (max-width: 560px) {
+  .applicant-attrition { padding: 20px 14px; }
+  .applicant-attrition > header { align-items: flex-start; flex-direction: column; }
+  .applicant-attrition__card { padding: 20px 18px 0; }
+  .applicant-attrition__card-body { flex-direction: column; gap: 20px; padding: 24px 0 20px; }
+  .applicant-attrition__summary { text-align: center; }
+  .applicant-attrition__summary p { max-width: 220px; }
+}
+@media (prefers-reduced-motion: reduce) { .applicant-attrition__card { transition: none; } }

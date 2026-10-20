@@ -1,0 +1,44 @@
+.candidate-skills-toggle {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 0;
+  color: #245dc5;
+  font: inherit;
+  text-align: left;
+  border: 1px solid #d7e5fb;
+  border-radius: 9px;
+  background: #f8fbff;
+  cursor: pointer;
+}
+
+.candidate-skills-toggle > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 11px;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.candidate-skills-toggle > span > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.candidate-skills-toggle__chevron {
+  margin-left: auto;
+  transition: transform 160ms ease;
+}
+
+.candidate-skills-toggle:hover,
+.candidate-skills-toggle:focus-visible {
+  background: #eef5ff;
+  border-color: #b9d2f8;
+}
+
+.candidate-skills-toggle:focus-visible {
+  outline: 3px solid rgba(78, 135, 232, 0.2);
+  outline-offset: -3px;
+}

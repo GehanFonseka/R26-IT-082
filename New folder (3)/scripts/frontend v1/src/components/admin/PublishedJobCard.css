@@ -1,0 +1,8 @@
+.published-job-card { position: relative; }
+.published-job-card__link { display: block; color: inherit; text-decoration: none; border-radius: 10px; }
+.published-job-card__link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.published-job-card__link:focus-visible { outline: 3px solid #3678df; outline-offset: 5px; }
+.published-job-card:hover { border-color: #8cb7fb; }
+.published-job-card__hint { display: block; margin-top: 10px; color: #2164c7; font-size: .72rem; font-weight: 700; }
+.published-job-card .admin-job-item__footer { position: relative; z-index: 1; }
+.published-job-card .admin-job-item__footer a { color: #2164c7; font-size: .72rem; text-decoration: none; }
